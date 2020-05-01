@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-localing-dev-174559-authRole",
+            "UnauthRoleArn": "arn:aws:iam::208447551786:role/amplify-localing-dev-174559-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::208447551786:role/amplify-localing-dev-174559-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-localing-dev-174559-deployment",
+            "UnauthRoleName": "amplify-localing-dev-174559-unauthRole",
+            "StackName": "amplify-localing-dev-174559",
+            "StackId": "arn:aws:cloudformation:eu-west-2:208447551786:stack/amplify-localing-dev-174559/3142ef20-8bf5-11ea-bb31-0a5f6fd32d44",
+            "AmplifyAppId": "d3n9rcmhrvh1t7"
+        }
+    }
+}
