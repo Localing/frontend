@@ -59,6 +59,24 @@ const convertUrlType = (param, type) => {
 /********************************
  * HTTP Get method for list objects *
  ********************************/
+app.get(path, function (req, res) {
+  let queryParams = {
+    TableName: tableName
+  }
+
+  dynamodb.scan(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({ error: 'Could not load items: ' + err });
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
+
+/*****************************************
+ * HTTP Get method for get single object *
+ *****************************************/
 
 app.get(path + hashKeyPath, function (req, res) {
   var condition = {}
@@ -85,16 +103,14 @@ app.get(path + hashKeyPath, function (req, res) {
   dynamodb.query(queryParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
-      res.json({ error: 'Could not load items: ' + err });
+      res.json({ error: 'Could not load item: ' + err });
     } else {
-      res.json(data.Items);
+      res.json(data.Items[0]);
     }
   });
 });
 
-/*****************************************
- * HTTP Get method for get single object *
- *****************************************/
+
 
 app.get(path + '/object' + hashKeyPath + sortKeyPath, function (req, res) {
   var params = {};
