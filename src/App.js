@@ -8,37 +8,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 // home pages
-const HomeFashion = lazy(() => import("./pages/home/HomeFashion"));
-const HomeFashionTwo = lazy(() => import("./pages/home/HomeFashionTwo"));
-const HomeFashionThree = lazy(() => import("./pages/home/HomeFashionThree"));
-const HomeFashionFour = lazy(() => import("./pages/home/HomeFashionFour"));
-const HomeFashionFive = lazy(() => import("./pages/home/HomeFashionFive"));
-const HomeFashionSix = lazy(() => import("./pages/home/HomeFashionSix"));
-const HomeFashionSeven = lazy(() => import("./pages/home/HomeFashionSeven"));
-const HomeKidsFashion = lazy(() => import("./pages/home/HomeKidsFashion"));
-const HomeCosmetics = lazy(() => import("./pages/home/HomeCosmetics"));
-const HomeFurniture = lazy(() => import("./pages/home/HomeFurniture"));
-const HomeFurnitureTwo = lazy(() => import("./pages/home/HomeFurnitureTwo"));
-const HomeFurnitureThree = lazy(() =>
-  import("./pages/home/HomeFurnitureThree")
-);
-const HomeElectronics = lazy(() => import("./pages/home/HomeElectronics"));
-const HomeElectronicsTwo = lazy(() =>
-  import("./pages/home/HomeElectronicsTwo")
-);
-const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
-const HomePlants = lazy(() => import("./pages/home/HomePlants"));
-const HomeFlowerShop = lazy(() => import("./pages/home/HomeFlowerShop"));
-const HomeOrganicFood = lazy(() => import("./pages/home/HomeOrganicFood"));
-const HomeOrganicFoodTwo = lazy(() =>
-  import("./pages/home/HomeOrganicFoodTwo")
-);
-const HomeOnepageScroll = lazy(() => import("./pages/home/HomeOnepageScroll"));
-const HomeGridBanner = lazy(() => import("./pages/home/HomeGridBanner"));
-const HomeAutoParts = lazy(() => import("./pages/home/HomeAutoParts"));
-const HomeCakeShop = lazy(() => import("./pages/home/HomeCakeShop"));
-const HomeHandmade = lazy(() => import("./pages/home/HomeHandmade"));
-const HomePetFood = lazy(() => import("./pages/home/HomePetFood"));
+const Home = lazy(() => import("./pages/home/Home"));
 
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
@@ -120,109 +90,7 @@ const App = props => {
                 <Route
                   exact
                   path={process.env.PUBLIC_URL + "/"}
-                  component={HomeElectronics}
-                />
-
-                {/* Homepages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion"}
-                  component={HomeFashion}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-two"}
-                  component={HomeFashionTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-three"}
-                  component={HomeFashionThree}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-four"}
-                  component={HomeFashionFour}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-five"}
-                  component={HomeFashionFive}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-six"}
-                  component={HomeFashionSix}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-fashion-seven"}
-                  component={HomeFashionSeven}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-kids-fashion"}
-                  component={HomeKidsFashion}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-cosmetics"}
-                  component={HomeCosmetics}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture"}
-                  component={HomeFurniture}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-two"}
-                  component={HomeFurnitureTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-furniture-three"}
-                  component={HomeFurnitureThree}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-electronics"}
-                  component={HomeElectronics}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-electronics-two"}
-                  component={HomeElectronicsTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-book-store"}
-                  component={HomeBookStore}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-plants"}
-                  component={HomePlants}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-flower-shop"}
-                  component={HomeFlowerShop}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-organic-food"}
-                  component={HomeOrganicFood}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-organic-food-two"}
-                  component={HomeOrganicFoodTwo}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-onepage-scroll"}
-                  component={HomeOnepageScroll}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-grid-banner"}
-                  component={HomeGridBanner}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-auto-parts"}
-                  component={HomeAutoParts}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-cake-shop"}
-                  component={HomeCakeShop}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-handmade"}
-                  component={HomeHandmade}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/home-pet-food"}
-                  component={HomePetFood}
+                  component={Home}
                 />
 
                 {/* Shop pages */}

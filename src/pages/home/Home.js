@@ -6,11 +6,8 @@ import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
 import TabProductThree from "../../wrappers/product/TabProductThree";
 import BannerThree from "../../wrappers/banner/BannerThree";
-import TestimonialOne from "../../wrappers/testimonial/TestimonialOne";
-import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
-import BlogFeaturedTwo from "../../wrappers/blog-featured/BlogFeaturedTwo";
 
-const HomeElectronics = () => {
+const Home = () => {
   return (
     <Fragment>
       <MetaTags>
@@ -36,23 +33,9 @@ const HomeElectronics = () => {
         {/* banner */}
         <BannerThree spaceBottomClass="pb-100" />
 
-        {/* testimonial */}
-        <TestimonialOne
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-95"
-          spaceLeftClass="ml-70"
-          spaceRightClass="mr-70"
-          bgColorClass="bg-gray-3"
-        />
-
-        {/* brand logo slider */}
-        <BrandLogoSliderOne spaceBottomClass="pb-95" spaceTopClass="pt-100" />
-
-        {/* blog featured */}
-        <BlogFeaturedTwo spaceBottomClass="pb-55" />
       </LayoutTwo>
     </Fragment>
   );
 };
 
-export default HomeElectronics;
+export default Home;
