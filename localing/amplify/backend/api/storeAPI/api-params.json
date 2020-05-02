@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/store",
+            "lambdaFunction": "storeAPI",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "storeAPI",
+    "apiName": "storeAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "storeAPI"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-localing-dev-174559-authRole",
+        "unAuthRoleName": "amplify-localing-dev-174559-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "storeAPI",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

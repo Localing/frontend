@@ -1,0 +1,5 @@
+{
+    "tableName": "localingStore",
+    "partitionKeyName": "storeID",
+    "partitionKeyType": "N"
+}
