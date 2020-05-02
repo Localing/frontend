@@ -76,7 +76,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-localing-dev-174559-deployment",
-					"S3Key": "amplify-builds/storeAPI-576867674c376e6b7758-build.zip"
+					"S3Key": "amplify-builds/storeAPI-484f4e75657676704743-build.zip"
 				}
 			}
 		},
