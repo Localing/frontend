@@ -155,10 +155,10 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function (req, res) {
 
 
 /************************************
-* HTTP put method for insert object *
+* HTTP put method for write object *
 *************************************/
 
-app.put(path, function (req, res) {
+app.put(path + hashKeyPath, function (req, res) {
 
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
@@ -168,6 +168,12 @@ app.put(path, function (req, res) {
     TableName: tableName,
     Item: req.body
   }
+  if (req.params[partitionKeyName] != req.body.storeID) {
+    res.statusCode = 500;
+    res.json({ error: 'storeID Mismatch' });
+    return;
+  }
+
   dynamodb.put(putItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
@@ -187,17 +193,21 @@ app.post(path, function (req, res) {
   if (userIdPresent) {
     req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
   }
+  let item = req.body;
+
+  // TODO: Fix with Atomic Counters
+  item.storeID = (new Date().getTime());
 
   let putItemParams = {
     TableName: tableName,
-    Item: req.body
+    Item: item
   }
   dynamodb.put(putItemParams, (err, data) => {
     if (err) {
       res.statusCode = 500;
       res.json({ error: err, url: req.url, body: req.body });
     } else {
-      res.json({ success: 'post call succeed!', url: req.url, data: data })
+      res.json(item);
     }
   });
 });
