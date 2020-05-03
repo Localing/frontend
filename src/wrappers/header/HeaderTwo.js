@@ -75,8 +75,8 @@ const HeaderTwo = ({
               <IconGroup />
             </div>
             <div className="col-xl-12 col-lg-12 d-none d-lg-block">
-              {/* Nav menu */}
-              <NavMenu />
+              {/* Nav menu <NavMenu /> */}
+              
             </div>
           </div>
           {/* mobile menu */}
