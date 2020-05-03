@@ -25,7 +25,10 @@ const Home = () => {
 
         {/* section title with text */}
         <SectionTitleWithText spaceBottomClass="pb-90" />
-
+        <div className="container">
+          <div className="welcome-content text-center">
+            <h1>Packages from Businesses Near You</h1>
+          </div></div>
         {/* products */}
         <div
           className={`product-area hm9-section-padding pb-60`}
@@ -33,7 +36,7 @@ const Home = () => {
           <div className="container-fluid">
             <div className="custom-row-4">
               <ProductGridThree
-                limit={10}
+                limit={15}
                 spaceBottomClass="mb-35"
               />
             </div>
