@@ -1,10 +1,10 @@
 [
   {
     "id": "11",
-    "sku": "coffee20",
-    "name": "20 Coffee Package",
-    "price": 10,
-    "discount": 30,
+    "sku": "coffee10",
+    "name": "10 Coffee Package",
+    "price": 16.5,
+    "discount": 10,
     "new": false,
     "saleCount": 100,
     "category": [
@@ -18,8 +18,8 @@
       "/assets/img/product/20coffee.jpg",
       "/assets/img/product/20coffee-2.jpg"
     ],
-    "shortDescription": "Buy 18 coffees and get 2 free!",
-    "fullDescription": "A voucher for 20 coffees that you can enjoy any time. You pay for 18 and get two free!"
+    "shortDescription": "Buy 9 coffees and get 1 free!",
+    "fullDescription": "A voucher for 10 coffees that you can enjoy any time. You pay for 9 and get 1 free!"
   },
   {
     "id": "12",
