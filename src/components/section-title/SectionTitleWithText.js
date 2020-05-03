@@ -13,7 +13,10 @@ const SectionTitleWithText = ({ spaceTopClass, spaceBottomClass }) => {
           <h5>About Us</h5>
           <h1>Welcome To Localing</h1>
           <p>
-          Localing is a community hub to enable customers to support their favourite local small businesses during the coronavirus lockdown. In exchange for discounted pre-purchases now, customers will receive their goods and services in the future when the lockdown measures are eased and normal business resumes. This will help these businesses with the cash flow that they need right now to cover their costs during lockdown. Localing will use gamification to incentivise customers with Local Hero badges that they will be able to share via social media. The platform will also enable customers to track when their favourite businesses resume operations and the types of safety measures, such as social distancing and availability of hand sanitizers, that they have implemented to reduce the risk of coronavirus transmission.
+          Localing is a community hub to enable customers to support their favourite local small businesses during the coronavirus lockdown. In exchange for discounted pre-purchases now, customers will receive their goods and services in the future when the lockdown measures are eased and normal business resumes. This helps these businesses with the cash flow that they need right now to cover their costs during lockdown. </p>
+          <br />
+          
+          <p>Localing uses gamification to incentivise customers with Local Hero badges that they can share via social media. The platform enables customers to track when their favourite businesses resume operations and the types of safety measures, such as social distancing and availability of hand sanitizers, that they have implemented to reduce the risk of coronavirus transmission.
 {" "}
           </p>
         </div>
