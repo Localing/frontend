@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { changeLanguage } from "redux-multilanguage";
+import { NavItem } from "react-bootstrap";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -17,7 +18,11 @@ const LanguageCurrencyChanger = ({
     const currencyName = e.target.value;
     setCurrency(currencyName);
   };
-  let points = parseInt(window.localStorage.getItem('points') || 0);
+  let points = window.localStorage.getItem('points');
+  if (!points) {
+    points = 0;
+    window.localStorage.setItem('points', points);
+  }
 
   return (
     <div className="language-currency-wrap">
