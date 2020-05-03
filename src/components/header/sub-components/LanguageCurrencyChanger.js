@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { NavItem } from "react-bootstrap";
+import { NavItem, Modal, Button } from "react-bootstrap";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -20,6 +20,12 @@ const LanguageCurrencyChanger = ({
   };
 
   const [points, setPoints] = useState(0);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+  }
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     console.log(Number(localStorage.getItem('points')));
@@ -33,6 +39,22 @@ const LanguageCurrencyChanger = ({
 
   return (
     <div className="language-currency-wrap">
+      {/* badge popup */}
+      <Modal show={show} onHide={handleClose} >
+      <Modal.Header closeButton>
+            <Modal.Title>Thank you for your support</Modal.Title>
+          </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <h1>You've got {points} points!</h1>
+            <div className="container">
+              <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
+            </div>
+            <br />
+            <button className="btn btn-secondary">Share on Instagram</button>
+          </div>
+        </Modal.Body>
+      </Modal>
       <div className="same-language-currency language-style">
         <span>
           {currentLanguageCode === "en"
@@ -48,17 +70,17 @@ const LanguageCurrencyChanger = ({
           <ul>
             <li>
               <button value="en" onClick={e => changeLanguageTrigger(e)}>
-              English
+                English
               </button>
             </li>
             <li>
               <button value="fn" onClick={e => changeLanguageTrigger(e)}>
-              Français
+                Français
               </button>
             </li>
             <li>
               <button value="de" onClick={e => changeLanguageTrigger(e)}>
-              Deutsche
+                Deutsche
               </button>
             </li>
           </ul>
@@ -72,24 +94,24 @@ const LanguageCurrencyChanger = ({
           <ul>
             <li>
               <button value="USD" onClick={e => setCurrencyTrigger(e)}>
-              $ USD
+                $ USD
               </button>
             </li>
             <li>
               <button value="EUR" onClick={e => setCurrencyTrigger(e)}>
-              € EUR
+                € EUR
               </button>
             </li>
             <li>
               <button value="GBP" onClick={e => setCurrencyTrigger(e)}>
-              £ GBP
+                £ GBP
               </button>
             </li>
           </ul>
         </div>
       </div>
       <div className="same-language-currency use-style">
-        {points} credits
+        <button className="btn btn-secondary btn-sm" onClick={handleShow}>{points} points</button>
       </div>
     </div>
   );

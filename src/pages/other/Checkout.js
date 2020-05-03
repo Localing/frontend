@@ -1,27 +1,38 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { Modal, Button } from 'react-bootstrap';
 
 import { checkoutCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 
 const Checkout = ({ location, cartItems, currency }) => {
+  let history = useHistory();
+
   const { pathname } = location;
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
 
-  function processOrder(pointsToAdd){
+  const [points, setPoints] = useState(0);
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+    history.push('/');
+  }
+  const handleShow = () => setShow(true);
+
+  function processOrder(pointsToAdd) {
     let points = Number(localStorage.getItem('points'));
     points += cartTotalPrice * 80;
-    console.log(points);
+    setPoints(points);
     localStorage.setItem('points', points);
-    window.location.href('/');
+    handleShow();
   }
 
   return (
@@ -40,6 +51,30 @@ const Checkout = ({ location, cartItems, currency }) => {
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
         <Breadcrumb />
+
+        {/* badge popup */}
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Thank you for your support!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="text-center">
+              <h1>You've got {points} points!</h1>
+              <div className="container">
+                <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
+              </div>
+              <br />
+              <button className="btn btn-secondary">Share on Instagram</button>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleClose}>
+              Back to Home
+          </Button>
+          </Modal.Footer>
+        </Modal>
+
+
         <div className="checkout-area pt-95 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
@@ -199,6 +234,15 @@ const Checkout = ({ location, cartItems, currency }) => {
                         <div className="your-order-total">
                           <ul>
                             <li className="order-total">Total</li>
+                            <li>
+                              {currency.currencySymbol +
+                                cartTotalPrice.toFixed(2)}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="your-order-total">
+                          <ul>
+                            <li className="order-total">Points</li>
                             <li>
                               {currency.currencySymbol +
                                 cartTotalPrice.toFixed(2)}
