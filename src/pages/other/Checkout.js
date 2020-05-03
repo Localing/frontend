@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
@@ -15,6 +15,15 @@ const Checkout = ({ location, cartItems, currency }) => {
   const { pathname } = location;
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
+
+  function processOrder(pointsToAdd){
+    let points = Number(localStorage.getItem('points'));
+    points += cartTotalPrice * 80;
+    console.log(points);
+    localStorage.setItem('points', points);
+    window.location.href('/');
+  }
+
   return (
     <Fragment>
       <MetaTags>
@@ -62,11 +71,10 @@ const Checkout = ({ location, cartItems, currency }) => {
                           <label>Country</label>
                           <select>
                             <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
+                            <option>UK</option>
+                            <option>France</option>
+                            <option>Germany</option>
+                            <option>USA</option>
                           </select>
                         </div>
                       </div>
@@ -201,12 +209,7 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover" onClick={() => {
-                        let points = parseInt(window.localStorage.getItem('points'));
-                        points += cartTotalPrice * 80;
-                        window.localStorage.setItem('points', points);
-                        window.location.href = '/';
-                      }}>Place Order</button>
+                      <button className="btn-hover" onClick={processOrder}>Place Order</button>
                     </div>
                   </div>
                 </div>
