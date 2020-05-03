@@ -72,6 +72,7 @@ const BusinessDescription = ({
         </div>
       </div>
     </div>
+
   );
 };
 
