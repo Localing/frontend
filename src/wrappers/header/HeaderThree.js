@@ -58,7 +58,7 @@ const HeaderThree = ({
             <div className="col-xl-12 col-lg-12 col-6">
               <div className="center-menu-logo text-left text-lg-center">
                 {/* header logo */}
-                <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
+                <Logo imageUrl="/assets/img/logo/localing-logo.png" logoClass="logo" />
               </div>
             </div>
             <div className="col-6 d-block d-lg-none">
