@@ -7,6 +7,7 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
+import ProductGridThree from "../../wrappers/product/ProductGridThree";
 
 const BusinessDescriptionInfo = ({
   product,
@@ -39,15 +40,26 @@ const BusinessDescriptionInfo = ({
     selectedProductColor,
     selectedProductSize
   );
-  const businessInfo = {
-    name: "The Family Bean",
-    shortDescription: "Your friendly cornerstore coffee shop."
-  }
+  let businessInfo = [];
+  businessInfo["The Family Bean"] = "Your friendly neighborhood coffee shop.";
+  businessInfo["Chop Your Mop"] = "Don't want to look scruffy on those video calls.";
+  businessInfo["Buns in the Oven"] = "Family-owned and operated since 1985.";
+  businessInfo["Knead the Knots"] = "Feeling tight? Knot a problem.";
+  businessInfo["Tasty Bistro"] = "Experience a taste of Paris at the classic french bistro.";
+  businessInfo["Swish Swash"] = "See the world outside - wash your windows.";
+
+
+  const badges = [
+    '/assets/img/badges/katie.png',
+    '/assets/img/badges/katie.png',
+    '/assets/img/badges/katie.png',
+    '/assets/img/badges/katie.png'
+  ];
   return (
     <div className="product-details-content ml-70">
-      <h2>{businessInfo.name}</h2>
+      <h2>{product.category}</h2>
       <div className="pro-details-list">
-        <p>{businessInfo.shortDescription}</p>
+        <p>{businessInfo[product.category]}</p>
       </div>
 
       {product.variation ? (
@@ -189,34 +201,23 @@ const BusinessDescriptionInfo = ({
           ""
         )}
 
-      <div className="pro-details-social">
-        <ul>
-          <li>
-            <a href="//facebook.com">
-              <i className="fa fa-facebook" />
-            </a>
-          </li>
-          <li>
-            <a href="//dribbble.com">
-              <i className="fa fa-dribbble" />
-            </a>
-          </li>
-          <li>
-            <a href="//pinterest.com">
-              <i className="fa fa-pinterest-p" />
-            </a>
-          </li>
-          <li>
-            <a href="//twitter.com">
-              <i className="fa fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="//linkedin.com">
-              <i className="fa fa-linkedin" />
-            </a>
-          </li>
-        </ul>
+
+      <div className="container-fluid">
+        <div>Local Heroes Supporting {product.category}:</div>
+        <div className="custom-row-3">
+          {badges.map(badgeURL => {
+            return (
+              <div className="col-5">
+                <div className="product-wrap-2" >
+                  <div className="product-img">
+                    <img src={process.env.PUBLIC_URL + badgeURL} alt="" />
+                  </div>
+                </div>
+              </div>
+            );
+          }
+          )}
+        </div>
       </div>
     </div>
   );

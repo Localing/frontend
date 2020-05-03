@@ -16,7 +16,7 @@ const Business
     return (
       <Fragment>
         <MetaTags>
-          <title>Flone | Business Page</title>
+          <title>Localing | Business Page</title>
           <meta
             name="description"
             content="Business page"
