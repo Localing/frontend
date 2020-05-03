@@ -4,7 +4,7 @@ export const SET_CURRENCY = "SET_CURRENCY";
 export const setCurrency = currencyName => {
   return dispatch => {
     axios
-      .get(`https://api.exchangeratesapi.io/latest?base=USD`)
+      .get(`https://api.exchangeratesapi.io/latest?base=GBP`)
       .then(response => {
         const rates = response.data.rates;
         let currencyRate = 0;

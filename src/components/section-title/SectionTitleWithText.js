@@ -10,13 +10,11 @@ const SectionTitleWithText = ({ spaceTopClass, spaceBottomClass }) => {
     >
       <div className="container">
         <div className="welcome-content text-center">
-          <h5>Who Are We</h5>
-          <h1>Welcome To Flone</h1>
+          <h5>About Us</h5>
+          <h1>Welcome To Localing</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt labor et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commo consequat irure{" "}
+          Localing is a community hub to enable customers to support their favourite local small businesses during the coronavirus lockdown. In exchange for discounted pre-purchases now, customers will receive their goods and services in the future when the lockdown measures are eased and normal business resumes. This will help these businesses with the cash flow that they need right now to cover their costs during lockdown. Localing will use gamification to incentivise customers with Local Hero badges that they will be able to share via social media. The platform will also enable customers to track when their favourite businesses resume operations and the types of safety measures, such as social distancing and availability of hand sanitizers, that they have implemented to reduce the risk of coronavirus transmission.
+{" "}
           </p>
         </div>
       </div>
