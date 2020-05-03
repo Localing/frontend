@@ -12,7 +12,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { checkoutCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 
-const Checkout = ({ location, cartItems, currency }) => {
+const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
   let history = useHistory();
 
   const { pathname } = location;
@@ -27,10 +27,15 @@ const Checkout = ({ location, cartItems, currency }) => {
   }
   const handleShow = () => setShow(true);
 
+  useEffect(() => {
+    setPoints(Number(localStorage.getItem('points')));
+  })
+
   function processOrder(pointsToAdd) {
     let points = Number(localStorage.getItem('points'));
     points += cartTotalPrice * 80;
     setPoints(points);
+    checkoutCart(addToast);
     localStorage.setItem('points', points);
     handleShow();
   }
@@ -242,10 +247,9 @@ const Checkout = ({ location, cartItems, currency }) => {
                         </div>
                         <div className="your-order-total">
                           <ul>
-                            <li className="order-total">Points</li>
+                            <li className="order-total">Points You'll Earn</li>
                             <li>
-                              {currency.currencySymbol +
-                                cartTotalPrice.toFixed(2)}
+                              {(cartTotalPrice * 80)}
                             </li>
                           </ul>
                         </div>
@@ -285,7 +289,8 @@ const Checkout = ({ location, cartItems, currency }) => {
 Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  checkoutCart: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -295,4 +300,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+  return {
+    checkoutCart: addToast => {
+      dispatch(checkoutCart(addToast));
+    }
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
