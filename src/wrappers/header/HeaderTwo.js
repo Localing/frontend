@@ -68,15 +68,15 @@ const HeaderTwo = ({
           <div className="row">
             <div className="col-6 d-block d-lg-none">
               {/* header logo */}
-              <Logo imageUrl="/assets/img/logo/logo.png" />
+              <Logo imageUrl="/assets/img/logo/localing-logo.png" />
             </div>
             <div className="col-6 d-block d-lg-none">
               {/* Icon group */}
               <IconGroup />
             </div>
             <div className="col-xl-12 col-lg-12 d-none d-lg-block">
-              {/* Nav menu */}
-              <NavMenu />
+              {/* Nav menu <NavMenu /> */}
+              
             </div>
           </div>
           {/* mobile menu */}

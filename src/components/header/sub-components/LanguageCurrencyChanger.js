@@ -41,17 +41,17 @@ const LanguageCurrencyChanger = ({
           <ul>
             <li>
               <button value="en" onClick={e => changeLanguageTrigger(e)}>
-                English
+              English
               </button>
             </li>
             <li>
               <button value="fn" onClick={e => changeLanguageTrigger(e)}>
-                French
+              Français
               </button>
             </li>
             <li>
               <button value="de" onClick={e => changeLanguageTrigger(e)}>
-                Germany
+              Deutsche
               </button>
             </li>
           </ul>
@@ -65,17 +65,17 @@ const LanguageCurrencyChanger = ({
           <ul>
             <li>
               <button value="USD" onClick={e => setCurrencyTrigger(e)}>
-                USD
+              $ USD
               </button>
             </li>
             <li>
               <button value="EUR" onClick={e => setCurrencyTrigger(e)}>
-                EUR
+              € EUR
               </button>
             </li>
             <li>
               <button value="GBP" onClick={e => setCurrencyTrigger(e)}>
-                GBP
+              £ GBP
               </button>
             </li>
           </ul>

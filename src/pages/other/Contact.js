@@ -38,8 +38,8 @@ const Contact = ({ location }) => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+012 345 678 102</p>
-                      <p>+012 345 678 102</p>
+                      <p>+44 12345678</p>
+                      <p>+44 12345678</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -48,10 +48,10 @@ const Contact = ({ location }) => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:urname@email.com">urname@email.com</a>
+                        <a href="mailto:info@localing.store">info@localing.store</a>
                       </p>
                       <p>
-                        <a href="//urwebsitenaem.com">urwebsitenaem.com</a>
+                        <a href="//localing.store">localing.store</a>
                       </p>
                     </div>
                   </div>

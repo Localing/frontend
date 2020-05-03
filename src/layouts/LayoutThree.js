@@ -27,7 +27,7 @@ const LayoutThree = ({
         footerTopSpaceTopClass="pt-80"
         footerTopSpaceBottomClass="pb-60"
         copyrightColorClass="copyright-gray"
-        footerLogo="/assets/img/logo/logo.png"
+        footerLogo="/assets/img/logo/localing-logo.png"
       />
     </Fragment>
   );
