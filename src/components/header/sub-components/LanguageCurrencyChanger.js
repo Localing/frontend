@@ -41,19 +41,19 @@ const LanguageCurrencyChanger = ({
     <div className="language-currency-wrap">
       {/* badge popup */}
       <Modal show={show} onHide={handleClose} >
-        <Modal.Header closeButton>
-          <Modal.Title>Thank you for your support!</Modal.Title>
-        </Modal.Header>
+      <Modal.Header closeButton>
+            <Modal.Title>Thank you for your support</Modal.Title>
+          </Modal.Header>
         <Modal.Body>
           <div className="text-center">
-            <h1>You've now got {points} points!</h1>
+            <h1>You've got {points} points!</h1>
+            <div className="container">
+              <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
+            </div>
+            <br />
+            <button className="btn btn-secondary">Share on Instagram</button>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Back to Home
-     </Button>
-        </Modal.Footer>
       </Modal>
       <div className="same-language-currency language-style">
         <span>

@@ -14,14 +14,14 @@ import { useToasts } from "react-toast-notifications";
 
 const Checkout = ({ location, cartItems, currency }) => {
   let history = useHistory();
-  
+
   const { pathname } = location;
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
 
-  const [points,setPoints] = useState(0);
+  const [points, setPoints] = useState(0);
   const [show, setShow] = useState(false);
-  const handleClose = () => { 
+  const handleClose = () => {
     setShow(false);
     history.push('/');
   }
@@ -59,7 +59,12 @@ const Checkout = ({ location, cartItems, currency }) => {
           </Modal.Header>
           <Modal.Body>
             <div className="text-center">
-            <h1>You've now got {points} points!</h1>
+              <h1>You've got {points} points!</h1>
+              <div className="container">
+                <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
+              </div>
+              <br />
+              <button className="btn btn-secondary">Share on Instagram</button>
             </div>
           </Modal.Body>
           <Modal.Footer>
