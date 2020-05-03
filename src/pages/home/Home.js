@@ -4,8 +4,7 @@ import LayoutTwo from "../../layouts/LayoutTwo";
 import HeroSliderThree from "../../wrappers/hero-slider/HeroSliderThree";
 import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import TabProductThree from "../../wrappers/product/TabProductThree";
-import BannerThree from "../../wrappers/banner/BannerThree";
+import ProductGridThree from "../../wrappers/product/ProductGridThree";
 
 const Home = () => {
   return (
@@ -27,12 +26,19 @@ const Home = () => {
         {/* section title with text */}
         <SectionTitleWithText spaceBottomClass="pb-90" />
 
-        {/* tab product */}
-        <TabProductThree spaceBottomClass="pb-60" category="electronics" />
-
-        {/* banner */}
-        <BannerThree spaceBottomClass="pb-100" />
-
+        {/* products */}
+        <div
+          className={`product-area hm9-section-padding pb-60`}
+        >
+          <div className="container-fluid">
+            <div className="custom-row-4">
+              <ProductGridThree
+                limit={10}
+                spaceBottomClass="mb-35"
+              />
+            </div>
+          </div>
+        </div>
       </LayoutTwo>
     </Fragment>
   );
