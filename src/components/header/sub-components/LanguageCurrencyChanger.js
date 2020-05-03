@@ -17,6 +17,7 @@ const LanguageCurrencyChanger = ({
     const currencyName = e.target.value;
     setCurrency(currencyName);
   };
+  let points = parseInt(window.localStorage.getItem('points') || 0);
 
   return (
     <div className="language-currency-wrap">
@@ -25,10 +26,10 @@ const LanguageCurrencyChanger = ({
           {currentLanguageCode === "en"
             ? "English"
             : currentLanguageCode === "fn"
-            ? "French"
-            : currentLanguageCode === "de"
-            ? "Germany"
-            : ""}{" "}
+              ? "French"
+              : currentLanguageCode === "de"
+                ? "Germany"
+                : ""}{" "}
           <i className="fa fa-angle-down" />
         </span>
         <div className="lang-car-dropdown">
@@ -75,8 +76,8 @@ const LanguageCurrencyChanger = ({
           </ul>
         </div>
       </div>
-      <div className="same-language-currency">
-        <p>Call Us</p>
+      <div className="same-language-currency use-style">
+        {points} credits
       </div>
     </div>
   );
