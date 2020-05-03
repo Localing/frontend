@@ -23,13 +23,13 @@ export const addToCart = (
         selectedProductColor: selectedProductColor
           ? selectedProductColor
           : item.selectedProductColor
-          ? item.selectedProductColor
-          : null,
+            ? item.selectedProductColor
+            : null,
         selectedProductSize: selectedProductSize
           ? selectedProductSize
           : item.selectedProductSize
-          ? item.selectedProductSize
-          : null
+            ? item.selectedProductSize
+            : null
       }
     });
   };
@@ -61,6 +61,18 @@ export const deleteAllFromCart = addToast => {
     if (addToast) {
       addToast("Removed All From Cart", {
         appearance: "error",
+        autoDismiss: true
+      });
+    }
+    dispatch({ type: DELETE_ALL_FROM_CART });
+  };
+};
+//delete all from cart
+export const checkoutCart = addToast => {
+  return dispatch => {
+    if (addToast) {
+      addToast("Checkout Complete", {
+        appearance: "success",
         autoDismiss: true
       });
     }
