@@ -59,24 +59,19 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
 
         {/* badge popup */}
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>You now have {points} hero points!</Modal.Title>
-          </Modal.Header>
           <Modal.Body>
             <div className="text-center">
-              <h3>You've unlocked the Queen badge!</h3>
+              <h3>You've now have {points} hero points <br /> and you've unlocked the Queen badge!</h3>
               <div className="container">
                 <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
               </div>
               <br />
-              <button className="btn btn-secondary">Share on Instagram</button>
+              <button className="btn btn-secondary"><i className="fa fa-instagram"></i>&nbsp;Share on Instagram</button><br /><br />
+              <Button variant="primary" onClick={handleClose}>
+              Back to Home
+              </Button>
             </div>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="primary" onClick={handleClose}>
-              Back to Home
-          </Button>
-          </Modal.Footer>
         </Modal>
 
 

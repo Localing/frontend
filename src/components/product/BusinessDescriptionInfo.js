@@ -70,11 +70,11 @@ const BusinessDescriptionInfo = ({
   function MitigationStrategies() {
     return (
       <React.Fragment>
-        <p><strong>How {product.category} is keeping you safe in COVID-19</strong></p>
+        <p><strong>How {product.category} will keep you safe</strong></p>
         <ul>
-          <li><i className="fa fa-check"></i> All staff are required to wear masks.</li>
-          <li><i className="fa fa-check"></i> Masks provided to customers.</li>
-          <li><i className="fa fa-check"></i> Hand sanitizer is available.</li>
+          <li><i className="fa fa-check"></i> All staff wear masks</li>
+          <li><i className="fa fa-check"></i> Masks provided to customers</li>
+          <li><i className="fa fa-check"></i> Hand sanitizer available</li>
         </ul>
       </React.Fragment>
     )

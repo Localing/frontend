@@ -17,7 +17,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                     setActiveSort(e);
                   }}
                 >
-                  <span className="checkmark" /> All Categories
+                  <span className="checkmark" /> All Businesses
                 </button>
               </div>
             </li>

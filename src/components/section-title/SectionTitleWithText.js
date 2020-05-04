@@ -10,7 +10,7 @@ const SectionTitleWithText = ({ spaceTopClass, spaceBottomClass }) => {
     >
       <div className="container">
         <div className="welcome-content text-center">
-          <h1>Welcome To Localing</h1>
+          <h1>About Localing</h1>
           <p>
           Localing is a community hub to enable customers to support their favourite local small businesses during the coronavirus lockdown. In exchange for discounted pre-purchases now, customers will receive their goods and services in the future when the lockdown measures are eased and normal business resumes. This helps these businesses with the cash flow that they need right now to cover their costs during lockdown. </p>
           <br />

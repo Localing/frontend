@@ -26,7 +26,7 @@ const HeaderTop = ({
       />
       <div className="header-offer">
         <p>
-          <a href="/about">Our Team</a>
+          <a href="/about">About Us</a>
         </p>
       </div>
     </div>
