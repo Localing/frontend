@@ -4,6 +4,7 @@ import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
 import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
@@ -12,6 +13,8 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
 const ShopGridStandard = ({location, products }) => {
+    let data = useLocation();
+
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -40,6 +43,13 @@ const ShopGridStandard = ({location, products }) => {
     }
 
     useEffect(() => {
+        if(data.state.category){
+            setSortType("category");
+            setSortValue(data.state.category[0]);
+        }
+    }, []);
+
+    useEffect(() => {
         let sortedProducts = getSortedProducts(products, sortType, sortValue);
         const filterSortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
         sortedProducts = filterSortedProducts;
@@ -60,6 +70,8 @@ const ShopGridStandard = ({location, products }) => {
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
                 <Breadcrumb />
+                <h1 className="text-center" style={{ 'padding':'1em' }}>{data.state.category[0]}</h1>
+                <h4 className="text-center">Cambridge, UK</h4>
 
                 <div className="shop-area pt-95 pb-100">
                     <div className="container">

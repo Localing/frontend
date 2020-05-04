@@ -60,11 +60,11 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
         {/* badge popup */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Thank you for your support!</Modal.Title>
+            <Modal.Title>You now have {points} hero points!</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="text-center">
-              <h1>You've got {points} hero points!</h1>
+              <h3>You've unlocked the Queen badge!</h3>
               <div className="container">
                 <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
               </div>
@@ -247,7 +247,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
                         </div>
                         <div className="your-order-total">
                           <ul>
-                            <li className="order-total">Points You'll Earn</li>
+                            <li className="order-total">Hero Points You'll Earn</li>
                             <li>
                               {(cartTotalPrice * 80)}
                             </li>
