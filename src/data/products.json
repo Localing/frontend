@@ -207,7 +207,7 @@
     "stock": 40,
     "image": [
       "/assets/img/product/hair-extensions-1.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/hair-extensions-2.jpg"
     ],
     "shortDescription": "Get those long locks you've always wanted!",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -228,8 +228,8 @@
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/blow-and-dry.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/haircut-1.jpg",
+      "/assets/img/product/haircut-2.jpg"
     ],
     "shortDescription": "5 haircuts for the price of 4!",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -237,7 +237,7 @@
   {
     "id": "24",
     "sku": "color20",
-    "name": "Coloring",
+    "name": "Colouring",
     "price": 20,
     "discount": 20,
     "new": false,
@@ -250,8 +250,8 @@
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/blow-and-dry.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/colored-hair-1.jpg",
+      "/assets/img/product/colored-hair-2.jpg"
     ],
     "shortDescription": "Now you too can be crayola blue.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -272,8 +272,8 @@
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/blow-and-dry.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/braids-1.jpg",
+      "/assets/img/product/braids-2.jpg"
     ],
     "shortDescription": "Twist and turn those heads, like we'll for your hair.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -294,8 +294,8 @@
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/blow-and-dry.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/special-style-1.jpg",
+      "/assets/img/product/special-style-2.jpg"
     ],
     "shortDescription": "Styling for that special occassion.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
