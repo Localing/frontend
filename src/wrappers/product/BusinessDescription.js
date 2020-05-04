@@ -6,7 +6,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import ProductImageGallery from "../../components/product/ProductImageGallery";
 import BusinessDescriptionInfo from "../../components/product/BusinessDescriptionInfo";
 import ProductImageGallerySideThumb from "../../components/product/ProductImageGallerySideThumb";
-import ProductImageFixed from "../../components/product/ProductImageFixed";
+import BusinessImageFixed from "../../components/product/BusinessImageFixed";
 
 const BusinessDescription = ({
   spaceTopClass,
@@ -50,7 +50,7 @@ const BusinessDescription = ({
             ) : galleryType === "rightThumb" ? (
               <ProductImageGallerySideThumb product={product} />
             ) : galleryType === "fixedImage" ? (
-              <ProductImageFixed product={product} />
+              <BusinessImageFixed product={product} />
             ) : (
                     <ProductImageGallery product={product} />
                   )}
