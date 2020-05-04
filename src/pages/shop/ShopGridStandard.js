@@ -28,6 +28,8 @@ const ShopGridStandard = ({location, products }) => {
     const pageLimit = 15;
     const {pathname} = location;
 
+    const [title, setTitle] = useState("");
+
     const getLayout = (layout) => {
         setLayout(layout)
     }
@@ -46,6 +48,7 @@ const ShopGridStandard = ({location, products }) => {
         if(data.state.category){
             setSortType("category");
             setSortValue(data.state.category[0]);
+            setTitle(data.state.category[0])
         }
     }, []);
 
@@ -55,6 +58,7 @@ const ShopGridStandard = ({location, products }) => {
         sortedProducts = filterSortedProducts;
         setSortedProducts(sortedProducts);
         setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+        setTitle(sortValue);
     }, [offset, products, sortType, sortValue, filterSortType, filterSortValue ]);
 
     return (
@@ -70,8 +74,7 @@ const ShopGridStandard = ({location, products }) => {
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
                 <Breadcrumb />
-                <h1 className="text-center" style={{ 'padding':'1em' }}>{data.state.category[0]}</h1>
-                <h4 className="text-center">Cambridge, UK</h4>
+                <h1 className="text-center" style={{ 'padding':'1em' }}>{title}</h1>
 
                 <div className="shop-area pt-95 pb-100">
                     <div className="container">
