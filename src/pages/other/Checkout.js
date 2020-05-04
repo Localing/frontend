@@ -8,6 +8,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Modal, Button } from 'react-bootstrap';
+import CountUp from "react-countup";
 
 import { checkoutCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
@@ -21,8 +22,10 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
 
   const [points, setPoints] = useState(0);
   const [show, setShow] = useState(false);
+
   const handleClose = () => {
     setShow(false);
+    checkoutCart(addToast);
     history.push('/');
   }
   const handleShow = () => setShow(true);
@@ -33,9 +36,8 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
 
   function processOrder(pointsToAdd) {
     let points = Number(localStorage.getItem('points'));
-    points += cartTotalPrice * 80;
+    points += cartTotalPrice * 100;
     setPoints(points);
-    checkoutCart(addToast);
     localStorage.setItem('points', points);
     handleShow();
   }
@@ -61,7 +63,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <div className="text-center">
-              <h3>You've now have {points} hero points <br /> and you've unlocked the Queen badge!</h3>
+              <h3>You've now have <CountUp start={cartTotalPrice*100} end={points} /> hero points <br /> and you've unlocked the Queen badge!</h3>
               <div className="container">
                 <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
               </div>
@@ -244,7 +246,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
                           <ul>
                             <li className="order-total">Hero Points You'll Earn</li>
                             <li>
-                              {(cartTotalPrice * 80)}
+                              {(cartTotalPrice * 100)}
                             </li>
                           </ul>
                         </div>
