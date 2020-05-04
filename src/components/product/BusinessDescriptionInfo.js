@@ -76,6 +76,8 @@ const BusinessDescriptionInfo = ({
           <li><i className="fa fa-check"></i> Masks provided to customers</li>
           <li><i className="fa fa-check"></i> Hand sanitizer available</li>
         </ul>
+        <br />
+        <p><strong>When {product.category} is anticipated to open:</strong> TBC</p>
       </React.Fragment>
     )
   }
