@@ -21,7 +21,7 @@ const ShopTopAction = ({
           </select>
         </div>
         <p>
-          Showing {sortedProductCount} of {productCount} result
+          Showing {sortedProductCount} results
         </p>
       </div>
 
