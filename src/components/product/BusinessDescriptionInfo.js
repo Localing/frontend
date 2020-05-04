@@ -49,11 +49,22 @@ const BusinessDescriptionInfo = ({
   businessInfo["Swish Swash"] = "See the world outside - wash your windows.";
 
 
-  const badges = [
-    '/assets/img/badges/genna.png',
-    '/assets/img/badges/rob.png',
+  let badges = [];
+  badges["The Family Bean"] = [
     '/assets/img/badges/ankur.png',
     '/assets/img/badges/terrell.png'
+  ];
+  badges["Chop Your Mop"] = [
+    '/assets/img/badges/genna.png',
+    '/assets/img/badges/rob.png'
+  ];
+  badges["Buns in the Oven"] = [
+    '/assets/img/badges/deepak.png',
+    '/assets/img/badges/rob.png'
+  ];
+  badges["Knead the Knots"] = [
+    '/assets/img/badges/katie.png',
+    '/assets/img/badges/genna.png'
   ];
 
   function MitigationStrategies() {
@@ -261,7 +272,7 @@ const BusinessDescriptionInfo = ({
       <div>
         <h3>Supporters</h3>
         <div className="custom-row-3">
-          {badges.map(badgeURL => {
+          {badges[product.category[0]].map(badgeURL => {
             return (
               <div className="col-5">
                 <div className="product-wrap-2" >

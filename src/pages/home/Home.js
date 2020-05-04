@@ -27,7 +27,7 @@ const Home = () => {
         {/* section title with text */}
         <div className="container">
           <div className="welcome-content text-center">
-            <h1>Packages from Businesses Near You</h1>
+            <h1>Products from Businesses Near You</h1>
           </div></div>
         {/* products */}
         <div
