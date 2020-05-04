@@ -45,7 +45,7 @@ const ShopGridStandard = ({location, products }) => {
     }
 
     useEffect(() => {
-        if(data.state.category){
+        if(data.state){
             setSortType("category");
             setSortValue(data.state.category[0]);
             setTitle(data.state.category[0])
