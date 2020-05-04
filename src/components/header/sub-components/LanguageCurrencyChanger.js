@@ -28,7 +28,6 @@ const LanguageCurrencyChanger = ({
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    console.log(Number(localStorage.getItem('points')));
     let points = parseInt(localStorage.getItem('points'));
     if (!points) {
       points = 0;
@@ -46,7 +45,7 @@ const LanguageCurrencyChanger = ({
           </Modal.Header>
         <Modal.Body>
           <div className="text-center">
-            <h1>You've got {points} points!</h1>
+            <h1>You've got {points} hero points!</h1>
             <div className="container">
               <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
             </div>
@@ -111,7 +110,7 @@ const LanguageCurrencyChanger = ({
         </div>
       </div>
       <div className="same-language-currency use-style">
-        <button className="btn btn-secondary btn-sm" onClick={handleShow}>{points} points</button>
+        <button className="btn btn-secondary btn-sm" onClick={handleShow}>{points} hero points</button>
       </div>
     </div>
   );

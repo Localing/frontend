@@ -64,7 +64,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
           </Modal.Header>
           <Modal.Body>
             <div className="text-center">
-              <h1>You've got {points} points!</h1>
+              <h1>You've got {points} hero points!</h1>
               <div className="container">
                 <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
               </div>

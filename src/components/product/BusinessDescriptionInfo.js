@@ -42,7 +42,7 @@ const BusinessDescriptionInfo = ({
   );
   let businessInfo = [];
   businessInfo["The Family Bean"] = "Your friendly neighborhood coffee shop.";
-  businessInfo["Chop Your Mop"] = "Don't want to look scruffy on those video calls.";
+  businessInfo["Chop Your Mop"] = "Don't want to look scruffy on those video calls.<button>hi</button>";
   businessInfo["Buns in the Oven"] = "Family-owned and operated since 1985.";
   businessInfo["Knead the Knots"] = "Feeling tight? Knot a problem.";
   businessInfo["Tasty Bistro"] = "Experience a taste of Paris at the classic french bistro.";
@@ -50,16 +50,121 @@ const BusinessDescriptionInfo = ({
 
 
   const badges = [
-    '/assets/img/badges/katie.png',
-    '/assets/img/badges/katie.png',
-    '/assets/img/badges/katie.png',
-    '/assets/img/badges/katie.png'
+    '/assets/img/badges/genna.png',
+    '/assets/img/badges/rob.png',
+    '/assets/img/badges/ankur.png',
+    '/assets/img/badges/terrell.png'
   ];
+
+  function MitigationStrategies() {
+    return (
+      <React.Fragment>
+        <p><strong>How {product.category} is keeping you safe in COVID-19</strong></p>
+        <ul>
+          <li><i className="fa fa-check"></i> All staff are required to wear masks.</li>
+          <li><i className="fa fa-check"></i> Masks provided to customers.</li>
+          <li><i className="fa fa-check"></i> Hand sanitizer is available.</li>
+        </ul>
+      </React.Fragment>
+    )
+  }
+
+  function ChopYourMop() {
+    return (
+      <React.Fragment>
+        <p>
+      <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;Cambridge, UK</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call</button>
+        </p>
+        <br />
+        <div>
+          For 10 years, Shelley and her team have been styling ‘dos and chopping mops. The bouncing curls and flowing locks that walk out of ‘Chop that Mop’ are no coincidence; our passion keeps us buzzing around the store from dawn till dusk, keeping you up to date with all the town gossip in the meantime! We are itching to take back up the curling iron, but until then, we hope you stay safe, and make sure to keep up to date on that reality telly until we return!
+      </div>
+        <br />
+        <MitigationStrategies />
+      </React.Fragment>
+    )
+  }
+
+  function TheFamilyBean() {
+    return (
+      <React.Fragment>
+        <p>
+      <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;Cambridge, UK</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call</button>
+        </p>
+        <br />
+        <div>
+          Your favorite local coffee shop.      
+        </div>
+        <br />
+        <MitigationStrategies />
+      </React.Fragment>
+    )
+  }
+
+  function BunsInTheOven() {
+    return (
+      <React.Fragment>
+        <p>
+      <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;Cambridge, UK</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call</button>
+        </p>
+        <br />
+        <div>
+          We have been making all sorts of baked goods for over 20 years including cakes, cupcakes, cookies, and pastries.  
+        </div>
+        <br />
+        <MitigationStrategies />
+      </React.Fragment>
+    )
+  }
+
+  function KneadTheKnots() {
+    return (
+      <React.Fragment>
+        <p>
+      <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;Cambridge, UK</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
+        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call</button>
+        </p>
+        <br />
+        <div>
+          Feeling stressed? Come in for a deep whole body massage that will relax you.     
+        </div>
+        <br />
+        <MitigationStrategies />
+      </React.Fragment>
+    )
+  }
+
+
+  function getBusinessInfo(businessName) {
+    switch (businessName) {
+      case "Chop Your Mop":
+        return <ChopYourMop />;
+        break;
+      case "The Family Bean":
+        return <TheFamilyBean />;
+        break;
+      case "Buns in the Oven":
+        return <BunsInTheOven />;
+        break;
+      case "Knead the Knots":
+        return <KneadTheKnots />;
+        break;
+      default:
+        return ""
+    }
+  }
   return (
     <div className="product-details-content ml-70">
       <h2>{product.category}</h2>
       <div className="pro-details-list">
-        <p>{businessInfo[product.category]}</p>
+        {getBusinessInfo(product.category[0])}
       </div>
 
       {product.variation ? (
@@ -146,70 +251,21 @@ const BusinessDescriptionInfo = ({
       ) : (
           <div className="pro-details-quality">
             <div className="pro-details-cart btn-hover">
-              {productStock && productStock > 0 ? (
-                <button
-                  onClick={() =>
-                    addToCart(
-                      product,
-                      addToast,
-                      quantityCount,
-                      selectedProductColor,
-                      selectedProductSize
-                    )
-                  }
-                  disabled={productCartQty >= productStock}
-                >
-                  {" "}
-                View Products{" "}
-                </button>
-              ) : (
-                  <button disabled>Out of Stock</button>
-                )}
-            </div>
-            <div className="pro-details-wishlist">
-              <button
-                className={wishlistItem !== undefined ? "active" : ""}
-                disabled={wishlistItem !== undefined}
-                title={
-                  wishlistItem !== undefined
-                    ? "Added to favorites"
-                    : "Add to favorites"
-                }
-                onClick={() => addToWishlist(product, addToast)}
-              >
-                <i className="pe-7s-like" />
-              </button>
+              <Link to={{ pathname: "/shop-grid-standard", state: { category: product.category } }}>
+                {" "}View Products{" "}
+              </Link>
             </div>
           </div>
         )}
-      {product.tag ? (
-        <div className="pro-details-meta">
-          <span>Tags :</span>
-          <ul>
-            {product.tag.map((single, key) => {
-              return (
-                <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                    {single}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ) : (
-          ""
-        )}
 
-
-      <div className="container-fluid">
-        <div>Local Heroes Supporting {product.category}:</div>
+      <div>
+        <h3>Supporters</h3>
         <div className="custom-row-3">
           {badges.map(badgeURL => {
             return (
               <div className="col-5">
                 <div className="product-wrap-2" >
-                  <div className="product-img">
+                  <div className="product-img" style={{ 'padding': '0.5em' }}>
                     <img src={process.env.PUBLIC_URL + badgeURL} alt="" />
                   </div>
                 </div>
