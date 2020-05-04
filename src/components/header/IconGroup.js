@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
@@ -24,10 +24,15 @@ const IconGroup = ({
     offcanvasMobileMenu.classList.add("active");
   };
 
+  const [location, setLocation] = useState("Cambridge, UK");
+
   return (
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
+      <div>
+        <i class="fa fa-map-marker" /> {location}
+      </div>
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
