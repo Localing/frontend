@@ -21,7 +21,7 @@ const LanguageCurrencyChanger = ({
   };
 
   const points = useSelector(state => state.pointsData.points);
-  console.log(points);
+  const location = useSelector(state => state.locationData.location);
   
   const [show, setShow] = useState(false);
 
@@ -49,34 +49,9 @@ const LanguageCurrencyChanger = ({
       </Modal>
       <div className="same-language-currency language-style">
         <span>
-          {currentLanguageCode === "en"
-            ? "English"
-            : currentLanguageCode === "fn"
-              ? "French"
-              : currentLanguageCode === "de"
-                ? "Germany"
-                : ""}{" "}
-          <i className="fa fa-angle-down" />
+        <i className="fa fa-map-marker" />
+        {" " + location}  
         </span>
-        <div className="lang-car-dropdown">
-          <ul>
-            <li>
-              <button value="en" onClick={e => changeLanguageTrigger(e)}>
-                English
-              </button>
-            </li>
-            <li>
-              <button value="fn" onClick={e => changeLanguageTrigger(e)}>
-                Français
-              </button>
-            </li>
-            <li>
-              <button value="de" onClick={e => changeLanguageTrigger(e)}>
-                Deutsche
-              </button>
-            </li>
-          </ul>
-        </div>
       </div>
       <div className="same-language-currency use-style">
         <span>

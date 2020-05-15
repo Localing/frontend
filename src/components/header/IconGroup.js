@@ -24,15 +24,10 @@ const IconGroup = ({
     offcanvasMobileMenu.classList.add("active");
   };
 
-  const [location, setLocation] = useState("Cambridge");
-
   return (
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
-      <div className="same-style location">
-        {location}
-      </div>
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
