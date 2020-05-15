@@ -3,15 +3,19 @@ import React from "react";
 import { multilanguage } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
+import { setLocation } from "../../redux/actions/locationActions";
 import LanguageCurrencyChanger from "./sub-components/LanguageCurrencyChanger";
 
 const HeaderTop = ({
   currency,
   setCurrency,
   currentLanguageCode,
+  setLocation,
+  locationData,
   dispatch,
   borderStyle
 }) => {
+
   return (
     <div
       className={`header-top-wap ${
@@ -21,6 +25,8 @@ const HeaderTop = ({
       <LanguageCurrencyChanger
         currency={currency}
         setCurrency={setCurrency}
+        locationData={locationData}
+        setLocation={setLocation}
         currentLanguageCode={currentLanguageCode}
         dispatch={dispatch}
       />
@@ -38,12 +44,14 @@ HeaderTop.propTypes = {
   setCurrency: PropTypes.func,
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
+  locationData: PropTypes.object,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
-    currency: state.currencyData
+    currency: state.currencyData,
+    locationData: state.locationData
   };
 };
 
@@ -51,6 +59,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setCurrency: currencyName => {
       dispatch(setCurrency(currencyName));
+    },
+    setLocation: postcode => {
+      dispatch(setLocation(postcode));
     }
   };
 };

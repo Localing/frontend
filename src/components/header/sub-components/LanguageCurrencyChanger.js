@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { changeLanguage } from "redux-multilanguage";
 import { Modal } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -8,6 +8,8 @@ const LanguageCurrencyChanger = ({
   currency,
   setCurrency,
   currentLanguageCode,
+  setLocation,
+  locationData,
   dispatch
 }) => {
   const changeLanguageTrigger = e => {
@@ -21,7 +23,7 @@ const LanguageCurrencyChanger = ({
   };
 
   const points = useSelector(state => state.pointsData.points);
-  const location = useSelector(state => state.locationData.location);
+  //const location = useSelector(state => state.locationData.location);
   
   const [show, setShow] = useState(false);
 
@@ -29,7 +31,7 @@ const LanguageCurrencyChanger = ({
     setShow(false);
   }
   const handleShow = () => setShow(true);
-
+  
   return (
     <div className="language-currency-wrap">
       {/* badge popup */}
@@ -50,7 +52,7 @@ const LanguageCurrencyChanger = ({
       <div className="same-language-currency language-style">
         <span>
         <i className="fa fa-map-marker" />
-        {" " + location}  
+        {" " + locationData.location}  
         </span>
       </div>
       <div className="same-language-currency use-style">

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
+import { setLocation } from "../../redux/actions/locationActions";
 import { multilanguage } from "redux-multilanguage";
 import Logo from "../../components/header/Logo";
 import IconGroup from "../../components/header/IconGroup";
@@ -13,6 +14,8 @@ const HeaderTwo = ({
   currency,
   setCurrency,
   currentLanguageCode,
+  locationData,
+  setLocation,
   dispatch
 }) => {
   const [scroll, setScroll] = useState(0);
@@ -41,6 +44,8 @@ const HeaderTwo = ({
               <LanguageCurrencyChanger
                 currency={currency}
                 setCurrency={setCurrency}
+                locationData={locationData}
+                setLocation={setLocation}
                 currentLanguageCode={currentLanguageCode}
                 dispatch={dispatch}
               />
@@ -91,12 +96,14 @@ HeaderTwo.propTypes = {
   setCurrency: PropTypes.func,
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
+  locationData: PropTypes.object,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
-    currency: state.currencyData
+    currency: state.currencyData,
+    locationData: state.locationData
   };
 };
 
@@ -104,6 +111,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setCurrency: currencyName => {
       dispatch(setCurrency(currencyName));
+    },
+    setLocation: postcode => {
+      dispatch(setLocation(postcode));
     }
   };
 };
