@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { NavItem, Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -19,22 +20,15 @@ const LanguageCurrencyChanger = ({
     setCurrency(currencyName);
   };
 
-  const [points, setPoints] = useState(0);
+  const points = useSelector(state => state.pointsData.points);
+  console.log(points);
+  
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
   }
   const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    let points = parseInt(localStorage.getItem('points'));
-    if (!points) {
-      points = 0;
-      localStorage.setItem('points', points);
-    }
-    setPoints(points);
-  }, [points])
 
   return (
     <div className="language-currency-wrap">

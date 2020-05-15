@@ -11,16 +11,15 @@ import { Modal, Button } from 'react-bootstrap';
 import CountUp from "react-countup";
 
 import { checkoutCart } from "../../redux/actions/cartActions";
+import { addPoints } from "../../redux/actions/pointsActions";
 import { useToasts } from "react-toast-notifications";
 
-const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
+const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, pointsData }) => {
   let history = useHistory();
 
   const { pathname } = location;
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
-
-  const [points, setPoints] = useState(0);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -30,15 +29,8 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
   }
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    setPoints(Number(localStorage.getItem('points')));
-  })
-
-  function processOrder(pointsToAdd) {
-    let points = Number(localStorage.getItem('points'));
-    points += cartTotalPrice * 100;
-    setPoints(points);
-    localStorage.setItem('points', points);
+  function processOrder() {
+    addPoints(cartTotalPrice * 100);
     handleShow();
   }
 
@@ -63,7 +55,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart }) => {
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <div className="text-center">
-              <h3>You've now have <CountUp start={cartTotalPrice*100} end={points} /> hero points <br /> and you've unlocked the Queen badge!</h3>
+              <h3>You've now have <CountUp start={cartTotalPrice*100} end={pointsData.points} /> hero points <br /> and you've unlocked the Queen badge!</h3>
               <div className="container">
                 <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
               </div>
@@ -287,13 +279,16 @@ Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
   location: PropTypes.object,
-  checkoutCart: PropTypes.func
+  checkoutCart: PropTypes.func,
+  addPoints: PropTypes.func,
+  pointsData: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
     cartItems: state.cartData,
-    currency: state.currencyData
+    currency: state.currencyData,
+    pointsData: state.pointsData
   };
 };
 
@@ -301,6 +296,9 @@ const mapDispatchToProps = dispatch => {
   return {
     checkoutCart: addToast => {
       dispatch(checkoutCart(addToast));
+    },
+    addPoints: points => {
+      dispatch(addPoints(points));
     }
   };
 };
