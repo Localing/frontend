@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { Modal, Popover, Button, OverlayTrigger, Form } from "react-bootstrap";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -10,6 +9,7 @@ const LanguageCurrencyChanger = ({
   currentLanguageCode,
   setLocation,
   locationData,
+  pointsData,
   dispatch
 }) => {
   const changeLanguageTrigger = e => {
@@ -22,26 +22,55 @@ const LanguageCurrencyChanger = ({
     setCurrency(currencyName);
   };
 
-  const points = useSelector(state => state.pointsData.points);
-  //const location = useSelector(state => state.locationData.location);
-  
+  // handling badge modal
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
   }
   const handleShow = () => setShow(true);
+
   
+  // handling changes to postcodes
+  const [postcode, setPostcode] = useState("");
+  const [showPostcodePopover, setShowPostcodePopover] = useState(false);
+  
+  const handlePostcodeSubmit = (event) => {
+    event.preventDefault();
+    console.log(postcode);
+    setLocation(postcode);
+  }
+
+  const postcodePopover = (
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">Change Location</Popover.Title>
+      <Popover.Content>
+        <Form onSubmit={handlePostcodeSubmit}>
+          <Form.Group controlId="postcodeForm">
+            <Form.Control 
+              type="text" 
+              placeholder="UK Postcode" 
+              name="postcode" 
+              value={postcode}
+              onChange={e => setPostcode(e.target.value)} />
+          </Form.Group>
+          <Button variant="primary" type="submit">Change</Button>
+        </Form>
+      </Popover.Content>
+    </Popover>
+  );
+
   return (
     <div className="language-currency-wrap">
-      {/* badge popup */}
+
+      {/* badge modal */}
       <Modal show={show} onHide={handleClose} >
         <Modal.Body>
           <div className="text-center">
             <h2>You've unlocked the Queen badge!</h2>
             <br />
             <div className="container">
-              <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
+              <img src="assets/img/badges/katie.png" width="200" style={{ 'borderRadius': '10px' }} />
             </div>
             <br />
             <button className="btn btn-dark"><i class="fa fa-instagram"></i>&nbsp;Share your badge</button><br /><br />
@@ -49,10 +78,19 @@ const LanguageCurrencyChanger = ({
           </div>
         </Modal.Body>
       </Modal>
+
       <div className="same-language-currency language-style">
         <span>
-        <i className="fa fa-map-marker" />
-        {" " + locationData.location}  
+          <OverlayTrigger 
+            trigger="click" 
+            placement="bottom" 
+            overlay={postcodePopover}
+            rootClose>
+            <Button variant="outline-dark">
+              <i className="fa fa-map-marker" />
+              {" " + locationData.location}
+            </Button>
+          </OverlayTrigger>
         </span>
       </div>
       <div className="same-language-currency use-style">
@@ -80,7 +118,7 @@ const LanguageCurrencyChanger = ({
         </div>
       </div>
       <div className="same-language-currency use-style">
-        <button className="btn btn-secondary btn-sm" onClick={handleShow}>{points} hero points</button>
+        <Button variant="outline-dark" onClick={handleShow}>{pointsData.points} hero points</Button>
       </div>
     </div>
   );

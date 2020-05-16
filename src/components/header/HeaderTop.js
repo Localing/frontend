@@ -12,6 +12,7 @@ const HeaderTop = ({
   currentLanguageCode,
   setLocation,
   locationData,
+  pointsData,
   dispatch,
   borderStyle
 }) => {
@@ -27,6 +28,7 @@ const HeaderTop = ({
         setCurrency={setCurrency}
         locationData={locationData}
         setLocation={setLocation}
+        pointsData={pointsData}
         currentLanguageCode={currentLanguageCode}
         dispatch={dispatch}
       />
@@ -45,13 +47,15 @@ HeaderTop.propTypes = {
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
   locationData: PropTypes.object,
+  pointsData: PropTypes.object,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
     currency: state.currencyData,
-    locationData: state.locationData
+    locationData: state.locationData,
+    pointsData: state.pointsData
   };
 };
 

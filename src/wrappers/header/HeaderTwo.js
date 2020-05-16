@@ -16,6 +16,7 @@ const HeaderTwo = ({
   currentLanguageCode,
   locationData,
   setLocation,
+  pointsData,
   dispatch
 }) => {
   const [scroll, setScroll] = useState(0);
@@ -46,6 +47,7 @@ const HeaderTwo = ({
                 setCurrency={setCurrency}
                 locationData={locationData}
                 setLocation={setLocation}
+                pointsData={pointsData}
                 currentLanguageCode={currentLanguageCode}
                 dispatch={dispatch}
               />
@@ -97,13 +99,16 @@ HeaderTwo.propTypes = {
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
   locationData: PropTypes.object,
+  setLocation: PropTypes.func,
+  pointsData: PropTypes.object,
   dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
     currency: state.currencyData,
-    locationData: state.locationData
+    locationData: state.locationData,
+    pointsData: state.pointsData
   };
 };
 
