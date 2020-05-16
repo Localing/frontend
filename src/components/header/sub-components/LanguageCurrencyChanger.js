@@ -86,17 +86,18 @@ const LanguageCurrencyChanger = ({
             placement="bottom" 
             overlay={postcodePopover}
             rootClose>
-            <Button variant="outline-dark">
+            <Button variant="outline-dark" size="sm">
               <i className="fa fa-map-marker" />
               {" " + locationData.location}
             </Button>
           </OverlayTrigger>
         </span>
       </div>
+
       <div className="same-language-currency use-style">
-        <span>
+        <Button variant="outline-dark" size="sm">
           {currency.currencyName} <i className="fa fa-angle-down" />
-        </span>
+        </Button>
         <div className="lang-car-dropdown">
           <ul>
             <li>
@@ -117,8 +118,9 @@ const LanguageCurrencyChanger = ({
           </ul>
         </div>
       </div>
+
       <div className="same-language-currency use-style">
-        <Button variant="outline-dark" onClick={handleShow}>{pointsData.points} hero points</Button>
+        <Button variant="outline-dark" size="sm" onClick={handleShow}>{pointsData.points} hero points</Button>
       </div>
     </div>
   );
