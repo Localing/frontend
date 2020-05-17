@@ -5,7 +5,6 @@ import HeroSliderThree from "../../wrappers/hero-slider/HeroSliderThree";
 import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
 import ProductGridThree from "../../wrappers/product/ProductGridThree";
-import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
 
 const Home = () => {
   return (
@@ -44,7 +43,6 @@ const Home = () => {
           <br />
           <br />
           <SectionTitleWithText spaceBottomClass="pb-90" />
-          <TeamMemberOne spaceTopClass="pt-95" spaceBottomClass="pb-70" />
         </div>
       </LayoutTwo>
     </Fragment>
