@@ -7,11 +7,15 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass }) => {
     <div className={`copyright ${spaceBottomClass ? spaceBottomClass : ""}`}>
       <div className="footer-logo">
         <Link to={process.env.PUBLIC_URL + "/"}>
-          <img alt="" src={process.env.PUBLIC_URL + footerLogo} width="100" />
+          <img alt="" src={process.env.PUBLIC_URL + footerLogo} width="150" />
         </Link>
       </div>
       <p>
-        &copy; 2020, all rights reserved.
+        © 2020{" "}
+        <a href="https://localing.store/" rel="noopener noreferrer" target="_blank">
+          Localing
+        </a>
+        .<br /> All Rights Reserved
       </p>
     </div>
   );
