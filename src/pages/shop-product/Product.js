@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 
 const Product = ({ location, product }) => {
@@ -15,7 +14,7 @@ const Product = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Product Page</title>
+        <title>Localing | {product.name}</title>
         <meta
           name="description"
           content="Product page of flone react minimalist eCommerce template."
@@ -24,7 +23,7 @@ const Product = ({ location, product }) => {
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Shop Product
+        {product.name}
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
@@ -36,12 +35,6 @@ const Product = ({ location, product }) => {
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
           product={product}
-        />
-
-        {/* product description tab */}
-        <ProductDescriptionTab
-          spaceBottomClass="pb-90"
-          productFullDesc={product.fullDescription}
         />
 
         {/* related product slider */}

@@ -17,19 +17,8 @@ const Business = lazy(() => import("./pages/shop-product/Business"));
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 const ShopListStandard = lazy(() => import("./pages/shop/ShopListStandard"));
 
-// product pages
+// product page
 const Product = lazy(() => import("./pages/shop-product/Product"));
-const ProductTabLeft = lazy(() =>
-  import("./pages/shop-product/ProductTabLeft")
-);
-const ProductTabRight = lazy(() =>
-  import("./pages/shop-product/ProductTabRight")
-);
-const ProductSticky = lazy(() => import("./pages/shop-product/ProductSticky"));
-const ProductSlider = lazy(() => import("./pages/shop-product/ProductSlider"));
-const ProductFixedImage = lazy(() =>
-  import("./pages/shop-product/ProductFixedImage")
-);
 
 // other pages
 const About = lazy(() => import("./pages/other/About"));
@@ -93,32 +82,12 @@ const App = props => {
                   component={ShopListStandard}
                 />
 
-                {/* Shop product pages */}
+                {/* Product pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:id"}
                   render={routeProps => (
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                  component={ProductTabLeft}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
-                  component={ProductTabRight}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-sticky/:id"}
-                  component={ProductSticky}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-slider/:id"}
-                  component={ProductSlider}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
-                  component={ProductFixedImage}
                 />
 
                 {/* Other pages */}
