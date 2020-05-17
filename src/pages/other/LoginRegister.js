@@ -17,12 +17,12 @@ const LoginRegister = ({ location }) => {
         <title>Localing | Login</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="Localing Login"
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Login Register
+        Login &amp; Register
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
