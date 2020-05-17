@@ -15,38 +15,10 @@ const Business = lazy(() => import("./pages/shop-product/Business"));
 
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
-const ShopGridFilter = lazy(() => import("./pages/shop/ShopGridFilter"));
-const ShopGridTwoColumn = lazy(() => import("./pages/shop/ShopGridTwoColumn"));
-const ShopGridNoSidebar = lazy(() => import("./pages/shop/ShopGridNoSidebar"));
-const ShopGridFullWidth = lazy(() => import("./pages/shop/ShopGridFullWidth"));
-const ShopGridRightSidebar = lazy(() =>
-  import("./pages/shop/ShopGridRightSidebar")
-);
 const ShopListStandard = lazy(() => import("./pages/shop/ShopListStandard"));
-const ShopListFullWidth = lazy(() => import("./pages/shop/ShopListFullWidth"));
-const ShopListTwoColumn = lazy(() => import("./pages/shop/ShopListTwoColumn"));
 
-// product pages
+// product page
 const Product = lazy(() => import("./pages/shop-product/Product"));
-const ProductTabLeft = lazy(() =>
-  import("./pages/shop-product/ProductTabLeft")
-);
-const ProductTabRight = lazy(() =>
-  import("./pages/shop-product/ProductTabRight")
-);
-const ProductSticky = lazy(() => import("./pages/shop-product/ProductSticky"));
-const ProductSlider = lazy(() => import("./pages/shop-product/ProductSlider"));
-const ProductFixedImage = lazy(() =>
-  import("./pages/shop-product/ProductFixedImage")
-);
-
-// blog pages
-const BlogStandard = lazy(() => import("./pages/blog/BlogStandard"));
-const BlogNoSidebar = lazy(() => import("./pages/blog/BlogNoSidebar"));
-const BlogRightSidebar = lazy(() => import("./pages/blog/BlogRightSidebar"));
-const BlogDetailsStandard = lazy(() =>
-  import("./pages/blog/BlogDetailsStandard")
-);
 
 // other pages
 const About = lazy(() => import("./pages/other/About"));
@@ -106,82 +78,16 @@ const App = props => {
                   component={ShopGridStandard}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-filter"}
-                  component={ShopGridFilter}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-two-column"}
-                  component={ShopGridTwoColumn}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-no-sidebar"}
-                  component={ShopGridNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-full-width"}
-                  component={ShopGridFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-right-sidebar"}
-                  component={ShopGridRightSidebar}
-                />
-                <Route
                   path={process.env.PUBLIC_URL + "/shop-list-standard"}
                   component={ShopListStandard}
                 />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-full-width"}
-                  component={ShopListFullWidth}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-two-column"}
-                  component={ShopListTwoColumn}
-                />
 
-                {/* Shop product pages */}
+                {/* Product pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:id"}
                   render={routeProps => (
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                  component={ProductTabLeft}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-right/:id"}
-                  component={ProductTabRight}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-sticky/:id"}
-                  component={ProductSticky}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-slider/:id"}
-                  component={ProductSlider}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-fixed-image/:id"}
-                  component={ProductFixedImage}
-                />
-
-                {/* Blog pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-standard"}
-                  component={BlogStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-no-sidebar"}
-                  component={BlogNoSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-right-sidebar"}
-                  component={BlogRightSidebar}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/blog-details-standard"}
-                  component={BlogDetailsStandard}
                 />
 
                 {/* Other pages */}
