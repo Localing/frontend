@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { Auth } from 'aws-amplify';
 
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
@@ -78,6 +80,8 @@ const LoginRegister = ({ location }) => {
                       </Tab.Pane>
                       <Tab.Pane eventKey="register">
                         <div className="login-form-container">
+                          <Button onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block>Login with Facebook</Button>
+                          <br />
                           <div className="login-register-form">
                             <form>
                               <input
