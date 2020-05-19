@@ -1,0 +1,22 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-frontend-prod-122414-authRole",
+            "UnauthRoleArn": "arn:aws:iam::252651891542:role/amplify-frontend-prod-122414-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::252651891542:role/amplify-frontend-prod-122414-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-frontend-prod-122414-deployment",
+            "UnauthRoleName": "amplify-frontend-prod-122414-unauthRole",
+            "StackName": "amplify-frontend-prod-122414",
+            "StackId": "arn:aws:cloudformation:eu-west-2:252651891542:stack/amplify-frontend-prod-122414/2ff0cab0-99ed-11ea-be04-0a7f7081acf8",
+            "AmplifyAppId": "d2jpj2tbfropi6"
+        },
+        "categories": {
+            "auth": {
+                "frontend3d58df40": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"687068772125083\",\"client_secret\":\"9feaf200fd4545bcad2d29fec3ec9a65\"},{\"ProviderName\":\"Google\",\"client_id\":\"682145516403-p6kf8n42rep152mbp3fknjer2f5dse7i.apps.googleusercontent.com\",\"client_secret\":\"WOJnXS25Dnk2SRdR5kvICOyu\"}]"
+                }
+            }
+        }
+    }
+}
