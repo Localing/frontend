@@ -63,17 +63,18 @@ const verifySuccess = () => {
   };
 };
 
-export async const loginUser = (email, password) => dispatch => {
+export const loginUser = (email, password) => async dispatch => {
   dispatch(requestLogin());
   try {
     const user = await Auth.signIn(email, password);
-    dispatch(recieveLogin(user));
+    dispatch(receiveLogin(user));
   } catch (err) {
+    console.log(err);
     dispatch(loginError(err))
   }
 };
 
-export async const logoutUser = () => dispatch => {
+export const logoutUser = () => async dispatch => {
   dispatch(requestLogout());
   try {
     await Auth.signOut();
@@ -90,7 +91,7 @@ export const verifyAuth = () => dispatch => {
     switch(data.payload.event){
       case 'signIn':
         const user = data.payload.data
-        dispatch(recieveLogin(user));
+        dispatch(receiveLogin(user));
       case 'signIn_failure':
           console.log("error: ", data.payload.data)
     }

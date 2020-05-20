@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import { Link } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
@@ -9,9 +9,30 @@ import Button from "react-bootstrap/Button";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Auth } from 'aws-amplify';
+import { connect } from 'react-redux';
+import { loginUser } from '../../redux/actions/authActions';
 
-const LoginRegister = ({ location }) => {
+const LoginRegister = ({ location, loginUser }) => {
   const { pathname } = location;
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const { value, name } = event.target;
+    if (name === 'email') {
+      setEmail(value);
+    }
+    if (name === 'password') {
+      setPassword(value);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    loginUser(email, password);
+  };
 
   return (
     <Fragment>
@@ -51,16 +72,20 @@ const LoginRegister = ({ location }) => {
                       <Tab.Pane eventKey="login">
                         <div className="login-form-container">
                           <div className="login-register-form">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                               <input
                                 type="text"
-                                name="user-name"
-                                placeholder="Username"
+                                name="email"
+                                placeholder="Email"
+                                value={email}
+                                onChange={handleChange}
                               />
                               <input
                                 type="password"
-                                name="user-password"
+                                name="password"
                                 placeholder="Password"
+                                value={password}
+                                onChange={handleChange}
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
@@ -120,8 +145,29 @@ const LoginRegister = ({ location }) => {
   );
 };
 
-LoginRegister.propTypes = {
-  location: PropTypes.object
+ LoginRegister.propTypes = {
+   location: PropTypes.object,
+   isLoggingIn: PropTypes.bool,
+   loginError: PropTypes.object,
+   errorMessage: PropTypes.object,
+   isAuthenticated: PropTypes.bool
+ };
+
+function mapStateToProps(state) {
+  return {
+    isLoggingIn: state.authData.isLoggingIn,
+    loginError: state.authData.loginError,
+    errorMessage: state.authData.errorMessage,
+    isAuthenticated: state.authData.isAuthenticated
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loginUser: (email, password) => {
+      dispatch(loginUser(email, password));
+    },
+  };
 };
 
-export default LoginRegister;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister);
