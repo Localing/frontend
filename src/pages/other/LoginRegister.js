@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
@@ -12,8 +12,14 @@ import { Auth } from 'aws-amplify';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authActions';
 
-const LoginRegister = ({ location, loginUser }) => {
+const LoginRegister = ({ 
+  location, 
+  loginUser,
+  loginError,
+  isAuthenticated }) => {
   const { pathname } = location;
+
+  let { from } = location.state || { from: { pathname: "/" }};
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +41,9 @@ const LoginRegister = ({ location, loginUser }) => {
   };
 
   return (
+    isAuthenticated ?
+      <Redirect to={from} />
+    :
     <Fragment>
       <MetaTags>
         <title>Localing | Login</title>

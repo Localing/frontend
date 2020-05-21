@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
+import { logoutUser } from "../../redux/actions/authActions";
+import Button from "react-bootstrap/Button";
 
 const IconGroup = ({
   currency,
@@ -11,10 +14,19 @@ const IconGroup = ({
   wishlistData,
   compareData,
   deleteFromCart,
-  iconWhiteClass
+  iconWhiteClass,
+  isAuthenticated,
+  logoutUser,
+  user
 }) => {
+  let history = useHistory();
+
   const handleClick = e => {
-    e.currentTarget.nextSibling.classList.toggle("active");
+    if(isAuthenticated){
+      e.currentTarget.nextSibling.classList.toggle("active");
+    }else{
+      history.push('/login-register');
+    }
   };
 
   const triggerMobileMenu = () => {
@@ -33,23 +45,27 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={e => handleClick(e)}
         >
-          <i className="pe-7s-user-female" />
+          { isAuthenticated ? user.attributes.email : "Sign In" }
         </button>
         <div className="account-dropdown">
           <ul>
+            <Fragment>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
+              <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                My Account
               </Link>
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
+                My Orders
               </Link>
             </li>
+            <li>
+              <Link onClick={() => logoutUser()}>
+                Log Out
+              </Link>
+            </li>
+            </Fragment>
           </ul>
         </div>
       </div>
@@ -109,7 +125,8 @@ IconGroup.propTypes = {
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
   deleteFromCart: PropTypes.func,
-  wishlistData: PropTypes.array
+  wishlistData: PropTypes.array,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => {
@@ -117,7 +134,9 @@ const mapStateToProps = state => {
     currency: state.currencyData,
     cartData: state.cartData,
     wishlistData: state.wishlistData,
-    compareData: state.compareData
+    compareData: state.compareData,
+    isAuthenticated: state.authData.isAuthenticated,
+    user: state.authData.user
   };
 };
 
@@ -125,7 +144,10 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteFromCart: (item, addToast) => {
       dispatch(deleteFromCart(item, addToast));
-    }
+    },
+    logoutUser: () => {
+      dispatch(logoutUser());
+    },
   };
 };
 

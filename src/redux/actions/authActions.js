@@ -68,6 +68,7 @@ export const loginUser = (email, password) => async dispatch => {
   try {
     const user = await Auth.signIn(email, password);
     dispatch(receiveLogin(user));
+    console.log(user);
   } catch (err) {
     console.log(err);
     dispatch(loginError(err))
