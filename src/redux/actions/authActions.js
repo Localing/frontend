@@ -80,7 +80,7 @@ export const logoutUser = () => async dispatch => {
   try {
     await Auth.signOut();
     dispatch(recieveLogout());
-  } catch(err){
+  } catch (err) {
     console.log(err);
     dispatch(logoutError());
   }
@@ -88,14 +88,25 @@ export const logoutUser = () => async dispatch => {
 
 export const verifyAuth = () => dispatch => {
   dispatch(verifyRequest());
-  Hub.listen('auth', (data) => {
-    switch(data.payload.event){
+  Hub.listen('auth', async (data) => {
+    switch (data.payload.event) {
       case 'signIn':
-        const user = data.payload.data
-        dispatch(receiveLogin(user));
-        console.log(user);
+        Auth.currentAuthenticatedUser()
+          .then(user => {
+            console.log(user);
+            dispatch(receiveLogin(user));
+          })
+          .catch((err) => {
+            console.log(err);
+            dispatch(loginError(err));
+          });
+        break;
       case 'signIn_failure':
-          console.log("error: ", data.payload.data)
+        console.log("error: ", data.payload.data)
+        dispatch(loginError());
+        break;
+      case 'signOut':
+        dispatch(recieveLogout());
     }
     dispatch(verifySuccess());
   })
