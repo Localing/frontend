@@ -49,7 +49,7 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={e => handleAccountClick(e)}
         >
-          { isAuthenticated ? user.attributes.email : "Sign In" }
+          { isAuthenticated ? "My Account" : "Sign In" }
         </button>
         <div className="account-dropdown">
           <ul>
