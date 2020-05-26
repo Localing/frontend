@@ -6,11 +6,17 @@ import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-const MyAccount = ({ location }) => {
+const MyAccount = ({ location, isAuthenticated, user }) => {
   const { pathname } = location;
+  const userData = user.attributes;
+
+  console.log(user);
 
   return (
+    !isAuthenticated ? <Redirect to="/login-register" /> :
     <Fragment>
       <MetaTags>
         <title>Localing | My Account</title>
@@ -24,8 +30,6 @@ const MyAccount = ({ location }) => {
         My Account
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="myaccount-area pb-80 pt-100">
           <div className="container">
             <div className="row">
@@ -36,7 +40,7 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="0">
                           <h3 className="panel-title">
-                            <span>1 .</span> Edit your account information{" "}
+                            Account Information{" "}
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
@@ -44,44 +48,32 @@ const MyAccount = ({ location }) => {
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
                             <div className="account-info-wrapper">
-                              <h4>My Account Information</h4>
-                              <h5>Your Personal Details</h5>
+                              <h5>Personal Information</h5>
                             </div>
                             <div className="row">
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>First Name</label>
-                                  <input type="text" />
+                                  <input type="text" value={userData.given_name} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>Last Name</label>
-                                  <input type="text" />
+                                  <input type="text" value={userData.family_name} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
                                   <label>Email Address</label>
-                                  <input type="email" />
+                                  <input type="email" value={userData.email} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
-                                  <label>Telephone</label>
-                                  <input type="text" />
+                                  <label>Phone</label>
+                                  <input type="text" value={userData.phone} disabled />
                                 </div>
-                              </div>
-                              <div className="col-lg-6 col-md-6">
-                                <div className="billing-info">
-                                  <label>Fax</label>
-                                  <input type="text" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Continue</button>
                               </div>
                             </div>
                           </div>
@@ -92,66 +84,24 @@ const MyAccount = ({ location }) => {
                       <Card.Header className="panel-heading">
                         <Accordion.Toggle variant="link" eventKey="1">
                           <h3 className="panel-title">
-                            <span>2 .</span> Change your password
+                            Change your password
                           </h3>
                         </Accordion.Toggle>
                       </Card.Header>
                       <Accordion.Collapse eventKey="1">
                         <Card.Body>
                           <div className="myaccount-info-wrapper">
-                            <div className="account-info-wrapper">
-                              <h4>Change Password</h4>
-                              <h5>Your Password</h5>
-                            </div>
                             <div className="row">
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>Password</label>
+                                  <label>New Password</label>
                                   <input type="password" />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
-                                  <label>Password Confirm</label>
+                                  <label>Confirm New Password</label>
                                   <input type="password" />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="billing-back-btn">
-                              <div className="billing-btn">
-                                <button type="submit">Continue</button>
-                              </div>
-                            </div>
-                          </div>
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                    <Card className="single-my-account mb-20">
-                      <Card.Header className="panel-heading">
-                        <Accordion.Toggle variant="link" eventKey="2">
-                          <h3 className="panel-title">
-                            <span>3 .</span> Modify your address book entries{" "}
-                          </h3>
-                        </Accordion.Toggle>
-                      </Card.Header>
-                      <Accordion.Collapse eventKey="2">
-                        <Card.Body>
-                          <div className="myaccount-info-wrapper">
-                            <div className="account-info-wrapper">
-                              <h4>Address Book Entries</h4>
-                            </div>
-                            <div className="entries-wrapper">
-                              <div className="row">
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-info text-center">
-
-                                  </div>
-                                </div>
-                                <div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
-                                  <div className="entries-edit-delete text-center">
-                                    <button className="edit">Edit</button>
-                                    <button>Delete</button>
-                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -176,7 +126,16 @@ const MyAccount = ({ location }) => {
 };
 
 MyAccount.propTypes = {
-  location: PropTypes.object
+  location: PropTypes.object,
+  user: PropTypes.object,
+  isAuthenticated: PropTypes.bool
 };
 
-export default MyAccount;
+const mapStateToProps = state => {
+  return {
+    user: state.authData.user,
+    isAuthenticated: state.authData.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(MyAccount);

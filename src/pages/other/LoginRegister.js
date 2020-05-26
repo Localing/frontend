@@ -7,10 +7,9 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { Auth } from 'aws-amplify';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authActions';
+import { Auth } from "aws-amplify";
 
 const LoginRegister = ({ 
   location, 
