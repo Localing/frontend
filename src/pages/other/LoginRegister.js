@@ -81,9 +81,9 @@ const LoginRegister = ({
                       <Tab.Pane eventKey="login">
                         <div className="login-form-container">
                           <div className="login-register-form">
-                          <Button onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block>Login with Facebook</Button>
-                          <Button onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block>Login with Google</Button>
-                          <br />
+                          <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Login with Facebook</Button>
+                          <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Login with Google</Button>
+                          <hr />
                             <form onSubmit={handleSubmit}>
                               <input
                                 type="text"
@@ -101,10 +101,8 @@ const LoginRegister = ({
                               />
                               <div className="button-box">
                                 <div className="login-toggle-btn">
-                                  <input type="checkbox" />
-                                  <label className="ml-10">Remember me</label>
                                   <Link to={process.env.PUBLIC_URL + "/"}>
-                                    Forgot Password?
+                                    Forgot your password?
                                   </Link>
                                 </div>
                                 <button type="submit">
