@@ -28,7 +28,6 @@ const Product = ({ location, product }) => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb />
 
         {/* product description with image */}
         <ProductImageDescription

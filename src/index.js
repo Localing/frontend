@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
+import { verifyAuth } from "./redux/actions/authActions";
 import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
 import App from "./App";
@@ -23,6 +24,9 @@ const store = createStore(
 
 // fetch products from json file
 store.dispatch(fetchProducts(products));
+
+// verify authentication
+store.dispatch(verifyAuth());
 
 ReactDOM.render(
   <Provider store={store}>

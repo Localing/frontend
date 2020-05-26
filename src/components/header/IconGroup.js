@@ -21,12 +21,16 @@ const IconGroup = ({
 }) => {
   let history = useHistory();
 
-  const handleClick = e => {
+  const handleAccountClick = e => {
     if(isAuthenticated){
       e.currentTarget.nextSibling.classList.toggle("active");
     }else{
       history.push('/login-register');
     }
+  };
+
+  const handleClick = e => {
+    e.currentTarget.nextSibling.classList.toggle("active");
   };
 
   const triggerMobileMenu = () => {
@@ -43,7 +47,7 @@ const IconGroup = ({
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
-          onClick={e => handleClick(e)}
+          onClick={e => handleAccountClick(e)}
         >
           { isAuthenticated ? user.attributes.email : "Sign In" }
         </button>
