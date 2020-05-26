@@ -93,6 +93,7 @@ export const verifyAuth = () => dispatch => {
       case 'signIn':
         const user = data.payload.data
         dispatch(receiveLogin(user));
+        console.log(user);
       case 'signIn_failure':
           console.log("error: ", data.payload.data)
     }

@@ -11,7 +11,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Auth } from 'aws-amplify';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authActions';
-import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignUp } from '@aws-amplify/ui-react';
 
 const LoginRegister = ({
   location,
@@ -64,8 +64,10 @@ const LoginRegister = ({
               <div className="row">
                 <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                   <div className="login-register-wrapper">
-                        <AmplifyAuthenticator usernameAlias="email">
-                        </AmplifyAuthenticator>
+                    <button onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })}>Open Facebook</button>
+                    <button onClick={() => Auth.federatedSignIn({ provider: 'Google' })}>Open Google</button>
+                    <AmplifyAuthenticator usernameAlias="email">
+                    </AmplifyAuthenticator>
                   </div>
                 </div>
               </div>
