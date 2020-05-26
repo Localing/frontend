@@ -30,7 +30,6 @@ const Business
 
         <LayoutOne headerTop="visible">
           {/* breadcrumb */}
-          <Breadcrumb />
 
           {/* product description with image */}
           <BusinessDescription

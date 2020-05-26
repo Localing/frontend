@@ -68,7 +68,6 @@ const ShopListStandard = ({ location, products }) => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb />
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">
