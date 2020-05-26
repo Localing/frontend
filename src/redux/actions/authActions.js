@@ -93,7 +93,6 @@ export const verifyAuth = () => dispatch => {
       case 'signIn':
         Auth.currentAuthenticatedUser()
           .then(user => {
-            console.log(user);
             dispatch(receiveLogin(user));
           })
           .catch((err) => {
