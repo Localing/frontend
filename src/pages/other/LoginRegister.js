@@ -7,10 +7,12 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import LayoutOne from "../../layouts/LayoutOne";
 import { connect } from 'react-redux';
 import { loginUser, signUpUser } from '../../redux/actions/authActions';
 import { Auth } from "aws-amplify";
+import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
 const LoginRegister = ({
   location,
@@ -18,7 +20,9 @@ const LoginRegister = ({
   signUpUser,
   loginError,
   signupError,
-  isAuthenticated }) => {
+  isAuthenticated,
+  isLoggingIn,
+  isSigningUp }) => {
   const { pathname } = location;
 
   let { from } = location.state || { from: { pathname: "/" } };
@@ -103,8 +107,8 @@ const LoginRegister = ({
                           </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="register">
-                            <h4>Register</h4>
+                          <Nav.Link eventKey="signup">
+                            <h4>Sign Up</h4>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -138,14 +142,15 @@ const LoginRegister = ({
                                   </Link>
                                   </div>
                                   <button type="submit">
-                                    <span>Login</span>
+                                    { isLoggingIn && (<Spinner animation="border" size="sm" as="span" />) }
+                                    Login
                                   </button>
                                 </div>
                               </form>
                             </div>
                           </div>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="register">
+                        <Tab.Pane eventKey="signup">
                           <div className="login-form-container">
                             <br />
                             <div className="login-register-form">
@@ -181,7 +186,8 @@ const LoginRegister = ({
                                 />
                                 <div className="button-box">
                                   <button type="submit">
-                                    <span>Register</span>
+                                  { isSigningUp && (<Spinner animation="border" size="sm" as="span" />) }
+                                    Sign Up
                                   </button>
                                 </div>
                               </form>
@@ -214,6 +220,7 @@ function mapStateToProps(state) {
   return {
     isLoggingIn: state.authData.isLoggingIn,
     loginError: state.authData.loginError,
+    isSigningUp: state.authData.isSigningUp,
     signupError: state.authData.signupError,
     isAuthenticated: state.authData.isAuthenticated
   };
