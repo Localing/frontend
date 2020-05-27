@@ -88,10 +88,14 @@ export const logoutUser = () => async dispatch => {
 
 export const verifyAuth = () => dispatch => {
   dispatch(verifyRequest());
+
   Hub.listen('auth', async (data) => {
     switch (data.payload.event) {
       case 'signIn':
-        dispatch(receiveLogin(data.payload.data.user))
+        Auth.currentAuthenticatedUser({
+          bypassCache: true
+        }).then(user => dispatch(receiveLogin(user)))
+          .catch(err => console.log(err));
         break;
       case 'signIn_failure':
         console.log("error: ", data.payload.data)

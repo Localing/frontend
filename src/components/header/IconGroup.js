@@ -52,45 +52,17 @@ const IconGroup = ({
          </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="/my-account">My Account</Dropdown.Item>
-            <Dropdown.Item href="/my-orders">My Orders</Dropdown.Item>
+            <Dropdown.Item href={process.env.PUBLIC_URL + "/my-account"}>My Account</Dropdown.Item>
+            <Dropdown.Item href={process.env.PUBLIC_URL + "/my-orders"}>My Orders</Dropdown.Item>
             <Dropdown.Item onClick={() => logoutUser()}>Logout</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
         :
 
-        <Link to="/login-register"><Button variant="outline-dark" size="sm">Sign In</Button></Link>
+        <Link to={process.env.PUBLIC_URL + "/login-register"}><Button variant="outline-dark" size="sm">Sign In</Button></Link>
       }
-      {/* <div className="same-style account-setting d-none d-lg-block">
-        <button
-          className="account-setting-active"
-          onClick={e => handleAccountClick(e)}
-        >
-          { isAuthenticated ? "My Account" : "Sign In" }
-        </button>
-        <div className="account-dropdown">
-          <ul>
-            <Fragment>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                My Account
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                My Orders
-              </Link>
-            </li>
-            <li>
-              <Link onClick={() => logoutUser()}>
-                Log Out
-              </Link>
-            </li>
-            </Fragment>
-          </ul>
-        </div>
-      </div> */}
+
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
