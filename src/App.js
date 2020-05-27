@@ -6,9 +6,10 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+import { receiveLogin, receiveLogout, loginError } from './redux/actions/authActions';
 
 // AWS amplify
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify, { Auth, Hub } from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure(awsconfig);
 
@@ -39,6 +40,7 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = props => {
+
   useEffect(() => {
     props.dispatch(
       loadLanguages({
@@ -49,6 +51,24 @@ const App = props => {
         }
       })
     );
+
+    Hub.listen('auth', async (data) => {
+      switch (data.payload.event) {
+        case 'signIn':
+          Auth.currentAuthenticatedUser({
+            bypassCache: true
+          }).then(user => props.dispatch(receiveLogin(user)))
+            .catch(err => console.log(err));
+          break;
+        case 'signIn_failure':
+          console.log("error: ", data.payload.data)
+          props.dispatch(loginError());
+          break;
+        case 'signOut':
+          props.dispatch(receiveLogout());
+      }
+    })
+
   });
 
   return (
