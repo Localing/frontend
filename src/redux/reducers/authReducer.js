@@ -5,6 +5,9 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
+    SIGNUP_FAILURE,
     VERIFY_REQUEST,
     VERIFY_SUCCESS
   } from "../actions/authActions";
@@ -13,9 +16,11 @@ import {
     state = {
       isLoggingIn: false,
       isLoggingOut: false,
+      isSigningUp: false,
       isVerifying: false,
       loginError: null,
       logoutError: null,
+      signupError: null,
       isAuthenticated: false,
       user: {}
     },
@@ -61,6 +66,22 @@ import {
           isLoggingOut: false,
           logoutError: action.error
         };
+      case SIGNUP_REQUEST:
+        return {
+          ...state,
+          isSigningUp: true
+        }
+      case SIGNUP_SUCCESS:
+        return {
+          ...state,
+          isSigningUp: false
+        }
+      case SIGNUP_FAILURE:
+        return {
+          ...state,
+          isSigningUp: false,
+          signupError: action.error
+        }
       case VERIFY_REQUEST:
         return {
           ...state,
