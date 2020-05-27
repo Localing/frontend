@@ -21,24 +21,50 @@ const LoginRegister = ({
 
   let { from } = location.state || { from: { pathname: "/" } };
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // Login form fields
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  // Sign up form fields
+  const [signupFirstName, setSignupFirstName] = useState("");
+  const [signupLastName, setSignupLastName] = useState("");
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPassword, setSignupPassword] = useState("");
 
   const handleChange = (event) => {
     event.preventDefault();
     const { value, name } = event.target;
-    if (name === 'email') {
-      setEmail(value);
-    }
-    if (name === 'password') {
-      setPassword(value);
+
+    switch(name){
+      case 'loginEmail':
+        setLoginEmail(value);
+        break;
+      case 'loginPassword':
+        setLoginPassword(value);
+        break;
+      case 'signupFirstName':
+        setSignupFirstName(value);
+        break;
+      case 'signupLastName':
+        setSignupLastName(value);
+        break;
+      case 'signupEmail':
+        setSignupEmail(value);
+        break;
+      case 'signupPassword':
+        setSignupPassword(value);
+        break;
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    loginUser(email, password);
+    loginUser(loginEmail, loginPassword);
   };
+
+  const handleSignUp = (event) => {
+    event.preventDefault();
+  }
 
   return (
     isAuthenticated ?
@@ -83,20 +109,20 @@ const LoginRegister = ({
                               <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Login with Facebook</Button>
                               <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Login with Google</Button>
                               <hr />
-                              <form onSubmit={handleSubmit}>
+                              <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
                                 <input
                                   type="text"
-                                  name="email"
+                                  name="loginEmail"
                                   placeholder="Email"
-                                  value={email}
+                                  value={loginEmail}
                                   onChange={handleChange}
                                 />
                                 <input
                                   type="password"
-                                  name="password"
+                                  name="loginPassword"
                                   placeholder="Password"
-                                  value={password}
+                                  value={loginPassword}
                                   onChange={handleChange}
                                 />
                                 <div className="button-box">
@@ -117,21 +143,34 @@ const LoginRegister = ({
                           <div className="login-form-container">
                             <br />
                             <div className="login-register-form">
-                              <form>
+                              <form onSubmit={handleSignUp}>
                                 <input
                                   type="text"
-                                  name="user-name"
-                                  placeholder="Username"
+                                  name="signupFirstName"
+                                  placeholder="First name"
+                                  value={signupFirstName}
+                                  onChange={handleChange}
+                                />
+                                <input 
+                                  type="text"
+                                  name="signupLastName"
+                                  placeholder="Last name"
+                                  value={signupLastName}
+                                  onChange={handleChange}
+                                />
+                                <input
+                                  name="signupEmail"
+                                  placeholder="E-mail"
+                                  type="email"
+                                  value={signupEmail}
+                                  onChange={handleChange}
                                 />
                                 <input
                                   type="password"
-                                  name="user-password"
+                                  name="signupPassword"
                                   placeholder="Password"
-                                />
-                                <input
-                                  name="user-email"
-                                  placeholder="Email"
-                                  type="email"
+                                  value={signupPassword}
+                                  onChange={handleChange}
                                 />
                                 <div className="button-box">
                                   <button type="submit">
