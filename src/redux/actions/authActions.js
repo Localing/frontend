@@ -8,6 +8,10 @@ export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 
+export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+
 export const VERIFY_REQUEST = "VERIFY_REQUEST";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 
@@ -42,6 +46,26 @@ export const receiveLogout = () => {
     type: LOGOUT_SUCCESS
   };
 };
+
+export const requestSignUp = () => {
+  return {
+    type: SIGNUP_REQUEST
+  }
+}
+
+export const receiveSignUp = (user) => {
+  return {
+    type: SIGNUP_SUCCESS,
+    user
+  }
+}
+
+export const signUpError = (error) => {
+  return {
+    type: SIGNUP_FAILURE,
+    error
+  }
+}
 
 export const logoutError = (error) => {
   return {
@@ -84,6 +108,24 @@ export const logoutUser = () => async dispatch => {
     dispatch(logoutError(err));
   }
 };
+
+export const signUpUser = (firstName, lastName, email, password) => async dispatch => {
+  console.log("signingup");
+  try {
+    const user = await Auth.signUp({
+      username: email,
+      password,
+      attributes: {
+        given_name: firstName,
+        family_name: lastName
+      }
+    })
+    dispatch(receiveSignUp(user));
+  } catch (error) {
+    console.log(error);
+    dispatch(signUpError(error));
+  }
+}
 
 export const verifyAuth = () => async dispatch => {
   dispatch(verifyRequest());

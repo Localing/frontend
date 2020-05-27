@@ -9,12 +9,13 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import LayoutOne from "../../layouts/LayoutOne";
 import { connect } from 'react-redux';
-import { loginUser } from '../../redux/actions/authActions';
+import { loginUser, signUpUser } from '../../redux/actions/authActions';
 import { Auth } from "aws-amplify";
 
 const LoginRegister = ({
   location,
   loginUser,
+  signUpUser,
   loginError,
   isAuthenticated }) => {
   const { pathname } = location;
@@ -36,12 +37,15 @@ const LoginRegister = ({
     const { value, name } = event.target;
 
     switch(name){
+      // login
       case 'loginEmail':
         setLoginEmail(value);
         break;
       case 'loginPassword':
         setLoginPassword(value);
         break;
+
+      // signup
       case 'signupFirstName':
         setSignupFirstName(value);
         break;
@@ -64,6 +68,7 @@ const LoginRegister = ({
 
   const handleSignUp = (event) => {
     event.preventDefault();
+    signUpUser(signupFirstName, signupLastName, signupEmail, signupPassword);
   }
 
   return (
@@ -197,7 +202,9 @@ LoginRegister.propTypes = {
   location: PropTypes.object,
   isLoggingIn: PropTypes.bool,
   loginError: PropTypes.object,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  loginUser: PropTypes.func,
+  signUpUser: PropTypes.func
 };
 
 function mapStateToProps(state) {
@@ -213,6 +220,9 @@ const mapDispatchToProps = dispatch => {
     loginUser: (email, password) => {
       dispatch(loginUser(email, password));
     },
+    signUpUser: (firstName, lastName, email, password) => {
+      dispatch(signUpUser(firstName, lastName, email, password));
+    }
   };
 };
 
