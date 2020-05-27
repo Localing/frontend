@@ -12,9 +12,7 @@ import { Redirect } from "react-router-dom";
 const MyAccount = ({ location, isAuthenticated, user }) => {
   const { pathname } = location;
   const userData = user.attributes;
-
-  console.log(user);
-
+  
   return (
     !isAuthenticated ? <Redirect to="/login-register" /> :
     <Fragment>

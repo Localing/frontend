@@ -91,14 +91,7 @@ export const verifyAuth = () => dispatch => {
   Hub.listen('auth', async (data) => {
     switch (data.payload.event) {
       case 'signIn':
-        Auth.currentAuthenticatedUser()
-          .then(user => {
-            dispatch(receiveLogin(user));
-          })
-          .catch((err) => {
-            console.log(err);
-            dispatch(loginError(err));
-          });
+        dispatch(receiveLogin(data.payload.data.user))
         break;
       case 'signIn_failure':
         console.log("error: ", data.payload.data)

@@ -7,6 +7,7 @@ import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
 import { logoutUser } from "../../redux/actions/authActions";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const IconGroup = ({
   currency,
@@ -22,9 +23,9 @@ const IconGroup = ({
   let history = useHistory();
 
   const handleAccountClick = e => {
-    if(isAuthenticated){
+    if (isAuthenticated) {
       e.currentTarget.nextSibling.classList.toggle("active");
-    }else{
+    } else {
       history.push('/login-register');
     }
   };
@@ -44,7 +45,24 @@ const IconGroup = ({
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
-      <div className="same-style account-setting d-none d-lg-block">
+      {isAuthenticated ?
+        <Dropdown>
+          <Dropdown.Toggle variant="outline-dark" id="account-dropdown" size="sm">
+            My Account
+         </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="/my-account">My Account</Dropdown.Item>
+            <Dropdown.Item href="/my-orders">My Orders</Dropdown.Item>
+            <Dropdown.Item onClick={() => logoutUser()}>Logout</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+
+        :
+
+        <Link to="/login-register"><Button variant="outline-dark" size="sm">Sign In</Button></Link>
+      }
+      {/* <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
           onClick={e => handleAccountClick(e)}
@@ -72,7 +90,7 @@ const IconGroup = ({
             </Fragment>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
