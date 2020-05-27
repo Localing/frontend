@@ -14,9 +14,8 @@ import {
       isLoggingIn: false,
       isLoggingOut: false,
       isVerifying: false,
-      loginError: false,
-      logoutError: false,
-      errorMessage: "",
+      loginError: null,
+      logoutError: null,
       isAuthenticated: false,
       user: {}
     },
@@ -27,7 +26,7 @@ import {
         return {
           ...state,
           isLoggingIn: true,
-          loginError: false
+          loginError: action.error
         };
       case LOGIN_SUCCESS:
         return {
@@ -41,14 +40,13 @@ import {
           ...state,
           isLoggingIn: false,
           isAuthenticated: false,
-          loginError: true,
-          errorMessage: action.error
+          loginError: action.error
         };
       case LOGOUT_REQUEST:
         return {
           ...state,
           isLoggingOut: true,
-          logoutError: false
+          logoutError: action.error
         };
       case LOGOUT_SUCCESS:
         return {
@@ -61,13 +59,12 @@ import {
         return {
           ...state,
           isLoggingOut: false,
-          logoutError: true
+          logoutError: action.error
         };
       case VERIFY_REQUEST:
         return {
           ...state,
-          isVerifying: true,
-          verifyingError: false
+          isVerifying: true
         };
       case VERIFY_SUCCESS:
         return {

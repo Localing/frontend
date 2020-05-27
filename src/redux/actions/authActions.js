@@ -11,53 +11,54 @@ export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
 export const VERIFY_REQUEST = "VERIFY_REQUEST";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 
-const requestLogin = () => {
+export const requestLogin = () => {
   return {
     type: LOGIN_REQUEST
   };
 };
 
-const receiveLogin = user => {
+export const receiveLogin = user => {
   return {
     type: LOGIN_SUCCESS,
     user
   };
 };
 
-const loginError = (error) => {
+export const loginError = (error) => {
   return {
     type: LOGIN_FAILURE,
     error
   };
 };
 
-const requestLogout = () => {
+export const requestLogout = () => {
   return {
     type: LOGOUT_REQUEST
   };
 };
 
-const recieveLogout = () => {
+export const receiveLogout = () => {
   return {
     type: LOGOUT_SUCCESS
   };
 };
 
-const logoutError = () => {
+export const logoutError = (error) => {
   return {
-    type: LOGOUT_FAILURE
+    type: LOGOUT_FAILURE,
+    error
   };
 };
 
 
-const verifyRequest = () => {
+export const verifyRequest = () => {
   return {
     type: VERIFY_REQUEST
   };
 };
 
 
-const verifySuccess = () => {
+export const verifySuccess = () => {
   return {
     type: VERIFY_SUCCESS
   };
@@ -68,9 +69,7 @@ export const loginUser = (email, password) => async dispatch => {
   try {
     const user = await Auth.signIn(email, password);
     dispatch(receiveLogin(user));
-    console.log(user);
   } catch (err) {
-    console.log(err);
     dispatch(loginError(err))
   }
 };
@@ -79,31 +78,23 @@ export const logoutUser = () => async dispatch => {
   dispatch(requestLogout());
   try {
     await Auth.signOut();
-    dispatch(recieveLogout());
+    dispatch(receiveLogout());
   } catch (err) {
     console.log(err);
-    dispatch(logoutError());
+    dispatch(logoutError(err));
   }
 };
 
-export const verifyAuth = () => dispatch => {
+export const verifyAuth = () => async dispatch => {
   dispatch(verifyRequest());
 
-  Hub.listen('auth', async (data) => {
-    switch (data.payload.event) {
-      case 'signIn':
-        Auth.currentAuthenticatedUser({
-          bypassCache: true
-        }).then(user => dispatch(receiveLogin(user)))
-          .catch(err => console.log(err));
-        break;
-      case 'signIn_failure':
-        console.log("error: ", data.payload.data)
-        dispatch(loginError());
-        break;
-      case 'signOut':
-        dispatch(recieveLogout());
-    }
+  // check if a user exists, or clear the user if not
+  Auth.currentAuthenticatedUser()
+  .then(user =>{ 
+    dispatch(receiveLogin(user))
     dispatch(verifySuccess());
+  })
+  .catch(err =>{ 
+    dispatch(receiveLogout())
   })
 };
