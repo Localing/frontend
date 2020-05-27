@@ -1,13 +1,13 @@
 import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE,
+    LOGIN_ERROR,
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,
+    LOGOUT_ERROR,
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
-    SIGNUP_FAILURE,
+    SIGNUP_ERROR,
     VERIFY_REQUEST,
     VERIFY_SUCCESS
   } from "../actions/authActions";
@@ -41,7 +41,7 @@ import {
           loginError: null,
           user: action.user
         };
-      case LOGIN_FAILURE:
+      case LOGIN_ERROR:
         return {
           ...state,
           isLoggingIn: false,
@@ -62,7 +62,7 @@ import {
           logoutError: null,
           user: {}
         };
-      case LOGOUT_FAILURE:
+      case LOGOUT_ERROR:
         return {
           ...state,
           isLoggingOut: false,
@@ -80,7 +80,7 @@ import {
           isSigningUp: false,
           signupError: null
         }
-      case SIGNUP_FAILURE:
+      case SIGNUP_ERROR:
         return {
           ...state,
           isSigningUp: false,
@@ -94,7 +94,10 @@ import {
       case VERIFY_SUCCESS:
         return {
           ...state,
-          isVerifying: false
+          isVerifying: false,
+          loginError: null,
+          logoutError: null,
+          signupError: null
         };
       default:
         return state;

@@ -12,7 +12,6 @@ import LayoutOne from "../../layouts/LayoutOne";
 import { connect } from 'react-redux';
 import { loginUser, signUpUser } from '../../redux/actions/authActions';
 import { Auth } from "aws-amplify";
-import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
 const LoginRegister = ({
   location,
@@ -41,7 +40,7 @@ const LoginRegister = ({
     event.preventDefault();
     const { value, name } = event.target;
 
-    switch(name){
+    switch (name) {
       // login
       case 'loginEmail':
         setLoginEmail(value);
@@ -127,6 +126,7 @@ const LoginRegister = ({
                                   placeholder="Email"
                                   value={loginEmail}
                                   onChange={handleChange}
+                                  required
                                 />
                                 <input
                                   type="password"
@@ -134,6 +134,7 @@ const LoginRegister = ({
                                   placeholder="Password"
                                   value={loginPassword}
                                   onChange={handleChange}
+                                  required
                                 />
                                 <div className="button-box">
                                   <div className="login-toggle-btn">
@@ -141,10 +142,16 @@ const LoginRegister = ({
                                       Forgot your password?
                                   </Link>
                                   </div>
-                                  <button type="submit">
-                                    { isLoggingIn && (<Spinner animation="border" size="sm" as="span" />) }
-                                    Login
+                                  {isLoggingIn ?
+                                    <button type="submit" disabled>
+                                      <Spinner animation="border" size="sm" as="span" />
+                                      Login
+                                    </button>
+                                    :
+                                    <button type="submit">
+                                      Login
                                   </button>
+                                  }
                                 </div>
                               </form>
                             </div>
@@ -155,40 +162,51 @@ const LoginRegister = ({
                             <br />
                             <div className="login-register-form">
                               <form onSubmit={handleSignUp}>
-                              {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
+                                {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
                                 <input
                                   type="text"
                                   name="signupFirstName"
-                                  placeholder="First name"
+                                  placeholder="First name*"
                                   value={signupFirstName}
                                   onChange={handleChange}
+                                  required
                                 />
-                                <input 
+                                <input
                                   type="text"
                                   name="signupLastName"
-                                  placeholder="Last name"
+                                  placeholder="Last name*"
                                   value={signupLastName}
                                   onChange={handleChange}
+                                  required
                                 />
                                 <input
                                   name="signupEmail"
-                                  placeholder="E-mail"
+                                  placeholder="E-mail*"
                                   type="email"
                                   value={signupEmail}
                                   onChange={handleChange}
+                                  required
                                 />
                                 <input
                                   type="password"
                                   name="signupPassword"
-                                  placeholder="Password"
+                                  placeholder="Password*"
                                   value={signupPassword}
                                   onChange={handleChange}
+                                  required
                                 />
+                                <p>&nbsp; * required</p>
                                 <div className="button-box">
-                                  <button type="submit">
-                                  { isSigningUp && (<Spinner animation="border" size="sm" as="span" />) }
-                                    Sign Up
-                                  </button>
+                                {isSigningUp ?
+                                    <button type="submit" disabled>
+                                    <Spinner animation="border" size="sm" as="span" />&nbsp;
+                                    <span>Sign Up</span>
+                                    </button>
+                                    :
+                                    <button type="submit">
+                                      Sign Up  
+                                    </button>
+                                  }
                                 </div>
                               </form>
                             </div>
