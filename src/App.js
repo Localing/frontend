@@ -6,7 +6,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
-import { receiveLogin, receiveLogout, loginError } from './redux/actions/authActions';
+import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
 
 // AWS amplify
 import Amplify, { Auth, Hub } from 'aws-amplify';
@@ -62,7 +62,7 @@ const App = props => {
           break;
         case 'signIn_failure':
           console.log("error: ", data.payload.data)
-          props.dispatch(loginError());
+          props.dispatch(receiveLoginError());
           break;
         case 'signOut':
           props.dispatch(receiveLogout());
