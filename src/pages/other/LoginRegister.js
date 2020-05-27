@@ -17,6 +17,7 @@ const LoginRegister = ({
   loginUser,
   signUpUser,
   loginError,
+  signupError,
   isAuthenticated }) => {
   const { pathname } = location;
 
@@ -149,6 +150,7 @@ const LoginRegister = ({
                             <br />
                             <div className="login-register-form">
                               <form onSubmit={handleSignUp}>
+                              {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -202,6 +204,7 @@ LoginRegister.propTypes = {
   location: PropTypes.object,
   isLoggingIn: PropTypes.bool,
   loginError: PropTypes.object,
+  signupError: PropTypes.object,
   isAuthenticated: PropTypes.bool,
   loginUser: PropTypes.func,
   signUpUser: PropTypes.func
@@ -211,6 +214,7 @@ function mapStateToProps(state) {
   return {
     isLoggingIn: state.authData.isLoggingIn,
     loginError: state.authData.loginError,
+    signupError: state.authData.signupError,
     isAuthenticated: state.authData.isAuthenticated
   };
 }

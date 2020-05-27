@@ -38,6 +38,7 @@ import {
           ...state,
           isLoggingIn: false,
           isAuthenticated: true,
+          loginError: null,
           user: action.user
         };
       case LOGIN_FAILURE:
@@ -58,6 +59,7 @@ import {
           ...state,
           isLoggingOut: false,
           isAuthenticated: false,
+          logoutError: null,
           user: {}
         };
       case LOGOUT_FAILURE:
@@ -69,12 +71,14 @@ import {
       case SIGNUP_REQUEST:
         return {
           ...state,
-          isSigningUp: true
+          isSigningUp: true,
+          signupError: null
         }
       case SIGNUP_SUCCESS:
         return {
           ...state,
-          isSigningUp: false
+          isSigningUp: false,
+          signupError: null
         }
       case SIGNUP_FAILURE:
         return {
