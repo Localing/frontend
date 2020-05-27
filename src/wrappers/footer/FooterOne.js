@@ -130,7 +130,7 @@ const FooterOne = ({
                 <ul>
                   <li>
                     <a
-                      href="//www.facebook.com"
+                      href="https://www.facebook.com/localinguk"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -139,7 +139,7 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
-                      href="//www.twitter.com"
+                      href="https://twitter.com/localinguk/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -148,7 +148,7 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
-                      href="//www.instagram.com"
+                      href="https://www.instagram.com/localinguk/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -157,7 +157,7 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
-                      href="//www.youtube.com"
+                      href="https://www.youtube.com/channel/UCf-vN1icw6n08JVT-F9DSXg"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
