@@ -31,6 +31,7 @@ const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
+const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
@@ -130,6 +131,11 @@ const App = props => {
                 <Route
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
+                />
+                
+                <Route
+                  path={process.env.PUBLIC_URL + "/reset-password"}
+                  component={ResetPassword}
                 />
 
                 <Route
