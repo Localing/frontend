@@ -109,7 +109,6 @@ export const logoutUser = () => async dispatch => {
 };
 
 export const signUpUser = (firstName, lastName, email, password) => async dispatch => {
-  console.log("signingup");
   try {
     const user = await Auth.signUp({
       username: email,

@@ -19,6 +19,7 @@ const LoginRegister = ({
   signUpUser,
   loginError,
   signupError,
+  signupSuccess,
   isAuthenticated,
   isLoggingIn,
   isSigningUp }) => {
@@ -35,6 +36,18 @@ const LoginRegister = ({
   const [signupLastName, setSignupLastName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
+
+  const clearLoginFields = () => {
+    setLoginEmail("");
+    setLoginPassword("");
+  }
+
+  const clearSignUpFields = () => {
+    setSignupFirstName("");
+    setSignupLastName("");
+    setSignupEmail("");
+    setSignupPassword("");
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -68,11 +81,13 @@ const LoginRegister = ({
   const handleLogin = (event) => {
     event.preventDefault();
     loginUser(loginEmail, loginPassword);
+    clearLoginFields();
   };
 
   const handleSignUp = (event) => {
     event.preventDefault();
     signUpUser(signupFirstName, signupLastName, signupEmail, signupPassword);
+    clearSignUpFields();
   }
 
   return (
@@ -144,7 +159,7 @@ const LoginRegister = ({
                                   </div>
                                   {isLoggingIn ?
                                     <button type="submit" disabled>
-                                      <Spinner animation="border" size="sm" as="span" />
+                                      <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                       Login
                                     </button>
                                     :
@@ -163,6 +178,7 @@ const LoginRegister = ({
                             <div className="login-register-form">
                               <form onSubmit={handleSignUp}>
                                 {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
+                                { signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert> }
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -199,7 +215,7 @@ const LoginRegister = ({
                                 <div className="button-box">
                                 {isSigningUp ?
                                     <button type="submit" disabled>
-                                    <Spinner animation="border" size="sm" as="span" />&nbsp;
+                                    <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                     <span>Sign Up</span>
                                     </button>
                                     :
@@ -229,6 +245,7 @@ LoginRegister.propTypes = {
   isLoggingIn: PropTypes.bool,
   loginError: PropTypes.object,
   signupError: PropTypes.object,
+  signupSuccess: PropTypes.object,
   isAuthenticated: PropTypes.bool,
   loginUser: PropTypes.func,
   signUpUser: PropTypes.func
@@ -240,6 +257,7 @@ function mapStateToProps(state) {
     loginError: state.authData.loginError,
     isSigningUp: state.authData.isSigningUp,
     signupError: state.authData.signupError,
+    signupSuccess: state.authData.signupSuccess,
     isAuthenticated: state.authData.isAuthenticated
   };
 }

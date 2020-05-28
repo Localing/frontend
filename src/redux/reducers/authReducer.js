@@ -21,6 +21,7 @@ import {
       loginError: null,
       logoutError: null,
       signupError: null,
+      signupSuccess: false,
       isAuthenticated: false,
       user: {}
     },
@@ -78,12 +79,14 @@ import {
         return {
           ...state,
           isSigningUp: false,
+          signupSuccess: true,
           signupError: null
         }
       case SIGNUP_ERROR:
         return {
           ...state,
           isSigningUp: false,
+          signupSuccess: false,
           signupError: action.error
         }
       case VERIFY_REQUEST:
