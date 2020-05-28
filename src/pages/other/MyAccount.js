@@ -11,7 +11,7 @@ import { Redirect } from "react-router-dom";
 
 const MyAccount = ({ location, isAuthenticated, user }) => {
   const { pathname } = location;
-  const userData = user.attributes;
+  const userProfile = user.profile;
   
   return (
     !isAuthenticated ? <Redirect to="/login-register" /> :
@@ -52,25 +52,25 @@ const MyAccount = ({ location, isAuthenticated, user }) => {
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>First Name</label>
-                                  <input type="text" value={userData.given_name} disabled />
+                                  <input type="text" value={userProfile.given_name} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>Last Name</label>
-                                  <input type="text" value={userData.family_name} disabled />
+                                  <input type="text" value={userProfile.family_name} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-12 col-md-12">
                                 <div className="billing-info">
                                   <label>Email Address</label>
-                                  <input type="email" value={userData.email} disabled />
+                                  <input type="email" value={userProfile.email} disabled />
                                 </div>
                               </div>
                               <div className="col-lg-6 col-md-6">
                                 <div className="billing-info">
                                   <label>Phone</label>
-                                  <input type="text" value={userData.phone} disabled />
+                                  <input type="text" value={userProfile.phone} disabled />
                                 </div>
                               </div>
                             </div>

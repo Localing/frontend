@@ -61,8 +61,7 @@ const App = props => {
             .catch(err => console.log(err));
           break;
         case 'signIn_failure':
-          console.log("error: ", data.payload.data)
-          props.dispatch(receiveLoginError());
+          props.dispatch(receiveLoginError(data.payload.data));
           break;
         case 'signOut':
           props.dispatch(receiveLogout());

@@ -24,7 +24,10 @@ export const requestLogin = () => {
 export const receiveLogin = user => {
   return {
     type: LOGIN_SUCCESS,
-    user
+    user: {
+      username: user.username,
+      profile: user.attributes
+    }
   };
 };
 
