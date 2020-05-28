@@ -47,6 +47,7 @@ const LanguageCurrencyChanger = ({
       <Popover.Content>
         <Form onSubmit={handlePostcodeSubmit}>
           <Form.Group controlId="postcodeForm">
+            { locationData.locationError && "Sorry, there was an issue with that postcode." }
             <Form.Control 
               type="text" 
               placeholder="UK Postcode" 

@@ -1,23 +1,33 @@
 import { SET_LOCATION } from "../actions/locationActions";
 
 const initState = {
-  location: "Cambridge, UK",
+  location: "Cambridge",
   latitude: 52.1999,
   longitude: 0.1216,  
-  postcode: "CB2 1AG"
+  postcode: "CB2 1AG",
+  locationError: null
 };
 
 const locationReducer = (state = initState, action) => {
-  if (action.type === SET_LOCATION) {
-    return {
-      ...state,
-      location: action.payload.location,
-      latitude: action.payload.latitude,
-      longitude: action.payload.longitude,
-      postcode: action.payload.postcode
-    }
+  switch(action.type) {
+    case "SET_LOCATION":
+      return {
+        ...state,
+        location: action.payload.location,
+        latitude: action.payload.latitude,
+        longitude: action.payload.longitude,
+        postcode: action.payload.postcode
+      }
+      break;
+    case "LOCATION_ERROR":
+        return {
+          ...state,
+          locationError: action.locationError
+        }
+        break;
+    default:
+      return state;
   }
-  return state;
 }
 
 export default locationReducer;

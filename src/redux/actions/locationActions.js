@@ -1,5 +1,6 @@
 import axios from "axios";
 export const SET_LOCATION = "SET_LOCATION";
+export const LOCATION_ERROR = "LOCATION_ERROR";
 
 export const setLocation = postcode => {
     return dispatch => {
@@ -17,6 +18,10 @@ export const setLocation = postcode => {
         })
         .catch(err => {
           console.log("Error: ", err);
+          dispatch({
+            type: LOCATION_ERROR,
+            locationError: err
+          })
         });
     };
   };
