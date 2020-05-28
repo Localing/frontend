@@ -147,7 +147,7 @@ const LoginRegister = ({
                                 />
                                 <div className="button-box">
                                   <div className="login-toggle-btn">
-                                    <Link to={process.env.PUBLIC_URL + "/"}>
+                                    <Link to={process.env.PUBLIC_URL + "/reset-password"}>
                                       Forgot your password?
                                   </Link>
                                   </div>
