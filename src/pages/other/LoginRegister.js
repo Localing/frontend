@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import { Link, Redirect } from "react-router-dom";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
@@ -102,12 +101,7 @@ const LoginRegister = ({
             content="Localing Login"
           />
         </MetaTags>
-        <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-        <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-          Login &amp; Register
-      </BreadcrumbsItem>
         <LayoutOne headerTop="visible">
-          {/* breadcrumb */}
           <div className="login-register-area pt-100 pb-100">
             <div className="container">
               <div className="row">
