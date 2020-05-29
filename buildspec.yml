@@ -12,6 +12,7 @@ phases:
       - yarn build
 
 artifacts:
+  type: zip
   files:
     - '**/*'
   base-directory: build
