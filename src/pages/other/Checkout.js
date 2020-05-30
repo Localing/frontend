@@ -9,6 +9,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Modal, Button } from 'react-bootstrap';
 import CountUp from "react-countup";
+import { pointsToLevels } from "../../helpers/levels";
 
 import { checkoutCart } from "../../redux/actions/cartActions";
 import { addPoints } from "../../redux/actions/pointsActions";
@@ -30,7 +31,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
   const handleShow = () => setShow(true);
 
   function processOrder() {
-    addPoints(cartTotalPrice * 100);
+    addPoints(Math.floor(cartTotalPrice * 100));
     handleShow();
   }
 
@@ -55,14 +56,11 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <div className="text-center">
-              <h3>You've now have <CountUp start={cartTotalPrice*100} end={pointsData.points} /> hero points <br /> and you've unlocked the Queen badge!</h3>
-              <div className="container">
-                <img src="assets/img/badges/katie.png" width="200" style={{'borderRadius':'10px'}} />
-              </div>
+              <h3>You've now have <CountUp start={cartTotalPrice * 100} end={pointsData.points} /> hero points <br /> and you've become a {pointsToLevels(pointsData.points).title}!</h3>
               <br />
               <button className="btn btn-secondary"><i className="fa fa-instagram"></i>&nbsp;Share on Instagram</button><br /><br />
               <Button variant="primary" onClick={handleClose}>
-              Back to Home
+                Back to Home
               </Button>
             </div>
           </Modal.Body>
