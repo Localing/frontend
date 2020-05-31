@@ -14,11 +14,10 @@ const pointsReducer = (state = initState, action) => {
   }
 
   if (action.type === ADD_POINTS){
-    const points = action.payload.points;
+    const newPointTotal = state.points + action.payload.points;
     return {
       ...state,
-      points: state.points += points
-      
+      points: newPointTotal
     }
   }
   return state;
