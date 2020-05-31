@@ -56,7 +56,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <div className="text-center">
-              <h3>You've now have <CountUp start={cartTotalPrice * 100} end={pointsData.points} /> hero points <br /> and you've become a {pointsToLevels(pointsData.points).title}!</h3>
+              <h3>You now have <CountUp start={cartTotalPrice * 100} end={pointsData.points} /> hero points <br /> and you've become a {pointsToLevels(pointsData.points).title}!</h3>
               <br />
               <button className="btn btn-secondary"><i className="fa fa-instagram"></i>&nbsp;Share on Instagram</button><br /><br />
               <Button variant="primary" onClick={handleClose}>
