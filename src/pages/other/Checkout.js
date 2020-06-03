@@ -9,7 +9,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Modal, Button } from 'react-bootstrap';
 import CountUp from "react-countup";
-import { pointsToLevels } from "../../helpers/levels";
+import { pointsToLevels } from "../../levels";
 
 import { checkoutCart } from "../../redux/actions/cartActions";
 import { addPoints } from "../../redux/actions/pointsActions";

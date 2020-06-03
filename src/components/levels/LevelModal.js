@@ -1,5 +1,5 @@
 import React from 'react';
-import { pointsToLevels } from "../../helpers/levels";
+import { pointsToLevels } from "../../levels";
 import { connect } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 
