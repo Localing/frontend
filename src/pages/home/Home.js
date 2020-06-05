@@ -35,7 +35,7 @@ const Home = () => {
           <div className="container-fluid">
             <div className="custom-row-4">
               <ProductGridThree
-                limit={15}
+                limit={5}
                 spaceBottomClass="mb-35"
               />
             </div>

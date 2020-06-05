@@ -23,7 +23,7 @@ const CategoryOneSlider = ({ spaceBottomClass }) => {
     scrollbar: {
       el: '.swiper-scrollbar',
       hide: false
-    }
+    },
   };
   return (
     <div
