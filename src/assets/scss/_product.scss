@@ -2041,9 +2041,11 @@
         position: absolute;
         left: 0;
         right: 0;
+        bottom: 0px;
+        padding-bottom: 20px;
+        padding-top: 10px;
+        background: #83ADBD;
         text-align: center;
-        bottom: 30px;
-        background: #000;
         span {
             font-size: 14px;
             font-weight: 500;

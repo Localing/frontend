@@ -19,6 +19,10 @@ const CategoryOneSlider = ({ spaceBottomClass }) => {
       320: {
         slidesPerView: 1
       }
+    },
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      hide: false
     }
   };
   return (
