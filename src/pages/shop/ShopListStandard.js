@@ -6,7 +6,6 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import { getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
@@ -67,8 +66,6 @@ const ShopListStandard = ({ location, products }) => {
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-
         <div className="shop-area pt-95 pb-100">
           <div className="container">
             <div className="row">

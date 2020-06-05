@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import LocationMap from "../../components/contact/LocationMap";
 
 const Contact = ({ location }) => {
@@ -23,8 +22,6 @@ const Contact = ({ location }) => {
         Contact
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             <div className="contact-map mb-10">
