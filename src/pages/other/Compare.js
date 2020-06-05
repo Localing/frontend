@@ -9,7 +9,6 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { deleteFromCompare } from "../../redux/actions/compareActions";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import Rating from "../../components/product/sub-components/ProductRating";
 
 const Compare = ({
@@ -37,8 +36,6 @@ const Compare = ({
         Compare
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="compare-main-area pt-90 pb-100">
           <div className="container">
             {compareItems && compareItems.length >= 1 ? (

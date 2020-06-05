@@ -35,7 +35,6 @@ const HeroSliderThreeSingle = ({ data, sliderClass }) => {
                 src={process.env.PUBLIC_URL + data.image}
                 alt=""
               />
-              <p className="animated">Photo by Jennifer May Smith</p>
             </div>
           </div>
         </div>

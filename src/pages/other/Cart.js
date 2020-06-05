@@ -14,7 +14,6 @@ import {
   deleteAllFromCart
 } from "../../redux/actions/cartActions";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Cart = ({
   location,
@@ -46,8 +45,6 @@ const Cart = ({
       </BreadcrumbsItem>
 
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (

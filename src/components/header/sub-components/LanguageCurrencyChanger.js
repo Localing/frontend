@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
 import { Modal, Popover, Button, OverlayTrigger, Form } from "react-bootstrap";
+import LevelModal from "../../levels/LevelModal";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -30,11 +31,11 @@ const LanguageCurrencyChanger = ({
   }
   const handleShow = () => setShow(true);
 
-  
+
   // handling changes to postcodes
   const [postcode, setPostcode] = useState("");
   const [showPostcodePopover, setShowPostcodePopover] = useState(false);
-  
+
   const handlePostcodeSubmit = (event) => {
     event.preventDefault();
     console.log(postcode);
@@ -47,11 +48,18 @@ const LanguageCurrencyChanger = ({
       <Popover.Content>
         <Form onSubmit={handlePostcodeSubmit}>
           <Form.Group controlId="postcodeForm">
+<<<<<<< HEAD
             { locationData.locationError && "Sorry, there was an issue with that postcode." }
             <Form.Control 
               type="text" 
               placeholder="UK Postcode" 
               name="postcode" 
+=======
+            <Form.Control
+              type="text"
+              placeholder="UK Postcode"
+              name="postcode"
+>>>>>>> 86da467d067ca7216ddb12732889d3f25b9210bb
               value={postcode}
               onChange={e => setPostcode(e.target.value)} />
           </Form.Group>
@@ -65,26 +73,15 @@ const LanguageCurrencyChanger = ({
     <div className="language-currency-wrap">
 
       {/* badge modal */}
-      <Modal show={show} onHide={handleClose} >
-        <Modal.Body>
-          <div className="text-center">
-            <h2>You've unlocked the Queen badge!</h2>
-            <br />
-            <div className="container">
-              <img src="assets/img/badges/katie.png" width="200" style={{ 'borderRadius': '10px' }} />
-            </div>
-            <br />
-            <button className="btn btn-dark"><i class="fa fa-instagram"></i>&nbsp;Share your badge</button><br /><br />
-            <button className="btn btn-info" onClick={handleClose}>Back to Home</button>
-          </div>
-        </Modal.Body>
-      </Modal>
+
+      <LevelModal show={show} handleClose={handleClose} />
+
 
       <div className="same-language-currency language-style">
         <span>
-          <OverlayTrigger 
-            trigger="click" 
-            placement="bottom" 
+          <OverlayTrigger
+            trigger="click"
+            placement="bottom"
             overlay={postcodePopover}
             rootClose>
             <Button variant="outline-dark" size="sm">
@@ -94,6 +91,8 @@ const LanguageCurrencyChanger = ({
           </OverlayTrigger>
         </span>
       </div>
+
+    {/* Disabled currency changer 
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm">
@@ -119,6 +118,7 @@ const LanguageCurrencyChanger = ({
           </ul>
         </div>
       </div>
+    */}
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm" onClick={handleShow}>{pointsData.points} hero points</Button>
