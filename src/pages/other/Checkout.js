@@ -49,9 +49,6 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
         Checkout
       </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
-        <Breadcrumb />
-
         {/* badge popup */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>

@@ -84,6 +84,8 @@ const LanguageCurrencyChanger = ({
         </span>
       </div>
 
+    {/* Disabled currency changer 
+
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm">
           {currency.currencyName} <i className="fa fa-angle-down" />
@@ -108,6 +110,7 @@ const LanguageCurrencyChanger = ({
           </ul>
         </div>
       </div>
+    */}
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm" onClick={handleShow}>{pointsData.points} hero points</Button>
