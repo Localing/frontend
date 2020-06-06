@@ -1,10 +1,12 @@
 import axios from "axios";
 export const SET_LOCATION = "SET_LOCATION";
 export const LOCATION_ERROR = "LOCATION_ERROR";
+export const LOADING_LOCATION = "LOADING_LOCATION";
 export const CLEAR_LOCATION_ERROR = "CLEAR_LOCATION_ERROR";
 
 export const setLocation = postcode => {
   return dispatch => {
+    dispatch({ type: LOADING_LOCATION })
     axios
       .get(`https://api.postcodes.io/postcodes/${postcode}`)
       .then(response => {

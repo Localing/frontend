@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { Popover, Button, OverlayTrigger, Form, Alert } from "react-bootstrap";
+import { Popover, Button, OverlayTrigger, Form, Alert, Spinner } from "react-bootstrap";
 import LevelModal from "../../levels/LevelModal";
+import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
 const LanguageCurrencyChanger = ({
   currency,
@@ -48,19 +49,26 @@ const LanguageCurrencyChanger = ({
       <Popover.Content>
         <Form onSubmit={handlePostcodeSubmit}>
           <Form.Group controlId="postcodeForm">
-            { locationData.locationError &&
-                <Alert variant="danger" onClose={() => clearLocationError()} dismissible>
-                  <p>The postcode you entered wasn't valid.</p>
-                </Alert>
+            {locationData.locationError &&
+              <Alert variant="danger" onClose={() => clearLocationError()} dismissible>
+                <p>The postcode you entered wasn't valid.</p>
+              </Alert>
             }
-            <Form.Control 
-              type="text" 
-              placeholder="UK Postcode" 
-              name="postcode" 
+
+            <Form.Control
+              type="text"
+              placeholder="UK Postcode"
+              name="postcode"
               value={postcode}
               onChange={e => setPostcode(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit">Change</Button>
+          <Button variant="primary" type="submit">
+          {locationData.loading &&
+              <Spinner animation="border" role="status" size="sm">
+              </Spinner>
+              }
+            Change
+            </Button>
         </Form>
       </Popover.Content>
     </Popover>
@@ -89,7 +97,7 @@ const LanguageCurrencyChanger = ({
         </span>
       </div>
 
-    {/* Disabled currency changer 
+      {/* Disabled currency changer 
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm">

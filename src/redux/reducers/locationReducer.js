@@ -5,11 +5,17 @@ const initState = {
   latitude: 52.1999,
   longitude: 0.1216,  
   postcode: "CB2 1AG",
-  locationError: null
+  locationError: null,
+  loading: false
 };
 
 const locationReducer = (state = initState, action) => {
   switch(action.type) {
+    case "LOADING_LOCATION":
+      return {
+        ...state,
+        loading: true
+      }
     case "SET_LOCATION":
       return {
         ...state,
@@ -17,19 +23,21 @@ const locationReducer = (state = initState, action) => {
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,
         postcode: action.payload.postcode,
-        locationError: null
+        locationError: null,
+        loading: false
       }
       break;
     case "LOCATION_ERROR":
         return {
           ...state,
-          locationError: action.locationError
+          locationError: action.locationError,
+          loading: false
         }
         break;
     case "CLEAR_LOCATION_ERROR":
         return {
           ...state,
-          locationError: null
+          locationError: null,
         }
     default:
       return state;
