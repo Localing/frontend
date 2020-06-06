@@ -42,6 +42,7 @@ const ProductDescriptionInfo = ({
 
   return (
     <div className="product-details-content ml-70">
+      <p class="pro-details-meta">{product.business}</p>
       <h2>{product.name}</h2>
 
       <div className="product-details-price">
@@ -234,7 +235,7 @@ const ProductDescriptionInfo = ({
 
       {product.category ? (
         <div className="pro-details-meta">
-          <span>Business: </span>
+          <span>Category: </span>
           <ul>
             {product.category.map((single, key) => {
               return (
@@ -252,7 +253,7 @@ const ProductDescriptionInfo = ({
         )}
       {product.tag ? (
         <div className="pro-details-meta">
-          <span>Categories: </span>
+          <span>Tags: </span>
           <ul>
             {product.tag.map((single, key) => {
               return (

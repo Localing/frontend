@@ -4,27 +4,27 @@
     "image": "/assets/img/business/the-family-bean.jpg",
     "subtitle": "Café",
     "title": "The Family Bean",
-    "link": "/business/12"
+    "link": "/business/1"
   },
   {
     "id": "2",
     "image": "/assets/img/business/barber.jpg",
     "subtitle": "Hairdresser",
     "title": "Chop Your Mop",
-    "link": "/business/21"
+    "link": "/business/2"
   },
   {
     "id": "3",
     "image": "/assets/img/business/buns-in-the-oven.jpg",
     "subtitle": "Bakery",
     "title": "Buns in the Oven",
-    "link": "/business/31"
+    "link": "/business/3"
   },
   {
     "id": "4",
     "image": "/assets/img/business/massage-parlor.jpg",
     "subtitle": "Masseuse",
     "title": "Knead the Knots",
-    "link": "/business/41"
+    "link": "/business/4"
   }
 ]
