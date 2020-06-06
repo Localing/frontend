@@ -72,8 +72,6 @@ const ShopGridStandard = ({location, products }) => {
             <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>Shop</BreadcrumbsItem>
 
             <LayoutOne headerTop="visible">
-                {/* breadcrumb */}
-                <Breadcrumb />
                 <h1 className="text-center" style={{ 'padding':'1em' }}>{title}</h1>
 
                 <div className="shop-area pt-95 pb-100">

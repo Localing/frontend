@@ -63,6 +63,8 @@ const IconGroup = ({
         <Link to={process.env.PUBLIC_URL + "/login-register"}><Button variant="outline-dark" size="sm">Sign In</Button></Link>
       }
 
+      {/* Disable compare icon
+
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
@@ -71,6 +73,7 @@ const IconGroup = ({
           </span>
         </Link>
       </div>
+      */}
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />
