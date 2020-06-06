@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { Modal, Popover, Button, OverlayTrigger, Form } from "react-bootstrap";
+import { Popover, Button, OverlayTrigger, Form, Alert } from "react-bootstrap";
 import LevelModal from "../../levels/LevelModal";
 
 const LanguageCurrencyChanger = ({
@@ -9,10 +9,12 @@ const LanguageCurrencyChanger = ({
   setCurrency,
   currentLanguageCode,
   setLocation,
+  clearLocationError,
   locationData,
   pointsData,
   dispatch
 }) => {
+
   const changeLanguageTrigger = e => {
     const languageCode = e.target.value;
     dispatch(changeLanguage(languageCode));
@@ -34,11 +36,9 @@ const LanguageCurrencyChanger = ({
 
   // handling changes to postcodes
   const [postcode, setPostcode] = useState("");
-  const [showPostcodePopover, setShowPostcodePopover] = useState(false);
 
   const handlePostcodeSubmit = (event) => {
     event.preventDefault();
-    console.log(postcode);
     setLocation(postcode);
   }
 
@@ -48,18 +48,15 @@ const LanguageCurrencyChanger = ({
       <Popover.Content>
         <Form onSubmit={handlePostcodeSubmit}>
           <Form.Group controlId="postcodeForm">
-<<<<<<< HEAD
-            { locationData.locationError && "Sorry, there was an issue with that postcode." }
+            { locationData.locationError &&
+                <Alert variant="danger" onClose={() => clearLocationError()} dismissible>
+                  <p>The postcode you entered wasn't valid.</p>
+                </Alert>
+            }
             <Form.Control 
               type="text" 
               placeholder="UK Postcode" 
               name="postcode" 
-=======
-            <Form.Control
-              type="text"
-              placeholder="UK Postcode"
-              name="postcode"
->>>>>>> 86da467d067ca7216ddb12732889d3f25b9210bb
               value={postcode}
               onChange={e => setPostcode(e.target.value)} />
           </Form.Group>

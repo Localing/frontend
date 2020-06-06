@@ -3,7 +3,7 @@ import React from "react";
 import { multilanguage } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
-import { setLocation } from "../../redux/actions/locationActions";
+import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import LanguageCurrencyChanger from "./sub-components/LanguageCurrencyChanger";
 
 const HeaderTop = ({
@@ -11,6 +11,7 @@ const HeaderTop = ({
   setCurrency,
   currentLanguageCode,
   setLocation,
+  clearLocationError,
   locationData,
   pointsData,
   dispatch,
@@ -28,6 +29,7 @@ const HeaderTop = ({
         setCurrency={setCurrency}
         locationData={locationData}
         setLocation={setLocation}
+        clearLocationError={clearLocationError}
         pointsData={pointsData}
         currentLanguageCode={currentLanguageCode}
         dispatch={dispatch}
@@ -47,6 +49,8 @@ HeaderTop.propTypes = {
   currency: PropTypes.object,
   currentLanguageCode: PropTypes.string,
   locationData: PropTypes.object,
+  setLocation: PropTypes.func,
+  clearLocationError: PropTypes.func,
   pointsData: PropTypes.object,
   dispatch: PropTypes.func
 };
@@ -66,7 +70,9 @@ const mapDispatchToProps = dispatch => {
     },
     setLocation: postcode => {
       dispatch(setLocation(postcode));
-    }
+    },
+    clearLocationError: () =>
+      dispatch(clearLocationError()),
   };
 };
 

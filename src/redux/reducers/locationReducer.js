@@ -16,7 +16,8 @@ const locationReducer = (state = initState, action) => {
         location: action.payload.location,
         latitude: action.payload.latitude,
         longitude: action.payload.longitude,
-        postcode: action.payload.postcode
+        postcode: action.payload.postcode,
+        locationError: null
       }
       break;
     case "LOCATION_ERROR":
@@ -25,6 +26,11 @@ const locationReducer = (state = initState, action) => {
           locationError: action.locationError
         }
         break;
+    case "CLEAR_LOCATION_ERROR":
+        return {
+          ...state,
+          locationError: null
+        }
     default:
       return state;
   }
