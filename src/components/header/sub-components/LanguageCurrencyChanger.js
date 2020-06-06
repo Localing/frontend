@@ -1,18 +1,21 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { changeLanguage } from "redux-multilanguage";
-import { Modal, Popover, Button, OverlayTrigger, Form } from "react-bootstrap";
+import { Popover, Button, OverlayTrigger, Form, Alert, Spinner } from "react-bootstrap";
 import LevelModal from "../../levels/LevelModal";
+import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
 const LanguageCurrencyChanger = ({
   currency,
   setCurrency,
   currentLanguageCode,
   setLocation,
+  clearLocationError,
   locationData,
   pointsData,
   dispatch
 }) => {
+
   const changeLanguageTrigger = e => {
     const languageCode = e.target.value;
     dispatch(changeLanguage(languageCode));
@@ -34,11 +37,9 @@ const LanguageCurrencyChanger = ({
 
   // handling changes to postcodes
   const [postcode, setPostcode] = useState("");
-  const [showPostcodePopover, setShowPostcodePopover] = useState(false);
 
   const handlePostcodeSubmit = (event) => {
     event.preventDefault();
-    console.log(postcode);
     setLocation(postcode);
   }
 
@@ -48,6 +49,12 @@ const LanguageCurrencyChanger = ({
       <Popover.Content>
         <Form onSubmit={handlePostcodeSubmit}>
           <Form.Group controlId="postcodeForm">
+            {locationData.locationError &&
+              <Alert variant="danger" onClose={() => clearLocationError()} dismissible>
+                <p>The postcode you entered wasn't valid.</p>
+              </Alert>
+            }
+
             <Form.Control
               type="text"
               placeholder="UK Postcode"
@@ -55,7 +62,13 @@ const LanguageCurrencyChanger = ({
               value={postcode}
               onChange={e => setPostcode(e.target.value)} />
           </Form.Group>
-          <Button variant="primary" type="submit">Change</Button>
+          <Button variant="primary" type="submit">
+          {locationData.loading &&
+              <Spinner animation="border" role="status" size="sm">
+              </Spinner>
+              }
+            Change
+            </Button>
         </Form>
       </Popover.Content>
     </Popover>
@@ -84,7 +97,7 @@ const LanguageCurrencyChanger = ({
         </span>
       </div>
 
-    {/* Disabled currency changer 
+      {/* Disabled currency changer 
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm">
