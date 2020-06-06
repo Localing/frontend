@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import { Auth } from "aws-amplify";
 
 const ResetPassword = () => {
@@ -11,17 +12,21 @@ const ResetPassword = () => {
     const [code, setCode] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [codeSent, setCodeSent] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     // sends email with reset code
     const handleGenerateCode = (event) => {
         event.preventDefault();
         setMessage("");
+        setIsLoading(true);
         Auth.forgotPassword(email)
             .then(data => {
                 setCodeSent(true);
+                setIsLoading(false);
             })
             .catch(err => {
                 setMessage(err.message);
+                setIsLoading(false);
             });
     }
 
@@ -29,12 +34,15 @@ const ResetPassword = () => {
     const handleSavePassword = (event) => {
         event.preventDefault();
         setMessage("");
+        setIsLoading(true);
         Auth.forgotPasswordSubmit(email, code, newPassword)
             .then(data => {
                 setMessage("Your password was successfully reset.")
+                setIsLoading(false);
             })
             .catch(err => {
                 setMessage(err.message)
+                setIsLoading(false);
             });
     }
 
@@ -76,6 +84,7 @@ const ResetPassword = () => {
                                                 newPassword={newPassword}
                                                 handleChange={handleChange}
                                                 handleSavePassword={handleSavePassword}
+                                                isLoading={isLoading}
                                             />
                                             :
                                             <GenerateCodeForm
@@ -83,6 +92,7 @@ const ResetPassword = () => {
                                                 message={message}
                                                 handleChange={handleChange}
                                                 handleGenerateCode={handleGenerateCode}
+                                                isLoading={isLoading}
                                             />}
                                     </div>
                                 </div>
@@ -111,7 +121,7 @@ const GenerateCodeForm = (props) => {
                 />
                 <div className="button-box">
                     <button type="submit">
-                        Reset Password
+                    {props.isLoading && <Spinner animation="border" size="sm" as="span" />}Reset Password
                     </button>
                 </div>
             </form>
@@ -144,8 +154,8 @@ const ResetPasswordForm = (props) => {
                 />
                 <div className="button-box">
                     <button type="submit">
-                        Reset Password
-            </button>
+                        {props.isLoading && <Spinner animation="border" size="sm" as="span" />}&nbsp;&nbsp;Reset Password
+                    </button>
                 </div>
             </form>
         </div>
