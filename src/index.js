@@ -10,11 +10,13 @@ import { fetchProducts } from "./redux/actions/productActions";
 import { verifyAuth } from "./redux/actions/authActions";
 import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
+import businesses from "./data/businesses.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
+import { fetchBusinesses } from "./redux/actions/businessActions";
 
 const store = createStore(
   rootReducer,
@@ -24,6 +26,9 @@ const store = createStore(
 
 // fetch products from json file
 store.dispatch(fetchProducts(products));
+
+// fetch businesses from json file
+store.dispatch(fetchBusinesses(businesses));
 
 // verify authentication
 store.dispatch(verifyAuth());
