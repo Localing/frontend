@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
-import { multilanguage } from "redux-multilanguage";
 import Logo from "../../components/header/Logo";
 import IconGroup from "../../components/header/IconGroup";
 import NavMenu from "../../components/header/NavMenu";
@@ -130,4 +129,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(multilanguage(HeaderTwo));
+)(HeaderTwo);

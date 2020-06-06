@@ -3,7 +3,6 @@ import React, { useEffect, Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
-import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
@@ -43,16 +42,6 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 const App = props => {
 
   useEffect(() => {
-    props.dispatch(
-      loadLanguages({
-        languages: {
-          en: require("./translations/english.json"),
-          fn: require("./translations/french.json"),
-          de: require("./translations/germany.json")
-        }
-      })
-    );
-
     Hub.listen('auth', async (data) => {
       switch (data.payload.event) {
         case 'signIn':
@@ -174,4 +163,4 @@ App.propTypes = {
   dispatch: PropTypes.func
 };
 
-export default connect()(multilanguage(App));
+export default connect()(App);
