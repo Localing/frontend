@@ -65,11 +65,8 @@ const ShopGridStandard = ({location, products }) => {
         <Fragment>
             <MetaTags>
                 <title>Localing | Products</title>
-                <meta name="description" content="Shop page of flone react minimalist eCommerce template." />
+                <meta name="description" content="Localing products." />
             </MetaTags>
-
-            <BreadcrumbsItem to={process.env.PUBLIC_URL + '/'}>Home</BreadcrumbsItem>
-            <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>Shop</BreadcrumbsItem>
 
             <LayoutOne headerTop="visible">
                 <h1 className="text-center" style={{ 'padding':'1em' }}>{title}</h1>

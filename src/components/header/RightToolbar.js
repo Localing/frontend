@@ -9,7 +9,7 @@ import { logoutUser } from "../../redux/actions/authActions";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const IconGroup = ({
+const RightToolbar = ({
   currency,
   cartData,
   wishlistData,
@@ -26,7 +26,7 @@ const IconGroup = ({
     if (isAuthenticated) {
       e.currentTarget.nextSibling.classList.toggle("active");
     } else {
-      history.push('/login-register');
+      history.push('/login');
     }
   };
 
@@ -60,7 +60,7 @@ const IconGroup = ({
 
         :
 
-        <Link to={process.env.PUBLIC_URL + "/login-register"}><Button variant="outline-dark" size="sm">Sign In</Button></Link>
+        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" size="sm">Log In</Button></Link>
       }
 
       {/* Disable compare icon
@@ -116,7 +116,7 @@ const IconGroup = ({
   );
 };
 
-IconGroup.propTypes = {
+RightToolbar.propTypes = {
   cartData: PropTypes.array,
   compareData: PropTypes.array,
   currency: PropTypes.object,
@@ -148,4 +148,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(IconGroup);
+export default connect(mapStateToProps, mapDispatchToProps)(RightToolbar);

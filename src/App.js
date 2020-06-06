@@ -29,7 +29,7 @@ const Product = lazy(() => import("./pages/shop-product/Product"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
-const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
+const Login = lazy(() => import("./pages/other/Login"));
 const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
@@ -67,8 +67,8 @@ const App = props => {
           <ScrollToTop>
             <Suspense
               fallback={
-                <div className="flone-preloader-wrapper">
-                  <div className="flone-preloader">
+                <div className="preloader-wrapper">
+                  <div className="preloader">
                     <span></span>
                     <span></span>
                   </div>
@@ -118,8 +118,12 @@ const App = props => {
                   component={MyAccount}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/login-register"}
-                  component={LoginRegister}
+                  path={process.env.PUBLIC_URL + "/my-orders"}
+                  component={MyAccount}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/login"}
+                  component={Login}
                 />
 
                 <Route
