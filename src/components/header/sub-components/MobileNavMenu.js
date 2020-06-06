@@ -1,83 +1,64 @@
-import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
-import { multilanguage } from "redux-multilanguage";
 
-const MobileNavMenu = ({ strings }) => {
+const MobileNavMenu = ({ isAuthenticated }) => {
   return (
     <nav className="offcanvas-navigation" id="offcanvas-navigation">
       <ul>
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/"}>{strings["home"]}</Link>
+          <Link to={process.env.PUBLIC_URL + "/"}>
+            HOME
+          </Link>
         </li>
 
         <li className="menu-item-has-children">
           <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-            {strings["shop"]}
-          </Link>
-        </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-            {strings["collection"]}
+            PRODUCTS
           </Link>
         </li>
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/"}>{strings["pages"]}</Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/cart"}>
-                {strings["cart"]}
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/cart"}>
+              CART
               </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/checkout"}>
-                {strings["checkout"]}
+          </li>
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/checkout"}>
+              CHECKOUT
               </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-                {strings["wishlist"]}
+          </li>
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/wishlist"}>
+              WISHLIST
               </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/compare"}>
-                {strings["compare"]}
-              </Link>
-            </li>
+          </li>
+          {isAuthenticated ?
             <li>
               <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                {strings["my_account"]}
+                MY ACCOUNT
               </Link>
             </li>
+            :
             <li>
               <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                {strings["login_register"]}
+                SIGN IN
               </Link>
             </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/about"}>
-                {strings["about_us"]}
+          }
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/about"}>
+              ABOUT US
               </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/contact"}>
-                {strings["contact_us"]}
+          </li>
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/contact"}>
+              CONTACT US
               </Link>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <Link to={process.env.PUBLIC_URL + "/contact"}>
-            {strings["contact_us"]}
-          </Link>
+          </li>
         </li>
       </ul>
     </nav>
   );
 };
 
-MobileNavMenu.propTypes = {
-  strings: PropTypes.object
-};
-
-export default multilanguage(MobileNavMenu);
+export default MobileNavMenu;
