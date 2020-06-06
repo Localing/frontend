@@ -3,7 +3,6 @@ import React, { useEffect, Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
-import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
@@ -30,7 +29,7 @@ const Product = lazy(() => import("./pages/shop-product/Product"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
-const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
+const Login = lazy(() => import("./pages/other/Login"));
 const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
 
 const Cart = lazy(() => import("./pages/other/Cart"));
@@ -43,16 +42,6 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 const App = props => {
 
   useEffect(() => {
-    props.dispatch(
-      loadLanguages({
-        languages: {
-          en: require("./translations/english.json"),
-          fn: require("./translations/french.json"),
-          de: require("./translations/germany.json")
-        }
-      })
-    );
-
     Hub.listen('auth', async (data) => {
       switch (data.payload.event) {
         case 'signIn':
@@ -78,8 +67,8 @@ const App = props => {
           <ScrollToTop>
             <Suspense
               fallback={
-                <div className="flone-preloader-wrapper">
-                  <div className="flone-preloader">
+                <div className="preloader-wrapper">
+                  <div className="preloader">
                     <span></span>
                     <span></span>
                   </div>
@@ -129,8 +118,12 @@ const App = props => {
                   component={MyAccount}
                 />
                 <Route
-                  path={process.env.PUBLIC_URL + "/login-register"}
-                  component={LoginRegister}
+                  path={process.env.PUBLIC_URL + "/my-orders"}
+                  component={MyAccount}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/login"}
+                  component={Login}
                 />
 
                 <Route
@@ -174,4 +167,4 @@ App.propTypes = {
   dispatch: PropTypes.func
 };
 
-export default connect()(multilanguage(App));
+export default connect()(App);

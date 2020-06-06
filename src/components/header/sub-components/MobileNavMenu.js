@@ -40,8 +40,8 @@ const MobileNavMenu = ({ isAuthenticated }) => {
             </li>
             :
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                SIGN IN
+              <Link to={process.env.PUBLIC_URL + "/login"}>
+                LOG IN
               </Link>
             </li>
           }

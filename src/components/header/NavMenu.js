@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
-import { multilanguage } from "redux-multilanguage";
 
 const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
   return (
@@ -367,7 +366,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                <Link to={process.env.PUBLIC_URL + "/login"}>
                   {strings["login_register"]}
                 </Link>
               </li>
@@ -439,4 +438,4 @@ NavMenu.propTypes = {
   strings: PropTypes.object
 };
 
-export default multilanguage(NavMenu);
+export default NavMenu;

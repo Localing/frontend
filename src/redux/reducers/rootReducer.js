@@ -8,10 +8,8 @@ import pointsReducer from "./pointsReducer";
 import locationReducer from "./locationReducer";
 import authReducer from "./authReducer";
 import { combineReducers } from "redux";
-import { createMultilanguageReducer } from "redux-multilanguage";
 
 const rootReducer = combineReducers({
-  multilanguage: createMultilanguageReducer({ currentLanguageCode: "en" }),
   currencyData: currencyReducer,
   productData: productReducer,
   businessData: businessReducer,

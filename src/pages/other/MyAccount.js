@@ -79,7 +79,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
   }
 
   return (
-    !isAuthenticated ? <Redirect to="/login-register" /> :
+    !isAuthenticated ? <Redirect to="/login" /> :
       <Fragment>
         <MetaTags>
           <title>Localing | My Account</title>

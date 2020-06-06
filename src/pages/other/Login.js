@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { loginUser, signUpUser } from '../../redux/actions/authActions';
 import { Auth } from "aws-amplify";
 
-const LoginRegister = ({
+const Login = ({
   location,
   loginUser,
   signUpUser,
@@ -173,6 +173,7 @@ const LoginRegister = ({
                               <form onSubmit={handleSignUp}>
                                 {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
                                 { signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert> }
+                                <p>Sign up with your e-mail address</p>
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -234,7 +235,7 @@ const LoginRegister = ({
   );
 };
 
-LoginRegister.propTypes = {
+Login.propTypes = {
   location: PropTypes.object,
   isLoggingIn: PropTypes.bool,
   loginError: PropTypes.object,
@@ -267,4 +268,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

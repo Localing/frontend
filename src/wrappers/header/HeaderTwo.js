@@ -3,12 +3,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
-import { multilanguage } from "redux-multilanguage";
 import Logo from "../../components/header/Logo";
-import IconGroup from "../../components/header/IconGroup";
+import RightToolbar from "../../components/header/RightToolbar";
 import NavMenu from "../../components/header/NavMenu";
 import MobileMenu from "../../components/header/MobileMenu";
-import LanguageCurrencyChanger from "../../components/header/sub-components/LanguageCurrencyChanger";
+import LeftToolbar from "../../components/header/LeftToolbar";
 
 const HeaderTwo = ({
   currency,
@@ -42,8 +41,8 @@ const HeaderTwo = ({
         <div className="header-top-area d-none d-lg-block">
           <div className="row">
             <div className="col-lg-5 col-md-8 col-12">
-              {/* language currency changer */}
-              <LanguageCurrencyChanger
+              {/* Left Toolbar */}
+              <LeftToolbar
                 currency={currency}
                 setCurrency={setCurrency}
                 locationData={locationData}
@@ -63,7 +62,7 @@ const HeaderTwo = ({
             </div>
             <div className="col-lg-5 col-md-4 col-12">
               {/* Icon group */}
-              <IconGroup />
+              <RightToolbar />
             </div>
           </div>
         </div>
@@ -81,7 +80,7 @@ const HeaderTwo = ({
             </div>
             <div className="col-6 d-block d-lg-none">
               {/* Icon group */}
-              <IconGroup />
+              <RightToolbar />
             </div>
             <div className="col-xl-12 col-lg-12 d-none d-lg-block">
               {/* Nav menu <NavMenu /> */}
@@ -130,4 +129,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(multilanguage(HeaderTwo));
+)(HeaderTwo);

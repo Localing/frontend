@@ -1,25 +1,18 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { changeLanguage } from "redux-multilanguage";
 import { Popover, Button, OverlayTrigger, Form, Alert, Spinner } from "react-bootstrap";
-import LevelModal from "../../levels/LevelModal";
+import LevelModal from "../levels/LevelModal";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
-const LanguageCurrencyChanger = ({
+const LeftToolbar = ({
   currency,
   setCurrency,
-  currentLanguageCode,
   setLocation,
   clearLocationError,
   locationData,
   pointsData,
   dispatch
 }) => {
-
-  const changeLanguageTrigger = e => {
-    const languageCode = e.target.value;
-    dispatch(changeLanguage(languageCode));
-  };
 
   const setCurrencyTrigger = e => {
     const currencyName = e.target.value;
@@ -132,11 +125,10 @@ const LanguageCurrencyChanger = ({
   );
 };
 
-LanguageCurrencyChanger.propTypes = {
+LeftToolbar.propTypes = {
   setCurrency: PropTypes.func,
   currency: PropTypes.object,
-  currentLanguageCode: PropTypes.string,
   dispatch: PropTypes.func
 };
 
-export default LanguageCurrencyChanger;
+export default LeftToolbar;
