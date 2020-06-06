@@ -1,13 +1,12 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessDescription from "../../wrappers/business/BusinessDescription";
 
 const Business
-  = ({ location, product }) => {
+  = ({ location, business }) => {
     const { pathname } = location;
 
     return (
@@ -25,7 +24,7 @@ const Business
           <BusinessDescription
             spaceTopClass="pt-100"
             spaceBottomClass="pb-100"
-            product={product}
+            business={business}
             galleryType="fixedImage"
           />
         </LayoutOne>
@@ -35,14 +34,14 @@ const Business
 
 Business.propTypes = {
   location: PropTypes.object,
-  product: PropTypes.object
+  business: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const itemId = ownProps.match.params.id;
+  const businessId = ownProps.match.params.id;
   return {
-    product: state.productData.products.filter(
-      single => single.id === itemId
+    business: state.businessData.businesses.filter(
+      single => single.id === businessId
     )[0]
   };
 };
