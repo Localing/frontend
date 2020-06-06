@@ -97,7 +97,11 @@ const LanguageCurrencyChanger = ({
         </span>
       </div>
 
+<<<<<<< HEAD
       {/* Disabled currency changer 
+=======
+    {/* Disabled currency changer 
+>>>>>>> b015c91880adc70d42de62b56ccf8512ebf4167f
 
       <div className="same-language-currency use-style">
         <Button variant="outline-dark" size="sm">
