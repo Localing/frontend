@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setCurrency } from "../../redux/actions/currencyActions";
-import { setLocation } from "../../redux/actions/locationActions";
+import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { multilanguage } from "redux-multilanguage";
 import Logo from "../../components/header/Logo";
 import IconGroup from "../../components/header/IconGroup";
@@ -16,6 +16,7 @@ const HeaderTwo = ({
   currentLanguageCode,
   locationData,
   setLocation,
+  clearLocationError,
   pointsData,
   dispatch
 }) => {
@@ -47,6 +48,7 @@ const HeaderTwo = ({
                 setCurrency={setCurrency}
                 locationData={locationData}
                 setLocation={setLocation}
+                clearLocationError={clearLocationError}
                 pointsData={pointsData}
                 currentLanguageCode={currentLanguageCode}
                 dispatch={dispatch}
@@ -100,6 +102,7 @@ HeaderTwo.propTypes = {
   currentLanguageCode: PropTypes.string,
   locationData: PropTypes.object,
   setLocation: PropTypes.func,
+  clearLocationError: PropTypes.func,
   pointsData: PropTypes.object,
   dispatch: PropTypes.func
 };
@@ -119,7 +122,8 @@ const mapDispatchToProps = dispatch => {
     },
     setLocation: postcode => {
       dispatch(setLocation(postcode));
-    }
+    },
+    clearLocationError: () => dispatch(clearLocationError()),
   };
 };
 
