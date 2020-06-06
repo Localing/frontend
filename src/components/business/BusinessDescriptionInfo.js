@@ -1,27 +1,15 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
-import Rating from "./sub-components/ProductRating";
-import ProductGridThree from "../../wrappers/product/ProductGridThree";
 
 const BusinessDescriptionInfo = ({
   product,
-  discountedPrice,
-  currency,
-  finalDiscountedPrice,
-  finalProductPrice,
-  cartItems,
-  wishlistItem,
-  compareItem,
-  addToast,
-  addToCart,
-  addToWishlist,
-  addToCompare
+  cartItems
 }) => {
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -37,8 +25,6 @@ const BusinessDescriptionInfo = ({
   const productCartQty = getProductCartQuantity(
     cartItems,
     product,
-    selectedProductColor,
-    selectedProductSize
   );
   let businessInfo = [];
   businessInfo["The Family Bean"] = "Your friendly neighborhood coffee shop.";

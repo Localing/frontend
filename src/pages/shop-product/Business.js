@@ -4,10 +4,7 @@ import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
-import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
-import BusinessDescription from "../../wrappers/product/BusinessDescription";
+import BusinessDescription from "../../wrappers/business/BusinessDescription";
 
 const Business
   = ({ location, product }) => {
@@ -23,15 +20,8 @@ const Business
           />
         </MetaTags>
 
-        <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-        <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-          Business
-      </BreadcrumbsItem>
-
         <LayoutOne headerTop="visible">
-          {/* breadcrumb */}
-
-          {/* product description with image */}
+          {/* business description with image */}
           <BusinessDescription
             spaceTopClass="pt-100"
             spaceBottomClass="pb-100"

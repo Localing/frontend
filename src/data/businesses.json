@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "name": "The Family Bean",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "Your friendly neighborhood coffee shop.",
+        "mitigationText": "",
+        "openingStatus": ""
+    },
+    {
+        "id": "2",
+        "name": "Chop Your Mop",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "Don't want to look scruffy on those video calls.",
+        "mitigationText": "",
+        "openingStatus": ""
+    },
+    {
+        "id": "3",
+        "name": "Buns In The Oven",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "Family-owned and operated since 1985.",
+        "mitigationText": "",
+        "openingStatus": ""
+    },
+    {
+        "id": "4",
+        "name": "Knead The Knots",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "Feeling tight? Knot a problem.",
+        "mitigationText": "",
+        "openingStatus": ""
+    },
+    {
+        "id": "5",
+        "name": "Tasty Bistro",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "Experience a taste of Paris at the classic french bistro.",
+        "mitigationText": "",
+        "openingStatus": ""
+    },
+    {
+        "id": "6",
+        "name": "Swish Swash",
+        "location": "Cambridge",
+        "website": "",
+        "phone": "",
+        "description": "See the world outside - wash your windows.",
+        "mitigationText": "",
+        "openingStatus": ""
+    }
+]

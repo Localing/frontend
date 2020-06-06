@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../helpers/product";
 import ProductImageGallery from "../../components/product/ProductImageGallery";
-import BusinessDescriptionInfo from "../../components/product/BusinessDescriptionInfo";
+import BusinessDescriptionInfo from "../../components/business/BusinessDescriptionInfo";
 import ProductImageGallerySideThumb from "../../components/product/ProductImageGallerySideThumb";
-import BusinessImageFixed from "../../components/product/BusinessImageFixed";
+import BusinessImageFixed from "../../components/business/BusinessImageFixed";
 
 const BusinessDescription = ({
   spaceTopClass,
