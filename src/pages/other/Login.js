@@ -24,6 +24,8 @@ const Login = ({
   isSigningUp }) => {
   const { pathname } = location;
 
+  console.log(location);
+
   let { from } = location.state || { from: { pathname: "/" } };
 
   // Login form fields

@@ -6,6 +6,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
+import ProtectedRoute from './wrappers/ProtectedRoute';
 
 // AWS amplify
 import Amplify, { Auth, Hub } from 'aws-amplify';
@@ -39,7 +40,7 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
-const App = props => {
+const App = ({ isAuthenticated, dispatch }) => {
 
   useEffect(() => {
     Hub.listen('auth', async (data) => {
@@ -47,14 +48,14 @@ const App = props => {
         case 'signIn':
           Auth.currentAuthenticatedUser({
             bypassCache: true
-          }).then(user => props.dispatch(receiveLogin(user)))
+          }).then(user => dispatch(receiveLogin(user)))
             .catch(err => console.log(err));
           break;
         case 'signIn_failure':
-          props.dispatch(receiveLoginError(data.payload.data));
+          dispatch(receiveLoginError(data.payload.data));
           break;
         case 'signOut':
-          props.dispatch(receiveLogout());
+          dispatch(receiveLogout());
       }
     })
 
@@ -113,13 +114,15 @@ const App = props => {
                   path={process.env.PUBLIC_URL + "/contact"}
                   component={Contact}
                 />
-                <Route
+                <ProtectedRoute
                   path={process.env.PUBLIC_URL + "/my-account"}
                   component={MyAccount}
+                  isAuthenticated={isAuthenticated}
                 />
-                <Route
+                <ProtectedRoute
                   path={process.env.PUBLIC_URL + "/my-orders"}
                   component={MyAccount}
+                  isAuthenticated={isAuthenticated}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/login"}
@@ -143,9 +146,10 @@ const App = props => {
                   path={process.env.PUBLIC_URL + "/compare"}
                   component={Compare}
                 />
-                <Route
+                <ProtectedRoute
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
+                  isAuthenticated={isAuthenticated}
                 />
 
                 <Route
@@ -164,7 +168,14 @@ const App = props => {
 };
 
 App.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  isAuthenticated: PropTypes.bool
 };
 
-export default connect()(App);
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.authData.isAuthenticated
+  }
+}
+
+export default connect(mapStateToProps)(App);
