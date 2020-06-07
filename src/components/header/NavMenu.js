@@ -9,81 +9,41 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
         sidebarMenu
           ? "sidebar-menu"
           : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
-      } `}
+        } `}
     >
       <nav>
         <ul>
           <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
               HOME
-              {sidebarMenu ? (
-                <span>
-                  <i className="fa fa-angle-right"></i>
-                </span>
-              ) : (
-                <i className="fa fa-angle-down" />
-              )}
             </Link>
-      
+          </li>
+          <li>
             <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
               {" "}
-              SHOP
-              {sidebarMenu ? (
-                <span>
-                  <i className="fa fa-angle-right"></i>
-                </span>
-              ) : (
-                <i className="fa fa-angle-down" />
-              )}
+              SHOPS &amp; PRODUCTS
             </Link>
-            <ul className="mega-menu">
-              <li>
-                <ul>
-                  <li className="mega-menu-img">
-                    <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                      <img
-                        src={
-                          process.env.PUBLIC_URL +
-                          "/assets/img/banner/banner-12.png"
-                        }
-                        alt=""
-                      />
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
           </li>
           <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
-              PAGES
+              MY LOCALING
               {sidebarMenu ? (
                 <span>
                   <i className="fa fa-angle-right"></i>
                 </span>
               ) : (
-                <i className="fa fa-angle-down" />
-              )}
+                  <i className="fa fa-angle-down" />
+                )}
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/cart"}>
-                  CART
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/checkout"}>
-                  CHECKOUT
-                </Link>
-              </li>
-              <li>
                 <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-                  WISHLIST
+                  MY WISHLIST
                 </Link>
               </li>
               <li>
                 <Link to={process.env.PUBLIC_URL + "/compare"}>
-                  COMPARE
+                  COMPARE ITEMS
                 </Link>
               </li>
               <li>
@@ -92,27 +52,17 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                 </Link>
               </li>
               <li>
-                <Link to={process.env.PUBLIC_URL + "/login"}>
-                  LOGIN
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/about"}>
-                  ABOUT US
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/contact"}>
-                  CONTACT US
+                <Link to={process.env.PUBLIC_URL + "/my-orders"}>
+                  MY ORDERS
                 </Link>
               </li>
             </ul>
           </li>
 
           <li>
-            <Link to={process.env.PUBLIC_URL + "/contact"}>
-              CONTACT US
-            </Link>
+            <a href="https://business.localing.co.uk" target="_blank" rel="noopener noreferrer">
+              FOR BUSINESSES
+            </a>
           </li>
         </ul>
       </nav>
