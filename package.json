@@ -33,7 +33,7 @@
     "redux": "^4.0.4",
     "redux-localstorage-simple": "^2.1.6",
     "redux-thunk": "^2.3.0",
-    "swiper": "^5.2.0",
+    "swiper": "^5.4.2",
     "uuid": "^3.3.3"
   },
   "scripts": {
