@@ -22,9 +22,6 @@ const Login = ({
   isAuthenticated,
   isLoggingIn,
   isSigningUp }) => {
-  const { pathname } = location;
-
-  console.log(location);
 
   let { from } = location.state || { from: { pathname: "/" } };
 

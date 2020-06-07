@@ -17,19 +17,17 @@ const Contact = ({ location }) => {
           content="Localing contact page"
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Contact
-      </BreadcrumbsItem>
       <LayoutOne headerTop="visible">
         <div className="contact-area pt-100 pb-100">
           <div className="container">
+            {/* Disable map
             <div className="contact-map mb-10">
-              <LocationMap latitude="47.444" longitude="-122.176" />
-            </div>
+              <LocationMap latitude="47.444" longitude="-122.176" /> 
+            </div> */}
             <div className="custom-row-2">
               <div className="col-lg-4 col-md-5">
                 <div className="contact-info-wrap">
+                  {/* Disable phone number field
                   <div className="single-contact-info">
                     <div className="contact-icon">
                       <i className="fa fa-phone" />
@@ -39,16 +37,17 @@ const Contact = ({ location }) => {
                       <p>+44 12345678</p>
                     </div>
                   </div>
+                  */}
                   <div className="single-contact-info">
                     <div className="contact-icon">
                       <i className="fa fa-globe" />
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:info@localing.store">info@localing.store</a>
+                        <a href="mailto:info@localing.store">info@localing.co.uk</a>
                       </p>
                       <p>
-                        <a href="//localing.store">localing.store</a>
+                        <a href="//localing.store">localing.co.uk</a>
                       </p>
                     </div>
                   </div>
@@ -57,36 +56,25 @@ const Contact = ({ location }) => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>Cambridge, UK</p>
                     </div>
                   </div>
                   <div className="contact-social text-center">
                     <h3>Follow Us</h3>
                     <ul>
                       <li>
-                        <a href="//facebook.com">
+                        <a href="//facebook.com/localinguk">
                           <i className="fa fa-facebook" />
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
+                        <a href="//twitter.com/localinguk">
                           <i className="fa fa-twitter" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="//instagram.com/localinguk">
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
                     </ul>
@@ -101,23 +89,25 @@ const Contact = ({ location }) => {
                   <form className="contact-form-style">
                     <div className="row">
                       <div className="col-lg-6">
-                        <input name="name" placeholder="Name*" type="text" />
+                        <input name="name" placeholder="Name*" type="text" required />
                       </div>
                       <div className="col-lg-6">
-                        <input name="email" placeholder="Email*" type="email" />
+                        <input name="email" placeholder="Email*" type="email" required />
                       </div>
                       <div className="col-lg-12">
                         <input
                           name="subject"
                           placeholder="Subject*"
                           type="text"
+                          required
                         />
                       </div>
                       <div className="col-lg-12">
                         <textarea
                           name="message"
-                          placeholder="Your Massege*"
+                          placeholder="Your Message*"
                           defaultValue={""}
+                          required
                         />
                         <button className="submit" type="submit">
                           SEND

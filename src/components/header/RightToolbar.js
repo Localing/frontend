@@ -46,7 +46,7 @@ const RightToolbar = ({
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
       {isAuthenticated ?
-        <Dropdown>
+        <Dropdown className="d-none d-md-block">
           <Dropdown.Toggle variant="outline-dark" id="account-dropdown" size="sm">
             My Account
          </Dropdown.Toggle>
@@ -60,7 +60,7 @@ const RightToolbar = ({
 
         :
 
-        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" size="sm">Log In</Button></Link>
+        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" size="sm" className="d-none d-md-block">Log In</Button></Link>
       }
 
       {/* Disable compare icon
