@@ -5,8 +5,9 @@ import HeroSliderThree from "../../wrappers/hero-slider/HeroSliderThree";
 import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
 import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
 import ProductGridThree from "../../wrappers/product/ProductGridThree";
+import { connect } from "react-redux";
 
-const Home = () => {
+const Home = ({ locationData }) => {
   return (
     <Fragment>
       <MetaTags>
@@ -18,7 +19,7 @@ const Home = () => {
       </MetaTags>
       <LayoutTwo>
         {/* hero slider */}
-        <HeroSliderThree />
+        <HeroSliderThree locationData={locationData} />
 
         {/* category slider */}
         <CategoryOneSlider spaceBottomClass="pb-95" />
@@ -49,4 +50,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    locationData: state.locationData
+  };
+};
+
+export default connect(mapStateToProps)(Home);

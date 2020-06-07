@@ -28,6 +28,36 @@ export const setLocation = postcode => {
   };
 };
 
+export const setLocationByCoords = (lat, lon) => {
+  return dispatch => {
+    dispatch({ type: LOADING_LOCATION })
+    axios
+      .get(`https://api.postcodes.io/postcodes?lon=${lon}&lat=${lat}`)
+      .then(response => {
+        let responseData = response.data.result;
+
+        if (responseData) {
+
+          // if multiple cities are matched, use the closest
+          if (responseData.length > 1) {
+            responseData = responseData.shift();
+          }
+
+          const location = responseData.parliamentary_constituency;
+          const postcode = responseData.postcode;
+
+          dispatch({
+            type: SET_LOCATION,
+            payload: { location, latitude: lat, longitude: lon, postcode }
+          })
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+}
+
 export const clearLocationError = () => {
   return dispatch => {
     dispatch({

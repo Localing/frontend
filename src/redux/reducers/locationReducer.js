@@ -12,7 +12,8 @@ const locationReducer = (state = initState, action) => {
     case "LOADING_LOCATION":
       return {
         ...state,
-        loading: true
+        loading: true,
+        locationError: null
       }
     case "SET_LOCATION":
       return {
