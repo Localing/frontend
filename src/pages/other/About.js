@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
@@ -9,8 +8,7 @@ import SectionTitleWithText from "../../components/section-title/SectionTitleWit
 import TeamMemberOne from "../../wrappers/team-member/TeamMemberOne";
 // import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 
-const About = ({ location }) => {
-  const { pathname } = location;
+const About = (props) => {
 
   return (
     <Fragment>
@@ -43,10 +41,6 @@ const About = ({ location }) => {
       </LayoutOne>
     </Fragment>
   );
-};
-
-About.propTypes = {
-  location: PropTypes.object
 };
 
 export default About;

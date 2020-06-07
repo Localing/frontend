@@ -2,12 +2,10 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState, useEffect } from 'react';
 import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
-import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
-import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
@@ -26,7 +24,6 @@ const ShopGridStandard = ({location, products }) => {
     const [sortedProducts, setSortedProducts] = useState([]);
 
     const pageLimit = 15;
-    const {pathname} = location;
 
     const [title, setTitle] = useState("");
 
@@ -50,7 +47,7 @@ const ShopGridStandard = ({location, products }) => {
             setSortValue(data.state.category[0]);
             setTitle(data.state.category[0])
         }
-    }, []);
+    }, [data.state]);
 
     useEffect(() => {
         let sortedProducts = getSortedProducts(products, sortType, sortValue);

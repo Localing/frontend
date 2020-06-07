@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
 import { deleteFromCart } from "../../redux/actions/cartActions";
@@ -20,15 +19,6 @@ const RightToolbar = ({
   logoutUser,
   user
 }) => {
-  let history = useHistory();
-
-  const handleAccountClick = e => {
-    if (isAuthenticated) {
-      e.currentTarget.nextSibling.classList.toggle("active");
-    } else {
-      history.push('/login');
-    }
-  };
 
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
@@ -46,7 +36,7 @@ const RightToolbar = ({
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
       {isAuthenticated ?
-        <Dropdown>
+        <Dropdown className="d-none d-md-block">
           <Dropdown.Toggle variant="outline-dark" id="account-dropdown" size="sm">
             My Account
          </Dropdown.Toggle>
@@ -60,7 +50,7 @@ const RightToolbar = ({
 
         :
 
-        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" size="sm">Log In</Button></Link>
+        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" size="sm" className="d-none d-md-block">Log In</Button></Link>
       }
 
       {/* Disable compare icon
@@ -74,6 +64,7 @@ const RightToolbar = ({
         </Link>
       </div>
       */}
+
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />

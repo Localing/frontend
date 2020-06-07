@@ -36,16 +36,16 @@ const FooterOne = ({
     <footer
       className={`footer-area ${
         backgroundColorClass ? backgroundColorClass : ""
-      } ${spaceTopClass ? spaceTopClass : ""} ${
+        } ${spaceTopClass ? spaceTopClass : ""} ${
         spaceBottomClass ? spaceBottomClass : ""
-      } ${extraFooterClass ? extraFooterClass : ""}`}
+        } ${extraFooterClass ? extraFooterClass : ""}`}
     >
-      <div className={`${containerClass ? containerClass : "container"}`}>
+      <div className={`${containerClass ? containerClass : "container"} d-none d-md-block`}>
         <div className="row">
           <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
-            }`}
+              }`}
           >
             {/* footer copyright */}
             <FooterCopyright
@@ -56,7 +56,7 @@ const FooterOne = ({
           <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
-            }`}
+              }`}
           >
             <div className="footer-widget mb-30 ml-30">
               <div className="footer-title">
@@ -72,11 +72,6 @@ const FooterOne = ({
                       Contact
                     </Link>
                   </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Order tracking
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -84,14 +79,14 @@ const FooterOne = ({
           <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
-            }`}
+              }`}
           >
             <div
               className={`${
                 sideMenu
                   ? "footer-widget mb-30 ml-95"
                   : "footer-widget mb-30 ml-50"
-              }`}
+                }`}
             >
               <div className="footer-title">
                 <h3>USEFUL LINKS</h3>
@@ -99,15 +94,15 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>Returns</Link>
+                    <Link to={process.env.PUBLIC_URL + "/my-orders"}>Orders</Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Support Policy
+                    <Link to={process.env.PUBLIC_URL + "/support"}>
+                      Support
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>FAQs</Link>
+                    <Link to={process.env.PUBLIC_URL + "/faq"}>FAQs</Link>
                   </li>
                 </ul>
               </div>
@@ -116,12 +111,12 @@ const FooterOne = ({
           <div
             className={`${
               sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
-            }`}
+              }`}
           >
             <div className={`${
-                sideMenu
-                  ? "footer-widget mb-30 ml-145"
-                  : "footer-widget mb-30 ml-75"
+              sideMenu
+                ? "footer-widget mb-30 ml-145"
+                : "footer-widget mb-30 ml-75"
               }`}>
               <div className="footer-title">
                 <h3>FOLLOW US</h3>
@@ -171,7 +166,7 @@ const FooterOne = ({
           <div
             className={`${
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
-            }`}
+              }`}
           >
             {/* footer newsletter */}
             <FooterNewsletter spaceBottomClass="mb-30" spaceLeftClass="ml-70" sideMenu={sideMenu} />

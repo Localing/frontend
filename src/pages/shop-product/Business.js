@@ -6,8 +6,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import BusinessDescription from "../../wrappers/business/BusinessDescription";
 
 const Business
-  = ({ location, business }) => {
-    const { pathname } = location;
+  = ({ business }) => {
 
     return (
       <Fragment>
@@ -33,7 +32,6 @@ const Business
   };
 
 Business.propTypes = {
-  location: PropTypes.object,
   business: PropTypes.object
 };
 

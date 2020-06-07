@@ -10,13 +10,25 @@ const MobileNavMenu = ({ isAuthenticated }) => {
             HOME
           </Link>
         </li>
-
+        {isAuthenticated ?
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                MY ACCOUNT
+              </Link>
+            </li>
+            :
+            <li>
+              <Link to={process.env.PUBLIC_URL + "/login"}>
+                LOG IN
+              </Link>
+            </li>
+          }
+          <hr />
         <li className="menu-item-has-children">
           <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
             PRODUCTS
           </Link>
         </li>
-        <li className="menu-item-has-children">
           <li>
             <Link to={process.env.PUBLIC_URL + "/cart"}>
               CART
@@ -32,19 +44,7 @@ const MobileNavMenu = ({ isAuthenticated }) => {
               WISHLIST
               </Link>
           </li>
-          {isAuthenticated ?
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                MY ACCOUNT
-              </Link>
-            </li>
-            :
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login"}>
-                LOG IN
-              </Link>
-            </li>
-          }
+          <hr />
           <li>
             <Link to={process.env.PUBLIC_URL + "/about"}>
               ABOUT US
@@ -55,7 +55,6 @@ const MobileNavMenu = ({ isAuthenticated }) => {
               CONTACT US
               </Link>
           </li>
-        </li>
       </ul>
     </nav>
   );

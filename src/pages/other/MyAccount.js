@@ -24,13 +24,17 @@ const MyAccount = ({ isAuthenticated, user }) => {
   const [changePasswordMessage, setChangePasswordMessage] = useState("");
 
   useEffect(() => {
-    if(isAuthenticated){
-      setFirstName(user.profile.given_name);
-      setLastName(user.profile.family_name);
-      setEmail(user.profile.email);
-      setPhone(user.profile.phone);
+    if (isAuthenticated) {
+      setAttributes();
     }
-  }, [])
+  }, [isAuthenticated])
+
+  const setAttributes = () => {
+    setFirstName(user.profile.given_name);
+    setLastName(user.profile.family_name);
+    setEmail(user.profile.email);
+    setPhone(user.profile.phone);
+  }
 
   const handleChangePassword = (event) => {
     event.preventDefault();
@@ -69,7 +73,10 @@ const MyAccount = ({ isAuthenticated, user }) => {
       case 'confirmNewPassword':
         setConfirmNewPassword(value);
         break;
+      default:
+        break;
     }
+    
   };
 
   const clearFields = () => {
@@ -149,7 +156,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
                           <Card.Body>
-                            { changePasswordMessage !== "" && <Alert variant="dark">{changePasswordMessage}</Alert> }
+                            {changePasswordMessage !== "" && <Alert variant="dark">{changePasswordMessage}</Alert>}
                             <div className="myaccount-info-wrapper">
                               <form onSubmit={handleChangePassword}>
                                 <div className="row">

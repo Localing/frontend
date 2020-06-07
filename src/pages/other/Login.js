@@ -22,7 +22,6 @@ const Login = ({
   isAuthenticated,
   isLoggingIn,
   isSigningUp }) => {
-  const { pathname } = location;
 
   let { from } = location.state || { from: { pathname: "/" } };
 
@@ -73,6 +72,8 @@ const Login = ({
         break;
       case 'signupPassword':
         setSignupPassword(value);
+        break;
+      default:
         break;
     }
   };

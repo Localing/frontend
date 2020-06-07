@@ -31,6 +31,12 @@ const HeroSliderThree = () => {
 
   return (
     <div className="slider-area">
+      <div className="jumbotron jumbotron-fluid d-md-none">
+        <h2 className="text-center">Support your favourite local businesses through the economic shutdown.</h2>
+        <p className="text-center">
+          <a className="btn btn-outline-dark btn-lg" href="/shop-grid-standard" role="button">Shop Now</a>
+        </p>
+      </div>
       <div className="slider-active nav-style-1 d-none d-md-block">
         <Swiper {...params}>
           {heroSliderData &&

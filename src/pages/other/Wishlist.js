@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import MetaTags from "react-meta-tags";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import {
@@ -13,10 +12,8 @@ import {
 } from "../../redux/actions/wishlistActions";
 import { addToCart } from "../../redux/actions/cartActions";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 
 const Wishlist = ({
-  location,
   cartItems,
   currency,
   addToCart,
@@ -25,7 +22,6 @@ const Wishlist = ({
   deleteAllFromWishlist
 }) => {
   const { addToast } = useToasts();
-  const { pathname } = location;
 
   return (
     <Fragment>
@@ -36,12 +32,7 @@ const Wishlist = ({
           content="Localing Wish List"
         />
       </MetaTags>
-
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Wishlist
-      </BreadcrumbsItem>
-
+      
       <LayoutOne headerTop="visible">
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
@@ -245,7 +236,6 @@ Wishlist.propTypes = {
   addToCart: PropTypes.func,
   cartItems: PropTypes.array,
   currency: PropTypes.object,
-  location: PropTypes.object,
   deleteAllFromWishlist: PropTypes.func,
   deleteFromWishlist: PropTypes.func,
   wishlistItems: PropTypes.array

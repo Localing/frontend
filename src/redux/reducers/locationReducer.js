@@ -1,5 +1,3 @@
-import { SET_LOCATION } from "../actions/locationActions";
-
 const initState = {
   location: "Cambridge",
   latitude: 52.1999,
@@ -26,14 +24,12 @@ const locationReducer = (state = initState, action) => {
         locationError: null,
         loading: false
       }
-      break;
     case "LOCATION_ERROR":
         return {
           ...state,
           locationError: action.locationError,
           loading: false
         }
-        break;
     case "CLEAR_LOCATION_ERROR":
         return {
           ...state,
