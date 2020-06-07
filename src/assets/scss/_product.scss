@@ -2013,15 +2013,15 @@
 /* product home 9*/
 
 .collection-wrap-2 {
-    margin-top: -150px;
+    margin-top: -100px;
     @media #{$md-layout}{
         margin-top: -97px;
     }
     @media #{$xs-layout}{
-        margin-top: -80px;
+        margin-top: 0;
     }
     @media #{$sm-layout}{
-        margin-top: -70px;
+        margin-top: 0;
     }
 }
 

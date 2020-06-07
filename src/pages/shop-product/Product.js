@@ -6,16 +6,14 @@ import LayoutOne from "../../layouts/LayoutOne";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 
-const Product = ({ location, product }) => {
-  const { pathname } = location;
-
+const Product = ({ product }) => {
   return (
     <Fragment>
       <MetaTags>
         <title>Localing | {product.name}</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content={`Localing - ${product.name}`}
         />
       </MetaTags>
 
@@ -38,7 +36,6 @@ const Product = ({ location, product }) => {
 };
 
 Product.propTypes = {
-  location: PropTypes.object,
   product: PropTypes.object
 };
 

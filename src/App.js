@@ -56,6 +56,9 @@ const App = ({ isAuthenticated, dispatch }) => {
           break;
         case 'signOut':
           dispatch(receiveLogout());
+          break;
+        default:
+          break;
       }
     })
 

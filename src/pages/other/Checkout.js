@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
-import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { Modal, Button } from 'react-bootstrap';
 import CountUp from "react-countup";
 import { pointsToLevels } from "../../levels";
@@ -15,10 +13,9 @@ import { checkoutCart } from "../../redux/actions/cartActions";
 import { addPoints } from "../../redux/actions/pointsActions";
 import { useToasts } from "react-toast-notifications";
 
-const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, pointsData }) => {
+const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) => {
   let history = useHistory();
 
-  const { pathname } = location;
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
   const [show, setShow] = useState(false);
@@ -44,10 +41,7 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
           content="Localing checkout page"
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Checkout
-      </BreadcrumbsItem>
+
       <LayoutOne headerTop="visible">
         {/* badge popup */}
         <Modal show={show} onHide={handleClose}>
@@ -273,7 +267,6 @@ const Checkout = ({ location, cartItems, currency, checkoutCart, addPoints, poin
 Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
-  location: PropTypes.object,
   checkoutCart: PropTypes.func,
   addPoints: PropTypes.func,
   pointsData: PropTypes.object

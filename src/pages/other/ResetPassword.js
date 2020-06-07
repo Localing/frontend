@@ -59,6 +59,8 @@ const ResetPassword = () => {
             case "newPassword":
                 setNewPassword(value);
                 break;
+            default:
+                break;
         }
     }
     return (

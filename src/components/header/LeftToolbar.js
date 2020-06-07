@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { Popover, Button, OverlayTrigger, Form, Alert, Spinner } from "react-bootstrap";
 import LevelModal from "../levels/LevelModal";
-import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 
 const LeftToolbar = ({
   currency,
@@ -14,10 +13,10 @@ const LeftToolbar = ({
   dispatch
 }) => {
 
-  const setCurrencyTrigger = e => {
-    const currencyName = e.target.value;
-    setCurrency(currencyName);
-  };
+  // const setCurrencyTrigger = e => {
+  //   const currencyName = e.target.value;
+  //   setCurrency(currencyName);
+  // };
 
   // handling badge modal
   const [show, setShow] = useState(false);

@@ -73,6 +73,8 @@ const Login = ({
       case 'signupPassword':
         setSignupPassword(value);
         break;
+      default:
+        break;
     }
   };
 
