@@ -6,6 +6,7 @@ import { ToastProvider } from "react-toast-notifications";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
+import { setLocationByCoords } from './redux/actions/locationActions';
 import ProtectedRoute from './wrappers/ProtectedRoute';
 
 // AWS amplify
@@ -43,6 +44,15 @@ const NotFound = lazy(() => import("./pages/other/NotFound"));
 const App = ({ isAuthenticated, dispatch }) => {
 
   useEffect(() => {
+
+    // set current location if available and in the UK
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        dispatch(setLocationByCoords(position.coords.latitude, position.coords.longitude));
+      });
+    }
+
+    // listen for an auth event
     Hub.listen('auth', async (data) => {
       switch (data.payload.event) {
         case 'signIn':
