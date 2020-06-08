@@ -5896,6 +5896,23 @@ eslint-plugin-react@7.19.0:
     string.prototype.matchall "^4.0.2"
     xregexp "^4.3.0"
 
+eslint-plugin-react@^7.19.0:
+  version "7.20.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.20.0.tgz#f98712f0a5e57dfd3e5542ef0604b8739cd47be3"
+  integrity sha512-rqe1abd0vxMjmbPngo4NaYxTcR3Y4Hrmc/jg4T+sYz63yqlmJRknpEQfmWY+eDWPuMmix6iUIK+mv0zExjeLgA==
+  dependencies:
+    array-includes "^3.1.1"
+    doctrine "^2.1.0"
+    has "^1.0.3"
+    jsx-ast-utils "^2.2.3"
+    object.entries "^1.1.1"
+    object.fromentries "^2.0.2"
+    object.values "^1.1.1"
+    prop-types "^15.7.2"
+    resolve "^1.15.1"
+    string.prototype.matchall "^4.0.2"
+    xregexp "^4.3.0"
+
 eslint-scope@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-4.0.3.tgz#ca03833310f6889a3264781aa82e63eb9cfe7848"
@@ -6404,6 +6421,11 @@ flatten@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
   integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
+
+flow-bin@^0.120.1:
+  version "0.120.1"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.120.1.tgz#ab051d6df71829b70a26a2c90bb81f9d43797cae"
+  integrity sha512-KgE+d+rKzdXzhweYVJty1QIOOZTTbtnXZf+4SLnmArLvmdfeLreQOZpeLbtq5h79m7HhDzX/HkUkoyu/fmSC2A==
 
 flush-write-stream@^1.0.0:
   version "1.1.1"
@@ -11194,11 +11216,13 @@ react-scroll@^1.7.14:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
 
-react-sticky-el@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-1.1.1.tgz#bbbb37c353dd65522eac1ccf6795aa206a30bba1"
-  integrity sha512-2WSEiOxsybUJaJHacLSSspGQjFUryBGIbqCkcq9I8Up78YPDGLEHeUF+RnHIhfKJYILHVqODFrL0mnu9ehWhrg==
+react-sticky-el@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-2.0.5.tgz#db942dd3ed35a29429e92a947515a129c02d7e76"
+  integrity sha512-Tj+Cy6xdmiPR1li9Wu2KmZ2CxW7C/q1H3ls9HKqNnA1zPysB8DzBXDyEoAJDXh08TDyk4pf/4VftWKW4DrOEpA==
   dependencies:
+    eslint-plugin-react "^7.19.0"
+    flow-bin "^0.120.1"
     prop-types ">=15.7.2"
 
 react-through@^1.1.4:
