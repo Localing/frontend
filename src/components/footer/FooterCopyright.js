@@ -10,13 +10,6 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass }) => {
           <img alt="" src={process.env.PUBLIC_URL + footerLogo} width="150" />
         </Link>
       </div>
-      <p>
-        © 2020{" "}
-        <a href="https://localing.store/" rel="noopener noreferrer" target="_blank">
-          Localing
-        </a>
-        .<br /> All Rights Reserved
-      </p>
     </div>
   );
 };

@@ -32,12 +32,9 @@ const HeroSliderThree = ({ locationData }) => {
   return (
     <div className="slider-area">
       <div className="jumbotron jumbotron-fluid d-md-none">
-        <h3 className="text-center">
-          <i className="fa fa-map-marker" />{" " + locationData.location}
-        </h3>
         <br />
         <h2 className="text-center">
-          Support your favourite local businesses through the economic shutdown.
+        <i className="fa fa-map-marker" />Hey{" " + locationData.location}
         </h2>
         <p className="text-center">
           <a className="btn btn-outline-dark btn-lg" href="/shop-grid-standard" role="button">Shop Now</a>

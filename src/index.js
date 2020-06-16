@@ -13,6 +13,7 @@ import products from "./data/products.json";
 import businesses from "./data/businesses.json";
 import App from "./App";
 import "./assets/scss/style.scss";
+import "./assets/css/webflow.css";
 import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";

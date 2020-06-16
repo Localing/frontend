@@ -2013,7 +2013,7 @@
 /* product home 9*/
 
 .collection-wrap-2 {
-    margin-top: -100px;
+    margin-top: -175px;
     @media #{$md-layout}{
         margin-top: -97px;
     }
@@ -2042,9 +2042,10 @@
         left: 0;
         right: 0;
         bottom: 0px;
-        padding-bottom: 20px;
-        padding-top: 10px;
-        background: #4E7F91;
+        padding: 20px;
+        margin: 30px;
+        color: #FFF;
+        background: rgba(78, 127, 145, 0.8);
         text-align: center;
         span {
             font-size: 14px;
