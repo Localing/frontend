@@ -5,17 +5,18 @@ import { Link } from "react-router-dom";
 const BusinessGrid = ({ businesses }) => {
     
     const renderBusinesses = () => {
-        let businessesToDisplay = businesses;
+        const businessesToDisplay = [...businesses];
+        const numberPerRow = 2;
         let rows = [];
     
         while (businessesToDisplay.length) {
-          rows.push(businessesToDisplay.splice(0, 2));
+          rows.push(businessesToDisplay.splice(0, numberPerRow));
         }
     
         return rows.map(row => (
           <Row className="mt-4">{row.map(business => 
-            <Col md>
-              <div className="business-content-wrap">
+            <Col md className="mt-4">
+              <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                 <div className="business-content-card-wrap">
                   <div className="business-name-wrap"><Link to={`/business/${business.id}`} className="size3-link">{business.name}</Link></div>
                   <Link to={`/business/${business.id}`} className="button-text w-inline-block">

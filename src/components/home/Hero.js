@@ -7,7 +7,7 @@ const Hero = ({ location }) => {
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
                         <div className="size1-text">Keep the heart of {location} beating</div>
-                        <p class="paragraph-70">Pre-order from local businesses, and unlock exclusive promotions, discounts and rewards for being loyal to your community!</p>
+                        <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
                     </div>
                     <a href="#" className="hero2-latest w-inline-block">
                         <div className="hero2-image-collection"></div>
