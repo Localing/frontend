@@ -217,7 +217,7 @@
     top: auto;
     right: auto;
     bottom: 0%;
-    background-color: #3b3e45;
+    background-color: #4e7f91;
   }
   
   .button-large.hero3-button:hover {
@@ -319,7 +319,7 @@
     }
   }
 
-  .product2-content-wrap {
+  .business-content-wrap {
     z-index: 5;
     display: -webkit-box;
     display: -webkit-flex;
@@ -346,7 +346,7 @@
     color: #ebedee;
   }
   
-  .product2-content-card-wrap {
+  .business-content-card-wrap {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -451,7 +451,7 @@
       padding-top: 37px;
       padding-bottom: 47px;
     }
-    .product2-content-wrap {
+    .business-content-wrap {
       padding: 26px;
     }
   }
@@ -487,7 +487,7 @@
       font-size: 14px;
       line-height: 22px;
     }
-    .product2-content-wrap {
+    .business-content-wrap {
       padding: 16px;
     }
   }
