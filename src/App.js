@@ -45,13 +45,6 @@ const App = ({ isAuthenticated, dispatch }) => {
 
   useEffect(() => {
 
-    // set current location if available and in the UK
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position) => {
-        dispatch(setLocationByCoords(position.coords.latitude, position.coords.longitude));
-      });
-    }
-
     // listen for an auth event
     Hub.listen('auth', async (data) => {
       switch (data.payload.event) {
