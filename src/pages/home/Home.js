@@ -13,10 +13,10 @@ const Home = ({ location, businesses }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Localing | Support locals businesses</title>
+        <title>Localing | Support local businesses</title>
         <meta
           name="description"
-          content="Support local business"
+          content="Support local businesses"
         />
       </MetaTags>
       <LayoutOne
