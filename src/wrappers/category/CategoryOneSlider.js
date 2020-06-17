@@ -20,9 +20,9 @@ const CategoryOneSlider = ({ spaceBottomClass }) => {
         slidesPerView: 1
       }
     },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      hide: false
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
     },
   };
   return (

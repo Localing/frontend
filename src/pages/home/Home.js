@@ -1,58 +1,44 @@
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
-import LayoutTwo from "../../layouts/LayoutTwo";
-import HeroSliderThree from "../../wrappers/hero-slider/HeroSliderThree";
-import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
-import SectionTitleWithText from "../../components/section-title/SectionTitleWithText";
-import ProductGridThree from "../../wrappers/product/ProductGridThree";
+import LayoutOne from "../../layouts/LayoutOne";
+import BusinessGrid from "../../components/business/BusinessGrid";
+import Hero from "../../components/hero/Hero";
 import { connect } from "react-redux";
 
-const Home = ({ locationData }) => {
+const Home = ({ locationData, businessData }) => {
+
+  const location = locationData.location;
+  const businesses = businessData.businesses;
+
   return (
     <Fragment>
       <MetaTags>
-        <title>Localing | Support local businesses affected by COVID-19</title>
+        <title>Localing | Support locals businesses</title>
         <meta
           name="description"
-          content="Support local business affected by COVID-19"
+          content="Support local business"
         />
       </MetaTags>
-      <LayoutTwo>
-        {/* hero slider */}
-        <HeroSliderThree locationData={locationData} />
+      <LayoutOne
+        headerContainerClass="container-fluid"
+        headerPaddingClass="header-padding-2"
+      >
 
-        {/* category slider */}
-        <CategoryOneSlider spaceBottomClass="pb-95" />
+        {/* Hero */}
+        <Hero location={location} />
 
-        {/* section title with text */}
-        <div className="container">
-          <div className="welcome-content text-center">
-            <h1>Products from Businesses Near You</h1>
-          </div></div>
-        {/* products */}
-        <div
-          className={`product-area hm9-section-padding pb-60`}
-        >
-          <div className="container-fluid">
-            <div className="custom-row-4">
-              <ProductGridThree
-                limit={5}
-                spaceBottomClass="mb-35"
-              />
-            </div>
-          </div>
-          <br />
-          <br />
-          <SectionTitleWithText spaceBottomClass="pb-90" isHomePage={true} />
-        </div>
-      </LayoutTwo>
+        {/* Business List */}
+        <BusinessGrid businesses={businesses} />
+
+      </LayoutOne>
     </Fragment>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    locationData: state.locationData
+    locationData: state.locationData,
+    businessData: state.businessData
   };
 };
 
