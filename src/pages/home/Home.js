@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
+import { Link } from 'react-router-dom';
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
+import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
-const Home = ({ locationData, businessData }) => {
-
-  const location = locationData.location;
-  const businesses = businessData.businesses;
+const Home = ({ location, businesses }) => {
 
   return (
     <Fragment>
@@ -46,7 +45,8 @@ const Home = ({ locationData, businessData }) => {
             <div id="w-node-bd1afaf93b5a-a9e5511a" className="content7-content-wrap">
               <div>
                 <div className="size1-text">Meet Localing</div>
-                <div className="paragraph-70">This is the spot where will list off all the cool stuff about our company and how amazing we are. </div>
+                <div className="paragraph-70">We are dedicated to supporting local independent businesses.</div>
+                <Link to="/about"><button className="button-small">Learn more <img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" /></button></Link>
               </div>
             </div>
             <div id="w-node-bd1afaf93b60-a9e5511a" className="content7-image"></div>
@@ -60,10 +60,7 @@ const Home = ({ locationData, businessData }) => {
               <h3>Stay up to date with our exclusive promotions and deals!</h3>
             </Col>
             <Col md>
-              <form id="email-form" name="email-form">
-                <input type="email" className="text-field right-margin-field" maxLength="256" placeholder="Enter your email" required="" />
-                <input type="submit" value="Subscribe" data-wait="Please wait..." className="subscribe-button" />
-              </form>
+              <SubscribeEmail mailchimpUrl="https://localing.us10.list-manage.com/subscribe/post?u=712d1a91dc38e66b05613c5a8&amp;id=2498b9362f" />
             </Col>
           </Row>
           <hr />
@@ -76,8 +73,8 @@ const Home = ({ locationData, businessData }) => {
 
 const mapStateToProps = state => {
   return {
-    locationData: state.locationData,
-    businessData: state.businessData
+    location: state.locationData.location,
+    businesses: state.businessData.businesses
   };
 };
 
