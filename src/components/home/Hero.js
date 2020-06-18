@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Hero = ({ location, business }) => {
+const Hero = ({ location, businesses }) => {
+
+    const randomBusiness = () => {
+        return businesses[Math.floor(Math.random()*businesses.length)]
+    }
+    
+    const [business, setBusiness] = useState(randomBusiness());
+
+    // Rotate businesses in hero
+    //
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setBusiness(randomBusiness());
+    //     }, 5000);
+    //     return () => clearInterval(interval);
+    // }, []);
+    
     return (
         <div className="hero-with-background-wrap hero2-wrap animate__animated animate__fadeIn">
             <div className="w-layout-grid hero2-grid">
@@ -13,6 +29,7 @@ const Hero = ({ location, business }) => {
                     <div className="hero2-latest w-inline-block">
                         <div className="hero2-image-collection" style={{ backgroundImage: `url('${business.imageURL}')`}}></div>
                         <div>
+                            <p className="featured-text">Featured</p>
                             <div className="size5-text">{business.name}</div>
                             <div className="paragraph-70">{business.description}</div>
                         </div>
