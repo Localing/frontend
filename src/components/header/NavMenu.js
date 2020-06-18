@@ -21,7 +21,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
           <li>
             <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
               {" "}
-              SHOPS &amp; PRODUCTS
+              SHOP
             </Link>
           </li>
           <li>
@@ -37,16 +37,6 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-                  MY WISHLIST
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/compare"}>
-                  COMPARE ITEMS
-                </Link>
-              </li>
-              <li>
                 <Link to={process.env.PUBLIC_URL + "/my-account"}>
                   MY ACCOUNT
                 </Link>
@@ -54,6 +44,11 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
               <li>
                 <Link to={process.env.PUBLIC_URL + "/my-orders"}>
                   MY ORDERS
+                </Link>
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/hero-points"}>
+                  MY HERO POINTS
                 </Link>
               </li>
             </ul>

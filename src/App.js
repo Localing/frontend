@@ -17,12 +17,8 @@ Amplify.configure(awsconfig);
 // home pages
 const Home = lazy(() => import("./pages/home/Home"));
 
-// business pages
-const Business = lazy(() => import("./pages/shop-product/Business"));
-
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
-const ShopListStandard = lazy(() => import("./pages/shop/ShopListStandard"));
 
 // product page
 const Product = lazy(() => import("./pages/shop-product/Product"));
@@ -92,15 +88,6 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/business/:id"}
                   component={ShopGridStandard}
-                />
-                {/* Shop pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-grid-standard"}
-                  component={ShopGridStandard}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/shop-list-standard"}
-                  component={ShopListStandard}
                 />
 
                 {/* Product pages */}
