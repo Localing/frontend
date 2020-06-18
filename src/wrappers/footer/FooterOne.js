@@ -168,8 +168,8 @@ const FooterOne = ({
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
               }`}
           >
-            {/* footer newsletter */}
-            <FooterNewsletter spaceBottomClass="mb-30" spaceLeftClass="ml-70" sideMenu={sideMenu} />
+            {/* footer newsletter 
+            <FooterNewsletter spaceBottomClass="mb-30" spaceLeftClass="ml-70" sideMenu={sideMenu} /> */}
           </div>
         </div>
       </div>

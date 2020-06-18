@@ -27,8 +27,8 @@ const CustomForm = ({ status, message, onValidated }) => {
             placeholder="Enter your email address..."
           />
         </div>
-        <div className="clear">
-          <button className="button" onClick={submit}>
+        <div className="clear mt-2">
+          <button className="button-small" onClick={submit}>
             SUBSCRIBE
           </button>
         </div>

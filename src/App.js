@@ -45,13 +45,6 @@ const App = ({ isAuthenticated, dispatch }) => {
 
   useEffect(() => {
 
-    // set current location if available and in the UK
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition((position) => {
-        dispatch(setLocationByCoords(position.coords.latitude, position.coords.longitude));
-      });
-    }
-
     // listen for an auth event
     Hub.listen('auth', async (data) => {
       switch (data.payload.event) {
@@ -98,7 +91,7 @@ const App = ({ isAuthenticated, dispatch }) => {
                 {/* Business pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/business/:id"}
-                  component={Business}
+                  component={ShopGridStandard}
                 />
                 {/* Shop pages */}
                 <Route
