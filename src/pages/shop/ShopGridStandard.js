@@ -55,18 +55,19 @@ const ShopGridStandard = ({ products, business }) => {
                 <meta name="description" content="Localing products." />
             </MetaTags>
 
-            <LayoutOne headerTop="invisible">
+            <LayoutOne>
 
                 <Jumbotron fluid className="shop-jumbotron" style={{ backgroundImage: `url('${business.imageURL}')` }}>
-                    <Container className="shop-jumbotron-title">
-                        <h1>{business.name}</h1>
-                        <h3>{business.description}</h3>
-                        <div className="mt-3">
-                            <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;{business.location}</button>
+                    <Container>
+                        <div className="shop-jumbotron-title">
+                            <h1>{business.name}</h1>
+                            <h3>{business.description}</h3>
+                            <div className="mt-3">
+                                <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;{business.location}</button>
         &nbsp;<button className="btn btn-primary btn-sm" href={business.website}><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
         &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call {business.phone}</button>
+                            </div>
                         </div>
-
                     </Container>
                 </Jumbotron>
 
