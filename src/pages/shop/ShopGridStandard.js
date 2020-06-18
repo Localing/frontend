@@ -3,7 +3,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
@@ -11,8 +10,7 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron } from 'react-bootstrap';
 
-const ShopGridStandard = ({ location, products, business }) => {
-    let data = useLocation();
+const ShopGridStandard = ({ products, business }) => {
 
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
@@ -75,8 +73,8 @@ const ShopGridStandard = ({ location, products, business }) => {
                 <div className="shop-area pt-95 pb-100">
                     <div className="container">
                         <div className="row">
-                            {/*  <div className="col-lg-3 order-2 order-lg-1">
-                                shop sidebar 
+                            {/* shop sidebar  
+                            <div className="col-lg-3 order-2 order-lg-1">     
                                 <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/> 
                             </div> */}
                             <div className="col-lg-12 order-1 order-lg-2">
@@ -117,10 +115,10 @@ ShopGridStandard.propTypes = {
 const mapStateToProps = (state, ownProps) => {
     return {
         products: state.productData.products.filter(
-            product => product.businessID == ownProps.match.params.id
+            product => product.businessID === ownProps.match.params.id
         ),
         business: state.businessData.businesses.filter(
-            business => business.id == ownProps.match.params.id
+            business => business.id === ownProps.match.params.id
         )[0]
     }
 }

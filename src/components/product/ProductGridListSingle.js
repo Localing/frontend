@@ -32,7 +32,7 @@ const ProductGridListSingle = ({
       <div
         className={`col-xl-4 col-sm-6 ${
           sliderClassName ? sliderClassName : ""
-        }`}
+          }`}
       >
         <div
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
@@ -51,23 +51,24 @@ const ProductGridListSingle = ({
                   alt=""
                 />
               ) : (
-                ""
-              )}
+                  ""
+                )}
             </Link>
             {product.discount || product.new ? (
               <div className="product-img-badges">
                 {product.discount ? (
                   <span className="pink">-{product.discount}%</span>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
                 {product.new ? <span className="purple">New</span> : ""}
               </div>
             ) : (
-              ""
-            )}
+                ""
+              )}
 
             <div className="product-action">
+
               <div className="pro-same-action pro-wishlist">
                 <button
                   className={wishlistItem !== undefined ? "active" : ""}
@@ -82,6 +83,7 @@ const ProductGridListSingle = ({
                   <i className="pe-7s-like" />
                 </button>
               </div>
+
               <div className="pro-same-action pro-cart">
                 {product.affiliateLink ? (
                   <a
@@ -116,10 +118,10 @@ const ProductGridListSingle = ({
                       : "Add to cart"}
                   </button>
                 ) : (
-                  <button disabled className="active">
-                    Out of Stock
-                  </button>
-                )}
+                        <button disabled className="active">
+                          Out of Stock
+                        </button>
+                      )}
               </div>
               <div className="pro-same-action pro-quickview">
                 <button onClick={() => setModalShow(true)} title="Quick View">
@@ -139,8 +141,8 @@ const ProductGridListSingle = ({
                 <Rating ratingValue={product.rating} />
               </div>
             ) : (
-              ""
-            )}
+                ""
+              )}
             <div className="product-price">
               {discountedPrice !== null ? (
                 <Fragment>
@@ -150,8 +152,8 @@ const ProductGridListSingle = ({
                   </span>
                 </Fragment>
               ) : (
-                <span>{currency.currencySymbol + finalProductPrice} </span>
-              )}
+                  <span>{currency.currencySymbol + finalProductPrice} </span>
+                )}
             </div>
           </div>
         </div>
@@ -173,21 +175,21 @@ const ProductGridListSingle = ({
                         alt=""
                       />
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </Link>
                   {product.discount || product.new ? (
                     <div className="product-img-badges">
                       {product.discount ? (
                         <span className="pink">-{product.discount}%</span>
                       ) : (
-                        ""
-                      )}
+                          ""
+                        )}
                       {product.new ? <span className="purple">New</span> : ""}
                     </div>
                   ) : (
-                    ""
-                  )}
+                      ""
+                    )}
                 </div>
               </div>
             </div>
@@ -209,8 +211,8 @@ const ProductGridListSingle = ({
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{currency.currencySymbol + finalProductPrice} </span>
-                  )}
+                      <span>{currency.currencySymbol + finalProductPrice} </span>
+                    )}
                 </div>
                 {product.rating && product.rating > 0 ? (
                   <div className="rating-review">
@@ -219,13 +221,13 @@ const ProductGridListSingle = ({
                     </div>
                   </div>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
                 {product.shortDescription ? (
                   <p>{product.shortDescription}</p>
                 ) : (
-                  ""
-                )}
+                    ""
+                  )}
 
                 <div className="shop-list-actions d-flex align-items-center">
                   <div className="shop-list-btn btn-hover">
@@ -268,10 +270,10 @@ const ProductGridListSingle = ({
                           : "Add to cart"}
                       </button>
                     ) : (
-                      <button disabled className="active">
-                        Out of Stock
-                      </button>
-                    )}
+                            <button disabled className="active">
+                              Out of Stock
+                            </button>
+                          )}
                   </div>
 
                   <div className="shop-list-wishlist ml-10">
