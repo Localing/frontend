@@ -34,13 +34,13 @@ const Hero = ({ location, businesses }) => {
                             <div className="paragraph-70">{business.description}</div>
                         </div>
                     </div>
-                    <div className="button-large hero3-button w-inline-block">
-                        <div>Discover shops in {location}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
+                    <div className="button-large hero3-button w-inline-block" onClick={() => setBusiness(randomBusiness())}>
+                        <div>Discover more shops in {location}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
                     </div>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
-                        <p className="hero2-product-name">Order from {business.name} today</p>
+                        <Link to={`/business/${business.id}`}><p className="hero2-product-name">Order from {business.name} today</p></Link>
                     </div>
                     <p className="hero2-product-price"></p>
                 </div>
