@@ -91,7 +91,7 @@ const App = ({ isAuthenticated, dispatch }) => {
                 {/* Business pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/business/:id"}
-                  component={Business}
+                  component={ShopGridStandard}
                 />
                 {/* Shop pages */}
                 <Route
