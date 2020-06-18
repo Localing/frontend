@@ -25,7 +25,7 @@ const Home = ({ location, businesses }) => {
       >
 
         {/* Hero */}
-        <Hero location={location} business={businesses[Math.floor(Math.random()*businesses.length)]} />
+        <Hero location={location} businesses={businesses} />
 
         {/* Business List */}
         <Container className="mt-5">
