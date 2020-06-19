@@ -6,7 +6,6 @@ import { ToastProvider } from "react-toast-notifications";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
-import { setLocationByCoords } from './redux/actions/locationActions';
 import ProtectedRoute from './wrappers/ProtectedRoute';
 
 // AWS amplify
@@ -19,6 +18,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 
 // shop pages
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
+const ShopListStandard = lazy(() => import("./pages/shop/ShopListStandard"));
 
 // product page
 const Product = lazy(() => import("./pages/shop-product/Product"));
@@ -96,6 +96,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                   render={routeProps => (
                     <Product {...routeProps} key={routeProps.match.params.id} />
                   )}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/products"}
+                  component={ShopListStandard}
                 />
 
                 {/* Other pages */}

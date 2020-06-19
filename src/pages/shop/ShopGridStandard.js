@@ -8,7 +8,7 @@ import LayoutOne from '../../layouts/LayoutOne';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
-import { Container, Jumbotron } from 'react-bootstrap';
+import { Container, Jumbotron, Button } from 'react-bootstrap';
 
 const ShopGridStandard = ({ products, business }) => {
 
@@ -63,9 +63,17 @@ const ShopGridStandard = ({ products, business }) => {
                             <h1>{business.name}</h1>
                             <h3>{business.description}</h3>
                             <div className="mt-3">
-                                <button className="btn btn-secondary btn-sm"><i className="fa fa-map-marker"></i>&nbsp;{business.location}</button>
-        &nbsp;<button className="btn btn-primary btn-sm" href={business.website}><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
-        &nbsp;<button className="btn btn-primary btn-sm"><i className="fa fa-phone"></i>&nbsp;Call {business.phone}</button>
+                                {(business.location) &&
+                                    <Button variant="outline-dark" size="sm" className="mr-1"><i className="fa fa-map-marker"></i>&nbsp;{business.location}</Button>
+                                }
+
+                                {(business.website) &&
+                                    <Button variant="outline-dark" size="sm" className="mr-1" href={business.website}><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</Button>
+                                }
+
+                                {(business.phone) &&
+                                    <Button variant="outline-dark" size="sm"><i className="fa fa-phone"></i>&nbsp;Call {business.phone}</Button>
+                                }
                             </div>
                         </div>
                     </Container>

@@ -10,10 +10,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
@@ -32,10 +32,11 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee",
+      "cake"
     ],
     "stock": 40,
     "image": [
@@ -54,10 +55,11 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "breakfast",
+      "coffee"
     ],
     "stock": 40,
     "image": [
@@ -76,10 +78,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
@@ -98,10 +100,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "food"
     ],
     "stock": 40,
     "image": [
@@ -120,10 +122,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
@@ -142,10 +144,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "party"
     ],
     "stock": 40,
     "image": [
@@ -164,10 +166,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "package"
     ],
     "stock": 40,
     "image": [
@@ -187,10 +189,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "haircut"
     ],
     "stock": 40,
     "image": [
@@ -210,10 +212,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "extensions"
     ],
     "stock": 40,
     "image": [
@@ -233,10 +235,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "haircut"
     ],
     "stock": 40,
     "image": [
@@ -256,10 +258,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "colouring"
     ],
     "stock": 40,
     "image": [
@@ -279,10 +281,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "braiding"
     ],
     "stock": 40,
     "image": [
@@ -302,10 +304,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "hairstyle"
     ],
     "stock": 40,
     "image": [
@@ -325,10 +327,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Buns in the Oven"
+      "Bakery"
     ],
     "tag": [
-      "bakery"
+      "cake"
     ],
     "stock": 40,
     "image": [
@@ -347,10 +349,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Knead the Knots"
+      "Masseuse"
     ],
     "tag": [
-      "masseuse"
+      "massage"
     ],
     "stock": 40,
     "image": [
@@ -369,10 +371,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Tasty Bistro"
+      "Restaurant"
     ],
     "tag": [
-      "restaurant"
+      "sandwich"
     ],
     "stock": 40,
     "image": [
@@ -391,10 +393,10 @@
     "new": false,
     "saleCount": 100,
     "category": [
-      "Swish Swash"
+      "Cleaning"
     ],
     "tag": [
-      "cleaning"
+      "window wash"
     ],
     "stock": 40,
     "image": [

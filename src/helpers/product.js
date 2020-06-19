@@ -101,6 +101,13 @@ export const getSortedProducts = (products, sortType, sortValue) => {
           return a.price - b.price;
         });
       }
+      if (sortValue === "AtoZ"){
+        return sortProducts.sort((a, b) => {
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
+          if (a.name === b.name) return 0;
+        })
+      }
     }
   }
   return products;

@@ -16,12 +16,13 @@ const ShopTopAction = ({
             onChange={e => getFilterSortParams("filterSort", e.target.value)}
           >
             <option value="default">Default</option>
+            <option value="AtoZ">A to Z</option>
             <option value="priceHighToLow">Price - High to Low</option>
             <option value="priceLowToHigh">Price - Low to High</option>
           </select>
         </div>
         <p>
-          Showing {sortedProductCount} results
+          Showing {sortedProductCount} products
         </p>
       </div>
 

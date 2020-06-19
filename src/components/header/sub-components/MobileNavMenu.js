@@ -25,7 +25,7 @@ const MobileNavMenu = ({ isAuthenticated }) => {
           }
           <hr />
         <li className="menu-item-has-children">
-          <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+          <Link to={process.env.PUBLIC_URL + "/products"}>
             PRODUCTS
           </Link>
         </li>
