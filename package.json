@@ -5,7 +5,7 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.8",
     "animate.css": "^4.1.0",
-    "aws-amplify": "^3.0.17",
+    "aws-amplify": "^3.0.18",
     "axios": "^0.19.0",
     "bootstrap": "4.5.0",
     "google-maps-react": "^2.0.2",
