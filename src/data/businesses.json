@@ -8,7 +8,7 @@
         "description": "Your friendly neighborhood coffee shop.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/thefamilybean.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/thefamilybean.jpg"
     },
     {
         "id": "2",
@@ -19,7 +19,7 @@
         "description": "Don't want to look scruffy on those video calls.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/chopyourmop.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/chopyourmop.jpg"
     },
     {
         "id": "3",
@@ -30,7 +30,7 @@
         "description": "Family-owned and operated since 1985.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/bunsintheoven.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/bunsintheoven.jpg"
     },
     {
         "id": "4",
@@ -41,7 +41,7 @@
         "description": "Feeling tight? Knot a problem.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/kneadtheknots.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/kneadtheknots.jpg"
     },
     {
         "id": "5",
@@ -52,7 +52,7 @@
         "description": "Experience a taste of Paris at the classic french bistro.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/tastybistro.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/tastybistro.jpg"
     },
     {
         "id": "6",
@@ -63,6 +63,6 @@
         "description": "See the world outside - wash your windows.",
         "mitigationText": "All employees will be wearing masks. Masks and sanitizer will be available for customers.",
         "openingStatus": "TBC",
-        "imageURL": "/assets/img/businesses/swishswash.jpg"
+        "imageURL": "https://tempimage.dev.localing.co.uk/swishswash.jpg"
     }
 ]
