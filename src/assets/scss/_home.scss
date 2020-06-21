@@ -103,6 +103,19 @@
     margin-bottom: 0px;
   }
   
+  .postcode-form {
+    display: flex;
+    width: 80%;
+  }
+
+  .postcode-submit {
+    display: flex;
+    width: 20%
+  }
+
+  .postcode-error {
+    display: block;
+  }
   
   .hero2-product-name {
     margin-bottom: 0px;

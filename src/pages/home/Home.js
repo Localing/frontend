@@ -5,11 +5,11 @@ import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
-import { setLocation } from "../../redux/actions/locationActions";
+import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
-const Home = ({ setLocation, locationData, businesses }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businesses }) => {
 
   return (
     <Fragment>
@@ -29,6 +29,7 @@ const Home = ({ setLocation, locationData, businesses }) => {
         <Hero 
           locationData={locationData} 
           setLocation={setLocation}
+          clearLocationError={clearLocationError}
           businesses={businesses} />
 
         {/* Business List */}
@@ -86,6 +87,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setLocation: postcode => {
       dispatch(setLocation(postcode));
+    },
+    clearLocationError: () => {
+      dispatch(clearLocationError());
     }
   }
 }

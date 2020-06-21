@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Hero = ({ locationData, setLocation, businesses }) => {
+const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
     const randomBusiness = () => {
         return businesses[Math.floor(Math.random() * businesses.length)]
@@ -33,10 +34,16 @@ const Hero = ({ locationData, setLocation, businesses }) => {
                     <div className="hero2-title">
                         <div className="size1-text">Keep the heart of {locationData.location || "your community"} beating</div>
                         <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
-                        <p class="paragraph-70">Enter your postcode to get started.</p>
-                        <form onSubmit={handlePostcodeSubmit}>
-                            <input type="text" name="postcode" placeholder="UK Postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
-                            <input type="submit" />
+                        <form onSubmit={handlePostcodeSubmit} className="mt-4">
+                            {locationData.locationError &&
+                                <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
+                                    <p>The postcode you entered wasn't valid.</p>
+                                </Alert>
+                            }
+                            <div className="postcode-form">
+                            <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
+                            <input type="submit" value="update" className="button-small postcode-submit" />
+                            </div>
                         </form>
                     </div>
                     <div className="hero2-latest w-inline-block">
