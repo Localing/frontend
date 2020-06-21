@@ -5,10 +5,11 @@ import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
+import { setLocation } from "../../redux/actions/locationActions";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
-const Home = ({ location, businesses }) => {
+const Home = ({ setLocation, locationData, businesses }) => {
 
   return (
     <Fragment>
@@ -25,7 +26,10 @@ const Home = ({ location, businesses }) => {
       >
 
         {/* Hero */}
-        <Hero location={location} businesses={businesses} />
+        <Hero 
+          locationData={locationData} 
+          setLocation={setLocation}
+          businesses={businesses} />
 
         {/* Business List */}
         <Container className="mt-5">
@@ -73,9 +77,17 @@ const Home = ({ location, businesses }) => {
 
 const mapStateToProps = state => {
   return {
-    location: state.locationData.location,
+    locationData: state.locationData,
     businesses: state.businessData.businesses
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    setLocation: postcode => {
+      dispatch(setLocation(postcode));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
