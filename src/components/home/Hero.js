@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Badge } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
@@ -41,8 +41,11 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                 </Alert>
                             }
                             <div className="postcode-form">
-                            <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
-                            <input type="submit" value="update" className="button-small postcode-submit" />
+                                <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
+                                {locationData.loading ?
+                                    <Spinner animation="border" role="status" size="lg">
+                                    </Spinner>
+                                : <input type="submit" value="SET MY LOCATION" className="button-small postcode-submit" /> }
                             </div>
                         </form>
                     </div>
