@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Alert } from 'react-bootstrap';
+import { Alert, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {

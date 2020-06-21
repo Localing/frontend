@@ -33,7 +33,7 @@ const Wishlist = ({
         />
       </MetaTags>
       
-      <LayoutOne headerTop="visible">
+      <LayoutOne>
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {wishlistItems && wishlistItems.length >= 1 ? (

@@ -90,7 +90,9 @@ const BusinessGrid = ({ businesses, locationData }) => {
             </Col>
           )
         })
-        : <Col>Sorry, no businesses matched your search criteria.</Col>}
+        : <Col>
+            <div className="no-results">Sorry, we couldn't find any businesses matching your search criteria. Please try widening your search!</div>
+          </Col>}
       </Row>
     </Container>
   )

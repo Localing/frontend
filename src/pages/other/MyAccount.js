@@ -95,7 +95,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
             content="Localing account page"
           />
         </MetaTags>
-        <LayoutOne headerTop="visible">
+        <LayoutOne>
           <div className="myaccount-area pb-80 pt-100">
             <div className="container">
               <div className="row">

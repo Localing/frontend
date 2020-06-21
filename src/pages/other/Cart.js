@@ -44,7 +44,7 @@ const Cart = ({
         Cart
       </BreadcrumbsItem>
 
-      <LayoutOne headerTop="visible">
+      <LayoutOne>
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (

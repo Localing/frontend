@@ -11,7 +11,7 @@ export const setLocation = postcode => {
       .get(`https://api.postcodes.io/postcodes/${postcode}`)
       .then(response => {
         let responseData = response.data.result;
-        const location = responseData.parliamentary_constituency;
+        const location = responseData.admin_ward;
         const latitude = responseData.latitude;
         const longitude = responseData.longitude;
         dispatch({
@@ -43,7 +43,7 @@ export const setLocationByCoords = (lat, lon) => {
             responseData = responseData.shift();
           }
 
-          const location = responseData.parliamentary_constituency;
+          const location = responseData.admin_ward;
           const postcode = responseData.postcode;
 
           dispatch({
