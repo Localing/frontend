@@ -6,29 +6,32 @@ import { Link } from "react-router-dom";
 const BusinessGrid = ({ businesses, locationData }) => {
 
   const [businessesToDisplay, setBusinessesToDisplay] = useState([...businesses]);
+  const [filterRadius, setFilterRadius] = useState(0);
+  const [filterCategory, setFilterCategory] = useState("all");
 
   useEffect(() => {
-    // calculate distance from me to each business
-    distanceToBusinesses();
+    sortBusinesses();
+  }, [locationData, filterRadius, filterCategory])
 
-    // sort businesses by distance from me
-    sortByDistance();
+  const sortBusinesses = () => {
+    let sortedBusinesses = [...businesses];
 
-  }, [locationData])
-
-  const distanceToBusinesses = () => {
-    let businessesWithDistance = [...businessesToDisplay];
-    businessesWithDistance.forEach((business) => {
+    sortedBusinesses.forEach((business) => {
       business.distance = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
     });
-    setBusinessesToDisplay(businessesWithDistance);
-  }
 
-  const sortByDistance = () => {
-    let sortedBusinesses = [...businessesToDisplay];
+    if (filterRadius > 0) {
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
+    }
+
+    if (filterCategory !== "all") {
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.category === filterCategory));
+    }
+
     sortedBusinesses.sort((a, b) => {
       return a.distance - b.distance;
     })
+    
     setBusinessesToDisplay(sortedBusinesses);
   }
 
@@ -36,31 +39,26 @@ const BusinessGrid = ({ businesses, locationData }) => {
     return Math.round(distance / 1000) + "km";
   }
 
-  const filterByRadius = (radius) => {
-    let filteredBusinesses = [...businesses];
-    if (radius > 0) {
-      filteredBusinesses = businesses.filter((business) => (business.distance < radius));
-    }
-    console.log(filteredBusinesses);
-    setBusinessesToDisplay(filteredBusinesses);
-  }
-
   const handleRadiusChange = (e) => {
     e.preventDefault();
-    filterByRadius(e.target.value);
+    setFilterRadius(e.target.value);
+  }
+
+  const handleCategoryChange = (e) => {
+    e.preventDefault();
+    setFilterCategory(e.target.value);
   }
 
   return (
     <Container>
       <form className="form-inline">
         <label>Show me</label>
-        <select className="category-select">
-          <option value="0" selected>all businesses</option>
-          <option value="5000">cafes</option>
-          <option value="10000">bakeries</option>
-          <option value="20000">salons</option>
-          <option value="50000">spas</option>
-          <option value="100000">others</option>
+        <select className="category-select" onChange={handleCategoryChange}>
+          <option value="all" selected>all businesses</option>
+          <option value="cafe">cafes</option>
+          <option value="bakery">bakeries</option>
+          <option value="salon">salons</option>
+          <option value="spa">spas</option>
         </select>
         <label>within</label>
         <select className="distance-select" onChange={handleRadiusChange}>
