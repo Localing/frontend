@@ -536,6 +536,12 @@
     font-weight: 600;
   }
 
+  .button-location {
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
   .button-arrow {
     display: inline-block;
     margin-left: 20px;
@@ -544,7 +550,30 @@
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
   }
+
+  .distance-select {
+    display: flex;
+    background-color: transparent;
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    space: 0px;
+    width: auto;
+    color: #922C50;
+    font-weight: 600;
+  }
   
+  .category-select {
+    display: flex;
+    background-color: transparent;
+    border-spacing: 0px;
+    margin: 0px;
+    padding: 0px;
+    space: 0px;
+    width: auto;
+    color: #922C50;
+    font-weight: 600;
+  }
   
   @media screen and (max-width: 767px) {
     .hero-with-background-wrap.hero2-wrap {
