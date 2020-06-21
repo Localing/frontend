@@ -5,10 +5,11 @@ import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
+import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
-const Home = ({ location, businesses }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businesses }) => {
 
   return (
     <Fragment>
@@ -25,7 +26,11 @@ const Home = ({ location, businesses }) => {
       >
 
         {/* Hero */}
-        <Hero location={location} businesses={businesses} />
+        <Hero 
+          locationData={locationData} 
+          setLocation={setLocation}
+          clearLocationError={clearLocationError}
+          businesses={businesses} />
 
         {/* Business List */}
         <Container className="mt-5">
@@ -33,7 +38,7 @@ const Home = ({ location, businesses }) => {
           <h3>Let us help you re-discover your favourite local shops.</h3>
         </Container>
 
-        <BusinessGrid businesses={businesses} />
+        <BusinessGrid businesses={businesses} locationData={locationData} />
 
         {/* Info Panel */}
         <Container className="mt-5">
@@ -73,9 +78,20 @@ const Home = ({ location, businesses }) => {
 
 const mapStateToProps = state => {
   return {
-    location: state.locationData.location,
+    locationData: state.locationData,
     businesses: state.businessData.businesses
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    setLocation: postcode => {
+      dispatch(setLocation(postcode));
+    },
+    clearLocationError: () => {
+      dispatch(clearLocationError());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
