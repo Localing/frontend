@@ -22,9 +22,26 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
     // handling changes to postcodes
     const [postcode, setPostcode] = useState("");
 
+    const [showPostcodeForm, setShowPostcodeForm] = useState(true);
+
+    useEffect(() => {
+        // show the postcode form if there's no location set
+        setShowPostcodeForm(!locationData.location)
+    }, [locationData.location])
+
     const handlePostcodeSubmit = (event) => {
         event.preventDefault();
-        setLocation(postcode);
+
+        // strip any whitespace out of postcode
+        const newPostcode = postcode.replace(/\s+/g, '');
+
+        if(newPostcode === locationData.postcode){
+            // if user enters the same postcode that's already set, clear any errors and hide the form
+            clearLocationError();
+            setShowPostcodeForm(false);
+        }else{
+            setLocation(newPostcode);
+        }
     }
 
     return (
@@ -34,20 +51,34 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-title">
                         <div className="size1-text">Keep the heart of {locationData.location || "your community"} beating</div>
                         <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
-                        <form onSubmit={handlePostcodeSubmit} className="mt-4">
-                            {locationData.locationError &&
-                                <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
-                                    <p>The postcode you entered wasn't valid.</p>
-                                </Alert>
-                            }
-                            <div className="postcode-form">
-                                <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
-                                {locationData.loading ?
-                                    <Spinner animation="border" role="status" size="lg">
-                                    </Spinner>
-                                : <input type="submit" value="SET MY LOCATION" className="button-small postcode-submit" /> }
+                        {showPostcodeForm ?
+                            <form onSubmit={handlePostcodeSubmit} className="mt-4">
+                                {locationData.locationError &&
+                                    <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
+                                        <p>There was something wrong with the postcode you entered, please try again!</p>
+                                    </Alert>
+                                }
+                                <div className="postcode-form">
+                                    <input type="text" className="postcode-input mr-1" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} required />
+                                    {locationData.loading ?
+                                        <Spinner animation="border" role="status" size="lg">
+                                        </Spinner>
+                                        : <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />}
+                                </div>
+                            </form>
+                            :
+                            <div className="location-display mt-4">
+                                <div className="location-name mr-1">
+                                    <i className="fa fa-map-marker mr-1 ml-1" />{locationData.location}
+                                </div>
+                                <div className="postcode-form mr-1">
+                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change</button>
+                                </div>
+                                <div>
+                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Shop Now</button>
+                                </div>
                             </div>
-                        </form>
+                        }
                     </div>
                     <div className="hero2-latest w-inline-block">
                         <div className="hero2-image-collection" style={{ backgroundImage: `url('${business.imageURL}')` }}></div>

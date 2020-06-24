@@ -105,7 +105,10 @@
   
   .postcode-form {
     display: flex;
-    width: 80%;
+  }
+
+  .postcode-input {
+    width: 50%;
   }
 
   .postcode-submit {
@@ -115,6 +118,33 @@
 
   .postcode-error {
     display: block;
+  }
+
+  .location-display {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .location-name {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 6px 10px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #eceff8;
+    color: #18181D;
+    font-size: 18px;
+    line-height: 15px;
+    font-weight: 300;
+    height: 45px;
   }
   
   .hero2-product-name {
@@ -275,15 +305,12 @@
     text-decoration: none;
     text-transform: uppercase;
     border: 0;
+    height: 45px;
     transition: all 0.3s;
   }
 
   .button-small:hover {
-    opacity: 80%;
-  }
-
-  .button-small:hover {
-    background-color: #272731;
+    background-color: #4a4b46;
   }
   
   .hero2-title {
