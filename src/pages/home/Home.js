@@ -38,7 +38,11 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses }) => 
           <h3>Let us help you re-discover your favourite local shops.</h3>
         </Container>
 
-        <BusinessGrid businesses={businesses} locationData={locationData} />
+        <BusinessGrid 
+          businesses={businesses} 
+          locationData={locationData}
+          setLocation={setLocation}
+          clearLocationError={clearLocationError} />
 
         {/* Info Panel */}
         <Container className="mt-5">

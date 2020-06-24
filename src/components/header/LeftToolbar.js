@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Popover, Button, OverlayTrigger, Form, Alert, Spinner } from "react-bootstrap";
+import { Button, OverlayTrigger } from "react-bootstrap";
 import LevelModal from "../levels/LevelModal";
 
 const LeftToolbar = ({
@@ -35,37 +35,6 @@ const LeftToolbar = ({
     setLocation(postcode);
   }
 
-  const postcodePopover = (
-    <Popover id="popover-basic">
-      <Popover.Title as="h3">Change Location</Popover.Title>
-      <Popover.Content>
-        <Form onSubmit={handlePostcodeSubmit}>
-          <Form.Group controlId="postcodeForm">
-            {locationData.locationError &&
-              <Alert variant="danger" onClose={() => clearLocationError()} dismissible>
-                <p>The postcode you entered wasn't valid.</p>
-              </Alert>
-            }
-
-            <Form.Control
-              type="text"
-              placeholder="UK Postcode"
-              name="postcode"
-              value={postcode}
-              onChange={e => setPostcode(e.target.value)} />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-          {locationData.loading &&
-              <Spinner animation="border" role="status" size="sm">
-              </Spinner>
-              }
-            Change
-            </Button>
-        </Form>
-      </Popover.Content>
-    </Popover>
-  );
-
   return (
     <div className="language-currency-wrap">
 
@@ -74,7 +43,7 @@ const LeftToolbar = ({
       <LevelModal show={show} handleClose={handleClose} />
 
 
-      <div className="same-language-currency language-style">
+      {/* <div className="same-language-currency language-style">
         <span>
           <OverlayTrigger
             trigger="click"
@@ -87,7 +56,7 @@ const LeftToolbar = ({
             </Button>
           </OverlayTrigger>
         </span>
-      </div>
+      </div> */}
 
       {/* Disabled currency changer 
 
