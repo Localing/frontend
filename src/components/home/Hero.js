@@ -89,7 +89,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         </div>
                     </div>
                     <div className="button-large hero3-button w-inline-block" onClick={() => setBusiness(randomBusiness())}>
-                        <div>Discover more shops in {locationData.location || "your community"}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
+                        <div>Discover more shops near {locationData.location || "your community"}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
                     </div>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container } from "react-bootstrap";
-import { getDistance } from 'geolib';
+import { getDistance, convertDistance } from 'geolib';
 import { Link } from "react-router-dom";
 
 const BusinessGrid = ({ businesses, locationData }) => {
@@ -17,7 +17,8 @@ const BusinessGrid = ({ businesses, locationData }) => {
     let sortedBusinesses = [...businesses];
 
     sortedBusinesses.forEach((business) => {
-      business.distance = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
+      const distanceInMeters = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
+      business.distance = convertDistance(distanceInMeters, 'mi');
     });
 
     if (filterRadius > 0) {
@@ -35,10 +36,6 @@ const BusinessGrid = ({ businesses, locationData }) => {
     setBusinessesToDisplay(sortedBusinesses);
   }
 
-  const displayDistance = (distance) => {
-    return Math.round(distance / 1000) + "km";
-  }
-
   const handleRadiusChange = (e) => {
     e.preventDefault();
     setFilterRadius(e.target.value);
@@ -51,7 +48,7 @@ const BusinessGrid = ({ businesses, locationData }) => {
 
   return (
     <Container>
-      <form className="form-inline">
+      <form className="form-inline business-filter-form">
         <label>Show me</label>
         <select className="category-select" onChange={handleCategoryChange}>
           <option value="all" selected>all businesses</option>
@@ -63,11 +60,11 @@ const BusinessGrid = ({ businesses, locationData }) => {
         <label>within</label>
         <select className="distance-select" onChange={handleRadiusChange}>
           <option value="0" selected>any distance</option>
-          <option value="5000">5 km</option>
-          <option value="10000">10 km</option>
-          <option value="20000">25 km</option>
-          <option value="50000">50 km</option>
-          <option value="100000">100 km</option>
+          <option value="0.5">half a mile</option>
+          <option value="1">1 mile</option>
+          <option value="5">5 miles</option>
+          <option value="10">10 miles</option>
+          <option value="20">20 miles</option>
         </select>
        of {locationData.location}.
       </form>
@@ -80,7 +77,7 @@ const BusinessGrid = ({ businesses, locationData }) => {
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                     <div className="button-text w-inline-block">
-                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{business.location} · {displayDistance(business.distance)}</div>
+                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{business.location} · {Number(business.distance).toFixed(2) + " mi"}</div>
                       <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                       </div>
                     </div>

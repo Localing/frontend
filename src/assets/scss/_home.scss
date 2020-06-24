@@ -578,6 +578,11 @@
     flex: 0 0 auto;
   }
 
+  .business-filter-form {
+    display: flex;
+    font-size: 18px;
+  }
+
   .distance-select {
     display: flex;
     background-color: transparent;
@@ -588,6 +593,8 @@
     width: auto;
     color: #922C50;
     font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
   }
   
   .category-select {
@@ -600,6 +607,8 @@
     width: auto;
     color: #922C50;
     font-weight: 600;
+    font-size: 18px;
+    line-height: 20px;
   }
 
   .no-results {
