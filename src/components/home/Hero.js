@@ -10,6 +10,8 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
 
     const [business, setBusiness] = useState(randomBusiness());
 
+    const [showPostcodeForm, setShowPostcodeForm] = useState(true);
+
     // //Rotate businesses in hero
 
     // useEffect(() => {
@@ -22,9 +24,18 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
     // handling changes to postcodes
     const [postcode, setPostcode] = useState("");
 
+    useEffect(() => {
+        setShowPostcodeForm(!locationData.location)
+    }, [locationData.location])
+
     const handlePostcodeSubmit = (event) => {
         event.preventDefault();
-        setLocation(postcode);
+
+        if(postcode === locationData.postcode){
+            setShowPostcodeForm(false);
+        }else{
+            setLocation(postcode);
+        }
     }
 
     return (
@@ -34,20 +45,26 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-title">
                         <div className="size1-text">Keep the heart of your community beating</div>
                         <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
-                        <form onSubmit={handlePostcodeSubmit} className="mt-4">
-                            {locationData.locationError &&
-                                <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
-                                    <p>There was something wrong with the postcode you entered, please try again!</p>
-                                </Alert>
-                            }
-                            <div className="postcode-form">
-                                <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} />
-                                {locationData.loading ?
-                                    <Spinner animation="border" role="status" size="lg">
-                                    </Spinner>
-                                : <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" /> }
+                        {showPostcodeForm ?
+                            <form onSubmit={handlePostcodeSubmit} className="mt-4">
+                                {locationData.locationError &&
+                                    <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
+                                        <p>There was something wrong with the postcode you entered, please try again!</p>
+                                    </Alert>
+                                }
+                                <div className="postcode-form">
+                                    <input type="text" name="postcode" placeholder="Enter your postcode" value={postcode} onChange={e => setPostcode(e.target.value)} required />
+                                    {locationData.loading ?
+                                        <Spinner animation="border" role="status" size="lg">
+                                        </Spinner>
+                                        : <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />}
+                                </div>
+                            </form>
+                            :
+                            <div>
+                                <h3 className="mt-2"><i className="fa fa-map-marker mr-1" />{locationData.location}<button className="button-small" onClick={() => setShowPostcodeForm(true)}>change</button></h3>
                             </div>
-                        </form>
+                        }
                     </div>
                     <div className="hero2-latest w-inline-block">
                         <div className="hero2-image-collection" style={{ backgroundImage: `url('${business.imageURL}')` }}></div>
