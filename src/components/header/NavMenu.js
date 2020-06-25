@@ -33,9 +33,9 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
               SHOP
             </Link>
           </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/"}>
-                MY LOCALING
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/"}>
+              MY LOCALING
               {sidebarMenu ? (
                 <span>
                   <i className="fa fa-angle-right"></i>
@@ -49,10 +49,10 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
                 <Link to={process.env.PUBLIC_URL + "/my-account"}>
                   MY ACCOUNT
                 </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/hero-points"}>
-                    MY HERO POINTS
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/my-orders"}>
+                  MY ORDERS
                 </Link>
               </li>
               <li>
