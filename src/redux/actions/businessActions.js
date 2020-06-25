@@ -11,9 +11,10 @@ const fetchBusinessesSuccess = businesses => ({
 export const fetchBusinesses = () => {
   return dispatch => {
     axios
-      .get(`https://tempimage.dev.localing.co.uk/businesses.json`)
+      .get(`https://consumerapi.dev.localing.co.uk/business/`)
       .then(response => {
-        dispatch(fetchBusinessesSuccess(response));
+        console.log(response.data);
+        dispatch(fetchBusinessesSuccess(response.data));
       })
       .catch(err => {
         console.log(err);

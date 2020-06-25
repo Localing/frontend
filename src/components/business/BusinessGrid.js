@@ -139,7 +139,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         {(businessesToDisplay.length > 0) ? businessesToDisplay.map(business => {
           return (
             <Col md={6} className="mt-4">
-              <Link to={`/business/${business.id}`} className="button-text w-inline-block">
+              <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
                 <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
