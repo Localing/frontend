@@ -44,6 +44,13 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         }
     }
 
+    // scrolls to business grid with offset to avoid navbar obscuring section header
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -150; 
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+    }
+
     return (
         <div className="hero-with-background-wrap hero2-wrap animate__animated animate__fadeIn">
             <div className="w-layout-grid hero2-grid">
@@ -75,7 +82,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change</button>
                                 </div>
                                 <div>
-                                    <Link smooth to="/#shop"><button className="button-small">Shop Now</button></Link>
+                                    <Link to="/#shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
                         }

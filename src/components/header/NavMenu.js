@@ -4,6 +4,14 @@ import { HashLink as Link } from 'react-router-hash-link';
 import { connect } from "react-redux";
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
+
+  // scrolls to business grid with offset to avoid navbar obscuring section header
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -150;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  }
+
   return (
     <div
       className={` ${
@@ -20,40 +28,40 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/#shop"}>
+            <Link to={process.env.PUBLIC_URL + "/#shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
               SHOP
             </Link>
           </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/"}>
-                MY LOCALING
+          <li>
+            <Link to={process.env.PUBLIC_URL + "/"}>
+              MY LOCALING
               {sidebarMenu ? (
-                  <span>
-                    <i className="fa fa-angle-right"></i>
-                  </span>
-                ) : (
-                    <i className="fa fa-angle-down" />
-                  )}
-              </Link>
-              <ul className="submenu">
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                    MY ACCOUNT
+                <span>
+                  <i className="fa fa-angle-right"></i>
+                </span>
+              ) : (
+                  <i className="fa fa-angle-down" />
+                )}
+            </Link>
+            <ul className="submenu">
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                  MY ACCOUNT
                 </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/my-orders"}>
-                    MY ORDERS
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/my-orders"}>
+                  MY ORDERS
                 </Link>
-                </li>
-                <li>
-                  <Link to={process.env.PUBLIC_URL + "/hero-points"}>
-                    MY HERO POINTS
+              </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/hero-points"}>
+                  MY HERO POINTS
                 </Link>
-                </li>
-              </ul>
-            </li>
+              </li>
+            </ul>
+          </li>
           <li>
             <a href="https://business.localing.co.uk/" target="_blank">
               FOR BUSINESSES
