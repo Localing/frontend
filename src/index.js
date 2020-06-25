@@ -14,7 +14,6 @@ import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
-import { fetchBusinesses } from "./redux/actions/businessActions";
 
 const store = createStore(
   rootReducer,
@@ -24,9 +23,6 @@ const store = createStore(
 
 // fetch products
 store.dispatch(fetchProducts());
-
-// fetch businesses
-store.dispatch(fetchBusinesses());
 
 // verify authentication
 store.dispatch(verifyAuth());

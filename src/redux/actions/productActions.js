@@ -13,7 +13,7 @@ export const fetchProducts = () => {
     axios
       .get(`https://tempimage.dev.localing.co.uk/products.json`)
       .then(response => {
-        dispatch(fetchProductsSuccess(response));
+        dispatch(fetchProductsSuccess(response.data));
       })
       .catch(err => {
         console.log(err);

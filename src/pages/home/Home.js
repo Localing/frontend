@@ -1,16 +1,20 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
+import { fetchBusinesses } from "../../redux/actions/businessActions";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
 import { HashLink as Link } from 'react-router-hash-link';
 
-const Home = ({ setLocation, clearLocationError, locationData, businesses, fetchBusinessesSuccess }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businesses, fetchBusinesses, fetchBusinessesSuccess }) => {
 
+  useEffect(() => {
+    fetchBusinesses();
+  });
 
   return (
     <Fragment>
@@ -102,6 +106,9 @@ const mapDispatchToProps = dispatch => {
     },
     clearLocationError: () => {
       dispatch(clearLocationError());
+    },
+    fetchBusinesses: () => {
+      dispatch(fetchBusinesses());
     }
   }
 }
