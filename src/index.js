@@ -9,8 +9,6 @@ import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
 import { verifyAuth } from "./redux/actions/authActions";
 import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
-import businesses from "./data/businesses.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
@@ -24,11 +22,11 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
-// fetch products from json file
-store.dispatch(fetchProducts(products));
+// fetch products
+store.dispatch(fetchProducts());
 
-// fetch businesses from json file
-store.dispatch(fetchBusinesses(businesses));
+// fetch businesses
+store.dispatch(fetchBusinesses());
 
 // verify authentication
 store.dispatch(verifyAuth());

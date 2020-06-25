@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const FETCH_BUSINESSES_SUCCESS = "FETCH_BUSINESSES_SUCCESS";
 
 const fetchBusinessesSuccess = businesses => ({
@@ -5,9 +7,16 @@ const fetchBusinessesSuccess = businesses => ({
   payload: businesses
 });
 
-// fetch products
-export const fetchBusinesses = businesses => {
+// fetch businesses
+export const fetchBusinesses = () => {
   return dispatch => {
-    dispatch(fetchBusinessesSuccess(businesses));
+    axios
+      .get(`https://tempimage.dev.localing.co.uk/businesses.json`)
+      .then(response => {
+        dispatch(fetchBusinessesSuccess(response));
+      })
+      .catch(err => {
+        console.log(err);
+      });  
   };
 };
