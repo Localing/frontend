@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
 import { connect } from "react-redux";
 
 const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
@@ -20,12 +20,11 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/products"}>
+            <Link to={process.env.PUBLIC_URL + "/#shop"}>
               {" "}
               SHOP
             </Link>
           </li>
-          {isAuthenticated ? (
             <li>
               <Link to={process.env.PUBLIC_URL + "/"}>
                 MY LOCALING
@@ -55,13 +54,6 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
                 </li>
               </ul>
             </li>
-          ) : (
-            <li>
-              <Link to="/login">
-                MY LOCALING
-              </Link>
-            </li>
-          )}
           <li>
             <a href="https://business.localing.co.uk/" target="_blank">
               FOR BUSINESSES

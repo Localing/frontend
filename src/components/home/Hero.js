@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
@@ -75,7 +75,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change</button>
                                 </div>
                                 <div>
-                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Shop Now</button>
+                                    <Link smooth to="/#shop"><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
                         }

@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from 'react-router-dom';
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
@@ -8,6 +7,7 @@ import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmai
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
+import { HashLink as Link } from 'react-router-hash-link';
 
 const Home = ({ setLocation, clearLocationError, locationData, businesses }) => {
 
@@ -33,7 +33,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses }) => 
           businesses={businesses} />
 
         {/* Business List */}
-        <Container className="mt-5">
+        <Container className="mt-5 pt-5" id="shop">
           <h1>Welcome to Localing! </h1>
           <h3>Let us help you re-discover your favourite local shops.</h3>
         </Container>

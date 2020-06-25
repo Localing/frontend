@@ -16,8 +16,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "https://localing.co.uk/",
-        "redirectSignOut": "https://localing.co.uk/",
+        "redirectSignIn": "https://stage.localing.co.uk/",
+        "redirectSignOut": "https://stage.localing.co.uk/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS"
