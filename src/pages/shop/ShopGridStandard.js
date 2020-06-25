@@ -127,7 +127,11 @@ const mapStateToProps = (state, ownProps) => {
             product => product.businessID === ownProps.match.params.id
         ),
         business: state.businessData.businesses.filter(
+<<<<<<< HEAD
             business => business.businessId === ownProps.match.params.id
+=======
+            business => business.id === ownProps.match.params.id
+>>>>>>> master
         )[0]
     }
 }
