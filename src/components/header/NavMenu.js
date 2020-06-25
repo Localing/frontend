@@ -1,8 +1,17 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
+import { HashLink as Link } from 'react-router-hash-link';
+import { connect } from "react-redux";
 
-const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
+const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
+
+  // scrolls to business grid with offset to avoid navbar obscuring section header
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -150;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  }
+
   return (
     <div
       className={` ${
@@ -19,9 +28,9 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+            <Link to={process.env.PUBLIC_URL + "/#shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
-              SHOPS &amp; PRODUCTS
+              SHOP
             </Link>
           </li>
           <li>
@@ -37,16 +46,6 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
             <ul className="submenu">
               <li>
-                <Link to={process.env.PUBLIC_URL + "/wishlist"}>
-                  MY WISHLIST
-                </Link>
-              </li>
-              <li>
-                <Link to={process.env.PUBLIC_URL + "/compare"}>
-                  COMPARE ITEMS
-                </Link>
-              </li>
-              <li>
                 <Link to={process.env.PUBLIC_URL + "/my-account"}>
                   MY ACCOUNT
                 </Link>
@@ -56,17 +55,21 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
                   MY ORDERS
                 </Link>
               </li>
+              <li>
+                <Link to={process.env.PUBLIC_URL + "/hero-points"}>
+                  MY HERO POINTS
+                </Link>
+              </li>
             </ul>
           </li>
-
           <li>
-            <a href="https://business.localing.co.uk" target="_blank" rel="noopener noreferrer">
+            <a href="https://business.localing.co.uk/" target="_blank">
               FOR BUSINESSES
             </a>
           </li>
         </ul>
       </nav>
-    </div>
+    </div >
   );
 };
 
@@ -75,4 +78,10 @@ NavMenu.propTypes = {
   sidebarMenu: PropTypes.bool
 };
 
-export default NavMenu;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.authData.isAuthenticated
+  };
+};
+
+export default connect(mapStateToProps)(NavMenu);

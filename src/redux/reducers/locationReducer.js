@@ -7,6 +7,15 @@ const initState = {
   loading: false
 };
 
+// const initState = {
+//   location: "",
+//   latitude: null,
+//   longitude: null,  
+//   postcode: "",
+//   locationError: null,
+//   loading: false
+// };
+
 const locationReducer = (state = initState, action) => {
   switch(action.type) {
     case "LOADING_LOCATION":

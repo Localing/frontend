@@ -1,14 +1,15 @@
 import React, { Fragment } from "react";
-import { Link } from 'react-router-dom';
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
+import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
+import { HashLink as Link } from 'react-router-hash-link';
 
-const Home = ({ location, businesses }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businesses }) => {
 
   return (
     <Fragment>
@@ -25,15 +26,23 @@ const Home = ({ location, businesses }) => {
       >
 
         {/* Hero */}
-        <Hero location={location} businesses={businesses} />
+        <Hero 
+          locationData={locationData} 
+          setLocation={setLocation}
+          clearLocationError={clearLocationError}
+          businesses={businesses} />
 
         {/* Business List */}
-        <Container className="mt-5">
+        <Container className="mt-5 pt-5" id="shop">
           <h1>Welcome to Localing! </h1>
           <h3>Let us help you re-discover your favourite local shops.</h3>
         </Container>
 
-        <BusinessGrid businesses={businesses} />
+        <BusinessGrid 
+          businesses={businesses} 
+          locationData={locationData}
+          setLocation={setLocation}
+          clearLocationError={clearLocationError} />
 
         {/* Info Panel */}
         <Container className="mt-5">
@@ -73,9 +82,20 @@ const Home = ({ location, businesses }) => {
 
 const mapStateToProps = state => {
   return {
-    location: state.locationData.location,
+    locationData: state.locationData,
     businesses: state.businessData.businesses
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    setLocation: postcode => {
+      dispatch(setLocation(postcode));
+    },
+    clearLocationError: () => {
+      dispatch(clearLocationError());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

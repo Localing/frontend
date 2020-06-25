@@ -184,6 +184,7 @@
     .product-img {
         position: relative;
         overflow: hidden;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
         img {
             width: 100%;
         }
@@ -289,7 +290,7 @@
     .product-content {
         margin: 20px 0 0;
         h3 {
-            font-size: 16px;
+            font-size: 22px;
             margin: 0;
         }
         .product-rating {
@@ -305,9 +306,9 @@
         }
         .product-price {
             span{
-                font-size: 15px;
+                font-size: 20px;
                 color: #000;
-                font-weight: 500;
+                font-weight: 200;
                 margin: 0 9px;
                 position: relative;
                 &::before {

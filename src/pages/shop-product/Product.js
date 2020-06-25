@@ -17,12 +17,13 @@ const Product = ({ product }) => {
         />
       </MetaTags>
 
-      <LayoutOne headerTop="visible">
+      <LayoutOne>
         {/* product description with image */}
         <ProductImageDescription
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
           product={product}
+          galleryType="fixedImage"
         />
 
         {/* related product slider */}

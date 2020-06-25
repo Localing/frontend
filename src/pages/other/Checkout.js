@@ -42,7 +42,7 @@ const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) 
         />
       </MetaTags>
 
-      <LayoutOne headerTop="visible">
+      <LayoutOne>
         {/* badge popup */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Body>

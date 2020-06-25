@@ -3,21 +3,21 @@
     "id": "11",
     "sku": "coffee10",
     "business": "The Family Bean",
+    "businessID": "1",
     "name": "10 Coffee Package",
     "price": 16.5,
     "discount": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/20coffee.jpg",
-      "/assets/img/product/20coffee-2.jpg"
+      "/assets/img/product/20coffee.jpg"
     ],
     "shortDescription": "Buy 9 coffees and get 1 free!",
     "fullDescription": "A voucher for 10 coffees that you can enjoy any time. You pay for 9 and get 1 free!"
@@ -27,19 +27,20 @@
     "sku": "coffeecake4",
     "name": "Coffee and Cake",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 4,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee",
+      "cake"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/coffee-and-cake.jpg",
-      "/assets/img/product/coffee-and-cake-2.jpg"
+      "/assets/img/product/coffee-and-cake.jpg"
     ],
     "shortDescription": "Delicious cup of coffee and cake",
     "fullDescription": "Enjoy our signature coffee and our amazingly delicious home made cake that has won so many awards for its unique taste."
@@ -49,19 +50,20 @@
     "sku": "fullenglish5",
     "name": "Full English and Coffee",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 5,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "breakfast",
+      "coffee"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/full-english.jpg",
-      "/assets/img/product/full-english-2.jpg"
+      "/assets/img/product/full-english.jpg"
     ],
     "shortDescription": "A full english breakfast with coffee",
     "fullDescription": "One of the best breakfasts you can ever have, combined with our signature coffee!"
@@ -71,19 +73,19 @@
     "sku": "blend12",
     "name": "House Blend Coffee - 12 Months",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 50,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/house-blend-coffee.jpg",
-      "/assets/img/product/house-blend-coffee-2.jpg"
+      "/assets/img/product/house-blend-coffee.jpg"
     ],
     "shortDescription": "A voucher for a year of coffee.",
     "fullDescription": "Don't need to worry about where you're gonna get your coffee for the entire next year! Get a voucher from your favorite coffee shop for 12 months of your favorite!"
@@ -93,19 +95,19 @@
     "sku": "food106",
     "name": "10% off Food - 6 Months",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 75,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "food"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/cafe-food.jpg",
-      "/assets/img/product/cafe-food-2.jpg"
+      "/assets/img/product/cafe-food.jpg"
     ],
     "shortDescription": "Take 10% off any food item for the next 6 months",
     "fullDescription": "A great discount for our fans - take 10% off any food item at our cafe for the next 6 entire months!"
@@ -115,19 +117,19 @@
     "sku": "key25",
     "name": "Caffeinate the Keyworkers",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 50,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "coffee"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/caffeinate-the-keyworkers.jpg",
-      "/assets/img/product/caffeinate-the-keyworkers-2.jpg"
+      "/assets/img/product/caffeinate-the-keyworkers.jpg"
     ],
     "shortDescription": "Pay it forward",
     "fullDescription": "Everyone could use some coffee. Pay it forward!"
@@ -137,19 +139,19 @@
     "sku": "party5",
     "name": "Party Booking - 5 Person",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 100,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "party"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/party-booking.jpg",
-      "/assets/img/product/party-booking-2.jpg"
+      "/assets/img/product/party-booking.jpg"
     ],
     "shortDescription": "A party for 5 people at the party spot!",
     "fullDescription": "There's no better place to have a party than the Family Bean. With this package you can get a party for 5 with all the details included! Birthday, anniversary, whatever it is we can do it!"
@@ -159,19 +161,19 @@
     "sku": "offall30year",
     "name": "30% off All Products - 1 Year",
     "business": "The Family Bean",
+    "businessID": "1",
     "price": 250,
     "new": false,
     "saleCount": 100,
     "category": [
-      "The Family Bean"
+      "Cafe"
     ],
     "tag": [
-      "cafe"
+      "package"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/30-off-cafe.jpg",
-      "/assets/img/product/30-off-cafe-2.jpg"
+      "/assets/img/product/30-off-cafe.jpg"
     ],
     "shortDescription": "30% off your bill of anything in our cafe for a whole year!",
     "fullDescription": "Love our cafe so much that you want to come in every single day for a whole year! Might as well get 30% off! And you can do that now while supporting us through this tough time."
@@ -181,20 +183,20 @@
     "sku": "blowdry20",
     "name": "Blow Dry",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 20,
     "discount": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "haircut"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/blow-and-dry.jpg",
-      "/assets/img/product/blow-and-dry-2.jpg"
+      "/assets/img/product/blow-and-dry.jpg"
     ],
     "shortDescription": "Get a great haircut - with a discount!",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -204,20 +206,20 @@
     "sku": "extensions400",
     "name": "Extensions",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 400,
     "discount": 20,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "extensions"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/hair-extensions-1.jpg",
-      "/assets/img/product/hair-extensions-2.jpg"
+      "/assets/img/product/hair-extensions-1.jpg"
     ],
     "shortDescription": "Get those long locks you've always wanted!",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -227,20 +229,20 @@
     "sku": "haircut5",
     "name": "5 Haircut Package",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 100,
     "discount": 15,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "haircut"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/haircut-1.jpg",
-      "/assets/img/product/haircut-2.jpg"
+      "/assets/img/product/haircut-1.jpg"
     ],
     "shortDescription": "5 haircuts for the price of 4!",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -250,20 +252,20 @@
     "sku": "color20",
     "name": "Colouring",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 20,
     "discount": 20,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "colouring"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/colored-hair-1.jpg",
-      "/assets/img/product/colored-hair-2.jpg"
+      "/assets/img/product/colored-hair-1.jpg"
     ],
     "shortDescription": "Now you too can be crayola blue.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -273,20 +275,20 @@
     "sku": "braid10",
     "name": "Braid",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 10,
     "discount": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "braiding"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/braids-1.jpg",
-      "/assets/img/product/braids-2.jpg"
+      "/assets/img/product/braids-1.jpg"
     ],
     "shortDescription": "Twist and turn those heads, like we'll for your hair.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -296,20 +298,20 @@
     "sku": "special10",
     "name": "Special Style",
     "business": "Chop Your Mop",
+    "businessID": "2",
     "price": 20,
     "discount": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Chop Your Mop"
+      "Salon"
     ],
     "tag": [
-      "hairdresser"
+      "hairstyle"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/special-style-1.jpg",
-      "/assets/img/product/special-style-2.jpg"
+      "/assets/img/product/special-style-1.jpg"
     ],
     "shortDescription": "Styling for that special occassion.",
     "fullDescription": "We all know you need to chop that COVID-19 mop. With this package you can get it at your favorite barber shop at a significant discount."
@@ -319,19 +321,19 @@
     "sku": "cake20",
     "name": "Red Velvet Cake",
     "business": "Buns in the Oven",
+    "businessID": "3",
     "price": 40,
     "discount": 20,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Buns in the Oven"
+      "Bakery"
     ],
     "tag": [
-      "bakery"
+      "cake"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/red-velvet-cake.jpg",
       "/assets/img/product/red-velvet-cake.jpg"
     ],
     "shortDescription": "This traditional red velvet cake is layered with flavor in every bite! Smooth-topped with cream cheese icing, and made with classic vanilla / rich chocolate, you'll receive this decadent cake freshly baked on a day of your choosing when our operations resume.",
@@ -342,19 +344,19 @@
     "sku": "massage20",
     "name": "Massage",
     "business": "Knead the Knots",
+    "businessID": "4",
     "price": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Knead the Knots"
+      "Masseuse"
     ],
     "tag": [
-      "masseuse"
+      "massage"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/massage.jpg",
-      "/assets/img/product/massage-2.jpg"
+      "/assets/img/product/massage.jpg"
     ],
     "shortDescription": "Relieve your stress with a massage",
     "fullDescription": "A full body massage that will ease your tension and make you feel amazing!"
@@ -364,19 +366,19 @@
     "sku": "sandwich10",
     "name": "10 Sandwiches",
     "business": "Tasty Bistro",
+    "businessID": "5",
     "price": 30,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Tasty Bistro"
+      "Restaurant"
     ],
     "tag": [
-      "restaurant"
+      "sandwich"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/sandwich.jpg",
-      "/assets/img/product/sandwich-2.jpg"
+      "/assets/img/product/sandwich.jpg"
     ],
     "shortDescription": "Love our sandwiches? Get 10 at a time for the price of 8.",
     "fullDescription": "With this voucher you have 10 sandwiches ready for you whenever you want them and you only paid for 8!"
@@ -386,19 +388,19 @@
     "sku": "washpre1",
     "name": "Window Washing",
     "business": "Swish Swash",
+    "businessID": "6",
     "price": 10,
     "new": false,
     "saleCount": 100,
     "category": [
-      "Swish Swash"
+      "Cleaning"
     ],
     "tag": [
-      "cleaning"
+      "window wash"
     ],
     "stock": 40,
     "image": [
-      "/assets/img/product/window-wash.jpg",
-      "/assets/img/product/window-wash-2.jpg"
+      "/assets/img/product/window-wash.jpg"
     ],
     "shortDescription": "Clean your dirty windows.",
     "fullDescription": "Can't see out your windows and desperately need them cleaned? This is your chance to get a great deal!"

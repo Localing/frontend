@@ -43,7 +43,7 @@ const ProductDescriptionInfo = ({
   return (
     <div className="product-details-content ml-70">
       <p class="pro-details-meta">{product.business}</p>
-      <h2>{product.name}</h2>
+      <h1>{product.name}</h1>
 
       <div className="product-details-price">
         {discountedPrice !== null ? (
@@ -216,7 +216,7 @@ const ProductDescriptionInfo = ({
                 <i className="pe-7s-like" />
               </button>
             </div>
-            <div className="pro-details-compare">
+            {/* Disabled the compare button - <div className="pro-details-compare">
               <button
                 className={compareItem !== undefined ? "active" : ""}
                 disabled={compareItem !== undefined}
@@ -229,18 +229,18 @@ const ProductDescriptionInfo = ({
               >
                 <i className="pe-7s-shuffle" />
               </button>
-            </div>
+              </div> */}
           </div>
         )}
 
       {product.category ? (
         <div className="pro-details-meta">
-          <span>Category: </span>
+          <span>Category - </span>
           <ul>
             {product.category.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                  <Link to={process.env.PUBLIC_URL + "/products"}>
                     {single}
                   </Link>
                 </li>
@@ -253,12 +253,12 @@ const ProductDescriptionInfo = ({
         )}
       {product.tag ? (
         <div className="pro-details-meta">
-          <span>Tags: </span>
+          <span>Tags - </span>
           <ul>
             {product.tag.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                  <Link to={process.env.PUBLIC_URL + "/products"}>
                     {single}
                   </Link>
                 </li>
@@ -269,35 +269,6 @@ const ProductDescriptionInfo = ({
       ) : (
           ""
         )}
-      <div className="pro-details-social">
-        <ul>
-          <li>
-            <a href="//facebook.com">
-              <i className="fa fa-facebook" />
-            </a>
-          </li>
-          <li>
-            <a href="//dribbble.com">
-              <i className="fa fa-dribbble" />
-            </a>
-          </li>
-          <li>
-            <a href="//pinterest.com">
-              <i className="fa fa-pinterest-p" />
-            </a>
-          </li>
-          <li>
-            <a href="//twitter.com">
-              <i className="fa fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="//linkedin.com">
-              <i className="fa fa-linkedin" />
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
   );
 };

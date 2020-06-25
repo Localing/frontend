@@ -1,5 +1,16 @@
 /*---- 18. Shop page  -------*/
 
+.shop-jumbotron {
+  background-size: cover;
+  background-position: center;
+ }
+
+.shop-jumbotron-title {
+    background: #FFF;
+    opacity: 0.9;
+    padding: 30px;
+}
+
 .shop-top-bar {
   display: flex;
   justify-content: space-between;

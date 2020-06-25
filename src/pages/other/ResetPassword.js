@@ -72,7 +72,7 @@ const ResetPassword = () => {
                     content="Localing - Reset Password"
                 />
             </MetaTags>
-            <LayoutOne headerTop="visible">
+            <LayoutOne>
                 <div className="login-register-area pt-100 pb-100">
                     <div className="container">
                         <div className="row">
