@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 import React, { Fragment, useEffect } from "react";
-=======
-import React, { Fragment } from "react";
->>>>>>> master
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
-<<<<<<< HEAD
 import { fetchBusinesses } from "../../redux/actions/businessActions";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { connect } from "react-redux";
@@ -19,14 +14,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses, fetch
 
   useEffect(() => {
     fetchBusinesses();
-  });
-=======
-import { Container, Row, Col } from "react-bootstrap";
-import { connect } from "react-redux";
-import { HashLink as Link } from 'react-router-hash-link';
-
-const Home = ({ setLocation, clearLocationError, locationData, businesses }) => {
->>>>>>> master
+  }, []);
 
   return (
     <Fragment>
@@ -44,7 +32,6 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses }) => 
             headerPaddingclassName="header-padding-2"
           >
 
-<<<<<<< HEAD
             {/* Hero */}
             <Hero
               locationData={locationData}
@@ -63,26 +50,6 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses }) => 
               locationData={locationData}
               setLocation={setLocation}
               clearLocationError={clearLocationError} />
-=======
-        {/* Hero */}
-        <Hero 
-          locationData={locationData} 
-          setLocation={setLocation}
-          clearLocationError={clearLocationError}
-          businesses={businesses} />
-
-        {/* Business List */}
-        <Container className="mt-5 pt-5" id="shop">
-          <h1>Welcome to Localing! </h1>
-          <h3>Let us help you re-discover your favourite local shops.</h3>
-        </Container>
-
-        <BusinessGrid 
-          businesses={businesses} 
-          locationData={locationData}
-          setLocation={setLocation}
-          clearLocationError={clearLocationError} />
->>>>>>> master
 
             {/* Info Panel */}
             <Container className="mt-5">
@@ -127,12 +94,8 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses }) => 
 const mapStateToProps = state => {
   return {
     locationData: state.locationData,
-<<<<<<< HEAD
     businesses: state.businessData.businesses,
     fetchBusinessesSuccess: state.businessData.fetchBusinessesSuccess
-=======
-    businesses: state.businessData.businesses
->>>>>>> master
   };
 };
 
@@ -143,12 +106,9 @@ const mapDispatchToProps = dispatch => {
     },
     clearLocationError: () => {
       dispatch(clearLocationError());
-<<<<<<< HEAD
     },
     fetchBusinesses: () => {
       dispatch(fetchBusinesses());
-=======
->>>>>>> master
     }
   }
 }

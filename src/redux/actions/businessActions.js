@@ -13,7 +13,6 @@ export const fetchBusinesses = () => {
     axios
       .get(`https://consumerapi.dev.localing.co.uk/business/`)
       .then(response => {
-        console.log(response.data);
         dispatch(fetchBusinessesSuccess(response.data));
       })
       .catch(err => {

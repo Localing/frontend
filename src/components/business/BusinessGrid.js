@@ -8,10 +8,17 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
   const [businessesToDisplay, setBusinessesToDisplay] = useState([...businesses]);
   const [filterRadius, setFilterRadius] = useState(0);
   const [filterCategory, setFilterCategory] = useState("all");
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
+    // sort and filter businesses whenever options change
     sortBusinesses();
   }, [locationData, filterRadius, filterCategory])
+
+  useEffect(() => {
+    // update categories if businesses change
+    getCategories();
+  }, [businesses])
 
   const sortBusinesses = () => {
     let sortedBusinesses = [...businesses];
@@ -26,7 +33,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     }
 
     if (filterCategory !== "all") {
-      sortedBusinesses = sortedBusinesses.filter((business) => (business.category === filterCategory));
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
     }
 
     sortedBusinesses.sort((a, b) => {
@@ -34,6 +41,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     })
 
     setBusinessesToDisplay(sortedBusinesses);
+
   }
 
   // filter by radius
@@ -41,6 +49,17 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     e.preventDefault();
     setFilterRadius(e.target.value);
   }
+
+
+  // get categories we can filter by
+  const getCategories = () => {
+    let categories = [];
+    businesses.forEach((business) => {
+      categories = categories.concat(business.categories);
+    })
+    setCategories(categories);
+  }
+
 
   // filter by category
   const handleCategoryChange = (e) => {
@@ -101,10 +120,9 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
           <label>Show me</label>
           <select className="category-select" onChange={handleCategoryChange}>
             <option value="all" selected>all businesses</option>
-            <option value="cafe">cafes</option>
-            <option value="bakery">bakeries</option>
-            <option value="salon">salons</option>
-            <option value="spa">spas</option>
+            {categories.map((category) => {
+              return <option value={category}>{category}</option>
+            })}
           </select>
           <label>within</label>
           <select className="distance-select" onChange={handleRadiusChange}>
@@ -139,11 +157,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         {(businessesToDisplay.length > 0) ? businessesToDisplay.map(business => {
           return (
             <Col md={6} className="mt-4">
-<<<<<<< HEAD
               <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
-=======
-              <Link to={`/business/${business.id}`} className="button-text w-inline-block">
->>>>>>> master
                 <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
