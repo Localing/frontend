@@ -35,13 +35,20 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         // strip any whitespace out of postcode
         const newPostcode = postcode.replace(/\s+/g, '');
 
-        if(newPostcode === locationData.postcode){
+        if (newPostcode === locationData.postcode) {
             // if user enters the same postcode that's already set, clear any errors and hide the form
             clearLocationError();
             setShowPostcodeForm(false);
-        }else{
+        } else {
             setLocation(newPostcode);
         }
+    }
+
+    // scrolls to business grid with offset to avoid navbar obscuring section header
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -150;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
     }
 
     return (
@@ -75,7 +82,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change</button>
                                 </div>
                                 <div>
-                                    <Link smooth to="/#shop"><button className="button-small">Shop Now</button></Link>
+                                    <Link to="#shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
                         }
@@ -88,9 +95,9 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             <div className="paragraph-70">{business.description}</div>
                         </div>
                     </div>
-                    <div className="button-large hero3-button w-inline-block" onClick={() => setBusiness(randomBusiness())}>
+                    <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
                         <div>Discover more shops near {locationData.location || "your community"}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
-                    </div>
+                    </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
