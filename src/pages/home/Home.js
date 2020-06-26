@@ -3,10 +3,11 @@ import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import BusinessGrid from "../../components/business/BusinessGrid";
 import Hero from "../../components/home/Hero";
+import Loading from "../../components/home/Loading";
 import SubscribeEmail from "../../components/footer/sub-components/SubscribeEmail";
 import { setLocation, clearLocationError } from "../../redux/actions/locationActions";
 import { fetchBusinesses } from "../../redux/actions/businessActions";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { HashLink as Link } from 'react-router-hash-link';
 
@@ -84,9 +85,10 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses, fetch
 
           </LayoutOne>
         </Fragment>
-        : <Spinner animation="border" role="status">
-          <span className="sr-only">Loading...</span>
-        </Spinner>}
+        :
+       <Loading />
+      }
+
     </Fragment>
   );
 };

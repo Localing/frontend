@@ -80,6 +80,12 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   }
 
+  // helper functions
+
+  const capitalize = (string) =>{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   const PostcodePopover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">Change Location</Popover.Title>
@@ -162,7 +168,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                     <div className="button-text w-inline-block">
-                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{business.location} · {Number(business.distance).toFixed(2) + " mi"}</div>
+                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(2) + " mi"}</div>
                       <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                       </div>
                     </div>
