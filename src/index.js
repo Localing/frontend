@@ -18,7 +18,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(thunk, save()))
+  composeWithDevTools(applyMiddleware(thunk, save({ ignoreStates: ["businessData", "productData"] })))
 );
 
 // fetch products
