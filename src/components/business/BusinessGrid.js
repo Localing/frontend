@@ -168,6 +168,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                     <div className="button-text w-inline-block">
+                      <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
                       <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(2) + " mi"}</div>
                       <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                       </div>
