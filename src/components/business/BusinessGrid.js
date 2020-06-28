@@ -29,7 +29,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       business.distance = convertDistance(distanceInMeters, 'mi');
     });
 
-    if (searchTerm){
+    if (searchTerm) {
       sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
     }
 
@@ -77,7 +77,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     e.preventDefault();
     setSearchTerm(e.target.value);
   }
-  
+
 
 
   // allow changing postcode
@@ -94,10 +94,11 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   // helper functions
 
-  const capitalize = (string) =>{
+  const capitalize = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  // popover used to change postcode
   const PostcodePopover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">Change Location</Popover.Title>
@@ -136,14 +137,14 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
           <label>Show me</label>
-          <select className="category-select" onChange={handleCategoryChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange}>
             <option value="all" selected>all shops</option>
             {categories.map((category) => {
               return <option value={category}>{category}</option>
             })}
           </select>
           <label>within</label>
-          <select className="distance-select" onChange={handleRadiusChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
             <option value="1">1 mile</option>
@@ -151,16 +152,18 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
           </select>
-       of
-        <OverlayTrigger
+          <label>of</label>
+          <OverlayTrigger
             trigger="click"
             placement="bottom"
             overlay={PostcodePopover}
             rootClose>
-            <button className="location-filter" onClick={(e) => e.preventDefault()}>{locationData.location}</button>
+            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()}>
+              <option>{locationData.location}</option>
+            </select>
           </OverlayTrigger>
           <label>or&nbsp;</label>
-          <input className="business-search" type="text" placeholder="search by shop name" onChange={handleSearch} />
+          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} />
         </form>
         :
         <div className="business-filter-form">Please
