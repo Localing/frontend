@@ -11,7 +11,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { HashLink as Link } from 'react-router-hash-link';
 
-const Home = ({ setLocation, clearLocationError, locationData, businesses, fetchBusinesses, fetchBusinessesSuccess }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businesses, fetchBusinesses }) => {
 
   useEffect(() => {
     fetchBusinesses();
@@ -19,7 +19,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses, fetch
 
   return (
     <Fragment>
-      {fetchBusinessesSuccess ?
+      { (businesses.length) ?
         <Fragment>
           <MetaTags>
             <title>Localing | Support local businesses</title>
@@ -96,8 +96,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses, fetch
 const mapStateToProps = state => {
   return {
     locationData: state.locationData,
-    businesses: state.businessData.businesses,
-    fetchBusinessesSuccess: state.businessData.fetchBusinessesSuccess
+    businesses: state.businessData.businesses
   };
 };
 

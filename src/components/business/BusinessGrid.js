@@ -9,11 +9,12 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
   const [filterRadius, setFilterRadius] = useState(0);
   const [filterCategory, setFilterCategory] = useState("all");
   const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     // sort and filter businesses whenever options change
     sortBusinesses();
-  }, [locationData, filterRadius, filterCategory])
+  }, [locationData, filterRadius, filterCategory, searchTerm])
 
   useEffect(() => {
     // update categories if businesses change
@@ -27,6 +28,10 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       const distanceInMeters = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
       business.distance = convertDistance(distanceInMeters, 'mi');
     });
+
+    if (searchTerm){
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
+    }
 
     if (filterRadius > 0) {
       sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
@@ -66,6 +71,13 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     e.preventDefault();
     setFilterCategory(e.target.value);
   }
+
+  // business search
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  }
+  
 
 
   // allow changing postcode
@@ -125,7 +137,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         <form className="form-inline business-filter-form">
           <label>Show me</label>
           <select className="category-select" onChange={handleCategoryChange}>
-            <option value="all" selected>all businesses</option>
+            <option value="all" selected>all shops</option>
             {categories.map((category) => {
               return <option value={category}>{category}</option>
             })}
@@ -139,7 +151,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
           </select>
-       of&nbsp;
+       of
         <OverlayTrigger
             trigger="click"
             placement="bottom"
@@ -147,6 +159,8 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             rootClose>
             <button className="location-filter" onClick={(e) => e.preventDefault()}>{locationData.location}</button>
           </OverlayTrigger>
+          <label>or&nbsp;</label>
+          <input className="business-search" type="text" placeholder="search by shop name" onChange={handleSearch} />
         </form>
         :
         <div className="business-filter-form">Please

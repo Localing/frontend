@@ -51,12 +51,23 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
     }
 
+    // truncates text
+    const truncate = (str) => {
+        const length = 200;
+        const ending = " ...";
+        if (str.length > length) {
+          return str.substring(0, length - ending.length) + ending;
+        } else {
+          return str;
+        }
+      };
+
     return (
         <div className="hero-with-background-wrap hero2-wrap animate__animated animate__fadeIn">
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
-                        <div className="size1-text">Keep the heart of {locationData.location || "your community"} beating</div>
+                        <div className="size1-text">Keep the heart of your community's high street beating</div>
                         <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
@@ -79,7 +90,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <i className="fa fa-map-marker mr-1 ml-1" />{locationData.location}
                                 </div>
                                 <div className="postcode-form mr-1">
-                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change</button>
+                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
                                 </div>
                                 <div>
                                     <Link to="#shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
@@ -92,7 +103,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         <div>
                             <p className="featured-text">Featured</p>
                             <div className="size5-text">{business.name}</div>
-                            <div className="paragraph-70">{business.description}</div>
+                            <div className="paragraph-70">{truncate(business.description)}</div>
                         </div>
                     </div>
                     <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
