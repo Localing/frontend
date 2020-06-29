@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../../services/API";
 
 export const FETCH_BUSINESSES_BEGIN ="FETCH_BUSINESSES_BEGIN";
 export const FETCH_BUSINESSES_SUCCESS = "FETCH_BUSINESSES_SUCCESS";
@@ -22,8 +22,8 @@ const fetchBusinessesBegin = () => ({
 export const fetchBusinesses = () => {
   return dispatch => {
     dispatch(fetchBusinessesBegin());
-    axios
-      .get(`https://consumerapi.dev.localing.co.uk/business/`)
+    API
+      .get(`/business/`)
       .then(response => {
         dispatch(fetchBusinessesSuccess(response.data));
       })

@@ -9,7 +9,7 @@ import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
-import axios from 'axios';
+import API from "../../services/API";
 
 const ShopGridStandard = ({ products, match }) => {
 
@@ -42,7 +42,7 @@ const ShopGridStandard = ({ products, match }) => {
     }
 
     useEffect(() => {
-        axios
+        API
             .get(`https://consumerapi.dev.localing.co.uk/business/${match.params.id}`)
             .then(response => {
                 setBusiness(response.data);
@@ -129,8 +129,7 @@ const ShopGridStandard = ({ products, match }) => {
         </Fragment>
             :
             <div className="mx-auto mt-5 text-center">
-                <h2>Welcome to Localing</h2>
-                <p>Loading...</p>
+                <h2>Loading great deals!</h2>
                 <Spinner animation="border" role="status">
                     <span className="sr-only">Loading...</span>
                 </Spinner>
