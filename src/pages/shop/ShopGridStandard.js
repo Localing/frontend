@@ -14,6 +14,7 @@ import API from "../../services/API";
 const ShopGridStandard = ({ products, match }) => {
 
     const [business, setBusiness] = useState(null);
+    const [loadingError, setLoadingError] = useState(null);
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -43,12 +44,12 @@ const ShopGridStandard = ({ products, match }) => {
 
     useEffect(() => {
         API
-            .get(`https://consumerapi.dev.localing.co.uk/business/${match.params.id}`)
+            .get(`/business/${match.params.id}`)
             .then(response => {
                 setBusiness(response.data);
             })
             .catch(error => {
-                console.log(error);
+                setLoadingError("Something went wrong!", error)
             });
     }, [])
 
@@ -62,14 +63,15 @@ const ShopGridStandard = ({ products, match }) => {
     }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
     return (
-        business ? <Fragment>
+    <Fragment>
             <MetaTags>
-                <title>Localing | {business.name}</title>
+                <title>Localing | {business && business.name}</title>
                 <meta name="description" content="Localing products." />
             </MetaTags>
 
             <LayoutOne>
-
+           { (business) ?
+                <Fragment>
                 <Jumbotron fluid className="shop-jumbotron" style={{ backgroundImage: `url('${business.imageURL}')` }}>
                     <Container>
                         <div className="shop-jumbotron-title">
@@ -125,15 +127,21 @@ const ShopGridStandard = ({ products, match }) => {
                         </div>
                     </div>
                 </div>
-            </LayoutOne>
-        </Fragment>
-            :
-            <div className="mx-auto mt-5 text-center">
-                <h2>Loading great deals!</h2>
+                </Fragment>
+                :
+            <div className="mx-auto mt-5 mb-5 text-center">
+                <h2 className="display-4 mb-4">Loading great deals!</h2>
+                { !loadingError ?
                 <Spinner animation="border" role="status">
                     <span className="sr-only">Loading...</span>
-                </Spinner>
+                </Spinner> :
+                <p className="lead">{loadingError}</p>
+                }
             </div>
+            }
+            </LayoutOne>
+        </Fragment>
+
     )
 }
 
