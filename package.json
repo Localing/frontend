@@ -36,7 +36,7 @@
     "redux-localstorage-simple": "^2.1.6",
     "redux-thunk": "^2.3.0",
     "swiper": "^5.4.2",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
