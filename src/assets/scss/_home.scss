@@ -569,6 +569,12 @@
     font-weight: 600;
   }
 
+  .button-category {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
   .button-arrow {
     display: inline-block;
     margin-left: 20px;
@@ -583,39 +589,21 @@
     font-size: 18px;
   }
 
-  .distance-select {
-    display: flex;
-    background-color: transparent;
-    border-spacing: 0px;
-    margin: 0px;
-    padding: 0px;
-    space: 0px;
-    width: auto;
-    color: #922C50;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 20px;
-  }
-  
-  .category-select {
-    display: flex;
-    background-color: transparent;
-    border-spacing: 0px;
-    margin: 0px;
-    padding: 0px;
-    space: 0px;
-    width: auto;
-    color: #922C50;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 20px;
-  }
-
   .location-filter {
     color: #922C50;
     font-weight: 600;
     background: transparent;
     border: 0;
+  }
+
+  .business-search {
+    width: auto;
+    outline: 0;
+    padding: 0;
+    height: 25px;
+    border-width: 0 0 1px;
+    border-color: #922C50;
+    background: transparent;
   }
 
   .no-results {

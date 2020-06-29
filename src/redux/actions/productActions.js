@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 
 const fetchProductsSuccess = products => ({
@@ -6,8 +8,16 @@ const fetchProductsSuccess = products => ({
 });
 
 // fetch products
-export const fetchProducts = products => {
+export const fetchProducts = () => {
   return dispatch => {
-    dispatch(fetchProductsSuccess(products));
+    axios
+      .get(`https://tempimage.dev.localing.co.uk/products.json`)
+      .then(response => {
+        dispatch(fetchProductsSuccess(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });  
   };
 };
+

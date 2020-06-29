@@ -8,10 +8,18 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
   const [businessesToDisplay, setBusinessesToDisplay] = useState([...businesses]);
   const [filterRadius, setFilterRadius] = useState(0);
   const [filterCategory, setFilterCategory] = useState("all");
+  const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
+    // sort and filter businesses whenever options change
     sortBusinesses();
-  }, [locationData, filterRadius, filterCategory])
+  }, [locationData, filterRadius, filterCategory, searchTerm])
+
+  useEffect(() => {
+    // update categories if businesses change
+    getCategories();
+  }, [businesses])
 
   const sortBusinesses = () => {
     let sortedBusinesses = [...businesses];
@@ -21,12 +29,16 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       business.distance = convertDistance(distanceInMeters, 'mi');
     });
 
+    if (searchTerm) {
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
+    }
+
     if (filterRadius > 0) {
       sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
     }
 
     if (filterCategory !== "all") {
-      sortedBusinesses = sortedBusinesses.filter((business) => (business.category === filterCategory));
+      sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
     }
 
     sortedBusinesses.sort((a, b) => {
@@ -34,6 +46,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     })
 
     setBusinessesToDisplay(sortedBusinesses);
+
   }
 
   // filter by radius
@@ -42,11 +55,29 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     setFilterRadius(e.target.value);
   }
 
+
+  // get categories we can filter by
+  const getCategories = () => {
+    let categories = [];
+    businesses.forEach((business) => {
+      categories = categories.concat(business.categories);
+    })
+    setCategories(categories);
+  }
+
+
   // filter by category
   const handleCategoryChange = (e) => {
     e.preventDefault();
     setFilterCategory(e.target.value);
   }
+
+  // business search
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  }
+
 
 
   // allow changing postcode
@@ -61,6 +92,13 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   }
 
+  // helper functions
+
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  // popover used to change postcode
   const PostcodePopover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">Change Location</Popover.Title>
@@ -99,15 +137,14 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
           <label>Show me</label>
-          <select className="category-select" onChange={handleCategoryChange}>
-            <option value="all" selected>all businesses</option>
-            <option value="cafe">cafes</option>
-            <option value="bakery">bakeries</option>
-            <option value="salon">salons</option>
-            <option value="spa">spas</option>
+          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange}>
+            <option value="all" selected>all shops</option>
+            {categories.map((category) => {
+              return <option value={category}>{category}</option>
+            })}
           </select>
           <label>within</label>
-          <select className="distance-select" onChange={handleRadiusChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
             <option value="1">1 mile</option>
@@ -115,14 +152,18 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
           </select>
-       of&nbsp;
-        <OverlayTrigger
+          <label>of</label>
+          <OverlayTrigger
             trigger="click"
             placement="bottom"
             overlay={PostcodePopover}
             rootClose>
-            <button className="location-filter" onClick={(e) => e.preventDefault()}>{locationData.location}</button>
+            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()}>
+              <option>{locationData.location}</option>
+            </select>
           </OverlayTrigger>
+          <label>or&nbsp;</label>
+          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} />
         </form>
         :
         <div className="business-filter-form">Please
@@ -139,12 +180,13 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         {(businessesToDisplay.length > 0) ? businessesToDisplay.map(business => {
           return (
             <Col md={6} className="mt-4">
-              <Link to={`/business/${business.id}`} className="button-text w-inline-block">
+              <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
                 <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                   <div className="business-content-card-wrap">
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                     <div className="button-text w-inline-block">
-                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{business.location} · {Number(business.distance).toFixed(2) + " mi"}</div>
+                      <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
+                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(2) + " mi"}</div>
                       <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                       </div>
                     </div>

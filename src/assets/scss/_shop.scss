@@ -11,6 +11,11 @@
     padding: 30px;
 }
 
+.shop-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .shop-top-bar {
   display: flex;
   justify-content: space-between;
