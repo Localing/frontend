@@ -80,15 +80,15 @@ const ShopGridStandard = ({ products, match }) => {
                             <p className="lead" style={{ whiteSpace: 'pre-line'}}>{business.description}</p>
                             <div className="shop-buttons mt-3">
                                 {(business.latitude && business.longitude) &&
-                                    <button className="button-small mr-1"><i className="fa fa-map mr-1"></i>MAP</button>
+                                    <Button className="button-small mr-1"><i className="fa fa-map mr-1"></i>MAP</Button>
                                 }
 
                                 {(business.website) &&
-                                    <button className="button-small mr-1" href={business.website}><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</button>
+                                    <Button className="button-small mr-1" href={business.website} target="_blank"><i className="fa fa-external-link" aria-hidden="true"></i>&nbsp;Website</Button>
                                 }
 
                                 {(business.phone) &&
-                                    <button className="button-small mr-1"><i className="fa fa-phone"></i>&nbsp;Call {business.phone}</button>
+                                    <Button className="button-small mr-1" href={`tel:${business.phone}`}><i className="fa fa-phone"></i>&nbsp;Call {business.phone}</Button>
                                 }
                             </div>
                         </div>
