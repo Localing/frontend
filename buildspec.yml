@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  exported-variables:
+    - REACT_APP_BuildENV
+
 phases:
   install:
     runtime-versions:
