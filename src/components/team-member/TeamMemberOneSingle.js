@@ -5,7 +5,7 @@ const TeamMemberOneSingle = ({ data, spaceBottomClass }) => {
   return (
     <div className="col-lg-3 col-md-6 col-sm-6">
       <div
-        className={`team-wrapper ${spaceBottomClass ? spaceBottomClass : ""}`}
+        className={`team-wrapper ${spaceBottomClass ? spaceBottomClass : ""} shadow-sm p-3 mb-5 bg-white rounded`}
       >
         <div className="team-img">
           <img
@@ -13,7 +13,7 @@ const TeamMemberOneSingle = ({ data, spaceBottomClass }) => {
             alt=""
             className="img-fluid"
           />
-          <div className="team-action">
+          {/* Disable social links  <div className="team-action">
             <a
               className="facebook"
               href={data.fbLink}
@@ -38,7 +38,7 @@ const TeamMemberOneSingle = ({ data, spaceBottomClass }) => {
             >
               <i className="fa fa-instagram" />
             </a>
-          </div>
+            </div> */}
         </div>
         <div className="team-content text-center">
           <h4>{data.name}</h4>
