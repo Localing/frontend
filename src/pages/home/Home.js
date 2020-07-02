@@ -11,7 +11,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { HashLink as Link } from 'react-router-hash-link';
 
-const Home = ({ setLocation, clearLocationError, locationData, businesses, fetchBusinesses }) => {
+const Home = ({ setLocation, clearLocationError, locationData, businessData, fetchBusinesses }) => {
+
+  const businesses = businessData.businesses;
 
   useEffect(() => {
     fetchBusinesses();
@@ -97,7 +99,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businesses, fetch
 const mapStateToProps = state => {
   return {
     locationData: state.locationData,
-    businesses: state.businessData.businesses
+    businessData: state.businessData,
   };
 };
 

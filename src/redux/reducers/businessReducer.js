@@ -3,7 +3,7 @@ import { FETCH_BUSINESSES_BEGIN, FETCH_BUSINESSES_SUCCESS, FETCH_BUSINESSES_ERRO
 
 const initState = {
   businesses: [],
-  fetchBusinessSuccess: false,
+  fetchBusinessesSuccess: false,
   error: null
 };
 
