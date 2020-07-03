@@ -96,7 +96,7 @@ const Cart = ({
                                       className="img-fluid"
                                       src={
                                         process.env.PUBLIC_URL +
-                                        cartItem.image[0]
+                                        cartItem.images[0]
                                       }
                                       alt=""
                                     />
