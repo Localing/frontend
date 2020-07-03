@@ -92,10 +92,8 @@ const App = ({ isAuthenticated, dispatch }) => {
 
                 {/* Product pages */}
                 <Route
-                  path={process.env.PUBLIC_URL + "/product/:id"}
-                  render={routeProps => (
-                    <Product {...routeProps} key={routeProps.match.params.id} />
-                  )}
+                  path={process.env.PUBLIC_URL + "/product/:businessId/:productId"}
+                  component={Product}
                 />
 
                 <Route

@@ -17,8 +17,8 @@ const productImageGallerySticky = ({ product }) => {
         ""
       )}
       <div className="product-sticky-image mb--10">
-        {product.image &&
-          product.image.map((single, key) => {
+        {product.images &&
+          product.images.map((single, key) => {
             return (
               <div className="product-sticky-image__single mb-10" key={key}>
                 <img

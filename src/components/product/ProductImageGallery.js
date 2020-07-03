@@ -71,8 +71,8 @@ const ProductImageGallery = ({ product }) => {
         )}
         <LightgalleryProvider>
           <Swiper {...gallerySwiperParams}>
-            {product.image &&
-              product.image.map((single, key) => {
+            {product.images &&
+              product.images.map((single, key) => {
                 return (
                   <div key={key}>
                     <LightgalleryItem
@@ -98,8 +98,8 @@ const ProductImageGallery = ({ product }) => {
       </div>
       <div className="product-small-image-wrapper mt-15">
         <Swiper {...thumbnailSwiperParams}>
-          {product.image &&
-            product.image.map((single, key) => {
+          {product.images &&
+            product.images.map((single, key) => {
               return (
                 <div key={key}>
                   <div className="single-image">

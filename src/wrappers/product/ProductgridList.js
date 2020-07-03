@@ -16,13 +16,15 @@ const ProductGrid = ({
   wishlistItems,
   compareItems,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
+  businessId
 }) => {
   return (
     <Fragment>
       {products.map(product => {
         return (
           <ProductGridListSingle
+            businessId={businessId}
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
             product={product}

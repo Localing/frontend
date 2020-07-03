@@ -5,6 +5,7 @@ import { useToasts } from "react-toast-notifications";
 import { getDiscountPrice } from "../../helpers/product";
 import Rating from "./sub-components/ProductRating";
 import ProductModal from "./ProductModal";
+import BusinessGrid from "../business/BusinessGrid";
 
 const ProductGridListSingle = ({
   product,
@@ -16,7 +17,8 @@ const ProductGridListSingle = ({
   wishlistItem,
   compareItem,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
+  businessId
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
@@ -38,7 +40,7 @@ const ProductGridListSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + businessId + "/" + product.productId}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.images[0]}
@@ -341,7 +343,8 @@ ProductGridListSingle.propTypes = {
   product: PropTypes.object,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.object
+  wishlistItem: PropTypes.object,
+  businessId: PropTypes.string
 };
 
 export default ProductGridListSingle;

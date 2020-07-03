@@ -2,11 +2,12 @@ import PropTypes from "prop-types";
 import React from "react";
 import ProductgridList from "./ProductgridList";
 
-const ShopProducts = ({ products, layout }) => {
+const ShopProducts = ({ products, layout, businessId }) => {
+
   return (
     <div className="shop-bottom-area mt-35">
       <div className={`row ${layout ? layout : ""}`}>
-        <ProductgridList products={products} spaceBottomClass="mb-25" />
+        <ProductgridList products={products} businessId={businessId} spaceBottomClass="mb-25" />
       </div>
     </div>
   );
@@ -14,7 +15,8 @@ const ShopProducts = ({ products, layout }) => {
 
 ShopProducts.propTypes = {
   layout: PropTypes.string,
-  products: PropTypes.array
+  products: PropTypes.array,
+  businessId: PropTypes.string
 };
 
 export default ShopProducts;

@@ -67,7 +67,6 @@ const ShopGridStandard = ({ match }) => {
 
     useEffect(() => {
         if (products) {
-            console.log("this happened");
             let sortedProducts = getSortedProducts(products, sortType, sortValue);
             const filterSortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
             sortedProducts = filterSortedProducts;
@@ -121,7 +120,7 @@ const ShopGridStandard = ({ match }) => {
                                         <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
 
                                         {/* shop page content default */}
-                                        <ShopProducts layout={layout} products={currentData} />
+                                        <ShopProducts layout={layout} products={currentData} businessId={business.businessId} />
 
                                         {/* shop product pagination */}
                                         <div className="pro-pagination-style text-center mt-30">
