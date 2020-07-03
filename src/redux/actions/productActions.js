@@ -28,8 +28,7 @@ export const fetchProducts = (businessID) => {
     API
       .get(`/business/${businessID}/product`)
       .then(response => {
-        const activeProducts = response.data.filter(product => product.active);
-        dispatch(fetchProductsSuccess(activeProducts));
+        dispatch(fetchProductsSuccess(response.data));
       })
       .catch(err => {
         fetchProductsError(err);
@@ -74,12 +73,7 @@ export const fetchProduct = (businessId, productId) => {
     API
       .get(`/business/${businessId}/product/${productId}`)
       .then(response => {
-        const product = response.data;
-        if (product.active){
-          dispatch(fetchProductSuccess(product));
-        } else {
-          fetchProductError({ message: "This product is not active."});
-        }
+          dispatch(fetchProductSuccess(response.data));
       })
       .catch(err => {
         fetchProductError(err);
