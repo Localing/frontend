@@ -3,7 +3,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
 import { connect } from 'react-redux';
-import { fetchProducts } from "../../redux/actions/productActions";
+import { fetchProducts, clearProducts } from "../../redux/actions/productActions";
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
@@ -12,7 +12,7 @@ import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
 import API from "../../services/API";
 
-const ShopGridStandard = ({ match, products, fetchProducts }) => {
+const ShopGridStandard = ({ match, products, fetchProducts, clearProducts }) => {
 
     const [business, setBusiness] = useState(null);
     const [loadingError, setLoadingError] = useState(null);
@@ -56,6 +56,7 @@ const ShopGridStandard = ({ match, products, fetchProducts }) => {
 
 
         fetchProducts(match.params.id);
+        return () => clearProducts();
     }, [])
 
     useEffect(() => {
@@ -104,10 +105,6 @@ const ShopGridStandard = ({ match, products, fetchProducts }) => {
                         <div className="shop-area pt-95 pb-100">
                             <div className="container">
                                 <div className="row">
-                                    {/* shop sidebar  
-                            <div className="col-lg-3 order-2 order-lg-1">     
-                                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30"/> 
-                            </div> */}
                                     <div className="col-lg-12 order-1 order-lg-2">
                                         {/* shop topbar default */}
                                         <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
@@ -164,7 +161,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchProducts: (businessId) => dispatch(fetchProducts(businessId))
+        fetchProducts: (businessId) => dispatch(fetchProducts(businessId)),
+        clearProducts: () => dispatch(clearProducts())
     }
 }
 

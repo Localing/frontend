@@ -1,7 +1,8 @@
 import {
   FETCH_PRODUCTS_BEGIN,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR
+  FETCH_PRODUCTS_ERROR,
+  CLEAR_PRODUCTS
 } from "../actions/productActions";
 
 const initState = {
@@ -13,9 +14,8 @@ const initState = {
 const productReducer = (state = initState, action) => {
 
   if (action.type === FETCH_PRODUCTS_BEGIN) {
-    return {
-      ...initState
-    }
+    // clear out any old products before fetching
+    return initState
   }
 
   if (action.type === FETCH_PRODUCTS_SUCCESS) {
@@ -30,10 +30,13 @@ const productReducer = (state = initState, action) => {
   if (action.type === FETCH_PRODUCTS_ERROR) {
     return {
       ...state,
-      products: [],
       fetchProductsSuccess: false,
       error: action.payload
     }
+  }
+
+  if (action.type === CLEAR_PRODUCTS){
+    return initState;
   }
 
   return state;
