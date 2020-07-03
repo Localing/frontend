@@ -114,7 +114,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-product-name-link-wrap w-inline-block">
                         <Link to={`/business/${business.businessId}`}><p className="hero2-product-name">Explore products at {business.name}</p></Link>
                     </div>
-                    <p className="hero2-product-price"><i className="fa fa-map-marker mr-1" />{business.area}</p>
+                    <p className="hero2-product-price"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">
