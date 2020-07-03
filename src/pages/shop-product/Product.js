@@ -3,12 +3,16 @@ import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
-import API from "../../services/API";
 import { Spinner } from 'react-bootstrap';
 import { fetchProduct, clearProduct } from "../../redux/actions/productActions";
 import { connect } from 'react-redux';
 
-const Product = ({ match, product, fetchProduct, clearProduct }) => {
+const Product = ({ 
+  match, 
+  product, 
+  fetchProduct, 
+  fetchProductError, 
+  clearProduct }) => {
 
   const businessId = match.params.businessId;
   const productId = match.params.productId;
@@ -50,11 +54,11 @@ const Product = ({ match, product, fetchProduct, clearProduct }) => {
           :
           <div className="mx-auto mt-5 mb-5 text-center">
             <h2 className="display-4 mb-4">Loading great deals!</h2>
-            {!loadingError ?
+            {!fetchProductError ?
               <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
               </Spinner> :
-              <p className="lead">{loadingError}</p>
+              <p className="lead">Sorry, something went wrong. Please try again!</p>
             }
           </div>
         }
@@ -66,7 +70,8 @@ const Product = ({ match, product, fetchProduct, clearProduct }) => {
 
 const mapStateToProps = (state) => {
   return {
-      product: state.productData.product
+      product: state.productData.product,
+      fetchProductError: state.productData.fetchProductError
   }
 }
 

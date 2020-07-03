@@ -11,9 +11,16 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
 
-const ShopGridStandard = ({ match, products, fetchProducts, clearProducts, business, fetchBusiness }) => {
+const ShopGridStandard = ({
+    match,
+    products,
+    fetchProducts,
+    fetchProductsError,
+    clearProducts,
+    business,
+    fetchBusiness,
+    fetchBusinessError }) => {
 
-    const [loadingError, setLoadingError] = useState(null);
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
     const [sortValue, setSortValue] = useState('');
@@ -45,7 +52,7 @@ const ShopGridStandard = ({ match, products, fetchProducts, clearProducts, busin
     useEffect(() => {
 
         // fetch business details and all products for that business
-        
+
         fetchBusiness(businessId);
         fetchProducts(businessId);
 
@@ -131,11 +138,13 @@ const ShopGridStandard = ({ match, products, fetchProducts, clearProducts, busin
                     :
                     <div className="mx-auto mt-5 mb-5 text-center">
                         <h2 className="display-4 mb-4">Loading great deals!</h2>
-                        {!loadingError ?
+                        {!fetchProductsError && !fetchBusinessError ?
                             <Spinner animation="border" role="status">
                                 <span className="sr-only">Loading...</span>
                             </Spinner> :
-                            <p className="lead">{loadingError}</p>
+                            <Fragment>
+                                <p className="lead">Sorry, something went wrong! Please try again.</p>
+                            </Fragment>
                         }
                     </div>
                 }
@@ -153,7 +162,9 @@ ShopGridStandard.propTypes = {
 const mapStateToProps = (state) => {
     return {
         products: state.productData.products,
-        business: state.businessData.business
+        business: state.businessData.business,
+        fetchProductsError: state.productData.fetchProductsError,
+        fetchBusinessError: state.businessData.fetchBusinessError
     }
 }
 
