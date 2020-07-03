@@ -5,24 +5,21 @@ import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import API from "../../services/API";
 import { Spinner } from 'react-bootstrap';
+import { fetchProduct, clearProduct } from "../../redux/actions/productActions";
+import { connect } from 'react-redux';
 
-const Product = ({ match }) => {
+const Product = ({ match, product, fetchProduct, clearProduct }) => {
 
-  const [product, setProduct] = useState(null);
+  const businessId = match.params.businessId;
+  const productId = match.params.productId;
+
   const [loadingError, setLoadingError] = useState("");
 
   useEffect(() => {
-    // fetch products
-    console.log(`/business/${match.params.businessId}/product/${match.params.productId}`)
-    API
-      .get(`/business/${match.params.businessId}/product/${match.params.productId}`)
-      .then(response => {
-        setProduct(response.data);
-      })
-      .catch(error => {
-        setLoadingError("Something went wrong!", error)
-      });
-  }, [])
+    fetchProduct(businessId, productId)
+    return () => clearProduct();
+  }, []);
+
   return (
     <Fragment>
       <MetaTags>
@@ -67,4 +64,17 @@ const Product = ({ match }) => {
   );
 };
 
-export default Product;
+const mapStateToProps = (state) => {
+  return {
+      product: state.productData.product
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchProduct: (businessId, productId) => dispatch(fetchProduct(businessId, productId)),
+      clearProduct: () => dispatch(clearProduct()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
