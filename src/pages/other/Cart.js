@@ -49,15 +49,15 @@ const Cart = ({
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
               <Fragment>
-                <h3 className="cart-page-title">Your cart items</h3>
+                <h3 className="cart-page-title">Your shopping cart</h3>
                 <div className="row">
                   <div className="col-12">
                     <div className="table-content table-responsive cart-table-content">
                       <table>
                         <thead>
                           <tr>
-                            <th>Image</th>
-                            <th>Product Name</th>
+                            <th></th>
+                            <th>Product</th>
                             <th>Unit Price</th>
                             <th>Qty</th>
                             <th>Subtotal</th>
@@ -88,15 +88,15 @@ const Cart = ({
                                   <Link
                                     to={
                                       process.env.PUBLIC_URL +
-                                      "/product/" +
-                                      cartItem.id
+                                      "/product/" + cartItem.businessId + "/" +
+                                      cartItem.productId
                                     }
                                   >
                                     <img
                                       className="img-fluid"
                                       src={
                                         process.env.PUBLIC_URL +
-                                        cartItem.image[0]
+                                        cartItem.images[0]
                                       }
                                       alt=""
                                     />
@@ -222,7 +222,7 @@ const Cart = ({
                     <div className="cart-shiping-update-wrapper">
                       <div className="cart-shiping-update">
                         <Link
-                          to={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                          to={process.env.PUBLIC_URL + "/#shop"}
                         >
                           Continue Shopping
                         </Link>
@@ -236,9 +236,10 @@ const Cart = ({
                   </div>
                 </div>
 
-                <div className="row">
+                <div className="row justify-content-end">
+                  {/* Disabled shipping and tax estimator - 
                   <div className="col-lg-4 col-md-6">
-                    <div className="cart-tax">
+                     <div className="cart-tax">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gray">
                           Estimate Shipping And Tax
@@ -277,7 +278,7 @@ const Cart = ({
                         </div>
                       </div>
                     </div>
-                  </div>
+                        </div> */}
 
                   <div className="col-lg-4 col-md-6">
                     <div className="discount-code-wrapper">
@@ -287,11 +288,11 @@ const Cart = ({
                         </h4>
                       </div>
                       <div className="discount-code">
-                        <p>Enter your coupon code if you have one.</p>
+                        <p>Enter a coupon code if you have one</p>
                         <form>
                           <input type="text" required name="name" />
                           <button className="cart-btn-2" type="submit">
-                            Apply Coupon
+                            Apply Coupon Code
                           </button>
                         </form>
                       </div>
