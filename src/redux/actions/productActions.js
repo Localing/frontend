@@ -26,7 +26,8 @@ export const fetchProducts = (businessID) => {
     API
       .get(`/business/${businessID}/product`)
       .then(response => {
-        dispatch(fetchProductsSuccess(response.data));
+        const activeProducts = response.data.filter(product => product.active);
+        dispatch(fetchProductsSuccess(activeProducts));
       })
       .catch(err => {
         fetchProductsError(err);
