@@ -1,15 +1,39 @@
-import { FETCH_PRODUCTS_SUCCESS } from "../actions/productActions";
+import {
+  FETCH_PRODUCTS_BEGIN,
+  FETCH_PRODUCTS_SUCCESS,
+  FETCH_PRODUCTS_ERROR
+} from "../actions/productActions";
 
 const initState = {
-  products: []
+  products: [],
+  fetchProductsSuccess: false,
+  error: null
 };
 
 const productReducer = (state = initState, action) => {
+
+  if (action.type === FETCH_PRODUCTS_BEGIN) {
+    return {
+      ...initState
+    }
+  }
+
   if (action.type === FETCH_PRODUCTS_SUCCESS) {
     return {
       ...state,
-      products: action.payload
+      products: action.payload,
+      fetchProductsSuccess: true,
+      error: null
     };
+  }
+
+  if (action.type === FETCH_PRODUCTS_ERROR) {
+    return {
+      ...state,
+      products: [],
+      fetchProductsSuccess: false,
+      error: action.payload
+    }
   }
 
   return state;

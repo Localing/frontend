@@ -3,6 +3,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
 import { connect } from 'react-redux';
+import { fetchProducts } from "../../redux/actions/productActions";
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
@@ -11,10 +12,9 @@ import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
 import API from "../../services/API";
 
-const ShopGridStandard = ({ match }) => {
+const ShopGridStandard = ({ match, products, fetchProducts }) => {
 
     const [business, setBusiness] = useState(null);
-    const [products, setProducts] = useState(null);
     const [loadingError, setLoadingError] = useState(null);
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
@@ -54,15 +54,8 @@ const ShopGridStandard = ({ match }) => {
                 setLoadingError("Something went wrong!", error)
             });
 
-        // fetch all products
-        API
-            .get(`/business/${match.params.id}/product`)
-            .then(response => {
-                setProducts(response.data);
-            })
-            .catch(error => {
-                setLoadingError("Something went wrong!", error)
-            });
+
+        fetchProducts(match.params.id);
     }, [])
 
     useEffect(() => {
@@ -163,12 +156,16 @@ ShopGridStandard.propTypes = {
     products: PropTypes.array
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        products: state.productData.products.filter(
-            product => product.businessID === ownProps.match.params.id
-        )
+        products: state.productData.products
     }
 }
 
-export default connect(mapStateToProps)(ShopGridStandard);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchProducts: (businessId) => dispatch(fetchProducts(businessId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopGridStandard);
