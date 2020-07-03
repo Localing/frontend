@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container, OverlayTrigger, Popover, Button, Form, Alert, Spinner } from "react-bootstrap";
 import { getDistance, convertDistance } from 'geolib';
+import { capitalize } from "../../helpers/strings";
 import { Link } from "react-router-dom";
 
 const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationError }) => {
@@ -90,12 +91,6 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     const newPostcode = postcode.replace(/\s+/g, '');
     setLocation(newPostcode);
 
-  }
-
-  // helper functions
-
-  const capitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   // popover used to change postcode

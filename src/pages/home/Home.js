@@ -33,7 +33,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, fet
           headerContainerclassName="container-fluid"
           headerPaddingclassName="header-padding-2"
         >
-          {(businesses.length) ?
+          {(businesses.length > 0) ?
             <Fragment>
 
               {/* Hero */}
