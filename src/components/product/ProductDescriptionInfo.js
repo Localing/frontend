@@ -67,7 +67,7 @@ const ProductDescriptionInfo = ({
           ""
         )}
       <div className="pro-details-list">
-        <p>{product.shortDescription}</p>
+        <p>{product.description}</p>
       </div>
 
       {product.variation ? (

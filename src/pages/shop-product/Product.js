@@ -1,52 +1,85 @@
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
-import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
+import { Spinner } from 'react-bootstrap';
+import { fetchProduct, clearProduct } from "../../redux/actions/productActions";
+import { connect } from 'react-redux';
 
-const Product = ({ product }) => {
+const Product = ({ 
+  match, 
+  product, 
+  fetchProduct, 
+  fetchProductError, 
+  clearProduct }) => {
+
+  const businessId = match.params.businessId;
+  const productId = match.params.productId;
+
+  const [loadingError, setLoadingError] = useState("");
+
+  useEffect(() => {
+    fetchProduct(businessId, productId)
+    return () => clearProduct();
+  }, []);
+
   return (
     <Fragment>
       <MetaTags>
-        <title>Localing | {product.name}</title>
+        <title>Localing | {product && product.name}</title>
         <meta
           name="description"
-          content={`Localing - ${product.name}`}
+          content={`Localing - ${product && product.name}`}
         />
       </MetaTags>
 
       <LayoutOne>
-        {/* product description with image */}
-        <ProductImageDescription
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-100"
-          product={product}
-          galleryType="fixedImage"
-        />
+        {product ?
+          <Fragment>
+            {/* product description with image */}
+            < ProductImageDescription
+              spaceTopClass="pt-100"
+              spaceBottomClass="pb-100"
+              product={product}
+              galleryType="fixedImage"
+            />
 
-        {/* related product slider */}
-        <RelatedProductSlider
-          spaceBottomClass="pb-95"
-          category={product.category[0]}
-        />
+            {/* related product slider 
+            <RelatedProductSlider
+              spaceBottomClass="pb-95"
+              category={product.category[0]}
+            /> */}
+          </Fragment>
+          :
+          <div className="mx-auto mt-5 mb-5 text-center">
+            <h2 className="display-4 mb-4">Loading great deals!</h2>
+            {!fetchProductError ?
+              <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner> :
+              <p className="lead">Sorry, something went wrong. Please try again!</p>
+            }
+          </div>
+        }
+
       </LayoutOne>
     </Fragment>
   );
 };
 
-Product.propTypes = {
-  product: PropTypes.object
-};
-
-const mapStateToProps = (state, ownProps) => {
-  const itemId = ownProps.match.params.id;
+const mapStateToProps = (state) => {
   return {
-    product: state.productData.products.filter(
-      single => single.id === itemId
-    )[0]
-  };
-};
+      product: state.productData.product,
+      fetchProductError: state.productData.fetchProductError
+  }
+}
 
-export default connect(mapStateToProps)(Product);
+const mapDispatchToProps = (dispatch) => {
+  return {
+      fetchProduct: (businessId, productId) => dispatch(fetchProduct(businessId, productId)),
+      clearProduct: () => dispatch(clearProduct()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
