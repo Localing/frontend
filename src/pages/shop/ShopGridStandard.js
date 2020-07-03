@@ -4,17 +4,15 @@ import MetaTags from 'react-meta-tags';
 import Paginator from 'react-hooks-paginator';
 import { connect } from 'react-redux';
 import { fetchProducts, clearProducts } from "../../redux/actions/productActions";
+import { fetchBusiness, clearBusiness } from "../../redux/actions/businessActions";
 import { getSortedProducts } from '../../helpers/product';
 import LayoutOne from '../../layouts/LayoutOne';
-import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
-import API from "../../services/API";
 
-const ShopGridStandard = ({ match, products, fetchProducts, clearProducts }) => {
+const ShopGridStandard = ({ match, products, fetchProducts, clearProducts, business, fetchBusiness }) => {
 
-    const [business, setBusiness] = useState(null);
     const [loadingError, setLoadingError] = useState(null);
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
@@ -28,6 +26,7 @@ const ShopGridStandard = ({ match, products, fetchProducts, clearProducts }) => 
 
     const pageLimit = 15;
 
+    const businessId = match.params.id;
 
     const getLayout = (layout) => {
         setLayout(layout)
@@ -44,19 +43,17 @@ const ShopGridStandard = ({ match, products, fetchProducts, clearProducts }) => 
     }
 
     useEffect(() => {
-        // fetch business info
-        API
-            .get(`/business/${match.params.id}`)
-            .then(response => {
-                setBusiness(response.data);
-            })
-            .catch(error => {
-                setLoadingError("Something went wrong!", error)
-            });
 
+        // fetch business details and all products for that business
+        
+        fetchBusiness(businessId);
+        fetchProducts(businessId);
 
-        fetchProducts(match.params.id);
-        return () => clearProducts();
+        return () => {
+            clearProducts();
+            clearBusiness();
+        }
+
     }, [])
 
     useEffect(() => {
@@ -155,14 +152,17 @@ ShopGridStandard.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.productData.products
+        products: state.productData.products,
+        business: state.businessData.business
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProducts: (businessId) => dispatch(fetchProducts(businessId)),
-        clearProducts: () => dispatch(clearProducts())
+        clearProducts: () => dispatch(clearProducts()),
+        fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
+        clearBusiness: () => dispatch(clearBusiness())
     }
 }
 
