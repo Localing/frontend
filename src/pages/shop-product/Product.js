@@ -11,13 +11,12 @@ const Product = ({
   match, 
   product, 
   fetchProduct, 
+  isFetchingProduct,
   fetchProductError, 
   clearProduct }) => {
 
   const businessId = match.params.businessId;
   const productId = match.params.productId;
-
-  const [loadingError, setLoadingError] = useState("");
 
   useEffect(() => {
     fetchProduct(businessId, productId)
@@ -35,7 +34,7 @@ const Product = ({
       </MetaTags>
 
       <LayoutOne>
-        {product ?
+        {!isFetchingProduct && product ?
           <Fragment>
             {/* product description with image */}
             < ProductImageDescription
@@ -71,6 +70,7 @@ const Product = ({
 const mapStateToProps = (state) => {
   return {
       product: state.productData.product,
+      isFetchingProduct: state.productData.isFetching,
       fetchProductError: state.productData.fetchProductError
   }
 }

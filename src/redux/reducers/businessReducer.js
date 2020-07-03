@@ -12,6 +12,7 @@ import {
 const initState = {
   businesses: [],
   business: null,
+  isFetching: false,
   fetchBusinessesError: null,
   fetchBusinessError: null
 };
@@ -20,6 +21,7 @@ const businessReducer = (state = initState, action) => {
   if (action.type === FETCH_BUSINESSES_BEGIN) {
     return {
       ...state,
+      isFetching: true,
       fetchBusinessesError: null
     }
   }
@@ -28,6 +30,7 @@ const businessReducer = (state = initState, action) => {
     return {
       ...state,
       businesses: action.payload,
+      isFetching: false,
       fetchBusinessesError: null
     };
   }
@@ -35,15 +38,16 @@ const businessReducer = (state = initState, action) => {
   if (action.type === FETCH_BUSINESSES_ERROR) {
     return {
       ...state,
+      isFetching: false,
       fetchBusinessesError: action.payload
     }
   }
 
   if (action.type === FETCH_BUSINESS_BEGIN) {
-    // clear out old business details
     return {
       ...state,
       business: null,
+      isFetching: true,
       fetchBusinessError: null
     }
   }
@@ -52,6 +56,7 @@ const businessReducer = (state = initState, action) => {
     return {
       ...state,
       business: action.payload,
+      isFetching: false,
       fetchBusinessError: null
     };
   }
@@ -59,6 +64,7 @@ const businessReducer = (state = initState, action) => {
   if (action.type === FETCH_BUSINESS_ERROR) {
     return {
       ...state,
+      isFetching: false,
       fetchBusinessError: action.payload
     }
   }

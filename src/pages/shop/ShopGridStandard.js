@@ -15,10 +15,12 @@ const ShopGridStandard = ({
     match,
     products,
     fetchProducts,
+    isFetchingProducts,
     fetchProductsError,
     clearProducts,
     business,
     fetchBusiness,
+    isFetchingBusiness,
     fetchBusinessError }) => {
 
     const [layout, setLayout] = useState('grid three-column');
@@ -52,10 +54,10 @@ const ShopGridStandard = ({
     useEffect(() => {
 
         // fetch business details and all products for that business
-
         fetchBusiness(businessId);
         fetchProducts(businessId);
 
+        // clear data from store upon unmount
         return () => {
             clearProducts();
             clearBusiness();
@@ -81,7 +83,7 @@ const ShopGridStandard = ({
             </MetaTags>
 
             <LayoutOne>
-                {(business && products) ?
+                {(!isFetchingBusiness && !isFetchingProducts && business && products) ?
                     <Fragment>
                         <Jumbotron fluid className="shop-jumbotron" style={{ backgroundImage: `url('${business.imageURL}')` }}>
                             <Container>
@@ -162,7 +164,9 @@ ShopGridStandard.propTypes = {
 const mapStateToProps = (state) => {
     return {
         products: state.productData.products,
+        isFetchingProducts: state.productData.isFetching,
         business: state.businessData.business,
+        isFetchingBusiness: state.businessData.isFetching,
         fetchProductsError: state.productData.fetchProductsError,
         fetchBusinessError: state.businessData.fetchBusinessError
     }

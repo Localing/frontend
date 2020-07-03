@@ -12,6 +12,7 @@ import {
 const initState = {
   products: [],
   product: null,
+  isFetching: false,
   fetchProductsError: null,
   fetchProductError: null
 };
@@ -22,6 +23,7 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       products: [],
+      isFetching: true,
       fetchProductsSuccess: false,
     }
   }
@@ -30,6 +32,7 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       products: action.payload,
+      isFetching: false,
       fetchProductsError: null
     };
   }
@@ -37,6 +40,7 @@ const productReducer = (state = initState, action) => {
   if (action.type === FETCH_PRODUCTS_ERROR) {
     return {
       ...state,
+      isFetching: false,
       fetchProductsError: action.payload
     }
   }
@@ -54,6 +58,7 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       product: null,
+      isFetching: true,
       fetchProductError: null
     }
   }
@@ -62,6 +67,7 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       product: action.payload,
+      isFetching: false,
       fetchProductError: null
     };
   }
@@ -69,6 +75,7 @@ const productReducer = (state = initState, action) => {
   if (action.type === FETCH_PRODUCT_ERROR) {
     return {
       ...state,
+      isFetching: false,
       fetchProductError: action.payload
     }
   }
