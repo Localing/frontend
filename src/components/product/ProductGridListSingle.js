@@ -225,8 +225,8 @@ const ProductGridListSingle = ({
                 ) : (
                     ""
                   )}
-                {product.shortDescription ? (
-                  <p>{product.shortDescription}</p>
+                {product.description ? (
+                  <p>{product.description}</p>
                 ) : (
                     ""
                   )}
