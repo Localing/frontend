@@ -2,8 +2,8 @@
 export const getProducts = (products, category, type, limit) => {
   const finalProducts = category
     ? products.filter(
-        product => product.category.filter(single => single === category)[0]
-      )
+      product => product.category.filter(single => single === category)[0]
+    )
     : products;
 
   if (type && type === "new") {
@@ -101,11 +101,15 @@ export const getSortedProducts = (products, sortType, sortValue) => {
           return a.price - b.price;
         });
       }
-      if (sortValue === "AtoZ"){
+      if (sortValue === "AtoZ") {
         return sortProducts.sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1;
-          if (a.name === b.name) return 0;
+          if (a.name < b.name) {
+            return -1;
+          } else if (a.name > b.name) {
+            return 1;
+          } else {
+            return 0;
+          }
         })
       }
     }
@@ -115,7 +119,7 @@ export const getSortedProducts = (products, sortType, sortValue) => {
 
 // get individual element
 const getIndividualItemArray = array => {
-  let individualItemArray = array.filter(function(v, i, self) {
+  let individualItemArray = array.filter(function (v, i, self) {
     return i === self.indexOf(v);
   });
   return individualItemArray;

@@ -63,7 +63,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
             </ul>
           </li>
           <li>
-            <a href="https://business.localing.co.uk/" target="_blank">
+            <a href="https://business.localing.co.uk/" target="_blank" rel="noopener noreferrer">
               FOR BUSINESSES
             </a>
           </li>

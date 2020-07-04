@@ -9,10 +9,10 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         return businesses[Math.floor(Math.random() * businesses.length)]
     }
 
-    const [business, setBusiness] = useState(randomBusiness());
+    const business = randomBusiness();
 
-    // //Rotate businesses in hero
-
+    // Rotate businesses in hero 
+    //const [business, setBusiness] = useState(randomBusiness());
     // useEffect(() => {
     //     const interval = setInterval(() => {
     //         setBusiness(randomBusiness());

@@ -10,7 +10,7 @@ Localing connects customers with local businesses once more. Our platform gives 
 This repository contains the frontend application, built with React, Redux and Bootstrap 4.
 
 ## Try it out
-Live version can be seen at https://localing.co.uk/
+Demo version can be seen at https://stage.localing.co.uk/
 
 ## Built with
 - React

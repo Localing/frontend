@@ -11,7 +11,7 @@ import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 import { Container, Jumbotron, Button, Spinner } from 'react-bootstrap';
 
-const ShopGridStandard = ({
+const Business = ({
     match,
     products,
     fetchProducts,
@@ -63,10 +63,11 @@ const ShopGridStandard = ({
             clearBusiness();
         }
 
-    }, [])
+    }, [businessId, fetchBusiness, fetchProducts, clearProducts])
 
     useEffect(() => {
         if (products) {
+            getSortParams(sortType, sortValue);
             let sortedProducts = getSortedProducts(products, sortType, sortValue);
             const filterSortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
             sortedProducts = filterSortedProducts;
@@ -156,9 +157,13 @@ const ShopGridStandard = ({
     )
 }
 
-ShopGridStandard.propTypes = {
-    location: PropTypes.object,
-    products: PropTypes.array
+Business.propTypes = {
+    products: PropTypes.array,
+    isFetchingProducts: PropTypes.bool,
+    business: PropTypes.object,
+    isFetchingBusiness: PropTypes.bool,
+    fetchProductsError: PropTypes.object,
+    fetchBusinessError: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
@@ -181,4 +186,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopGridStandard);
+export default connect(mapStateToProps, mapDispatchToProps)(Business);

@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { Button, OverlayTrigger } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+//import { OverlayTrigger } from "react-bootstrap";
 import LevelModal from "../levels/LevelModal";
 
 const LeftToolbar = ({
@@ -28,12 +29,12 @@ const LeftToolbar = ({
 
 
   // handling changes to postcodes
-  const [postcode, setPostcode] = useState("");
+  // const [postcode, setPostcode] = useState("");
 
-  const handlePostcodeSubmit = (event) => {
-    event.preventDefault();
-    setLocation(postcode);
-  }
+  // const handlePostcodeSubmit = (event) => {
+  //   event.preventDefault();
+  //   setLocation(postcode);
+  // }
 
   return (
     <div className="language-currency-wrap">

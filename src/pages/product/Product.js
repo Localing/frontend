@@ -1,7 +1,7 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
-import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
+//import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import { Spinner } from 'react-bootstrap';
 import { fetchProduct, clearProduct } from "../../redux/actions/productActions";
@@ -21,7 +21,7 @@ const Product = ({
   useEffect(() => {
     fetchProduct(businessId, productId)
     return () => clearProduct();
-  }, []);
+  }, [businessId, productId, clearProduct, fetchProduct]);
 
   return (
     <Fragment>

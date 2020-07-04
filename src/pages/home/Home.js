@@ -17,7 +17,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
 
   useEffect(() => {
     fetchBusinesses();
-  }, []);
+  }, [fetchBusinesses]);
 
   return (
     <Fragment>
