@@ -132,14 +132,14 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
           <label>Show me</label>
-          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange} style={{ borderRadius: '0'}}>
             <option value="all" selected>all shops</option>
             {categories.map((category) => {
               return <option value={category}>{category}</option>
             })}
           </select>
           <label>within</label>
-          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange} style={{ borderRadius: '0'}}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
             <option value="1">1 mile</option>
@@ -153,12 +153,12 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             placement="bottom"
             overlay={PostcodePopover}
             rootClose>
-            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()}>
+            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()} style={{ borderRadius: '0'}}>
               <option>{locationData.location}</option>
             </select>
           </OverlayTrigger>
           <label>or&nbsp;</label>
-          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} />
+          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} style={{ borderRadius: '0'}} />
         </form>
         :
         <div className="business-filter-form">Please
