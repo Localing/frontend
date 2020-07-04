@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
-import { capitalize } from "../../helpers/strings";
+import { capitalize, truncate } from "../../helpers/strings";
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
@@ -52,17 +52,6 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
     }
 
-    // truncates text
-    const truncate = (str) => {
-        const length = 200;
-        const ending = " ...";
-        if (str.length > length) {
-            return str.substring(0, length - ending.length) + ending;
-        } else {
-            return str;
-        }
-    };
-
     return (
         <div className="hero-with-background-wrap hero2-wrap animate__animated animate__fadeIn">
             <div className="w-layout-grid hero2-grid">
@@ -103,7 +92,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             <div>
                                 <span className="featured-text">Featured</span>
                                 <div className="size5-text">{business.name}</div>
-                                <div className="paragraph-70">{truncate(business.description)}</div>
+                                <div className="paragraph-70">{truncate(business.description, 200, " ...")}</div>
                             </div>
                     </div>
                     <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
