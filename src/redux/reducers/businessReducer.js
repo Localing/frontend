@@ -1,18 +1,28 @@
-import { FETCH_BUSINESSES_BEGIN, FETCH_BUSINESSES_SUCCESS, FETCH_BUSINESSES_ERROR } from "../actions/businessActions";
+import {
+  FETCH_BUSINESSES_BEGIN,
+  FETCH_BUSINESSES_SUCCESS,
+  FETCH_BUSINESSES_ERROR,
+  FETCH_BUSINESS_BEGIN,
+  FETCH_BUSINESS_SUCCESS,
+  FETCH_BUSINESS_ERROR,
+  CLEAR_BUSINESS
+} from "../actions/businessActions";
 
 
 const initState = {
   businesses: [],
-  fetchBusinessSuccess: false,
-  error: null
+  business: null,
+  isFetching: false,
+  fetchBusinessesError: null,
+  fetchBusinessError: null
 };
 
 const businessReducer = (state = initState, action) => {
   if (action.type === FETCH_BUSINESSES_BEGIN) {
     return {
       ...state,
-      fetchBusinessesSuccess: false,
-      error: null
+      isFetching: true,
+      fetchBusinessesError: null
     }
   }
 
@@ -20,16 +30,50 @@ const businessReducer = (state = initState, action) => {
     return {
       ...state,
       businesses: action.payload,
-      fetchBusinessesSuccess: true,
-      error: null
+      isFetching: false,
+      fetchBusinessesError: null
     };
   }
 
   if (action.type === FETCH_BUSINESSES_ERROR) {
     return {
       ...state,
-      fetchBusinessesSuccess: false,
-      error: action.payload
+      isFetching: false,
+      fetchBusinessesError: action.payload
+    }
+  }
+
+  if (action.type === FETCH_BUSINESS_BEGIN) {
+    return {
+      ...state,
+      business: null,
+      isFetching: true,
+      fetchBusinessError: null
+    }
+  }
+
+  if (action.type === FETCH_BUSINESS_SUCCESS) {
+    return {
+      ...state,
+      business: action.payload,
+      isFetching: false,
+      fetchBusinessError: null
+    };
+  }
+
+  if (action.type === FETCH_BUSINESS_ERROR) {
+    return {
+      ...state,
+      isFetching: false,
+      fetchBusinessError: action.payload
+    }
+  }
+
+  if (action.type === CLEAR_BUSINESS){
+    return {
+      ...state,
+      business: null,
+      fetchBusinessError: null
     }
   }
 

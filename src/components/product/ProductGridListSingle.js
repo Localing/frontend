@@ -16,7 +16,8 @@ const ProductGridListSingle = ({
   wishlistItem,
   compareItem,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
+  businessId
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
@@ -38,16 +39,16 @@ const ProductGridListSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + businessId + "/" + product.productId}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.image[0]}
+                src={process.env.PUBLIC_URL + product.images[0]}
                 alt=""
               />
-              {product.image.length > 1 ? (
+              {product.images.length > 1 ? (
                 <img
                   className="hover-img"
-                  src={process.env.PUBLIC_URL + product.image[1]}
+                  src={process.env.PUBLIC_URL + product.images[1]}
                   alt=""
                 />
               ) : (
@@ -95,7 +96,7 @@ const ProductGridListSingle = ({
                     Buy now{" "}
                   </a>
                 ) : product.variation && product.variation.length >= 1 ? (
-                  <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
+                  <Link to={`${process.env.PUBLIC_URL}/product/${product.productId}`}>
                     Select Option
                   </Link>
                 ) : product.stock && product.stock > 0 ? (
@@ -132,7 +133,7 @@ const ProductGridListSingle = ({
           </div>
           <div className="product-content text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
                 {product.name}
               </Link>
             </h3>
@@ -162,16 +163,16 @@ const ProductGridListSingle = ({
             <div className="col-xl-4 col-md-5 col-sm-6">
               <div className="product-list-image-wrap">
                 <div className="product-img">
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                  <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
                     <img
                       className="default-img img-fluid"
-                      src={process.env.PUBLIC_URL + product.image[0]}
+                      src={process.env.PUBLIC_URL + product.images[0]}
                       alt=""
                     />
-                    {product.image.length > 1 ? (
+                    {product.images.length > 1 ? (
                       <img
                         className="hover-img img-fluid"
-                        src={process.env.PUBLIC_URL + product.image[1]}
+                        src={process.env.PUBLIC_URL + product.images[1]}
                         alt=""
                       />
                     ) : (
@@ -196,7 +197,7 @@ const ProductGridListSingle = ({
             <div className="col-xl-8 col-md-7 col-sm-6">
               <div className="shop-list-content">
                 <h3>
-                  <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                  <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
                     {product.name}
                   </Link>
                 </h3>
@@ -223,8 +224,8 @@ const ProductGridListSingle = ({
                 ) : (
                     ""
                   )}
-                {product.shortDescription ? (
-                  <p>{product.shortDescription}</p>
+                {product.description ? (
+                  <p>{product.description}</p>
                 ) : (
                     ""
                   )}
@@ -242,7 +243,7 @@ const ProductGridListSingle = ({
                       </a>
                     ) : product.variation && product.variation.length >= 1 ? (
                       <Link
-                        to={`${process.env.PUBLIC_URL}/product/${product.id}`}
+                        to={`${process.env.PUBLIC_URL}/product/${product.productId}`}
                       >
                         Select Option
                       </Link>
@@ -341,7 +342,8 @@ ProductGridListSingle.propTypes = {
   product: PropTypes.object,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.object
+  wishlistItem: PropTypes.object,
+  businessId: PropTypes.string
 };
 
 export default ProductGridListSingle;

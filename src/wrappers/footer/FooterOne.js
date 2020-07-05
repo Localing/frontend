@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { animateScroll } from "react-scroll";
 import FooterCopyright from "../../components/footer/FooterCopyright";
-import FooterNewsletter from "../../components/footer/FooterNewsletter";
 
 const FooterOne = ({
   backgroundColorClass,
@@ -65,17 +64,42 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
+                    <Link to={process.env.PUBLIC_URL + "/about"}>Our Team</Link>
                   </li>
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/contact"}>
-                      Contact
+                      Contact Us
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
+
+          <div
+            className={`${
+              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              }`}
+          >
+            <div className="footer-widget mb-30 ml-30">
+              <div className="footer-title">
+                <h3>POLICY</h3>
+              </div>
+              <div className="footer-list">
+                <ul>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/terms"}>Terms of Use</Link>
+                  </li>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/privacy"}>
+                      Privacy Policy
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
           <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
@@ -89,7 +113,7 @@ const FooterOne = ({
                 }`}
             >
               <div className="footer-title">
-                <h3>USEFUL LINKS</h3>
+                <h3>LINKS</h3>
               </div>
               <div className="footer-list">
                 <ul>
@@ -168,8 +192,6 @@ const FooterOne = ({
               sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
               }`}
           >
-            {/* footer newsletter 
-            <FooterNewsletter spaceBottomClass="mb-30" spaceLeftClass="ml-70" sideMenu={sideMenu} /> */}
           </div>
         </div>
       </div>

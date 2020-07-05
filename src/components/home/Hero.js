@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
+import { capitalize, truncate } from "../../helpers/strings";
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
@@ -8,10 +9,10 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         return businesses[Math.floor(Math.random() * businesses.length)]
     }
 
-    const [business, setBusiness] = useState(randomBusiness());
+    const business = randomBusiness();
 
-    // //Rotate businesses in hero
-
+    // Rotate businesses in hero 
+    //const [business, setBusiness] = useState(randomBusiness());
     // useEffect(() => {
     //     const interval = setInterval(() => {
     //         setBusiness(randomBusiness());
@@ -51,17 +52,6 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
         window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
     }
 
-    // truncates text
-    const truncate = (str) => {
-        const length = 200;
-        const ending = " ...";
-        if (str.length > length) {
-          return str.substring(0, length - ending.length) + ending;
-        } else {
-          return str;
-        }
-      };
-
     return (
         <div className="hero-with-background-wrap hero2-wrap animate__animated animate__fadeIn">
             <div className="w-layout-grid hero2-grid">
@@ -99,22 +89,21 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         }
                     </div>
                     <div className="hero2-latest w-inline-block">
-                        <div className="hero2-image-collection" style={{ backgroundImage: `url('${business.imageURL}')` }}></div>
-                        <div>
-                            <p className="featured-text">Featured</p>
-                            <div className="size5-text">{business.name}</div>
-                            <div className="paragraph-70">{truncate(business.description)}</div>
-                        </div>
+                            <div>
+                                <span className="featured-text">Featured</span>
+                                <div className="size5-text">{business.name}</div>
+                                <div className="paragraph-70">{truncate(business.description, 200, " ...")}</div>
+                            </div>
                     </div>
                     <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
-                        <div>Discover more shops near {locationData.location || "your community"}</div><img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" />
+                        <div>Discover more shops near you</div>↓
                     </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
-                        <Link to={`/business/${business.id}`}><p className="hero2-product-name">Order from {business.name} today</p></Link>
+                        <Link to={`/business/${business.businessId}`}><p className="hero2-product-name">Explore products at {business.name}</p></Link>
                     </div>
-                    <p className="hero2-product-price"></p>
+                    <p className="hero2-product-price"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">

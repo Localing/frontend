@@ -10,7 +10,7 @@ import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 
-const ShopListStandard = ({ location, products }) => {
+const ProductList = ({ location, products }) => {
   const [layout, setLayout] = useState("list");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -112,8 +112,7 @@ const ShopListStandard = ({ location, products }) => {
   );
 };
 
-ShopListStandard.propTypes = {
-  location: PropTypes.object,
+ProductList.propTypes = {
   products: PropTypes.array
 };
 
@@ -123,4 +122,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(ShopListStandard);
+export default connect(mapStateToProps)(ProductList);

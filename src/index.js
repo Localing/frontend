@@ -6,7 +6,6 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
-import { fetchProducts } from "./redux/actions/productActions";
 import { verifyAuth } from "./redux/actions/authActions";
 import rootReducer from "./redux/reducers/rootReducer";
 import App from "./App";
@@ -18,11 +17,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(thunk, save({ ignoreStates: ["businessData", "productData"] })))
+  composeWithDevTools(applyMiddleware(thunk, save({ ignoreStates: ["productData"] })))
 );
-
-// fetch products
-store.dispatch(fetchProducts());
 
 // verify authentication
 store.dispatch(verifyAuth());

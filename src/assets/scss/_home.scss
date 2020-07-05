@@ -305,6 +305,7 @@
     text-decoration: none;
     text-transform: uppercase;
     border: 0;
+    border-radius: 0;
     height: 45px;
     transition: all 0.3s;
   }
@@ -525,7 +526,7 @@
     -webkit-align-self: stretch;
     -ms-flex-item-align: stretch;
     align-self: stretch;
-    background-color: rgba(42, 114, 143, 0.9);
+    background-color: rgba(42, 114, 143, 1);
     color: #18181d;
   }
 
@@ -572,7 +573,7 @@
   .button-category {
     color: #FFF;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .button-arrow {

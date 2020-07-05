@@ -37,7 +37,7 @@ const RightToolbar = ({
     >
       { isAuthenticated ?
         <Dropdown>
-          <Dropdown.Toggle variant="dark" id="account-dropdown" size="sm">
+          <Dropdown.Toggle variant="dark" id="account-dropdown" style={{ borderRadius: '0' }} size="sm">
             Hi {user.profile.given_name}
          </Dropdown.Toggle>
 
@@ -50,7 +50,7 @@ const RightToolbar = ({
 
         :
 
-        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" size="sm">Log In</Button></Link>
+        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm">Log In</Button></Link>
       }
 
       {/* Disable compare icon

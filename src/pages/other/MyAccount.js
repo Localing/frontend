@@ -24,17 +24,17 @@ const MyAccount = ({ isAuthenticated, user }) => {
   const [changePasswordMessage, setChangePasswordMessage] = useState("");
 
   useEffect(() => {
+    const setAttributes = () => {
+      setFirstName(user.profile.given_name);
+      setLastName(user.profile.family_name);
+      setEmail(user.profile.email);
+      setPhone(user.profile.phone);
+    }
+
     if (isAuthenticated) {
       setAttributes();
     }
-  }, [isAuthenticated])
-
-  const setAttributes = () => {
-    setFirstName(user.profile.given_name);
-    setLastName(user.profile.family_name);
-    setEmail(user.profile.email);
-    setPhone(user.profile.phone);
-  }
+  }, [isAuthenticated, user.profile.given_name, user.profile.family_name, user.profile.email, user.profile.phone])
 
   const handleChangePassword = (event) => {
     event.preventDefault();

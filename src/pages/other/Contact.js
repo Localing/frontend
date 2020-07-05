@@ -15,7 +15,7 @@ const Contact = (props) => {
           content="Localing contact page"
         />
       </MetaTags>
-      <LayoutOne headerTop="visible">
+      <LayoutOne>
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             {/* Disable map

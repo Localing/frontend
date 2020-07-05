@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Container, OverlayTrigger, Popover, Button, Form, Alert, Spinner } from "react-bootstrap";
 import { getDistance, convertDistance } from 'geolib';
+import { capitalize } from "../../helpers/strings";
 import { Link } from "react-router-dom";
 
 const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationError }) => {
@@ -13,56 +14,53 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   useEffect(() => {
     // sort and filter businesses whenever options change
+    const sortBusinesses = () => {
+      let sortedBusinesses = [...businesses];
+
+      sortedBusinesses.forEach((business) => {
+        const distanceInMeters = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
+        business.distance = convertDistance(distanceInMeters, 'mi');
+      });
+
+      if (searchTerm) {
+        sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
+      }
+
+      if (filterRadius > 0) {
+        sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
+      }
+
+      if (filterCategory !== "all") {
+        sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
+      }
+
+      sortedBusinesses.sort((a, b) => {
+        return a.distance - b.distance;
+      })
+
+      setBusinessesToDisplay(sortedBusinesses);
+    }
+
     sortBusinesses();
-  }, [locationData, filterRadius, filterCategory, searchTerm])
+  }, [locationData, filterRadius, filterCategory, searchTerm, businesses])
 
   useEffect(() => {
     // update categories if businesses change
+    const getCategories = () => {
+      let categories = [];
+      businesses.forEach((business) => {
+        categories = categories.concat(business.categories);
+      })
+      setCategories(categories);
+    }
+
     getCategories();
   }, [businesses])
-
-  const sortBusinesses = () => {
-    let sortedBusinesses = [...businesses];
-
-    sortedBusinesses.forEach((business) => {
-      const distanceInMeters = getDistance({ latitude: locationData.latitude, longitude: locationData.longitude }, { latitude: business.latitude, longitude: business.longitude });
-      business.distance = convertDistance(distanceInMeters, 'mi');
-    });
-
-    if (searchTerm) {
-      sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
-    }
-
-    if (filterRadius > 0) {
-      sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
-    }
-
-    if (filterCategory !== "all") {
-      sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
-    }
-
-    sortedBusinesses.sort((a, b) => {
-      return a.distance - b.distance;
-    })
-
-    setBusinessesToDisplay(sortedBusinesses);
-
-  }
 
   // filter by radius
   const handleRadiusChange = (e) => {
     e.preventDefault();
     setFilterRadius(e.target.value);
-  }
-
-
-  // get categories we can filter by
-  const getCategories = () => {
-    let categories = [];
-    businesses.forEach((business) => {
-      categories = categories.concat(business.categories);
-    })
-    setCategories(categories);
   }
 
 
@@ -90,12 +88,6 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     const newPostcode = postcode.replace(/\s+/g, '');
     setLocation(newPostcode);
 
-  }
-
-  // helper functions
-
-  const capitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   // popover used to change postcode
@@ -137,14 +129,14 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
           <label>Show me</label>
-          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange} style={{ borderRadius: '0' }}>
             <option value="all" selected>all shops</option>
             {categories.map((category) => {
               return <option value={category}>{category}</option>
             })}
           </select>
           <label>within</label>
-          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange}>
+          <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange} style={{ borderRadius: '0' }}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
             <option value="1">1 mile</option>
@@ -158,12 +150,12 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             placement="bottom"
             overlay={PostcodePopover}
             rootClose>
-            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()}>
+            <select className="custom-select ml-1 mr-1" onMouseDown={(e) => e.preventDefault()} style={{ borderRadius: '0' }}>
               <option>{locationData.location}</option>
             </select>
           </OverlayTrigger>
           <label>or&nbsp;</label>
-          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} />
+          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} style={{ borderRadius: '0' }} />
         </form>
         :
         <div className="business-filter-form">Please
@@ -183,10 +175,10 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
               <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
                 <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                   <div className="business-content-card-wrap">
+                    <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
                     <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                     <div className="button-text w-inline-block">
-                      <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
-                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(2) + " mi"}</div>
+                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(1) + " miles away"}</div>
                       <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                       </div>
                     </div>
@@ -200,6 +192,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <div className="no-results">Sorry, we couldn't find any businesses matching your search criteria. Please try widening your search!</div>
           </Col>}
       </Row>
+      <hr />
     </Container>
   )
 }
