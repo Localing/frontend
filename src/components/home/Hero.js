@@ -88,6 +88,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             </div>
                         }
                     </div>
+                    <Link to={`/business/${business.businessId}`}>
                     <div className="hero2-latest w-inline-block">
                             <div>
                                 <span className="featured-text">Featured</span>
@@ -95,6 +96,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                 <div className="paragraph-70">{truncate(business.description, 200, " ...")}</div>
                             </div>
                     </div>
+                    </Link>
                     <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
                         <div>Discover more shops near you</div>↓
                     </div></Link>
