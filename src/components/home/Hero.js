@@ -57,8 +57,8 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
-                        <div className="size1-text">Keep the heart of your community's high street beating</div>
-                        <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
+                        <div className="size1-text">Keep the heart of your local high street beating</div>
+                        <p class="paragraph-70">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
