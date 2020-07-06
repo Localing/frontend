@@ -83,7 +83,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
                                 </div>
                                 <div>
-                                    <Link to="#shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
+                                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
                         }
@@ -97,8 +97,8 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             </div>
                     </div>
                     </Link>
-                    <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
-                        <div>Discover more shops near you</div>↓
+                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
+                        <div>Discover more shops near you <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">

@@ -17,7 +17,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
       className={` ${
         sidebarMenu
           ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
+          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""} mt-2`
         } `}
     >
       <nav>
@@ -28,7 +28,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/#shop"} scroll={el => scrollWithOffset(el)}>
+            <Link to={process.env.PUBLIC_URL + "/shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
               BROWSE SHOPS
             </Link>

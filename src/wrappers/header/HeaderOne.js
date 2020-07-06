@@ -60,7 +60,7 @@ const HeaderOne = ({
               <Logo imageUrl="/assets/img/logo/localing-logo.png" logoClass="logo" />
             </div>
             <div className="col-xl-6 col-lg-6 d-none d-lg-block">
-               {/* <NavMenu /> */}
+               <NavMenu />
             </div>
             <div className="col-xl-4 col-lg-4 col-md-6 col-8">
               {/* Icon group */}

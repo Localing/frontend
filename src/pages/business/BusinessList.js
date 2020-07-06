@@ -30,7 +30,7 @@ const BusinessList = ({ businesses, locationData, setLocation, clearLocationErro
             clearLocationError={clearLocationError} />
         )
             :
-            (<h1 className="text-centered">Loading...</h1>)}
+            (<h1>Loading...</h1>)}
 
             </LayoutOne>
             </Fragment>
