@@ -3,7 +3,7 @@ import React from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import { connect } from "react-redux";
 
-const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
+const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
 
   // scrolls to business grid with offset to avoid navbar obscuring section header
   const scrollWithOffset = (el) => {
@@ -30,10 +30,10 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
           <li>
             <Link to={process.env.PUBLIC_URL + "/#shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
-              SHOP
+              BROWSE SHOPS
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
               MY LOCALING
               {sidebarMenu ? (
@@ -61,10 +61,10 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
             <a href="https://business.localing.co.uk/" target="_blank" rel="noopener noreferrer">
-              FOR BUSINESSES
+              CONTACT US
             </a>
           </li>
         </ul>

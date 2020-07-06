@@ -83,7 +83,7 @@ const HeaderTwo = ({
               <RightToolbar />
             </div>
             <div className="col-xl-12 col-lg-12 d-none d-lg-block">
-              <NavMenu />
+              {/* <NavMenu /> */}
             </div>
           </div>
           {/* mobile menu */}
