@@ -135,7 +135,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
               return <option value={category}>{category}</option>
             })}
           </select>
-          <label>within</label>
+          {/* <label>within</label>
           <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange} style={{ borderRadius: '0' }}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
@@ -143,8 +143,8 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="5">5 miles</option>
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
-          </select>
-          <label>of</label>
+          </select> */}
+          <label>near</label>
           <OverlayTrigger
             trigger="click"
             placement="bottom"
