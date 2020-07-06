@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
@@ -49,8 +49,10 @@ const RightToolbar = ({
         </Dropdown>
 
         :
-
-        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm">Log In</Button></Link>
+        <Fragment>
+          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm">Sign Up</Button></Link>
+          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" style={{ borderRadius: '0' }} className="ml-2" size="sm">Log In</Button></Link>
+        </Fragment>
       }
 
       {/* Disable compare icon

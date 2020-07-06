@@ -3,7 +3,7 @@ import React from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import { connect } from "react-redux";
 
-const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
+const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
 
   // scrolls to business grid with offset to avoid navbar obscuring section header
   const scrollWithOffset = (el) => {
@@ -17,7 +17,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
       className={` ${
         sidebarMenu
           ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`
+          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""} mt-2`
         } `}
     >
       <nav>
@@ -28,12 +28,12 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
             </Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/#shop"} scroll={el => scrollWithOffset(el)}>
+            <Link to={process.env.PUBLIC_URL + "/shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
-              SHOP
+              DISCOVER SHOPS
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to={process.env.PUBLIC_URL + "/"}>
               MY LOCALING
               {sidebarMenu ? (
@@ -61,11 +61,11 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu, isAuthenticated }) => {
                 </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
-            <a href="https://business.localing.co.uk/" target="_blank" rel="noopener noreferrer">
-              FOR BUSINESSES
-            </a>
+            <Link to="/contact">
+              CONTACT US
+            </Link>
           </li>
         </ul>
       </nav>

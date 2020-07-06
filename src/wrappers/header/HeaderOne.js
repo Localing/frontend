@@ -55,14 +55,14 @@ const HeaderOne = ({
       >
         <div className={layout === "container-fluid" ? layout : "container"}>
           <div className="row">
-            <div className="col-xl-2 col-lg-2 col-md-6 col-4" style={{ paddingBottom: 10 }}>
+            <div className="col-xl-2 col-lg-2 col-md-6 col-4" style={{ paddingBottom: 5 }}>
               {/* header logo */}
               <Logo imageUrl="/assets/img/logo/localing-logo.png" logoClass="logo" />
             </div>
-            <div className="col-xl-8 col-lg-8 d-none d-lg-block">
+            <div className="col-xl-6 col-lg-6 d-none d-lg-block">
                <NavMenu />
             </div>
-            <div className="col-xl-2 col-lg-2 col-md-6 col-8">
+            <div className="col-xl-4 col-lg-4 col-md-6 col-8">
               {/* Icon group */}
               <RightToolbar />
             </div>
