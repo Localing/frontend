@@ -30,7 +30,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
           <li>
             <Link to={process.env.PUBLIC_URL + "/shop"} scroll={el => scrollWithOffset(el)}>
               {" "}
-              BROWSE SHOPS
+              DISCOVER SHOPS
             </Link>
           </li>
           {/* <li>
@@ -63,9 +63,9 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li> */}
           <li>
-            <a href="https://business.localing.co.uk/" target="_blank" rel="noopener noreferrer">
+            <Link to="/contact">
               CONTACT US
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
