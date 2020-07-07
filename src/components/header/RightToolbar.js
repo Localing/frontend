@@ -36,7 +36,7 @@ const RightToolbar = ({
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
       { isAuthenticated ?
-        <Dropdown>
+        <Dropdown className="d-none d-md-block">
           <Dropdown.Toggle variant="dark" id="account-dropdown" style={{ borderRadius: '0' }} size="sm">
             Hi {user.profile.given_name}
          </Dropdown.Toggle>
@@ -50,8 +50,8 @@ const RightToolbar = ({
 
         :
         <Fragment>
-          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm">Sign Up</Button></Link>
-          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" style={{ borderRadius: '0' }} className="ml-2" size="sm">Log In</Button></Link>
+          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm" className="d-none d-md-block">Sign Up</Button></Link>
+          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" style={{ borderRadius: '0' }} className="d-none d-md-block ml-2" size="sm">Log In</Button></Link>
         </Fragment>
       }
 

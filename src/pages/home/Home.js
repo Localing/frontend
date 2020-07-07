@@ -70,7 +70,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
               }
 
               {/* Info Panel */}
-              <Container className="mt-5 mb-5">
+              <Container className="mt-5 mb-5 d-none d-md-block">
                 <h2>Get to know Localing</h2>
                 <p className="lead">We are dedicated to supporting local independent businesses.</p>
                 <div className="w-layout-grid content7-grid">
