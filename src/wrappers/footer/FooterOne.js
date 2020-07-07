@@ -30,6 +30,11 @@ const FooterOne = ({
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
+  
+  const displayCookiePreferenceModal = () => {
+    console.log("trying to update cookie prefs");
+    window.displayPreferenceModal();
+  }
 
   return (
     <footer
@@ -94,6 +99,16 @@ const FooterOne = ({
                     <Link to={process.env.PUBLIC_URL + "/privacy"}>
                       Privacy Policy
                     </Link>
+                  </li>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/cookies"}>
+                      Cookie Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <a onClick={() => displayCookiePreferenceModal()}>
+                      Update Cookie Preferences
+                    </a>
                   </li>
                 </ul>
               </div>
