@@ -113,26 +113,35 @@ const Business = ({
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12 order-1 order-lg-2">
-                                        {/* shop topbar default */}
-                                        <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
+                                        {products.length ?
+                                            <Fragment>
+                                                {/* shop topbar default */}
+                                                <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
 
-                                        {/* shop page content default */}
-                                        <ShopProducts layout={layout} products={currentData} businessId={business.businessId} />
+                                                {/* shop page content default */}
+                                                <ShopProducts layout={layout} products={currentData} businessId={business.businessId} />
 
-                                        {/* shop product pagination */}
-                                        <div className="pro-pagination-style text-center mt-30">
-                                            <Paginator
-                                                totalRecords={sortedProducts.length}
-                                                pageLimit={pageLimit}
-                                                pageNeighbours={2}
-                                                setOffset={setOffset}
-                                                currentPage={currentPage}
-                                                setCurrentPage={setCurrentPage}
-                                                pageContainerClass="mb-0 mt-0"
-                                                pagePrevText="«"
-                                                pageNextText="»"
-                                            />
-                                        </div>
+                                                {/* shop product pagination */}
+                                                <div className="pro-pagination-style text-center mt-30">
+                                                    <Paginator
+                                                        totalRecords={sortedProducts.length}
+                                                        pageLimit={pageLimit}
+                                                        pageNeighbours={2}
+                                                        setOffset={setOffset}
+                                                        currentPage={currentPage}
+                                                        setCurrentPage={setCurrentPage}
+                                                        pageContainerClass="mb-0 mt-0"
+                                                        pagePrevText="«"
+                                                        pageNextText="»"
+                                                    />
+                                                </div>
+                                            </Fragment>
+                                            :
+                                            <div>
+                                                <h3 className="text-center">Sorry, {business.name} doesn't have any products at the moment. </h3>
+                                                <p className="lead text-center">Please check back soon!</p>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
