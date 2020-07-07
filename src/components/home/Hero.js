@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Spinner } from 'react-bootstrap';
+import React, { useEffect, useState, Fragment } from 'react';
+import { Alert, Spinner, Button } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 import { capitalize, truncate } from "../../helpers/strings";
 
@@ -63,16 +63,21 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     {locationData.loading ?
                                         <Spinner animation="border" role="status" size="lg">
                                         </Spinner>
-                                        : <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />}
+                                        : 
+                                        <Fragment>
+                                        <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />
+                                        <Button className="button-small-light ml-1" onClick={() => setShowPostcodeForm(false)}>x</Button>
+                                        </Fragment>
+                                        }
                                 </div>
                             </form>
                             :
                             <div className="location-display mt-4">
-                                <div className="location-name mr-1">
+                                <div className="location-name mr-1" onClick={() => setShowPostcodeForm(true)}>
                                     <i className="fa fa-map-marker mr-1 ml-1" />{locationData.location}
                                 </div>
                                 <div className="postcode-form mr-1">
-                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
+                                    <button className="button-small-light" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
                                 </div>
                                 <div>
                                     <Link to="/shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
