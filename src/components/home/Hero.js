@@ -5,20 +5,12 @@ import { capitalize, truncate } from "../../helpers/strings";
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
+    // Rotate businesses in hero 
     const randomBusiness = () => {
         return businesses[Math.floor(Math.random() * businesses.length)]
     }
 
-    const business = randomBusiness();
-
-    // Rotate businesses in hero 
-    //const [business, setBusiness] = useState(randomBusiness());
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setBusiness(randomBusiness());
-    //     }, 5000);
-    //     return () => clearInterval(interval);
-    // }, []);
+    const [business, setBusiness] = useState(randomBusiness());
 
     // handling changes to postcodes
     const [postcode, setPostcode] = useState("");
