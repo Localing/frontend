@@ -128,7 +128,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
       <hr />
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
-          <label>Show me</label>
+          <label className="ml-1 mr-1">Show me</label>
           <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange} style={{ borderRadius: '0' }}>
             <option value="all" selected>all shops</option>
             {categories.map((category) => {
@@ -144,7 +144,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
           </select> */}
-          <label>near</label>
+          <label className="ml-1 mr-1">near</label>
           <OverlayTrigger
             trigger="click"
             placement="bottom"
@@ -154,8 +154,8 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
               <option>{locationData.location}</option>
             </select>
           </OverlayTrigger>
-          <label>or&nbsp;</label>
-          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} style={{ borderRadius: '0' }} />
+          <label className="ml-1 mr-1">or&nbsp;</label>
+          <input className="form-control ml-1 mr-1 shop-search-box" type="text" placeholder="search by shop name" onChange={handleSearch} style={{ borderRadius: '0' }} />
         </form>
         :
         <div className="business-filter-form">Please
