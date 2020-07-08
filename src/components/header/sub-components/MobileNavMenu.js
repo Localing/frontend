@@ -39,7 +39,7 @@ const MobileNavMenu = ({ isAuthenticated, user, logoutUser }) => {
           :
           <Fragment>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login"}>
+              <Link to={process.env.PUBLIC_URL + "/signup"}>
                 SIGN UP
             </Link>
             </li>

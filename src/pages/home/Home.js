@@ -59,7 +59,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
               <Container className="mt-5 mb-5">
                 <Row>
                   <Col md>
-                    <h3><Link to="/login">Sign up for an account</Link> or join our mailing list to stay up to date with our exclusive promotions and deals!</h3>
+                    <h3><Link to="/signup" style={{ textDecoration: 'underline' }}>Sign up for an account</Link> or join our mailing list to stay up to date with our exclusive promotions and deals!</h3>
                   </Col>
                   <Col md>
                     <SubscribeEmail mailchimpUrl="https://localing.us10.list-manage.com/subscribe/post?u=712d1a91dc38e66b05613c5a8&amp;id=2498b9362f" />

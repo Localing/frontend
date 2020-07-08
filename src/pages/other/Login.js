@@ -21,7 +21,8 @@ const Login = ({
   signupSuccess,
   isAuthenticated,
   isLoggingIn,
-  isSigningUp }) => {
+  isSigningUp, 
+  startPage }) => {
 
   let { from } = location.state || { from: { pathname: "/" } };
 
@@ -108,7 +109,7 @@ const Login = ({
               <div className="row">
                 <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                   <div className="login-register-wrapper">
-                    <Tab.Container defaultActiveKey="login">
+                    <Tab.Container defaultActiveKey={startPage}>
                       <Nav variant="pills" className="login-register-tab-list">
                         <Nav.Item>
                           <Nav.Link eventKey="login">
@@ -125,8 +126,8 @@ const Login = ({
                         <Tab.Pane eventKey="login">
                           <div className="login-form-container">
                             <div className="login-register-form">
-                              <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Login with Facebook</Button>
-                              <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Login with Google</Button>
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
                               <hr />
                               <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
@@ -171,10 +172,13 @@ const Login = ({
                           <div className="login-form-container">
                             <br />
                             <div className="login-register-form">
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
+                              <hr />
                               <form onSubmit={handleSignUp}>
                                 {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
-                                { signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert> }
-                                <p>Sign up with your e-mail address</p>
+                                {signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert>}
+                                <p className="lead text-center">Or sign up with your e-mail address</p>
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -209,14 +213,14 @@ const Login = ({
                                 />
                                 <p>&nbsp; * required</p>
                                 <div className="button-box">
-                                {isSigningUp ?
+                                  {isSigningUp ?
                                     <button type="submit" disabled>
-                                    <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
+                                      <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                     <span>Sign Up</span>
                                     </button>
                                     :
                                     <button type="submit">
-                                      Sign Up  
+                                      Sign Up
                                     </button>
                                   }
                                 </div>

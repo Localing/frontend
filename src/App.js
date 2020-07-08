@@ -129,9 +129,12 @@ const App = ({ isAuthenticated, dispatch }) => {
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/login"}
-                  component={Login}
+                  render={(props) => <Login {...props} startPage="login" />}
                 />
-
+                <Route
+                  path={process.env.PUBLIC_URL + "/signup"}
+                  render={(props) => <Login {...props} startPage="signup" />}
+                />
                 <Route
                   path={process.env.PUBLIC_URL + "/reset-password"}
                   component={ResetPassword}
