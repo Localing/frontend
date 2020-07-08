@@ -125,7 +125,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   return (
     <Container>
-      <hr />
+      <br />
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
           <label className="ml-1 mr-1">Show me</label>

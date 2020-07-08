@@ -44,7 +44,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
                 businesses={businesses} />
 
               {/* Business List */}
-              <Container className="mt-5 pt-5" id="shop">
+              <Container className="mt-5 pt-5 d-none d-sm-block" id="shop">
                 <h1>Welcome to Localing! </h1>
                 <h3>Let us help you re-discover your favourite local shops.</h3>
               </Container>

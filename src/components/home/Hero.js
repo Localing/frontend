@@ -51,6 +51,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-title">
                         <div className="maroon-header-text">Keep the heart of your local high street beating</div>
                         <p class="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+                        <div className="d-none d-sm-block">
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
@@ -84,9 +85,10 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                 </div>
                             </div>
                         }
+                        </div>
                     </div>
                     <Link to={`/business/${business.businessId}`}>
-                    <div className="hero2-latest w-inline-block">
+                    <div className="hero2-latest w-inline-block d-none d-sm-block">
                             <div>
                                 <span className="featured-text">Featured</span>
                                 <div className="size5-text">{business.name}</div>
@@ -94,7 +96,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             </div>
                     </div>
                     </Link>
-                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
+                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
                         <div>Discover more shops near you <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
