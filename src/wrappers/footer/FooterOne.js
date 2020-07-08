@@ -44,7 +44,7 @@ const FooterOne = ({
         spaceBottomClass ? spaceBottomClass : ""
         } ${extraFooterClass ? extraFooterClass : ""}`}
     >
-      <div className={`${containerClass ? containerClass : "container"} d-none d-md-block`}>
+      <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
           <div
             className={`${
