@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Alert, Spinner } from 'react-bootstrap';
+import React, { useEffect, useState, Fragment } from 'react';
+import { Alert, Spinner, Button } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 import { capitalize, truncate } from "../../helpers/strings";
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
+    // Rotate businesses in hero 
     const randomBusiness = () => {
         return businesses[Math.floor(Math.random() * businesses.length)]
     }
 
-    const business = randomBusiness();
-
-    // Rotate businesses in hero 
-    //const [business, setBusiness] = useState(randomBusiness());
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setBusiness(randomBusiness());
-    //     }, 5000);
-    //     return () => clearInterval(interval);
-    // }, []);
+    const [business, setBusiness] = useState(randomBusiness());
 
     // handling changes to postcodes
     const [postcode, setPostcode] = useState("");
@@ -57,8 +49,9 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
-                        <div className="size1-text">Keep the heart of your community's high street beating</div>
-                        <p class="paragraph-70">Pre-order from local businesses, and <strong>unlock exclusive promotions, discounts and rewards</strong> for being loyal to your community!</p>
+                        <div className="maroon-header-text">Keep the heart of your local high street beating</div>
+                        <p class="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+                        <div className="d-none d-sm-block">
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
@@ -71,39 +64,47 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     {locationData.loading ?
                                         <Spinner animation="border" role="status" size="lg">
                                         </Spinner>
-                                        : <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />}
+                                        : 
+                                        <Fragment>
+                                        <input type="submit" value="FIND SHOPS NEARBY" className="button-small postcode-submit" />
+                                        <Button className="button-small-light ml-1" onClick={() => setShowPostcodeForm(false)}>x</Button>
+                                        </Fragment>
+                                        }
                                 </div>
                             </form>
                             :
                             <div className="location-display mt-4">
-                                <div className="location-name mr-1">
+                                <div className="location-name mr-1" onClick={() => setShowPostcodeForm(true)}>
                                     <i className="fa fa-map-marker mr-1 ml-1" />{locationData.location}
                                 </div>
                                 <div className="postcode-form mr-1">
-                                    <button className="button-small" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
+                                    <button className="button-small-light" onClick={() => setShowPostcodeForm(true)}>Change Location</button>
                                 </div>
                                 <div>
-                                    <Link to="#shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
+                                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
                         }
+                        </div>
                     </div>
-                    <div className="hero2-latest w-inline-block">
+                    <Link to={`/business/${business.businessId}`}>
+                    <div className="hero2-latest w-inline-block d-none d-sm-block">
                             <div>
                                 <span className="featured-text">Featured</span>
                                 <div className="size5-text">{business.name}</div>
-                                <div className="paragraph-70">{truncate(business.description, 200, " ...")}</div>
+                                <div className="hero-paragraph">{truncate(business.description, 200, " ...")}</div>
                             </div>
                     </div>
-                    <Link to="/#shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
-                        <div>Discover more shops near you</div>↓
+                    </Link>
+                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
+                        <div>Discover more shops near you <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
                         <Link to={`/business/${business.businessId}`}><p className="hero2-product-name">Explore products at {business.name}</p></Link>
                     </div>
-                    <p className="hero2-product-price"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
+                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">

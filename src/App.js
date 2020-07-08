@@ -18,6 +18,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 
 // business pages
 const Business = lazy(() => import("./pages/business/Business"));
+const BusinessList = lazy(() => import("./pages/business/BusinessList"));
 
 // product pages
 const Product = lazy(() => import("./pages/product/Product"));
@@ -90,6 +91,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                   component={Business}
                 />
 
+                <Route 
+                  path={process.env.PUBLIC_URL + "/shop"}
+                  component={BusinessList}
+                  />
+
                 {/* Product pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:businessId/:productId"}
@@ -123,9 +129,12 @@ const App = ({ isAuthenticated, dispatch }) => {
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/login"}
-                  component={Login}
+                  render={(props) => <Login {...props} startPage="login" />}
                 />
-
+                <Route
+                  path={process.env.PUBLIC_URL + "/signup"}
+                  render={(props) => <Login {...props} startPage="signup" />}
+                />
                 <Route
                   path={process.env.PUBLIC_URL + "/reset-password"}
                   component={ResetPassword}

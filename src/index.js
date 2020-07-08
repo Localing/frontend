@@ -17,7 +17,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const store = createStore(
   rootReducer,
   load(),
-  composeWithDevTools(applyMiddleware(thunk, save({ ignoreStates: ["productData"] })))
+  composeWithDevTools(applyMiddleware(thunk, save({ ignoreStates: ["locationData", "productData"] })))
 );
 
 // verify authentication

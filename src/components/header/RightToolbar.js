@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
@@ -36,7 +36,7 @@ const RightToolbar = ({
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
       { isAuthenticated ?
-        <Dropdown>
+        <Dropdown className="d-none d-md-block">
           <Dropdown.Toggle variant="dark" id="account-dropdown" style={{ borderRadius: '0' }} size="sm">
             Hi {user.profile.given_name}
          </Dropdown.Toggle>
@@ -49,8 +49,10 @@ const RightToolbar = ({
         </Dropdown>
 
         :
-
-        <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm">Log In</Button></Link>
+        <Fragment>
+          <Link to={process.env.PUBLIC_URL + "/signup"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm" className="d-none d-md-block">Sign Up</Button></Link>
+          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" style={{ borderRadius: '0' }} className="d-none d-md-block ml-2" size="sm">Log In</Button></Link>
+        </Fragment>
       }
 
       {/* Disable compare icon

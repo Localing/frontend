@@ -92,14 +92,14 @@
     justify-content: space-between;
   }
   
-  .paragraph-70 {
+  .hero-paragraph {
     font-size: 18px;
     font-height: 20px;
     margin-bottom: 10px;
     opacity: 0.7;
   }
   
-  .paragraph-70.paragraph70-bottom-clear {
+  .hero-paragraph.hero-paragraph-bottom-clear {
     margin-bottom: 0px;
   }
   
@@ -159,7 +159,7 @@
     opacity: 1;
   }
   
-  .hero2-product-price {
+  .hero2-location {
     margin-bottom: 0px;
     opacity: 1;
     font-size: 16px;
@@ -228,7 +228,7 @@
     background-size: cover;
   }
   
-  .size1-text {
+  .maroon-header-text {
     color: #922C50;
     margin-top: 20px;
     margin-bottom: 25px;
@@ -312,6 +312,38 @@
 
   .button-small:hover {
     background-color: #4a4b46;
+  }
+
+  .button-small-light {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 10px 10px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #000;
+    border-radius: 0;
+    height: 45px;
+    transition: all 0.3s;
+  }
+
+  .button-small-light:hover {
+    background-color: #18181d;
+    color: #fff;
   }
   
   .hero2-title {
@@ -465,6 +497,9 @@
       margin-left: -24px;
       background-position: 50% 50%;
     }
+    .hero2-location {
+      color: #FFF;
+    }
     .button-large {
       width: 100%;
     }
@@ -480,7 +515,7 @@
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    min-height: 582px;
+    min-height: 450px;
     padding: 36px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -613,6 +648,10 @@
     padding: 20px;
   }
 
+  .shop-search-box {
+    width: 100%;
+  }
+
   @media screen and (max-width: 767px) {
     .hero-with-background-wrap.hero2-wrap {
       padding-right: 20px;
@@ -643,13 +682,16 @@
     .hero2-image {
       height: 480px;
     }
-    .size1-text {
+    .maroon-header-text {
       font-size: 34px;
       line-height: 42px;
     }
     .hero2-title {
       padding-top: 37px;
       padding-bottom: 47px;
+    }
+    .hero2-location {
+      color: #FFF;
     }
     .business-content-wrap {
       padding: 26px;
@@ -682,6 +724,9 @@
     }
     .hero2-image {
       height: 360px;
+    }
+    .hero2-location {
+      color: #FFF;
     }
     .button-large {
       font-size: 14px;

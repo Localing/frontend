@@ -30,6 +30,11 @@ const FooterOne = ({
   const handleScroll = () => {
     setScroll(window.scrollY);
   };
+  
+  const displayCookiePreferenceModal = () => {
+    console.log("trying to update cookie prefs");
+    window.displayPreferenceModal();
+  }
 
   return (
     <footer
@@ -39,7 +44,7 @@ const FooterOne = ({
         spaceBottomClass ? spaceBottomClass : ""
         } ${extraFooterClass ? extraFooterClass : ""}`}
     >
-      <div className={`${containerClass ? containerClass : "container"} d-none d-md-block`}>
+      <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
           <div
             className={`${
@@ -94,6 +99,16 @@ const FooterOne = ({
                     <Link to={process.env.PUBLIC_URL + "/privacy"}>
                       Privacy Policy
                     </Link>
+                  </li>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/cookies"}>
+                      Cookie Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <a onClick={() => displayCookiePreferenceModal()}>
+                      Update Cookie Preferences
+                    </a>
                   </li>
                 </ul>
               </div>
