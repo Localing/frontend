@@ -21,7 +21,7 @@ const Login = ({
   signupSuccess,
   isAuthenticated,
   isLoggingIn,
-  isSigningUp, 
+  isSigningUp,
   startPage }) => {
 
   let { from } = location.state || { from: { pathname: "/" } };
@@ -97,10 +97,10 @@ const Login = ({
       :
       <Fragment>
         <MetaTags>
-          <title>Localing | Login</title>
+          <title>Localing | Login and Signup</title>
           <meta
             name="description"
-            content="Localing Login"
+            content="Localing Login and Signup"
           />
         </MetaTags>
         <LayoutOne>
@@ -113,12 +113,12 @@ const Login = ({
                       <Nav variant="pills" className="login-register-tab-list">
                         <Nav.Item>
                           <Nav.Link eventKey="login">
-                            <h4>Login</h4>
+                            <h4>I have an account</h4>
                           </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="signup">
-                            <h4>Sign Up</h4>
+                            <h4>I'm new</h4>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -126,8 +126,6 @@ const Login = ({
                         <Tab.Pane eventKey="login">
                           <div className="login-form-container">
                             <div className="login-register-form">
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
                               <hr />
                               <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
@@ -161,10 +159,13 @@ const Login = ({
                                     :
                                     <button type="submit">
                                       Login
-                                  </button>
+                                    </button>
                                   }
                                 </div>
                               </form>
+                              <p className="lead text-center">or</p>
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
                             </div>
                           </div>
                         </Tab.Pane>
@@ -172,13 +173,10 @@ const Login = ({
                           <div className="login-form-container">
                             <br />
                             <div className="login-register-form">
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
-                              <hr />
                               <form onSubmit={handleSignUp}>
                                 {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
                                 {signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert>}
-                                <p className="lead text-center">Or sign up with your e-mail address</p>
+                                <p className="lead text-center">Sign up for an account</p>
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -211,20 +209,27 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <p>&nbsp; * required</p>
-                                <div className="button-box">
+                                <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Service</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
+                                <div>
                                   {isSigningUp ?
-                                    <button type="submit" disabled>
+                                    <Button variant="outline-dark" style={{ borderRadius: 0 }} type="submit" disabled>
                                       <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                     <span>Sign Up</span>
-                                    </button>
+                                    </Button>
                                     :
-                                    <button type="submit">
+                                    <Button variant="outline-dark" style={{ borderRadius: 0 }} type="submit" block>
                                       Sign Up
-                                    </button>
+                                    </Button>
                                   }
                                 </div>
                               </form>
+                              <div>
+                                <p className="lead text-center pt-2 pb-2">or</p>
+                              </div>
+                              <div>
+                                <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                                <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
+                              </div>
                             </div>
                           </div>
                         </Tab.Pane>
