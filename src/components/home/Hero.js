@@ -49,14 +49,9 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
-<<<<<<< HEAD
-                        <div className="size1-text">Keep the heart of your local high street beating</div>
-                        <p class="paragraph-70">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
-=======
                         <div className="maroon-header-text">Keep the heart of your local high street beating</div>
                         <p class="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
                         <div className="d-none d-sm-block">
->>>>>>> 145172a48778fa4714c2b65fe5fd9409da5af1e9
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
@@ -93,11 +88,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         </div>
                     </div>
                     <Link to={`/business/${business.businessId}`}>
-<<<<<<< HEAD
-                    <div className="hero2-latest w-inline-block">
-=======
                     <div className="hero2-latest w-inline-block d-none d-sm-block">
->>>>>>> 145172a48778fa4714c2b65fe5fd9409da5af1e9
                             <div>
                                 <span className="featured-text">Featured</span>
                                 <div className="size5-text">{business.name}</div>

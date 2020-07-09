@@ -26,6 +26,8 @@ const Login = ({
 
   let { from } = location.state || { from: { pathname: "/" } };
 
+  const [activePage, setActivePage] = useState(startPage);
+
   // Login form fields
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -109,16 +111,16 @@ const Login = ({
               <div className="row">
                 <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                   <div className="login-register-wrapper">
-                    <Tab.Container activeKey={startPage}>
+                    <Tab.Container activeKey={activePage} onSelect={(key) => setActivePage(key)}>
                       <Nav variant="pills" className="login-register-tab-list">
                         <Nav.Item>
                           <Nav.Link eventKey="login">
-                            <h4>I have an account</h4>
+                            <h4>Log In</h4>
                           </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="signup">
-                            <h4>I'm new</h4>
+                            <h4>Sign Up</h4>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
