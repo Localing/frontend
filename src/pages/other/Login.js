@@ -126,7 +126,6 @@ const Login = ({
                         <Tab.Pane eventKey="login">
                           <div className="login-form-container">
                             <div className="login-register-form">
-                              <hr />
                               <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
                                 <input
@@ -145,27 +144,30 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <div className="button-box">
-                                  <div className="login-toggle-btn">
+                                <div>
+                                  <div className="text-right">
                                     <Link to={process.env.PUBLIC_URL + "/reset-password"}>
                                       Forgot your password?
                                   </Link>
                                   </div>
+                                  <div className="pt-4">
+                                  <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
                                   {isLoggingIn ?
-                                    <button type="submit" disabled>
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
                                       <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                       Login
-                                    </button>
+                                    </Button>
                                     :
-                                    <button type="submit">
+                                    <Button variant="outline-dark" size="lg" className="square-corners" block type="submit">
                                       Login
-                                    </button>
+                                    </Button>
                                   }
+                                  </div>
                                 </div>
                               </form>
-                              <p className="lead text-center">or</p>
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
-                              <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
+                              <p className="lead text-center pt-2 pb-2">or</p>
+                              <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                              <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
                             </div>
                           </div>
                         </Tab.Pane>
@@ -209,15 +211,15 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Service</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
+                                <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
                                 <div>
                                   {isSigningUp ?
-                                    <Button variant="outline-dark" style={{ borderRadius: 0 }} type="submit" disabled>
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
                                       <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                     <span>Sign Up</span>
                                     </Button>
                                     :
-                                    <Button variant="outline-dark" style={{ borderRadius: 0 }} type="submit" block>
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block>
                                       Sign Up
                                     </Button>
                                   }
