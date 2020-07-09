@@ -44,7 +44,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
                 businesses={businesses} />
 
               {/* Business List */}
-              <Container className="mt-5 pt-5" id="shop">
+              <Container className="mt-5 pt-5 d-none d-sm-block" id="shop">
                 <h1>Welcome to Localing! </h1>
                 <h3>Let us help you re-discover your favourite local shops.</h3>
               </Container>
@@ -59,7 +59,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
               <Container className="mt-5 mb-5">
                 <Row>
                   <Col md>
-                    <h3><Link to="/login">Sign up for an account</Link> or join our mailing list to stay up to date with our exclusive promotions and deals!</h3>
+                    <h3><Link to="/signup" style={{ textDecoration: 'underline' }}>Sign up for an account</Link> or join our mailing list to stay up to date with our exclusive promotions and deals!</h3>
                   </Col>
                   <Col md>
                     <SubscribeEmail mailchimpUrl="https://localing.us10.list-manage.com/subscribe/post?u=712d1a91dc38e66b05613c5a8&amp;id=2498b9362f" />
@@ -76,8 +76,8 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
                 <div className="w-layout-grid content7-grid">
                   <div id="w-node-bd1afaf93b5a-a9e5511a" className="content7-content-wrap">
                     <div>
-                      <div className="size1-text">Meet our Team</div>
-                      <div className="paragraph-70">Localing is a platform created by a team of Cambridge students that enables local businesses to thrive by connecting with local customers and the wider community.</div>
+                      <div className="maroon-header-text">Meet our Team</div>
+                      <div className="hero-paragraph">Localing is a platform created by a team of Cambridge students that enables local businesses to thrive by connecting with local customers and the wider community.</div>
                       <Link to="/about"><button className="button-small">Learn more <img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" /></button></Link>
                     </div>
                   </div>

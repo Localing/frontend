@@ -21,7 +21,8 @@ const Login = ({
   signupSuccess,
   isAuthenticated,
   isLoggingIn,
-  isSigningUp }) => {
+  isSigningUp,
+  startPage }) => {
 
   let { from } = location.state || { from: { pathname: "/" } };
 
@@ -96,10 +97,10 @@ const Login = ({
       :
       <Fragment>
         <MetaTags>
-          <title>Localing | Login</title>
+          <title>Localing | Login and Signup</title>
           <meta
             name="description"
-            content="Localing Login"
+            content="Localing Login and Signup"
           />
         </MetaTags>
         <LayoutOne>
@@ -108,16 +109,16 @@ const Login = ({
               <div className="row">
                 <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                   <div className="login-register-wrapper">
-                    <Tab.Container defaultActiveKey="login">
+                    <Tab.Container activeKey={startPage}>
                       <Nav variant="pills" className="login-register-tab-list">
                         <Nav.Item>
                           <Nav.Link eventKey="login">
-                            <h4>Login</h4>
+                            <h4>I have an account</h4>
                           </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                           <Nav.Link eventKey="signup">
-                            <h4>Sign Up</h4>
+                            <h4>I'm new</h4>
                           </Nav.Link>
                         </Nav.Item>
                       </Nav>
@@ -125,9 +126,6 @@ const Login = ({
                         <Tab.Pane eventKey="login">
                           <div className="login-form-container">
                             <div className="login-register-form">
-                              <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Login with Facebook</Button>
-                              <Button variant="outline-dark" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Login with Google</Button>
-                              <hr />
                               <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
                                 <input
@@ -146,24 +144,30 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <div className="button-box">
-                                  <div className="login-toggle-btn">
+                                <div>
+                                  <div className="text-right">
                                     <Link to={process.env.PUBLIC_URL + "/reset-password"}>
                                       Forgot your password?
                                   </Link>
                                   </div>
+                                  <div className="pt-4">
+                                  <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
                                   {isLoggingIn ?
-                                    <button type="submit" disabled>
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
                                       <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                       Login
-                                    </button>
+                                    </Button>
                                     :
-                                    <button type="submit">
+                                    <Button variant="outline-dark" size="lg" className="square-corners" block type="submit">
                                       Login
-                                  </button>
+                                    </Button>
                                   }
+                                  </div>
                                 </div>
                               </form>
+                              <p className="lead text-center pt-2 pb-2">or</p>
+                              <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                              <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
                             </div>
                           </div>
                         </Tab.Pane>
@@ -173,8 +177,8 @@ const Login = ({
                             <div className="login-register-form">
                               <form onSubmit={handleSignUp}>
                                 {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
-                                { signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert> }
-                                <p>Sign up with your e-mail address</p>
+                                {signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert>}
+                                <p className="lead text-center">Sign up for an account</p>
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -207,20 +211,27 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <p>&nbsp; * required</p>
-                                <div className="button-box">
-                                {isSigningUp ?
-                                    <button type="submit" disabled>
-                                    <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
+                                <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
+                                <div>
+                                  {isSigningUp ?
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
+                                      <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
                                     <span>Sign Up</span>
-                                    </button>
+                                    </Button>
                                     :
-                                    <button type="submit">
-                                      Sign Up  
-                                    </button>
+                                    <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block>
+                                      Sign Up
+                                    </Button>
                                   }
                                 </div>
                               </form>
+                              <div>
+                                <p className="lead text-center pt-2 pb-2">or</p>
+                              </div>
+                              <div>
+                                <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
+                                <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
+                              </div>
                             </div>
                           </div>
                         </Tab.Pane>

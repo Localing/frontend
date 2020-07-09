@@ -3,14 +3,20 @@ import { Col, Row, Container, OverlayTrigger, Popover, Button, Form, Alert, Spin
 import { getDistance, convertDistance } from 'geolib';
 import { capitalize } from "../../helpers/strings";
 import { Link } from "react-router-dom";
+import Paginator from "react-hooks-paginator";
 
 const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationError }) => {
 
   const [businessesToDisplay, setBusinessesToDisplay] = useState([...businesses]);
-  const [filterRadius, setFilterRadius] = useState(0);
+  // const [filterRadius, setFilterRadius] = useState(0);
   const [filterCategory, setFilterCategory] = useState("all");
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [numberOfBusinesses, setNumberOfBusinesses] = useState(0);
+  const pageLimit = 6; // businesses per page
+  
 
   useEffect(() => {
     // sort and filter businesses whenever options change
@@ -26,9 +32,9 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
       }
 
-      if (filterRadius > 0) {
-        sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
-      }
+      // if (filterRadius > 0) {
+      //   sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
+      // }
 
       if (filterCategory !== "all") {
         sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
@@ -38,11 +44,12 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         return a.distance - b.distance;
       })
 
-      setBusinessesToDisplay(sortedBusinesses);
+      setNumberOfBusinesses(sortedBusinesses.length);
+      setBusinessesToDisplay(sortedBusinesses.slice(offset, offset + pageLimit));
     }
 
     sortBusinesses();
-  }, [locationData, filterRadius, filterCategory, searchTerm, businesses])
+  }, [locationData, filterCategory, searchTerm, businesses, offset])
 
   useEffect(() => {
     // update categories if businesses change
@@ -57,11 +64,11 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     getCategories();
   }, [businesses])
 
-  // filter by radius
-  const handleRadiusChange = (e) => {
-    e.preventDefault();
-    setFilterRadius(e.target.value);
-  }
+  // // filter by radius
+  // const handleRadiusChange = (e) => {
+  //   e.preventDefault();
+  //   setFilterRadius(e.target.value);
+  // }
 
 
   // filter by category
@@ -125,10 +132,10 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
 
   return (
     <Container>
-      <hr />
+      <br />
       {(locationData.location) ?
         <form className="form-inline business-filter-form">
-          <label>Show me</label>
+          <label className="ml-1 mr-1">Show me</label>
           <select className="custom-select ml-1 mr-1" onChange={handleCategoryChange} style={{ borderRadius: '0' }}>
             <option value="all" selected>all shops</option>
             {categories.map((category) => {
@@ -144,7 +151,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
           </select> */}
-          <label>near</label>
+          <label className="ml-1 mr-1">near</label>
           <OverlayTrigger
             trigger="click"
             placement="bottom"
@@ -154,8 +161,8 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
               <option>{locationData.location}</option>
             </select>
           </OverlayTrigger>
-          <label>or&nbsp;</label>
-          <input className="form-control" type="text" placeholder="search by name" onChange={handleSearch} style={{ borderRadius: '0' }} />
+          <label className="ml-1 mr-1">or&nbsp;</label>
+          <input className="form-control ml-1 mr-1 shop-search-box" type="text" placeholder="search by shop name" onChange={handleSearch} style={{ borderRadius: '0' }} />
         </form>
         :
         <div className="business-filter-form">Please
@@ -169,29 +176,46 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         </div>
       }
       <Row className="mt-4">
-        {(businessesToDisplay.length > 0) ? businessesToDisplay.map(business => {
-          return (
-            <Col md={6} className="mt-4">
-              <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
-                <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
-                  <div className="business-content-card-wrap">
-                    <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
-                    <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
-                    <div className="button-text w-inline-block">
-                      <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(1) + " miles away"}</div>
-                      <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
+        {businessesToDisplay.length ?
+
+          businessesToDisplay.map(business => {
+            return (
+              <Col md={6} className="mt-4">
+                <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
+                  <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
+                    <div className="business-content-card-wrap">
+                      <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
+                      <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
+                      <div className="button-text w-inline-block">
+                        <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(1) + " miles away"}</div>
+                        <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </Col>
-          )
-        })
+                </Link>
+              </Col>
+            )
+          })
           : <Col>
             <div className="no-results">Sorry, we couldn't find any businesses matching your search criteria. Please try widening your search!</div>
           </Col>}
       </Row>
+      {businessesToDisplay.length &&
+        <div className="pro-pagination-style text-center mt-30">
+          <Paginator
+            totalRecords={numberOfBusinesses}
+            pageLimit={pageLimit}
+            pageNeighbours={1}
+            setOffset={setOffset}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            pageContainerClass="mb-0 mt-0"
+            pagePrevText="«"
+            pageNextText="»"
+          />
+        </div>
+      }
       <hr />
     </Container>
   )

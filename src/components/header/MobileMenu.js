@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import MobileNavMenu from "./sub-components/MobileNavMenu";
 import MobileWidgets from "./sub-components/MobileWidgets";
-import { useSelector } from "react-redux";
 
 const MobileMenu = () => {
   useEffect(() => {
@@ -43,8 +42,6 @@ const MobileMenu = () => {
     offcanvasMobileMenu.classList.remove("active");
   };
 
-  const isAuthenticated = useSelector(state => state.authData.isAuthenticated);
-
   return (
     <div className="offcanvas-mobile-menu" id="offcanvas-mobile-menu">
       <button
@@ -58,7 +55,7 @@ const MobileMenu = () => {
         <div className="offcanvas-inner-content">
 
           {/* mobile nav menu */}
-          <MobileNavMenu isAuthenticated={isAuthenticated} />
+          <MobileNavMenu />
 
           {/* mobile widgets */}
           <MobileWidgets />

@@ -50,7 +50,7 @@ const RightToolbar = ({
 
         :
         <Fragment>
-          <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm" className="d-none d-md-block">Sign Up</Button></Link>
+          <Link to={process.env.PUBLIC_URL + "/signup"}><Button variant="dark" style={{ borderRadius: '0' }} size="sm" className="d-none d-md-block">Sign Up</Button></Link>
           <Link to={process.env.PUBLIC_URL + "/login"}><Button variant="outline-dark" style={{ borderRadius: '0' }} className="d-none d-md-block ml-2" size="sm">Log In</Button></Link>
         </Fragment>
       }

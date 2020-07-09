@@ -49,8 +49,14 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
+<<<<<<< HEAD
                         <div className="size1-text">Keep the heart of your local high street beating</div>
                         <p class="paragraph-70">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+=======
+                        <div className="maroon-header-text">Keep the heart of your local high street beating</div>
+                        <p class="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+                        <div className="d-none d-sm-block">
+>>>>>>> 145172a48778fa4714c2b65fe5fd9409da5af1e9
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
@@ -84,17 +90,22 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                 </div>
                             </div>
                         }
+                        </div>
                     </div>
                     <Link to={`/business/${business.businessId}`}>
+<<<<<<< HEAD
                     <div className="hero2-latest w-inline-block">
+=======
+                    <div className="hero2-latest w-inline-block d-none d-sm-block">
+>>>>>>> 145172a48778fa4714c2b65fe5fd9409da5af1e9
                             <div>
                                 <span className="featured-text">Featured</span>
                                 <div className="size5-text">{business.name}</div>
-                                <div className="paragraph-70">{truncate(business.description, 200, " ...")}</div>
+                                <div className="hero-paragraph">{truncate(business.description, 200, " ...")}</div>
                             </div>
                     </div>
                     </Link>
-                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block">
+                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
                         <div>Discover more shops near you <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
@@ -102,7 +113,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-product-name-link-wrap w-inline-block">
                         <Link to={`/business/${business.businessId}`}><p className="hero2-product-name">Explore products at {business.name}</p></Link>
                     </div>
-                    <p className="hero2-product-price"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
+                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">
