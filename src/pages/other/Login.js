@@ -109,7 +109,7 @@ const Login = ({
               <div className="row">
                 <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                   <div className="login-register-wrapper">
-                    <Tab.Container defaultActiveKey={startPage}>
+                    <Tab.Container activeKey={startPage}>
                       <Nav variant="pills" className="login-register-tab-list">
                         <Nav.Item>
                           <Nav.Link eventKey="login">
