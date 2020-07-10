@@ -63,8 +63,13 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
             </ul>
           </li> */}
           <li>
-            <Link to="/contact">
-              CONTACT US
+            <Link to="/my-orders">
+              MY ORDERS
+            </Link>
+          </li>
+          <li>
+            <Link to="/support">
+              HELP
             </Link>
           </li>
         </ul>

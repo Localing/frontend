@@ -130,6 +130,7 @@ const Login = ({
                             <div className="login-register-form">
                               <form onSubmit={handleLogin}>
                                 {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
+                                <p className="lead text-center">Log in to your account</p>
                                 <input
                                   type="text"
                                   name="loginEmail"
@@ -153,7 +154,7 @@ const Login = ({
                                   </Link>
                                   </div>
                                   <div className="pt-4">
-                                  <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
+                                  <TermsNotice type="login" />
                                   {isLoggingIn ?
                                     <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
                                       <Spinner animation="border" size="sm" as="span" />&nbsp;&nbsp;
@@ -213,7 +214,7 @@ const Login = ({
                                   onChange={handleChange}
                                   required
                                 />
-                                <p>By clicking below, I agree that I have read the <Link to="/terms">Terms of Use</Link> and <Link to="/privacy">Privacy Policies</Link>.</p>
+                                <TermsNotice type="signup" />
                                 <div>
                                   {isSigningUp ?
                                     <Button variant="outline-dark" size="lg" className="square-corners" type="submit" block disabled>
@@ -248,6 +249,15 @@ const Login = ({
       </Fragment>
   );
 };
+
+const TermsNotice = ({ type }) => {
+
+  const action = (type === "login") ? "logging in" : "signing up";
+
+  return (
+    <p>By {action}, I agree to the <Link to="/terms" style={{ textDecoration: 'underline'}}>Terms of Use</Link> and have read the <Link to="/privacy" style={{ textDecoration: 'underline' }}>Privacy Policies</Link>.</p>
+  )
+}
 
 Login.propTypes = {
   location: PropTypes.object,
