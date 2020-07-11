@@ -9,7 +9,7 @@ import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import LayoutOne from "../../layouts/LayoutOne";
 import { connect } from 'react-redux';
-import { loginUser, signUpUser } from '../../redux/actions/authActions';
+import { loginUser, signUpUser, clearLoginError, clearSignUpError } from '../../redux/actions/authActions';
 import { Auth } from "aws-amplify";
 
 const Login = ({
@@ -17,7 +17,9 @@ const Login = ({
   loginUser,
   signUpUser,
   loginError,
+  clearLoginError,
   signupError,
+  clearSignUpError,
   signupSuccess,
   isAuthenticated,
   isLoggingIn,
@@ -129,8 +131,8 @@ const Login = ({
                           <div className="login-form-container">
                             <div className="login-register-form">
                               <form onSubmit={handleLogin}>
-                                {(loginError && loginError.message) && <Alert variant="danger"> {loginError.message} </Alert>}
                                 <p className="lead text-center">Log in to your account</p>
+                                {(loginError && loginError.message) && <Alert variant="danger" dismissible onClose={() => clearLoginError()}> {loginError.message} </Alert>}
                                 <input
                                   type="text"
                                   name="loginEmail"
@@ -179,9 +181,9 @@ const Login = ({
                             <br />
                             <div className="login-register-form">
                               <form onSubmit={handleSignUp}>
-                                {(signupError && signupError.message) && <Alert variant="danger"> {signupError.message} </Alert>}
-                                {signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert>}
                                 <p className="lead text-center">Sign up for an account</p>
+                                {(signupError && signupError.message) && <Alert variant="danger" dismissible onClose={() => clearSignUpError()}> {signupError.message} </Alert>}
+                                {signupSuccess && <Alert variant="success"> Please check your email to verify your account. </Alert>}
                                 <input
                                   type="text"
                                   name="signupFirstName"
@@ -286,8 +288,14 @@ const mapDispatchToProps = dispatch => {
     loginUser: (email, password) => {
       dispatch(loginUser(email, password));
     },
+    clearLoginError: () => {
+      dispatch(clearLoginError());
+    },
     signUpUser: (firstName, lastName, email, password) => {
       dispatch(signUpUser(firstName, lastName, email, password));
+    },
+    clearSignUpError: () => {
+      dispatch(clearSignUpError());
     }
   };
 };

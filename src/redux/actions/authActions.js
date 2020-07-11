@@ -3,14 +3,17 @@ import { Auth } from 'aws-amplify';
 export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
+export const CLEAR_LOGIN_ERROR = "CLEAR_LOGIN_ERROR";
 
 export const LOGOUT_REQUEST = "LOGOUT_REQUEST";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_ERROR = "LOGOUT_ERROR";
+export const CLEAR_LOGOUT_ERROR = "CLEAR_LOGOUT_ERROR";
 
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_ERROR = "SIGNUP_ERROR";
+export const CLEAR_SIGNUP_ERROR = "CLEAR_SIGNUP_ERROR";
 
 export const VERIFY_REQUEST = "VERIFY_REQUEST";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
@@ -38,6 +41,12 @@ export const receiveLoginError = (error) => {
   };
 };
 
+export const clearLoginError = () => {
+  return {
+    type: CLEAR_LOGIN_ERROR
+  };
+}
+
 export const requestLogout = () => {
   return {
     type: LOGOUT_REQUEST
@@ -57,6 +66,12 @@ export const receiveLogoutError = (error) => {
   };
 };
 
+export const clearLogoutError = () => {
+  return {
+    type: CLEAR_LOGOUT_ERROR
+  };
+}
+
 export const requestSignUp = () => {
   return {
     type: SIGNUP_REQUEST
@@ -75,6 +90,12 @@ export const receiveSignUpError = (error) => {
     type: SIGNUP_ERROR,
     error
   }
+}
+
+export const clearSignUpError = () => {
+  return {
+    type: CLEAR_SIGNUP_ERROR
+  };
 }
 
 export const verifyRequest = () => {
