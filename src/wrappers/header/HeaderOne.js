@@ -16,14 +16,14 @@ const HeaderOne = ({
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
 
-  useEffect(() => {
-    const header = document.querySelector(".sticky-bar");
-    setHeaderTop(header.offsetTop);
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const header = document.querySelector(".sticky-bar");
+  //   setHeaderTop(header.offsetTop);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   const handleScroll = () => {
     setScroll(window.scrollY);
