@@ -94,7 +94,7 @@ const Business = ({
                                     <p className="lead" style={{ whiteSpace: 'pre-line' }}>{business.description}</p>
                                     <div className="shop-buttons mt-3">
                                         {(business.latitude && business.longitude) &&
-                                            <Button className="button-small mr-1"><i className="fa fa-map mr-1"></i>MAP</Button>
+                                            <Button className="button-small mr-1" href={`https://maps.google.com/?ll=${business.latitude},${business.longitude}&z=16`} target="_blank"><i className="fa fa-map mr-1"></i>MAP</Button>
                                         }
 
                                         {(business.website) &&
