@@ -106,9 +106,9 @@ const FooterOne = ({
                     </Link>
                   </li>
                   <li>
-                    <a onClick={() => displayCookiePreferenceModal()}>
+                    <Link onClick={() => displayCookiePreferenceModal()}>
                       Update Cookie Preferences
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

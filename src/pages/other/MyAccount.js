@@ -36,7 +36,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
     if (isAuthenticated) {
       setAttributes();
     }
-  }, [isAuthenticated, user.profile.given_name, user.profile.family_name, user.profile.email, user.profile.phone])
+  }, [isAuthenticated, user.profile.given_name, user.profile.family_name, user.profile.email, user.profile.phone, user.username])
 
   const handleChangePassword = (event) => {
     event.preventDefault();
