@@ -68,7 +68,6 @@ const App = ({ isAuthenticated, dispatch }) => {
     <ToastProvider placement="bottom-left">
       <BreadcrumbsProvider>
         <Router>
-          <ScrollToTop>
             <Suspense
               fallback={
                 <div className="preloader-wrapper">
@@ -166,7 +165,6 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route exact component={NotFound} />
               </Switch>
             </Suspense>
-          </ScrollToTop>
         </Router>
       </BreadcrumbsProvider>
     </ToastProvider>
