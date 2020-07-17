@@ -210,12 +210,12 @@ const FooterOne = ({
           </div>
         </div>
       </div>
-      <button
+      {/* <button
         className={`scroll-top ${scroll > top ? "show" : ""}`}
         onClick={() => scrollToTop()}
       >
         <i className="fa fa-angle-double-up"></i>
-      </button>
+      </button> */}
     </footer>
   );
 };
