@@ -31,8 +31,8 @@ const PrivacyPolicy = () => {
                 <h4>Last updated July 18, 2020</h4>
                 <p>Thank you for choosing to be part of our community at Localing LTD (“Company”, “we”, “us”, or “our”). Localing LTD is the controller and is responsible for your personal data. We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at team@localing.co.uk.
                     </p>
-                <p>When you visit our website <a href="https://www.localing.co.uk">https://www.localing.co.uk</a>, and use our services, you trust us with your personal information. ‘Personal information’ means any information relating to an identified or identifiable natural person, which is a natural person who can be identified, directly or indirectly. We take your privacy very seriously. In this privacy policy, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Sites and our services.
-                    <p>This privacy policy applies to all information collected through our website (such as <a href="https://www.localing.co.uk">https://www.localing.co.uk</a>), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services").</p>
+                <p>When you visit our website <a href="https://www.localing.co.uk" style={{ textDecoration: 'underline' }}>https://www.localing.co.uk</a>, and use our services, you trust us with your personal information. ‘Personal information’ means any information relating to an identified or identifiable natural person, which is a natural person who can be identified, directly or indirectly. We take your privacy very seriously. In this privacy policy, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Sites and our services.
+                    <p>This privacy policy applies to all information collected through our website (such as <a href="https://www.localing.co.uk" style={{ textDecoration: 'underline' }}>https://www.localing.co.uk</a>), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services").</p>
                     This website is not intended for children and we do not knowingly collect data relating to children.</p>
                 <p>Please read this privacy policy carefully as it will help you make informed decisions about sharing your personal information with us.</p>
             </div>
@@ -65,7 +65,7 @@ const PrivacyPolicy = () => {
                 <p>The personal information that we collect depends on the context of your interactions with us and the Services, the choices you make and the products and features you use. The personal information we collect can include the following:</p>
                 <p>Publicly Available Personal Information. We collect first name, maiden name and last name; email addresses; current address; social media; phone numbers; business email; business phone number; business entity filings, corporate affiliations, and business associates; Date of birth; and other similar data.</p>
                 <p>Personal Information Provided by You. We collect purchase history; financial information (credit card number, purchase history, invoices); passwords; app usage; and other similar data.</p>
-                <p>Payment Data. We collect data necessary to process your payment if you make purchases, such as your payment instrument number (such as a credit card number), and the security code associated with your payment instrument. All payment data is stored by Stripe. You may find their privacy policy link(s) here: <a href="https://stripe.com/gb/privacy">https://stripe.com/gb/privacy</a>.</p>
+                <p>Payment Data. We collect data necessary to process your payment if you make purchases, such as your payment instrument number (such as a credit card number), and the security code associated with your payment instrument. All payment data is stored by Stripe. You may find their privacy policy link(s) here: <a href="https://stripe.com/gb/privacy" style={{ textDecoration: 'underline' }} >https://stripe.com/gb/privacy</a>.</p>
                 <p> Social Media Login Data. We may provide you with the option to register using social media account details, like your Facebook, Twitter or other social media account. If you choose to register in this way, we will collect the Information described in the section called "HOW DO WE HANDLE YOUR SOCIAL LOGINS" below.</p>
                 <p>All personal information that you provide to us must be true, complete and accurate, and you must notify us of any changes to such personal information.</p>
                 <p>Information automatically collected</p>
@@ -127,18 +127,30 @@ const PrivacyPolicy = () => {
 
                 <p>We have categorized each party so that you may be easily understand the purpose of our data collection and processing practices. If we have processed your data based on your consent and you wish to revoke your consent, please contact us.</p>
                 <br />
-                <p>■	Allow Users to Connect to their Third-Party Accounts</p>
-                <p>Facebook account and Google account</p>
-                <p>■	Cloud Computing Services</p>
-                <p>Amazon Web Services (AWS)</p>
-                <p>■	Content Optimization</p>
-                <p>YouTube video embed</p>
-                <p>■	Invoice and Billing</p>
-                <p>Stripe</p>
-                <p>■	Social Media Sharing and Advertising</p>
-                <p>Facebook social plugins</p>
-                <p>■	User Account Registration and Authentication</p>
-                <p>Facebook Login and Google Sign-In</p>
+                <ul style={{ listStyleType: 'square' }}>
+                    <li>Allow Users to Connect to their Third-Party Accounts</li>
+                    <ul>
+                        <li>Facebook account and Google account</li>
+                    </ul>
+                    <li>Cloud Computing Services</li>
+                    <ul>
+                        <li>Amazon Web Services (AWS)</li>
+                    </ul>
+                    <li>Content Optimization</li>
+                    <ul><li>YouTube video embed</li></ul>
+                    <li>Invoice and Billing</li>
+                    <ul>
+                        <li>Stripe</li>
+                    </ul>
+                    <li>Social Media Sharing and Advertising</li>
+                    <ul>
+                        <li>Facebook social plugins</li>
+                    </ul>
+                    <li>User Account Registration and Authentication</li>
+                    <ul>
+                        <li>Facebook Login and Google Sign-In</li>
+                    </ul>
+                </ul>
                 <br />
                 <p>We have employees developing the platform in the United States. This will involve transferring your data outside the European Economic Area (EEA). We ensure a similar degree of protection is afforded to your personal data by only transferring it to countries that have been deemed to provide an adequate level of protection for personal data by the European Commission.</p>
             </div>
@@ -187,18 +199,23 @@ const PrivacyPolicy = () => {
                     <li>data portability to ask for a copy of their personal data with us. </li>
                     <li>In certain circumstances, you may also have the right to object to the processing of your personal information. To make such a request, please use the contact details provided below. We will consider and act upon any request in accordance with applicable data protection laws. </li>
                     <li>If we are relying on your consent to process your personal information, you have the right to withdraw your consent at any time. Please note however that this will not affect the lawfulness of the processing before its withdrawal.</li>
-                    <li>If you are resident in the UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your local data protection supervisory authority. You can find their contact details here: <a href="https://ico.org.uk/global/contact-us/">https://ico.org.uk/global/contact-us/</a></li>
+                    <li>If you are resident in the UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your local data protection supervisory authority. You can find their contact details here: <a href="https://ico.org.uk/global/contact-us/" style={{ textDecoration: 'underline' }}>https://ico.org.uk/global/contact-us/</a></li>
                 </ul>
                 <br />
                 <p>If you have questions or comments about your privacy rights, you may email us at privacy-support@localing.co.uk.</p>
                 <p>Account Information</p>
                 <p>If you would at any time like to review or change the information in your account or terminate your account, you can:</p>
-                <p>■ Contact us using the contact information provided.</p>
+                <ul style={{ listStyleType: 'square' }}>
+                    <li>Contact us using the contact information provided.</li>
+                </ul>
+                <br />
                 <p>Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, some information may be retained in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our Terms of Use and/or comply with legal requirements.</p>
                 <p><u>Cookies and similar technologies:</u> Most Web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove cookies and to reject cookies. If you choose to remove cookies or reject cookies, this could affect certain features or services of our Services. </p>
                 <p><u>Opting out of email marketing:</u> You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. You will then be removed from the marketing email list – however, we will still need to send you service-related emails that are necessary for the administration and use of your account. To otherwise opt-out, you may:</p>
-                <p> ■  Contact us using the contact information provided.</p>
-                <p>■  Access your account settings and update preferences.</p>
+                <ul style={{ listStyleType: 'square' }}>
+                    <li>Contact us using the contact information provided.</li>
+                    <li>Access your account settings and update preferences.</li>
+                </ul>
             </div>
             <br />
             <div>
@@ -228,7 +245,7 @@ const PrivacyPolicy = () => {
             <br />
             <div>
                 <h2>HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
-                <p>Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please visit: <a href="http://www.localing.co.uk/my-account">http://www.localing.co.uk/my-account</a>. We will respond to your request within 30 days.</p>
+                <p>Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please visit: <a href="http://www.localing.co.uk/my-account" style={{ textDecoration: 'underline' }}>http://www.localing.co.uk/my-account</a>. We will respond to your request within 30 days.</p>
             </div>
         </div>)
 }
