@@ -188,7 +188,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
                       <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                       <div className="button-text w-inline-block">
                         <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(1) + " miles away"}</div>
-                        <div className="button-label mt-2">EXPLORE PRODUCTS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
+                        <div className="button-label mt-2">EXPLORE DEALS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                         </div>
                       </div>
                     </div>

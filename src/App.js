@@ -30,12 +30,11 @@ const Contact = lazy(() => import("./pages/other/Contact"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const Login = lazy(() => import("./pages/other/Login"));
 const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
-
 const Cart = lazy(() => import("./pages/other/Cart"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
-
+const Terms = lazy(() => import("./pages/other/Terms"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const App = ({ isAuthenticated, dispatch }) => {
@@ -91,17 +90,17 @@ const App = ({ isAuthenticated, dispatch }) => {
                   component={Business}
                 />
 
-                <Route 
+                <Route
                   path={process.env.PUBLIC_URL + "/shop"}
                   component={BusinessList}
-                  />
+                />
 
                 {/* Product pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:businessId/:productId"}
                   component={Product}
                 />
-                
+
                 {/* Product List 
                 <Route
                   path={process.env.PUBLIC_URL + "/products"}
@@ -112,6 +111,18 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/terms"}
+                  component={Terms}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/privacy"}
+                  component={Terms}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/cookies"}
+                  component={Terms}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/contact"}

@@ -12,6 +12,7 @@ import { Auth } from "aws-amplify";
 const MyAccount = ({ isAuthenticated, user }) => {
 
   // user profile
+  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
 
   useEffect(() => {
     const setAttributes = () => {
+      setUsername(user.username);
       setFirstName(user.profile.given_name);
       setLastName(user.profile.family_name);
       setEmail(user.profile.email);
@@ -34,7 +36,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
     if (isAuthenticated) {
       setAttributes();
     }
-  }, [isAuthenticated, user.profile.given_name, user.profile.family_name, user.profile.email, user.profile.phone])
+  }, [isAuthenticated, user.profile.given_name, user.profile.family_name, user.profile.email, user.profile.phone, user.username])
 
   const handleChangePassword = (event) => {
     event.preventDefault();
@@ -76,7 +78,7 @@ const MyAccount = ({ isAuthenticated, user }) => {
       default:
         break;
     }
-    
+
   };
 
   const clearFields = () => {
@@ -146,49 +148,52 @@ const MyAccount = ({ isAuthenticated, user }) => {
                           </Card.Body>
                         </Accordion.Collapse>
                       </Card>
-                      <Card className="single-my-account mb-20">
-                        <Card.Header className="panel-heading">
-                          <Accordion.Toggle variant="link" eventKey="1">
-                            <h3 className="panel-title">
-                              Change your password
+
+                      {!(username.toLowerCase().includes("facebook") || username.toLowerCase().includes("google")) &&
+                        <Card className="single-my-account mb-20">
+                          <Card.Header className="panel-heading">
+                            <Accordion.Toggle variant="link" eventKey="1">
+                              <h3 className="panel-title">
+                                Change your password
                           </h3>
-                          </Accordion.Toggle>
-                        </Card.Header>
-                        <Accordion.Collapse eventKey="1">
-                          <Card.Body>
-                            {changePasswordMessage !== "" && <Alert variant="dark">{changePasswordMessage}</Alert>}
-                            <div className="myaccount-info-wrapper">
-                              <form onSubmit={handleChangePassword}>
-                                <div className="row">
-                                  <div className="col-lg-12 col-md-12">
-                                    <div className="billing-info">
-                                      <label>Current Password</label>
-                                      <input type="password" name="currentPassword" value={currentPassword} onChange={handleChange} required />
+                            </Accordion.Toggle>
+                          </Card.Header>
+                          <Accordion.Collapse eventKey="1">
+                            <Card.Body>
+                              {changePasswordMessage !== "" && <Alert variant="dark">{changePasswordMessage}</Alert>}
+                              <div className="myaccount-info-wrapper">
+                                <form onSubmit={handleChangePassword}>
+                                  <div className="row">
+                                    <div className="col-lg-12 col-md-12">
+                                      <div className="billing-info">
+                                        <label>Current Password</label>
+                                        <input type="password" name="currentPassword" value={currentPassword} onChange={handleChange} required />
+                                      </div>
+                                    </div>
+                                    <div className="col-lg-12 col-md-12">
+                                      <div className="billing-info">
+                                        <label>New Password</label>
+                                        <input type="password" name="newPassword" value={newPassword} onChange={handleChange} required />
+                                      </div>
+                                    </div>
+                                    <div className="col-lg-12 col-md-12">
+                                      <div className="billing-info">
+                                        <label>Confirm New Password</label>
+                                        <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={handleChange} required />
+                                      </div>
                                     </div>
                                   </div>
-                                  <div className="col-lg-12 col-md-12">
-                                    <div className="billing-info">
-                                      <label>New Password</label>
-                                      <input type="password" name="newPassword" value={newPassword} onChange={handleChange} required />
+                                  <div className="billing-back-btn">
+                                    <div className="billing-btn">
+                                      <button type="submit">Continue</button>
                                     </div>
                                   </div>
-                                  <div className="col-lg-12 col-md-12">
-                                    <div className="billing-info">
-                                      <label>Confirm New Password</label>
-                                      <input type="password" name="confirmNewPassword" value={confirmNewPassword} onChange={handleChange} required />
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="billing-back-btn">
-                                  <div className="billing-btn">
-                                    <button type="submit">Continue</button>
-                                  </div>
-                                </div>
-                              </form>
-                            </div>
-                          </Card.Body>
-                        </Accordion.Collapse>
-                      </Card>
+                                </form>
+                              </div>
+                            </Card.Body>
+                          </Accordion.Collapse>
+                        </Card>
+                      }
                     </Accordion>
                   </div>
                 </div>

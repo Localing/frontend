@@ -23,6 +23,8 @@
     -->
   <title>Localing - Support local businesses</title>
 
+  
+  <!-- Termly.io cookie consent script -->
   <script>
     (function () {
       var s = document.createElement('script');
@@ -35,6 +37,13 @@
       x.parentNode.insertBefore(s, x);
     })();
   </script>
+
+  <!-- Dialogflow bot script -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger intent="WELCOME" chat-title="Katy"
+    chat-icon="https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/chatbot-avatar.png"
+    agent-id="7c4903b9-87fa-4a9c-bb87-4f01ceb52b16" language-code="en">
+  </df-messenger>
 
 </head>
 

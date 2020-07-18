@@ -2,12 +2,15 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_ERROR,
+    CLEAR_LOGIN_ERROR,
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_ERROR,
+    CLEAR_LOGOUT_ERROR,
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
+    CLEAR_SIGNUP_ERROR,
     VERIFY_REQUEST,
     VERIFY_SUCCESS
   } from "../actions/authActions";
@@ -49,6 +52,11 @@ import {
           isAuthenticated: false,
           loginError: action.error
         };
+      case CLEAR_LOGIN_ERROR:
+        return {
+          ...state,
+          loginError: null
+        };
       case LOGOUT_REQUEST:
         return {
           ...state,
@@ -69,26 +77,36 @@ import {
           isLoggingOut: false,
           logoutError: action.error
         };
+      case CLEAR_LOGOUT_ERROR:
+        return {
+          ...state,
+          logoutError: null
+        };
       case SIGNUP_REQUEST:
         return {
           ...state,
           isSigningUp: true,
           signupError: null
-        }
+        };
       case SIGNUP_SUCCESS:
         return {
           ...state,
           isSigningUp: false,
           signupSuccess: true,
           signupError: null
-        }
+        };
       case SIGNUP_ERROR:
         return {
           ...state,
           isSigningUp: false,
           signupSuccess: false,
           signupError: action.error
-        }
+        };
+      case CLEAR_SIGNUP_ERROR:
+        return {
+          ...state,
+          signupError: null
+        };
       case VERIFY_REQUEST:
         return {
           ...state,
