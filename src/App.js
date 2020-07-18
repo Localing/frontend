@@ -67,6 +67,7 @@ const App = ({ isAuthenticated, dispatch }) => {
     <ToastProvider placement="bottom-left">
       <BreadcrumbsProvider>
         <Router>
+          <ScrollToTop>
             <Suspense
               fallback={
                 <div className="preloader-wrapper">
@@ -89,17 +90,17 @@ const App = ({ isAuthenticated, dispatch }) => {
                   component={Business}
                 />
 
-                <Route 
+                <Route
                   path={process.env.PUBLIC_URL + "/shop"}
                   component={BusinessList}
-                  />
+                />
 
                 {/* Product pages */}
                 <Route
                   path={process.env.PUBLIC_URL + "/product/:businessId/:productId"}
                   component={Product}
                 />
-                
+
                 {/* Product List 
                 <Route
                   path={process.env.PUBLIC_URL + "/products"}
@@ -176,6 +177,7 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route exact component={NotFound} />
               </Switch>
             </Suspense>
+          </ScrollToTop>
         </Router>
       </BreadcrumbsProvider>
     </ToastProvider>
