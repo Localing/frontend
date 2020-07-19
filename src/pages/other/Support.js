@@ -31,7 +31,7 @@ const Support = (props) => {
                         <Col className="mt-2">
                             <p className="lead">Sorry to hear you’ve been having issues!</p>
 
-                            <p>We hope our FAQs page is able to help untie those knots of confusion, but if not, please feel free to have a chat with our <a onClick={openAgent} style={{ textDecoration: 'underline' }}>Community Assistant</a>.</p>
+                            <p>We hope our <Link to="/faqs" style={{ textDecoration: 'underline' }}>FAQs page</Link> is able to help untie those knots of confusion, but if not, please feel free to have a chat with our <a onClick={openAgent} style={{ textDecoration: 'underline' }}>Community Assistant</a>.</p>
 
                             <p>If you’ve found a gap in our knowledge, or just need a bit of a personal touch, we would love to hear from you at <u>support@localing.co.uk</u>.</p>
 
