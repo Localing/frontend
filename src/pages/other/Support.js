@@ -14,18 +14,18 @@ const Support = (props) => {
     return (
         <Fragment>
             <MetaTags>
-                <title>Localing | Support</title>
+                <title>Localing | Customer Support</title>
                 <meta
                     name="description"
-                    content="Localing Support"
+                    content="Localing Customer Support"
                 />
             </MetaTags>
             <LayoutOne>
                 <Container className="mt-3 mb-3">
-                    <h1 className="mt-2 mb-2">Support</h1>
+                    <h1 className="mt-2 mb-2">Customer Support</h1>
                     <Row className="mt-3">
                         <Col md={5} className="text-center mt-2">
-                            <img onClick={openAgent} src={process.env.PUBLIC_URL + '/assets/img/katy-logo.png'} width="250" className="mx-auto" />
+                            <img onClick={openAgent} src={process.env.PUBLIC_URL + '/assets/img/katy-logo.png'} width="250" className="mx-auto" style={{ cursor: 'pointer' }} />
                             <p className="lead mt-2 d-none d-md-block">Our community assistant is available 24/7 to help you.</p>
                         </Col>
                         <Col className="mt-2">

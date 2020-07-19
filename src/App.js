@@ -35,6 +35,7 @@ const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
 const Support = lazy(() => import("./pages/other/Support"));
+const FAQs = lazy(() => import("./pages/other/FAQs"));
 const Terms = lazy(() => import("./pages/other/Terms"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
@@ -172,7 +173,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/support"}
                   component={Support}
-                  />
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/faqs"}
+                  component={FAQs}
+                />
                 <Route
                   path={process.env.PUBLIC_URL + "/not-found"}
                   component={NotFound}
