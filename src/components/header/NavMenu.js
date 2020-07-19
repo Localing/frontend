@@ -69,7 +69,7 @@ const NavMenu = ({ menuWhiteClass, sidebarMenu }) => {
           </li>
           <li>
             <Link to="/support">
-              HELP
+              SUPPORT
             </Link>
           </li>
         </ul>
