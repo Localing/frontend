@@ -101,9 +101,9 @@ const FooterOne = ({
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/cookies"}>
+                    <a href="https://app.termly.io/document/cookie-policy/6d71a832-abfe-46ed-84a6-bec7e3292565" target="_blank">
                       Cookie Policy
-                    </Link>
+                    </a>
                   </li>
                   <li>
                     <Link onClick={() => displayCookiePreferenceModal()}>
