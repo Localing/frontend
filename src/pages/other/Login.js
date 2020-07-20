@@ -170,10 +170,12 @@ const Login = ({
                                   </div>
                                 </div>
                               </form>
+                              {/* Disables social login 
                               <p className="lead text-center pt-2 pb-2">or</p>
                               <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
                               <Button variant="outline-dark" className="square-corners" onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
-                            </div>
+                              */}
+                              </div>
                           </div>
                         </Tab.Pane>
                         <Tab.Pane eventKey="signup">
@@ -230,13 +232,14 @@ const Login = ({
                                   }
                                 </div>
                               </form>
+                              {/* Disables social sign up
                               <div>
                                 <p className="lead text-center pt-2 pb-2">or</p>
                               </div>
                               <div>
                                 <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Facebook' })} block><i className="fa fa-facebook" />&nbsp;&nbsp;Sign In with Facebook</Button>
                                 <Button variant="outline-dark" style={{ borderRadius: 0 }} onClick={() => Auth.federatedSignIn({ provider: 'Google' })} block><i className="fa fa-google" />&nbsp;&nbsp;Sign In with Google</Button>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </Tab.Pane>
