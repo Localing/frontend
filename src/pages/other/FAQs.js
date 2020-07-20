@@ -16,8 +16,8 @@ const FAQs = (props) => {
                 />
             </MetaTags>
             <LayoutOne>
-                <Container className="mt-3 mb-3">
-                    <h1>FAQs</h1>
+                <Container className="mt-5 mb-5">
+                    <h1 className="font-weight-light">Frequently Asked Questions (FAQs)</h1>
                     <hr />
                     <div className="mt-3">
                         <p className="lead">When can I redeem my voucher?</p>
@@ -42,7 +42,7 @@ const FAQs = (props) => {
                     </div>
                     <hr />
                     <div>
-                        <p>For additional assistance, visit our <Link to="/support" style={{ textDecoration: 'underline' }}>Support Page</Link></p>
+                        <p>For additional assistance, please visit our <Link to="/support" style={{ textDecoration: 'underline' }}>Support Page</Link>.</p>
                     </div>
                 </Container>
             </LayoutOne>

@@ -21,12 +21,13 @@ const Support = (props) => {
                 />
             </MetaTags>
             <LayoutOne>
-                <Container className="mt-3 mb-3">
-                    <h1 className="mt-2 mb-2">Customer Support</h1>
+                <Container className="mt-5 mb-5">
+                    <h1 className="font-weight-light">Customer Support</h1>
+                    <hr />
                     <Row className="mt-3">
                         <Col md={5} className="text-center mt-2">
                             <img onClick={openAgent} src={process.env.PUBLIC_URL + '/assets/img/katy-logo.png'} width="250" className="mx-auto" style={{ cursor: 'pointer' }} />
-                            <p className="lead mt-2 d-none d-md-block">Our community assistant is available 24/7 to help you.</p>
+                            <p className="lead p-3 d-none d-md-block">Our community assistant is available 24/7 to help you.</p>
                         </Col>
                         <Col className="mt-2">
                             <p className="lead">Sorry to hear you’ve been having issues!</p>
@@ -37,11 +38,12 @@ const Support = (props) => {
 
                             <p>We really believe that your community can work together to bring new life back to your local businesses, so they can come back stronger and better than ever. If you have any suggestions on what we can work on to help you support your community more, any feedback to <u>feedback@localing.co.uk</u> would be greatly appreciated!</p>
                             
-                            <Link to="/faqs"><Button variant="outline-dark" style={{ borderRadius: '0' }}>FAQs</Button></Link>
-                            <Button variant="outline-dark" className="ml-2" style={{ borderRadius: '0' }} onClick={openAgent}>Ask Katy</Button>
+                            <Button variant="outline-dark" style={{ borderRadius: '0' }} onClick={openAgent}>Ask Katy</Button>
+                            <Link to="/faqs"><Button variant="outline-dark" className="ml-2" style={{ borderRadius: '0' }}>FAQs</Button></Link>
                             <Link to="/contact"><Button variant="outline-dark" className="ml-2" style={{ borderRadius: '0' }}>Contact Us</Button></Link>
                         </Col>
                     </Row>
+                    <hr />
                 </Container>
             </LayoutOne>
         </Fragment >
