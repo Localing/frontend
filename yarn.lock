@@ -11015,10 +11015,10 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-react-lightgallery@0.8.1:
-  version "0.8.1"
-  resolved "https://registry.yarnpkg.com/react-lightgallery/-/react-lightgallery-0.8.1.tgz#3e82cf09f20301aded5585ecb2cacbba2beb8560"
-  integrity sha512-Tubi2B53tnw2GsiJ88KI0EO4MVbET9UXqGJ02O+Rbzo8/PmphxunFSp38BanskM8gxYnISYqWzuYQ902Tt7feg==
+react-lightgallery@0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/react-lightgallery/-/react-lightgallery-0.8.2.tgz#2601137aef6745451bdd215039d6ee91f56bc385"
+  integrity sha512-GONcK7wOq5Yf8loZ3GzRqf9ta0eeK39+aje4fBaI+oQnZggYzsPb/sRd+LJNRtdFTU7HsPryxG27NDj7hWUpCQ==
   dependencies:
     browser-or-node "^1.1.0"
     hoist-non-react-statics "^3.3.2"
