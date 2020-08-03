@@ -1,6 +1,21 @@
 import axios from "axios";
+import { Auth } from "aws-amplify";
 
-export default axios.create({
+const axiosInstance = axios.create({
     baseURL: "https://consumerapi.dev.localing.co.uk",
     responseType: "json"
 });
+
+// add token to request header
+const axiosRequestInterceptor = async config => {
+    const session = await Auth.currentSession();
+
+    const token = session.idToken.jwtToken;
+    if (token) {
+        config.headers.Authorization = token;
+    }
+    return config;
+};
+axiosInstance.interceptors.request.use(axiosRequestInterceptor, e => Promise.reject(e));
+
+export default axiosInstance;
