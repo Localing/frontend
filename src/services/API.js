@@ -8,13 +8,16 @@ const axiosInstance = axios.create({
 
 // add token to request header
 const axiosRequestInterceptor = async config => {
-    const session = await Auth.currentSession();
-
-    const token = session.idToken.jwtToken;
-    if (token) {
-        config.headers.Authorization = token;
+    try {
+        const session = await Auth.currentSession();
+        const token = session.idToken.jwtToken;
+        if (token) {
+            config.headers.Authorization = token;
+        }
+        return config;
+    } catch (error) {
+        return config;
     }
-    return config;
 };
 axiosInstance.interceptors.request.use(axiosRequestInterceptor, e => Promise.reject(e));
 
