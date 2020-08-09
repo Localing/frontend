@@ -49,7 +49,7 @@ const Compare = ({
                             <th className="title-column">Product Info</th>
                             {compareItems.map((compareItem, key) => {
                               const cartItem = cartItems.filter(
-                                item => item.id === compareItem.id
+                                item => item.productId === compareItem.productId
                               )[0];
                               return (
                                 <td className="product-image-title" key={key}>
@@ -66,7 +66,7 @@ const Compare = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      compareItem.id
+                                      compareItem.productId
                                     }
                                     className="image"
                                   >
@@ -84,7 +84,7 @@ const Compare = ({
                                       to={
                                         process.env.PUBLIC_URL +
                                         "/product/" +
-                                        compareItem.id
+                                        compareItem.productId
                                       }
                                     >
                                       {compareItem.name}
@@ -103,7 +103,7 @@ const Compare = ({
                                     ) : compareItem.variation &&
                                       compareItem.variation.length >= 1 ? (
                                       <Link
-                                        to={`${process.env.PUBLIC_URL}/product/${compareItem.id}`}
+                                        to={`${process.env.PUBLIC_URL}/product/${compareItem.productId}`}
                                       >
                                         Select Option
                                       </Link>

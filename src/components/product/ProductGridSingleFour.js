@@ -39,7 +39,7 @@ const ProductGridSingleFour = ({
           }`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.images[0]}
@@ -87,7 +87,7 @@ const ProductGridSingleFour = ({
                   </a>
                 ) : product.variation && product.variation.length >= 1 ? (
                   <Link
-                    to={`${process.env.PUBLIC_URL}/product/${product.id}`}
+                    to={`${process.env.PUBLIC_URL}/product/${product.productId}`}
                     title="Select options"
                   >
                     <i class="fa fa-cog"></i>
@@ -139,7 +139,7 @@ const ProductGridSingleFour = ({
           </div>
           <div className="product-content-5 text-center">
             <h3>
-              <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+              <Link to={process.env.PUBLIC_URL + "/product/" + product.productId}>
                 {product.name}
               </Link>
             </h3>

@@ -65,7 +65,7 @@ const Wishlist = ({
                               discountedPrice * currency.currencyRate
                             ).toFixed(2);
                             const cartItem = cartItems.filter(
-                              item => item.id === wishlistItem.id
+                              item => item.productId === wishlistItem.productId
                             )[0];
                             return (
                               <tr key={key}>
@@ -74,7 +74,7 @@ const Wishlist = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      wishlistItem.id
+                                      wishlistItem.productId
                                     }
                                   >
                                     <img
@@ -93,7 +93,7 @@ const Wishlist = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      wishlistItem.id
+                                      wishlistItem.productId
                                     }
                                   >
                                     {wishlistItem.name}
@@ -133,7 +133,7 @@ const Wishlist = ({
                                   ) : wishlistItem.variation &&
                                     wishlistItem.variation.length >= 1 ? (
                                     <Link
-                                      to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
+                                      to={`${process.env.PUBLIC_URL}/product/${wishlistItem.productId}`}
                                     >
                                       Select option
                                     </Link>

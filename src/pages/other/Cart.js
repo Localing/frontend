@@ -108,7 +108,7 @@ const Cart = ({
                                     to={
                                       process.env.PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.productId
                                     }
                                   >
                                     {cartItem.name}
