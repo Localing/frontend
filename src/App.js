@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import { receiveLogin, receiveLogout, receiveLoginError } from './redux/actions/authActions';
 import ProtectedRoute from './wrappers/ProtectedRoute';
+import '@stripe/stripe-js';
 
 // AWS amplify
 import Amplify, { Auth, Hub } from 'aws-amplify';

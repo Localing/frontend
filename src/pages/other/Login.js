@@ -10,7 +10,7 @@ import Spinner from "react-bootstrap/Spinner";
 import LayoutOne from "../../layouts/LayoutOne";
 import { connect } from 'react-redux';
 import { loginUser, signUpUser, clearLoginError, clearSignUpError } from '../../redux/actions/authActions';
-import { Auth } from "aws-amplify";
+//import { Auth } from "aws-amplify";
 
 const Login = ({
   location,

@@ -1,6 +1,6 @@
 import API from "../../services/API";
+import { loadStripe } from '@stripe/stripe-js';
 var _ = require('lodash');
-var stripe = Stripe(process.env.REACT_APP_StripePublishableKey);
 
 export const CHECKOUT_BEGIN = "CHECKOUT_BEGIN";
 export const CHECKOUT_SUCCESS = "CHECKOUT_SUCCESS";
@@ -51,21 +51,24 @@ export const checkoutCart = (addToast) => {
       .post(`/checkout/`, cartToSubmit)
       .then(response => {
         let sessionId = response.data.sessionId;
-        stripe.redirectToCheckout({
-          sessionId: sessionId
-        }).then(result => {
-          if (result.error) {
-            dispatch(checkoutError(result.error))
-          } else {
-            dispatch(checkoutSuccess());
-            if (addToast) {
-              addToast("Checkout Complete", {
-                appearance: "success",
-                autoDismiss: true
-              });
-            }
-          }
-        });
+        var stripe = loadStripe(process.env.REACT_APP_StripePublishableKey)
+          .then(() => {
+            stripe.redirectToCheckout({
+              sessionId: sessionId
+            }).then(result => {
+              if (result.error) {
+                dispatch(checkoutError(result.error))
+              } else {
+                dispatch(checkoutSuccess());
+                if (addToast) {
+                  addToast("Checkout Complete", {
+                    appearance: "success",
+                    autoDismiss: true
+                  });
+                }
+              }
+            });
+          });
       })
       .catch(error => {
         dispatch(checkoutError(error));

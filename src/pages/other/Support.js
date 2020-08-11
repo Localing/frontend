@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -26,7 +26,7 @@ const Support = (props) => {
                     <hr />
                     <Row className="mt-3">
                         <Col md={5} className="text-center mt-2">
-                            <img onClick={openAgent} src={process.env.PUBLIC_URL + '/assets/img/katy-logo.png'} width="250" className="mx-auto" style={{ cursor: 'pointer' }} />
+                            <img alt={"Support Agent"} onClick={openAgent} src={process.env.PUBLIC_URL + '/assets/img/katy-logo.png'} width="250" className="mx-auto" style={{ cursor: 'pointer' }} />
                             <p className="lead p-3 d-none d-md-block">Our community assistant is available 24/7 to help you.</p>
                         </Col>
                         <Col className="mt-2">

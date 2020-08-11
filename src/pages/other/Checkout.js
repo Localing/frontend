@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
@@ -11,7 +11,6 @@ import { addPoints } from "../../redux/actions/pointsActions";
 import { useToasts } from "react-toast-notifications";
 
 const Checkout = ({ cartItems, currency, checkoutCart }) => {
-  let history = useHistory();
 
   let cartTotalPrice = 0;
   const { addToast } = useToasts();

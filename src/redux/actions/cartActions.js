@@ -3,23 +3,6 @@ export const CHECKOUT_CART = "CHECKOUT_CART";
 export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const DELETE_ALL_FROM_CART = "DELETE_ALL_FROM_CART";
-export const SUBMIT_CART_BEGIN = "SUBMIT_CART_BEGIN";
-export const SUBMIT_CART_SUCCESS = "SUBMIT_CART_SUCCESS";
-export const SUBMIT_CART_ERROR = "SUBMIT_CART_ERROR";
-
-const submitCartBegin = () => ({
-  type: SUBMIT_CART_BEGIN
-});
-
-const submitCartSuccess = sessionID => ({
-  type: SUBMIT_CART_SUCCESS,
-  payload: sessionID
-});
-
-const submitCartError = error => ({
-  type: SUBMIT_CART_ERROR,
-  payload: error
-})
 
 //add to cart
 export const addToCart = (
