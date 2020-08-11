@@ -6,19 +6,19 @@ const axiosInstance = axios.create({
     responseType: "json"
 });
 
-// add token to request header
-const axiosRequestInterceptor = async config => {
-    try {
-        const session = await Auth.currentSession();
-        const token = session.idToken.jwtToken;
-        if (token) {
-            config.headers.Authorization = token;
-        }
-        return config;
-    } catch (error) {
-        return config;
-    }
-};
-axiosInstance.interceptors.request.use(axiosRequestInterceptor, e => Promise.reject(e));
+// // add token to request header
+// const axiosRequestInterceptor = async config => {
+//     try {
+//         const session = await Auth.currentSession();
+//         const token = session.idToken.jwtToken;
+//         if (token) {
+//             config.headers.Authorization = token;
+//         }
+//         return config;
+//     } catch (error) {
+//         return config;
+//     }
+// };
+// axiosInstance.interceptors.request.use(axiosRequestInterceptor, e => Promise.reject(e));
 
 export default axiosInstance;

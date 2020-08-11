@@ -20,16 +20,16 @@ const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) 
   const { addToast } = useToasts();
   const [show, setShow] = useState(false);
 
-  const handleClose = () => {
-    setShow(false);
-    checkoutCart(addToast);
-    history.push('/');
-  }
-  const handleShow = () => setShow(true);
+  // const handleClose = () => {
+  //   setShow(false);
+  //   history.push('/');
+  // }
+  // const handleShow = () => setShow(true);
 
   function processOrder() {
-    addPoints(Math.floor(cartTotalPrice * 100));
-    handleShow();
+    //addPoints(Math.floor(cartTotalPrice * 100));
+    //handleShow();
+    checkoutCart(cartItems, addToast);
   }
 
   return (
@@ -43,8 +43,8 @@ const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) 
       </MetaTags>
 
       <LayoutOne>
-        {/* badge popup */}
-        <Modal show={show} onHide={handleClose}>
+
+        {/* <Modal show={show} onHide={handleClose}>
           <Modal.Body>
             <div className="text-center">
               <h3>You now have <CountUp start={cartTotalPrice * 100} end={pointsData.points} /> hero points <br /> and you've become a {pointsToLevels(pointsData.points).title}!</h3>
@@ -55,7 +55,7 @@ const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) 
               </Button>
             </div>
           </Modal.Body>
-        </Modal>
+        </Modal> */}
 
 
         <div className="checkout-area pt-95 pb-100">
@@ -282,8 +282,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkoutCart: addToast => {
-      dispatch(checkoutCart(addToast));
+    checkoutCart: (cartItems, addToast) => {
+      dispatch(checkoutCart(cartItems, addToast));
     },
     addPoints: points => {
       dispatch(addPoints(points));
