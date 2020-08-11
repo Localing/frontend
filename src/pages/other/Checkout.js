@@ -1,35 +1,23 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { Link, useHistory } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import { Modal, Button } from 'react-bootstrap';
-import CountUp from "react-countup";
-import { pointsToLevels } from "../../levels";
 
-import { checkoutCart } from "../../redux/actions/cartActions";
+import { checkoutCart } from "../../redux/actions/checkoutActions";
 import { addPoints } from "../../redux/actions/pointsActions";
 import { useToasts } from "react-toast-notifications";
 
-const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) => {
+const Checkout = ({ cartItems, currency, checkoutCart }) => {
   let history = useHistory();
 
   let cartTotalPrice = 0;
   const { addToast } = useToasts();
-  const [show, setShow] = useState(false);
-
-  // const handleClose = () => {
-  //   setShow(false);
-  //   history.push('/');
-  // }
-  // const handleShow = () => setShow(true);
 
   function processOrder() {
-    //addPoints(Math.floor(cartTotalPrice * 100));
-    //handleShow();
-    checkoutCart(cartItems, addToast);
+    checkoutCart(addToast);
   }
 
   return (
@@ -43,20 +31,6 @@ const Checkout = ({ cartItems, currency, checkoutCart, addPoints, pointsData }) 
       </MetaTags>
 
       <LayoutOne>
-
-        {/* <Modal show={show} onHide={handleClose}>
-          <Modal.Body>
-            <div className="text-center">
-              <h3>You now have <CountUp start={cartTotalPrice * 100} end={pointsData.points} /> hero points <br /> and you've become a {pointsToLevels(pointsData.points).title}!</h3>
-              <br />
-              <button className="btn btn-secondary"><i className="fa fa-instagram"></i>&nbsp;Share on Instagram</button><br /><br />
-              <Button variant="primary" onClick={handleClose}>
-                Back to Home
-              </Button>
-            </div>
-          </Modal.Body>
-        </Modal> */}
-
 
         <div className="checkout-area pt-95 pb-100">
           <div className="container">
@@ -276,14 +250,15 @@ const mapStateToProps = state => {
   return {
     cartItems: state.cartData,
     currency: state.currencyData,
-    pointsData: state.pointsData
+    pointsData: state.pointsData,
+    checkout: state.checkoutData
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkoutCart: (cartItems, addToast) => {
-      dispatch(checkoutCart(cartItems, addToast));
+    checkoutCart: (addToast) => {
+      dispatch(checkoutCart(addToast));
     },
     addPoints: points => {
       dispatch(addPoints(points));

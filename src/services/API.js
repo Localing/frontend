@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Auth } from "aws-amplify";
+//import { Auth } from "aws-amplify";
 
 const axiosInstance = axios.create({
     baseURL: "https://consumerapi.dev.localing.co.uk",
