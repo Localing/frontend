@@ -29,7 +29,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.0.0",
     "react-scripts": "3.4.1",
-    "react-scroll": "^1.8.0",
+    "react-scroll": "^1.8.1",
     "react-sticky-el": "^2.0.5",
     "react-toast-notifications": "^2.2.5",
     "react-visibility-sensor": "^5.1.1",
