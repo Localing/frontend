@@ -19,7 +19,7 @@ const checkoutError = error => ({
   payload: error
 });
 
-const stripe = window.Stripe(process.env.REACT_APP_StripePublishableKey);
+const stripe = window.Stripe("pk_test_51GtdH5F6l09pLa1lY6V7E8kQsqBlYNObaMEiNv6yOTqmwYLfVcREqciOX7ECps5CVWTHZ8yAnqOyHSFGzIFjlHAo00SAiIG48Z");
 
 // submit cart to checkout API
 export const checkoutCart = (addToast) => {
