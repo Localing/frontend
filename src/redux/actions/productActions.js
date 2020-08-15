@@ -26,7 +26,7 @@ export const fetchProducts = (businessID) => {
   return dispatch => {
     dispatch(fetchProductsBegin());
     API
-      .get(`/business/${businessID}/product`)
+      .get(`/product/${businessID}`)
       .then(response => {
         dispatch(fetchProductsSuccess(response.data));
       })
@@ -71,7 +71,7 @@ export const fetchProduct = (businessId, productId) => {
   return dispatch => {
     dispatch(fetchProductBegin());
     API
-      .get(`/business/${businessId}/product/${productId}`)
+      .get(`/product/${businessId}/${productId}`)
       .then(response => {
           dispatch(fetchProductSuccess(response.data));
       })
