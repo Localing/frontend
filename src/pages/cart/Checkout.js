@@ -5,19 +5,11 @@ import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-
 import { checkoutCart } from "../../redux/actions/checkoutActions";
-// import { addPoints } from "../../redux/actions/pointsActions";
-import { useToasts } from "react-toast-notifications";
 
 const Checkout = ({ cartItems, currency, checkoutCart }) => {
 
   let cartTotalPrice = 0;
-  const { addToast } = useToasts();
-
-  function processOrder() {
-    checkoutCart(addToast);
-  }
 
   return (
     <Fragment>
@@ -100,7 +92,7 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover" onClick={processOrder}>Proceed to Payment</button>
+                      <button className="btn-hover" onClick={() => checkoutCart()}>Proceed to Payment</button>
                     </div>
                   </div>
                 </div>
@@ -114,7 +106,7 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                       </div>
                       <div className="item-empty-area__text">
                         No items found in cart to checkout <br />{" "}
-                        <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                        <Link to={process.env.PUBLIC_URL + "/shop"}>
                           Shop Now
                       </Link>
                       </div>
@@ -133,8 +125,6 @@ Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
   checkoutCart: PropTypes.func,
-  addPoints: PropTypes.func,
-  pointsData: PropTypes.object
 };
 
 const mapStateToProps = state => {
@@ -148,8 +138,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkoutCart: (addToast) => {
-      dispatch(checkoutCart(addToast));
+    checkoutCart: () => {
+      dispatch(checkoutCart());
     }
   };
 };

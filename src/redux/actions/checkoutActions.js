@@ -22,7 +22,7 @@ const checkoutError = error => ({
 const stripe = window.Stripe("pk_test_51GtdH5F6l09pLa1lY6V7E8kQsqBlYNObaMEiNv6yOTqmwYLfVcREqciOX7ECps5CVWTHZ8yAnqOyHSFGzIFjlHAo00SAiIG48Z");
 
 // submit cart to checkout API
-export const checkoutCart = (addToast) => {
+export const checkoutCart = () => {
   return (dispatch, getState) => {
     dispatch(checkoutBegin());
 
