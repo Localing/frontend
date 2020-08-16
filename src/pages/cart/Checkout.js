@@ -68,7 +68,7 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                               return (
                                 <li key={key}>
                                   <span className="order-middle-left">
-                                    {cartItem.name} X {cartItem.quantity}
+                                    {cartItem.name} (Qty: {cartItem.quantity})
                                   </span>{" "}
                                   <span className="order-price">
                                     {discountedPrice !== null
@@ -96,14 +96,6 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                             </li>
                           </ul>
                         </div>
-                        {/* <div className="your-order-total">
-                          <ul>
-                            <li className="order-total">Hero Points You'll Earn</li>
-                            <li>
-                              {(cartTotalPrice * 100)}
-                            </li>
-                          </ul>
-                        </div> */}
                       </div>
                       <div className="payment-method"></div>
                     </div>
