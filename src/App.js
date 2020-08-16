@@ -29,6 +29,7 @@ const Product = lazy(() => import("./pages/product/Product"));
 const Cart = lazy(() => import("./pages/cart/Cart"));
 const Checkout = lazy(() => import("./pages/cart/Checkout"));
 const CheckoutSuccess = lazy(() => import("./pages/cart/CheckoutSuccess"));
+const CheckoutCancel = lazy(() => import("./pages/cart/CheckoutCancel"));
 const Wishlist = lazy(() => import("./pages/cart/Wishlist"));
 const Compare = lazy(() => import("./pages/cart/Compare"));
 
@@ -179,6 +180,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <ProtectedRoute
                   exact path={process.env.PUBLIC_URL + "/checkout/success"}
                   component={CheckoutSuccess}
+                  isAuthenticated={isAuthenticated}
+                />
+                <ProtectedRoute
+                  exact path={process.env.PUBLIC_URL + "/checkout/cancel"}
+                  component={CheckoutCancel}
                   isAuthenticated={isAuthenticated}
                 />
                 <Route
