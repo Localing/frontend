@@ -7,7 +7,7 @@ import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 
 import { checkoutCart } from "../../redux/actions/checkoutActions";
-import { addPoints } from "../../redux/actions/pointsActions";
+// import { addPoints } from "../../redux/actions/pointsActions";
 import { useToasts } from "react-toast-notifications";
 
 const Checkout = ({ cartItems, currency, checkoutCart }) => {
@@ -258,9 +258,6 @@ const mapDispatchToProps = dispatch => {
   return {
     checkoutCart: (addToast) => {
       dispatch(checkoutCart(addToast));
-    },
-    addPoints: points => {
-      dispatch(addPoints(points));
     }
   };
 };

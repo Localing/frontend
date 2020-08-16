@@ -25,16 +25,21 @@ const BusinessList = lazy(() => import("./pages/business/BusinessList"));
 const Product = lazy(() => import("./pages/product/Product"));
 //const ProductList = lazy(() => import("./pages/product/ProductList"));
 
+// cart-related pages
+const Cart = lazy(() => import("./pages/cart/Cart"));
+const Checkout = lazy(() => import("./pages/cart/Checkout"));
+const CheckoutSuccess = lazy(() => import("./pages/cart/CheckoutSuccess"));
+const Wishlist = lazy(() => import("./pages/cart/Wishlist"));
+const Compare = lazy(() => import("./pages/cart/Compare"));
+
+// account pages
+const MyAccount = lazy(() => import("./pages/account/MyAccount"));
+const Login = lazy(() => import("./pages/account/Login"));
+const ResetPassword = lazy(() => import("./pages/account/ResetPassword"));
+
 // other pages
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
-const MyAccount = lazy(() => import("./pages/other/MyAccount"));
-const Login = lazy(() => import("./pages/other/Login"));
-const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
-const Cart = lazy(() => import("./pages/other/Cart"));
-const Wishlist = lazy(() => import("./pages/other/Wishlist"));
-const Compare = lazy(() => import("./pages/other/Compare"));
-const Checkout = lazy(() => import("./pages/other/Checkout"));
 const Support = lazy(() => import("./pages/other/Support"));
 const FAQs = lazy(() => import("./pages/other/FAQs"));
 const Terms = lazy(() => import("./pages/other/Terms"));
@@ -167,8 +172,13 @@ const App = ({ isAuthenticated, dispatch }) => {
                   component={Compare}
                 />
                 <ProtectedRoute
-                  path={process.env.PUBLIC_URL + "/checkout"}
+                  exact path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
+                  isAuthenticated={isAuthenticated}
+                />
+                <ProtectedRoute
+                  exact path={process.env.PUBLIC_URL + "/checkout/success"}
+                  component={CheckoutSuccess}
                   isAuthenticated={isAuthenticated}
                 />
                 <Route
