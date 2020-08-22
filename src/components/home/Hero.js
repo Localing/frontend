@@ -5,12 +5,35 @@ import { capitalize, truncate } from "../../helpers/strings";
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
-    // Rotate businesses in hero 
-    const randomBusiness = () => {
-        return businesses[Math.floor(Math.random() * businesses.length)]
+    const townProfiles = [
+        {
+            id: "histon-and-impington",
+            name: "Histon & Impington",
+            description: "Over the years the two villages have grown and entwined together, to such an extent that many villagers today do not know where one ends and the other begins.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon1.jpg",
+            caption: "This is Histon's most famous bar."
+        },
+        {
+            id: "histon-and-impington",
+            name: "Histon & Impington",
+            description: "Some of the trackways that pass through these villages are believed to be prehistoric.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon2.jpg",
+            caption: "This is some store"
+        }
+    ];
+
+    // Rotate town pictures in hero
+    const randomTown = () => {
+        return townProfiles[Math.floor(Math.random() * townProfiles.length)]
     }
 
-    const [business, setBusiness] = useState(randomBusiness());
+    // // Rotate businesses in hero 
+    // const randomBusiness = () => {
+    //     return businesses[Math.floor(Math.random() * businesses.length)]
+    // }
+
+    const [towns, setTowns] = useState(randomTown());
+    // const [business, setBusiness] = useState(randomBusiness());
 
     // handling changes to postcodes
     const [postcode, setPostcode] = useState("");
@@ -49,10 +72,18 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             <div className="w-layout-grid hero2-grid">
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
-                        <div className="maroon-header-text">Keep the heart of your local high street beating</div>
-                        <p className="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+                        <div className="maroon-header-text">Keep the heart of your local high street beating!</div>
+                        <p className="hero-paragraph">Pre-order from local businesses and <strong>get exclusive promotions and discounts</strong> for being loyal to your community.</p>
+                        <br />
                         <div className="d-none d-sm-block">
-                        {showPostcodeForm ?
+                            <p className="lead">Choose your area to start shopping!</p>
+                            <Link to="/shop/cottenham"><button style={{ display: 'inline' }} className="button-small-light mr-1">Cottenham</button></Link>
+                            <Link to="/shop/histon-and-impington"><button style={{ display: 'inline' }} className="button-small-light">Histon &amp; Impington</button></Link>
+                            <hr />
+                            <p>Not in your area yet? <a href="#newsletter" scroll={el => scrollWithOffset(el)} style={{ textDecoration: 'underline'}}>Let us alert you when we are.</a></p>
+                            
+                            {/* POSTCODE ENTRY FORM - Currently disabled
+                            {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
                                     <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
@@ -84,31 +115,31 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <Link to="/shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
-                        }
+                        } */}
                         </div>
                     </div>
-                    <Link to={`/business/${business.businessId}`}>
-                    <div className="hero2-latest w-inline-block d-none d-sm-block">
+                    <Link to={`/shop/${towns.id}`}>
+                        <div className="hero2-latest w-inline-block d-none d-sm-block">
                             <div>
-                                <span className="featured-text">Featured</span>
-                                <div className="size5-text">{business.name}</div>
-                                <div className="hero-paragraph">{truncate(business.description, 200, " ...")}</div>
+                                <span className="featured-text lead">Featured High Street</span>
+                                <div className="size5-text">{towns.name}</div>
+                                <div className="hero-paragraph">{truncate(towns.description, 200, " ...")}</div>
                             </div>
-                    </div>
+                        </div>
                     </Link>
-                    <Link to="/shop" scroll={el => scrollWithOffset(el)}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
-                        <div>Discover more shops near you <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
+                    <Link to={`/shop/${towns.id}`}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
+                        <div>Discover shops in {towns.name} <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
-                        <Link to={`/business/${business.businessId}`}><p className="hero2-product-name">Explore deals at {business.name}</p></Link>
+                        <Link to={`/shop/${towns.id}`}><p className="hero2-product-name">{towns.caption}</p></Link>
                     </div>
-                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)}</p>
+                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{towns.name}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">
-                <div id="w-node-6d7d04cfb325-5fcf7beb" className="hero2-image" style={{ backgroundImage: `url('${business.imageURL}')` }}></div>
+                <div id="w-node-6d7d04cfb325-5fcf7beb" className="hero2-image" style={{ backgroundImage: `url('${towns.image}')` }}></div>
             </div>
         </div>
     )
