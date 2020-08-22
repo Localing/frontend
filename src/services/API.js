@@ -10,10 +10,8 @@ const axiosInstance = axios.create({
 const axiosRequestInterceptor = async config => {
     try {
         const session = await Auth.currentSession();
-        const token = session.idToken.jwtToken;
-        if (token) {
-            config.headers.Authorization = token;
-        }
+        const token = session.accessToken.jwtToken;
+        config.headers.Authorization = token ? `Bearer ${token}` : '';
         return config;
     } catch (error) {
         return config;
