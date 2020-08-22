@@ -37,7 +37,7 @@ const Product = ({
         {!isFetchingProduct && product ?
           <Fragment>
             {/* product description with image */}
-            < ProductImageDescription
+            <ProductImageDescription
               spaceTopClass="pt-100"
               spaceBottomClass="pb-100"
               product={product}

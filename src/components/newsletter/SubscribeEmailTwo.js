@@ -28,7 +28,7 @@ const CustomForm = ({
             className="email"
             ref={node => (email = node)}
             type="email"
-            placeholder="Youe Email Addres"
+            placeholder="Your Email Address"
             required
           />
         </div>

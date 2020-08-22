@@ -143,14 +143,14 @@ function ProductModal(props) {
                   {discountedprice !== null ? (
                     <Fragment>
                       <span>
-                        {currency.currencySymbol + finaldiscountedprice}
+                        {currency.currencySymbol + (finaldiscountedprice / 100)}
                       </span>{" "}
                       <span className="old">
-                        {currency.currencySymbol + finalproductprice}
+                        {currency.currencySymbol + (finalproductprice / 100)}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{currency.currencySymbol + finalproductprice} </span>
+                    <span>{currency.currencySymbol + (finalproductprice / 100)} </span>
                   )}
                 </div>
                 {product.rating && product.rating > 0 ? (

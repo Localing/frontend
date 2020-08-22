@@ -78,7 +78,7 @@ const Home = ({ setLocation, clearLocationError, locationData, businessData, aut
                     <div>
                       <div className="maroon-header-text">Meet our Team</div>
                       <div className="hero-paragraph">Localing is a platform created by a team of Cambridge students that enables local businesses to thrive by connecting with local customers and the wider community.</div>
-                      <Link to="/about"><button className="button-small">Learn more <img src="assets/img/Arrow%402x.svg" alt="" class="button-arrow" /></button></Link>
+                      <Link to="/about"><button className="button-small">Learn more <img src="assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></button></Link>
                     </div>
                   </div>
                   <div id="w-node-bd1afaf93b60-a9e5511a" className="content7-image"></div>

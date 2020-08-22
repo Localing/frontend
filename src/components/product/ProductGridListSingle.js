@@ -147,13 +147,13 @@ const ProductGridListSingle = ({
             <div className="product-price">
               {discountedPrice !== null ? (
                 <Fragment>
-                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+                  <span>{currency.currencySymbol + (finalDiscountedPrice / 100)}</span>{" "}
                   <span className="old">
-                    {currency.currencySymbol + finalProductPrice}
+                    {currency.currencySymbol + (finalProductPrice / 100)}
                   </span>
                 </Fragment>
               ) : (
-                  <span>{currency.currencySymbol + finalProductPrice} </span>
+                  <span>{currency.currencySymbol + (finalProductPrice / 100)} </span>
                 )}
             </div>
           </div>
@@ -205,14 +205,14 @@ const ProductGridListSingle = ({
                   {discountedPrice !== null ? (
                     <Fragment>
                       <span>
-                        {currency.currencySymbol + finalDiscountedPrice}
+                        {currency.currencySymbol + (finalDiscountedPrice / 100)}
                       </span>{" "}
                       <span className="old">
-                        {currency.currencySymbol + finalProductPrice}
+                        {currency.currencySymbol + (finalProductPrice / 100)}
                       </span>
                     </Fragment>
                   ) : (
-                      <span>{currency.currencySymbol + finalProductPrice} </span>
+                      <span>{currency.currencySymbol + (finalProductPrice / 100)} </span>
                     )}
                 </div>
                 {product.rating && product.rating > 0 ? (

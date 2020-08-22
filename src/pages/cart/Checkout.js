@@ -66,12 +66,12 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                                     {discountedPrice !== null
                                       ? currency.currencySymbol +
                                       (
-                                        finalDiscountedPrice *
+                                        (finalDiscountedPrice / 100) *
                                         cartItem.quantity
                                       ).toFixed(2)
                                       : currency.currencySymbol +
                                       (
-                                        finalProductPrice * cartItem.quantity
+                                        (finalProductPrice / 100) * cartItem.quantity
                                       ).toFixed(2)}
                                   </span>
                                 </li>
@@ -84,7 +84,7 @@ const Checkout = ({ cartItems, currency, checkoutCart }) => {
                             <li className="order-total">Total</li>
                             <li>
                               {currency.currencySymbol +
-                                cartTotalPrice.toFixed(2)}
+                                (cartTotalPrice / 100).toFixed(2)}
                             </li>
                           </ul>
                         </div>

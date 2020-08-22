@@ -133,17 +133,17 @@ const Cart = ({
                                     <Fragment>
                                       <span className="amount old">
                                         {currency.currencySymbol +
-                                          finalProductPrice}
+                                          (finalProductPrice / 100)}
                                       </span>
                                       <span className="amount">
                                         {currency.currencySymbol +
-                                          finalDiscountedPrice}
+                                          (finalDiscountedPrice / 100)}
                                       </span>
                                     </Fragment>
                                   ) : (
                                     <span className="amount">
                                       {currency.currencySymbol +
-                                        finalProductPrice}
+                                        (finalProductPrice / 100)}
                                     </span>
                                   )}
                                 </td>
@@ -192,11 +192,11 @@ const Cart = ({
                                   {discountedPrice !== null
                                     ? currency.currencySymbol +
                                       (
-                                        finalDiscountedPrice * cartItem.quantity
+                                        (finalDiscountedPrice / 100) * cartItem.quantity
                                       ).toFixed(2)
                                     : currency.currencySymbol +
                                       (
-                                        finalProductPrice * cartItem.quantity
+                                        (finalProductPrice / 100) * cartItem.quantity
                                       ).toFixed(2)}
                                 </td>
 
@@ -266,14 +266,14 @@ const Cart = ({
                       <h5>
                         Total products{" "}
                         <span>
-                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                          {currency.currencySymbol + (cartTotalPrice / 100).toFixed(2)}
                         </span>
                       </h5>
 
                       <h4 className="grand-totall-title">
                         Grand Total{" "}
                         <span>
-                          {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                          {currency.currencySymbol + (cartTotalPrice / 100).toFixed(2)}
                         </span>
                       </h4>
                       <Link to={process.env.PUBLIC_URL + "/checkout"}>
