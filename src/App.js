@@ -100,7 +100,12 @@ const App = ({ isAuthenticated, dispatch }) => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop"}
+                  exact path={process.env.PUBLIC_URL + "/shop"}
+                  component={BusinessList}
+                />
+
+                <Route
+                  exact path={process.env.PUBLIC_URL + "/shop/:area"}
                   component={BusinessList}
                 />
 
