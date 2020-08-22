@@ -101,15 +101,15 @@ const FooterOne = ({
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/cookies"}>
+                    <a href="https://app.termly.io/document/cookie-policy/6d71a832-abfe-46ed-84a6-bec7e3292565" target="_blank">
                       Cookie Policy
-                    </Link>
+                    </a>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link onClick={() => displayCookiePreferenceModal()}>
                       Update Cookie Preferences
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -141,7 +141,7 @@ const FooterOne = ({
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/faq"}>FAQs</Link>
+                    <Link to={process.env.PUBLIC_URL + "/faqs"}>FAQs</Link>
                   </li>
                 </ul>
               </div>

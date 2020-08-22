@@ -48,13 +48,13 @@ const ProductDescriptionInfo = ({
       <div className="product-details-price">
         {discountedPrice !== null ? (
           <Fragment>
-            <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+            <span>{currency.currencySymbol + (finalDiscountedPrice / 100)}</span>{" "}
             <span className="old">
-              {currency.currencySymbol + finalProductPrice}
+              {currency.currencySymbol + (finalProductPrice / 100)}
             </span>
           </Fragment>
         ) : (
-            <span>{currency.currencySymbol + finalProductPrice} </span>
+            <span>{currency.currencySymbol + (finalProductPrice / 100)} </span>
           )}
       </div>
       {product.rating && product.rating > 0 ? (

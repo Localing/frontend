@@ -2,6 +2,7 @@ import currencyReducer from "./currencyReducer";
 import productReducer from "./productReducer";
 import businessReducer from "./businessReducer";
 import cartReducer from "./cartReducer";
+import checkoutReducer from "./checkoutReducer";
 import wishlistReducer from "./wishlistReducer";
 import compareReducer from "./compareReducer";
 import pointsReducer from "./pointsReducer";
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   productData: productReducer,
   businessData: businessReducer,
   cartData: cartReducer,
+  checkoutData: checkoutReducer,
   wishlistData: wishlistReducer,
   compareData: compareReducer,
   pointsData: pointsReducer,

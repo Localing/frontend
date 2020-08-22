@@ -56,7 +56,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     const getCategories = () => {
       let categories = [];
       businesses.forEach((business) => {
-        categories = categories.concat(business.categories);
+        if(business.categories) categories = categories.concat(business.categories);
       })
       setCategories(categories);
     }
@@ -82,8 +82,6 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     e.preventDefault();
     setSearchTerm(e.target.value);
   }
-
-
 
   // allow changing postcode
   const [postcode, setPostcode] = useState("");
@@ -176,7 +174,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         </div>
       }
       <Row className="mt-4">
-        {businessesToDisplay.length ?
+        {businessesToDisplay && businessesToDisplay.length ?
 
           businessesToDisplay.map(business => {
             return (
@@ -184,10 +182,10 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
                 <Link to={`/business/${business.businessId}`} className="button-text w-inline-block">
                   <div className="business-content-wrap" style={{ backgroundImage: `url(${business.imageURL})` }}>
                     <div className="business-content-card-wrap">
-                      <div className="button-category">{business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
+                      <div className="button-category">{business.categories && business.categories.map((category) => <span className="mr-1">{capitalize(category)}</span>)}</div>
                       <div className="business-name-wrap"><p className="size3-link">{business.name}</p></div>
                       <div className="button-text w-inline-block">
-                        <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} · {Number(business.distance).toFixed(1) + " miles away"}</div>
+                        <div className="button-location"><i className="fa fa-map-marker mr-1" />{capitalize(business.area)} {/* Number(business.distance).toFixed(1) + " miles away" */}</div>
                         <div className="button-label mt-2">EXPLORE DEALS<img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" />
                         </div>
                       </div>

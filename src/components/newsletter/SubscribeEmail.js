@@ -21,7 +21,7 @@ const CustomForm = ({ status, message, onValidated }) => {
             className="email"
             ref={node => (email = node)}
             type="email"
-            placeholder="Youe Email Addres"
+            placeholder="Your Email Address"
             required
           />
         </div>

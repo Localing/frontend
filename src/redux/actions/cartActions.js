@@ -1,4 +1,5 @@
 export const ADD_TO_CART = "ADD_TO_CART";
+export const CHECKOUT_CART = "CHECKOUT_CART";
 export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const DELETE_ALL_FROM_CART = "DELETE_ALL_FROM_CART";
@@ -34,7 +35,8 @@ export const addToCart = (
     });
   };
 };
-//decrease from cart
+
+// decrease from cart
 export const decreaseQuantity = (item, addToast) => {
   return dispatch => {
     if (addToast) {
@@ -46,7 +48,8 @@ export const decreaseQuantity = (item, addToast) => {
     dispatch({ type: DECREASE_QUANTITY, payload: item });
   };
 };
-//delete from cart
+
+// delete from cart
 export const deleteFromCart = (item, addToast) => {
   return dispatch => {
     if (addToast) {
@@ -55,24 +58,13 @@ export const deleteFromCart = (item, addToast) => {
     dispatch({ type: DELETE_FROM_CART, payload: item });
   };
 };
-//delete all from cart
+
+// delete all from cart
 export const deleteAllFromCart = addToast => {
   return dispatch => {
     if (addToast) {
       addToast("Removed All From Cart", {
         appearance: "error",
-        autoDismiss: true
-      });
-    }
-    dispatch({ type: DELETE_ALL_FROM_CART });
-  };
-};
-//delete all from cart
-export const checkoutCart = addToast => {
-  return dispatch => {
-    if (addToast) {
-      addToast("Checkout Complete", {
-        appearance: "success",
         autoDismiss: true
       });
     }

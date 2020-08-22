@@ -31,7 +31,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
-                    <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
+                    <Link to={process.env.PUBLIC_URL + "/product/" + single.businessId + "/" + single.productId}>
                       <img
                         alt=""
                         src={process.env.PUBLIC_URL + single.images[0]}
@@ -42,7 +42,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                   <div className="shopping-cart-title">
                     <h4>
                       <Link
-                        to={process.env.PUBLIC_URL + "/product/" + single.id}
+                        to={process.env.PUBLIC_URL + "/product/" + single.businessId + "/" + single.productId}
                       >
                         {" "}
                         {single.name}{" "}
@@ -51,8 +51,8 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     <h6>Qty: {single.quantity}</h6>
                     <span>
                       {discountedPrice !== null
-                        ? currency.currencySymbol + finalDiscountedPrice
-                        : currency.currencySymbol + finalProductPrice}
+                        ? currency.currencySymbol + finalDiscountedPrice / 100
+                        : currency.currencySymbol + finalProductPrice / 100}
                     </span>
                     {single.selectedProductColor &&
                     single.selectedProductSize ? (
@@ -77,7 +77,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
             <h4>
               Total :{" "}
               <span className="shop-total">
-                {currency.currencySymbol + cartTotalPrice.toFixed(2)}
+                {currency.currencySymbol + (cartTotalPrice / 100).toFixed(2)}
               </span>
             </h4>
           </div>

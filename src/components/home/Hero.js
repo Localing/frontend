@@ -50,7 +50,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                 <div id="w-node-6d7d04cfb30d-5fcf7beb" className="hero2-content">
                     <div className="hero2-title">
                         <div className="maroon-header-text">Keep the heart of your local high street beating</div>
-                        <p class="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
+                        <p className="hero-paragraph">Pre-order from local businesses, and <strong>get exclusive promotions and discounts</strong> for being loyal to your community!</p>
                         <div className="d-none d-sm-block">
                         {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">

@@ -23,31 +23,29 @@
     -->
   <title>Localing - Support local businesses</title>
 
-  
-  <!-- Termly.io cookie consent script -->
-  <script>
-    (function () {
-      var s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = 'https://app.termly.io/embed.min.js';
-      s.id = 'cdf6b059-c995-4738-9114-d9428f086822';
-      s.setAttribute("data-name", "termly-embed-banner");
-      var x = document.getElementsByTagName('script')[0];
-      x.parentNode.insertBefore(s, x);
-    })();
-  </script>
-
-  <!-- Dialogflow bot script -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger intent="WELCOME" chat-title="Katy"
-    chat-icon="https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/chatbot-avatar.png"
-    agent-id="7c4903b9-87fa-4a9c-bb87-4f01ceb52b16" language-code="en">
-  </df-messenger>
+  <!-- Stripe JS -->
+  <script src="https://js.stripe.com/v3/"></script>
 
 </head>
 
 <body>
+  <!-- Dialogflow bot script -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger intent="WELCOME" chat-title="Katy"
+    chat-icon="https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/chatbot-avatar.png"
+    agent-id="7c4903b9-87fa-4a9c-bb87-4f01ceb52b16" language-code="en" wait-open>
+  </df-messenger>
+  <style>
+    df-messenger {
+      --df-messenger-bot-message: #878fac;
+      --df-messenger-button-titlebar-color: #2a728f;
+      --df-messenger-chat-background-color: #fafafa;
+      --df-messenger-font-color: white;
+      --df-messenger-send-icon: #878fac;
+      --df-messenger-user-message: #479b3d;
+    }
+  </style>
+
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <!--
