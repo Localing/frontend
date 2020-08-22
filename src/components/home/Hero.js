@@ -18,7 +18,35 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
             name: "Histon & Impington",
             description: "Some of the trackways that pass through these villages are believed to be prehistoric.",
             image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon2.jpg",
-            caption: "This is some store"
+            caption: "This is a store."
+        },
+        {
+            id: "histon-and-impington",
+            name: "Histon & Impington",
+            description: "Some of the trackways that pass through these villages are believed to be prehistoric.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon3.jpg",
+            caption: "This is a church."
+        },
+        {
+            id: "cottenham",
+            name: "Cottenham",
+            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham1.jpg",
+            caption: "This is a church."
+        },
+        {
+            id: "cottenham",
+            name: "Cottenham",
+            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham2.jpg",
+            caption: "Pond on the Green Cottenham"
+        },
+        {
+            id: "cottenham",
+            name: "Cottenham",
+            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
+            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham3.jpg",
+            caption: "Cottenham High Street"
         }
     ];
 
