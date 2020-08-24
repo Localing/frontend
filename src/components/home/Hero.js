@@ -1,58 +1,14 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Alert, Spinner, Button } from 'react-bootstrap';
+//import { Alert, Spinner, Button } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 import { capitalize, truncate } from "../../helpers/strings";
+import areaProfiles from '../../data/areas/area-hero-slides.json';
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
-    const townProfiles = [
-        {
-            id: "histon-and-impington",
-            name: "Histon & Impington",
-            description: "Over the years the two villages have grown and entwined together, to such an extent that many villagers today do not know where one ends and the other begins.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon1.jpg",
-            caption: "This is Histon's most famous bar."
-        },
-        {
-            id: "histon-and-impington",
-            name: "Histon & Impington",
-            description: "Some of the trackways that pass through these villages are believed to be prehistoric.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon2.jpg",
-            caption: "This is a store."
-        },
-        {
-            id: "histon-and-impington",
-            name: "Histon & Impington",
-            description: "Some of the trackways that pass through these villages are believed to be prehistoric.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/histon3.jpg",
-            caption: "This is a church."
-        },
-        {
-            id: "cottenham",
-            name: "Cottenham",
-            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham1.jpg",
-            caption: "This is a church."
-        },
-        {
-            id: "cottenham",
-            name: "Cottenham",
-            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham2.jpg",
-            caption: "Pond on the Green Cottenham"
-        },
-        {
-            id: "cottenham",
-            name: "Cottenham",
-            description: "Cottenham is one of a number of villages that make up the historical Fen Edge region in between Cambridge and Ely.",
-            image: "https://localingimagefrontenddevtemp.s3.eu-west-2.amazonaws.com/cottenham3.jpg",
-            caption: "Cottenham High Street"
-        }
-    ];
-
-    // Rotate town pictures in hero
-    const randomTown = () => {
-        return townProfiles[Math.floor(Math.random() * townProfiles.length)]
+    // Rotate area pictures in hero
+    const randomarea = () => {
+        return areaProfiles[Math.floor(Math.random() * areaProfiles.length)]
     }
 
     // // Rotate businesses in hero 
@@ -60,7 +16,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
     //     return businesses[Math.floor(Math.random() * businesses.length)]
     // }
 
-    const [towns, setTowns] = useState(randomTown());
+    const [areas, setareas] = useState(randomarea());
     // const [business, setBusiness] = useState(randomBusiness());
 
     // handling changes to postcodes
@@ -146,28 +102,28 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         } */}
                         </div>
                     </div>
-                    <Link to={`/shop/${towns.id}`}>
+                    <Link to={`/shop/${areas.id}`}>
                         <div className="hero2-latest w-inline-block d-none d-sm-block">
                             <div>
                                 <span className="featured-text lead">Featured High Street</span>
-                                <div className="size5-text">{towns.name}</div>
-                                <div className="hero-paragraph">{truncate(towns.description, 200, " ...")}</div>
+                                <div className="size5-text">{areas.name}</div>
+                                <div className="hero-paragraph">{truncate(areas.description, 200, " ...")}</div>
                             </div>
                         </div>
                     </Link>
-                    <Link to={`/shop/${towns.id}`}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
-                        <div>Discover shops in {towns.name} <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
+                    <Link to={`/shop/${areas.id}`}><div className="button-large hero3-button w-inline-block d-none d-sm-block">
+                        <div>Discover shops in {areas.name} <img src="/assets/img/Arrow%402x.svg" alt="" className="button-arrow" /></div>
                     </div></Link>
                 </div>
                 <div id="w-node-6d7d04cfb31e-5fcf7beb" className="hero2-product">
                     <div className="hero2-product-name-link-wrap w-inline-block">
-                        <Link to={`/shop/${towns.id}`}><p className="hero2-product-name">{towns.caption}</p></Link>
+                        <Link to={`/shop/${areas.id}`}><p className="hero2-product-name">{areas.caption}</p></Link>
                     </div>
-                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{towns.name}</p>
+                    <p className="hero2-location"><i className="fa fa-map-marker mr-1" />{areas.name}</p>
                 </div>
             </div>
             <div className="w-layout-grid hero2-background">
-                <div id="w-node-6d7d04cfb325-5fcf7beb" className="hero2-image" style={{ backgroundImage: `url('${towns.image}')` }}></div>
+                <div id="w-node-6d7d04cfb325-5fcf7beb" className="hero2-image" style={{ backgroundImage: `url('${areas.image}')` }}></div>
             </div>
         </div>
     )
