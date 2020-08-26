@@ -38,6 +38,7 @@ const Compare = lazy(() => import("./pages/cart/Compare"));
 const MyAccount = lazy(() => import("./pages/account/MyAccount"));
 const Login = lazy(() => import("./pages/account/Login"));
 const ResetPassword = lazy(() => import("./pages/account/ResetPassword"));
+const VerifyEmail = lazy(() => import("./pages/account/VerifyEmail"));
 
 // other pages
 const About = lazy(() => import("./pages/other/About"));
@@ -164,6 +165,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/reset-password"}
                   component={ResetPassword}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/verify-email"}
+                  component={VerifyEmail}
                 />
 
                 <Route
