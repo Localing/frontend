@@ -30,7 +30,7 @@ export const checkoutCart = () => {
     let cartItems = getState().cartData;
 
     // remove all keys from items except those needed by checkout API
-    const keysToKeep = ['businessId', 'productId', 'quantity', 'price', 'discount', 'currency', 'active', 'name', 'description'];
+    const keysToKeep = ['businessId', 'productId', 'quantity'];
 
     const extractKeysToKeep = array => array.map(o => keysToKeep.reduce((acc, curr) => {
       acc[curr] = o[curr];
@@ -39,26 +39,9 @@ export const checkoutCart = () => {
 
     cartItems = extractKeysToKeep(cartItems);
 
-    // group items by business ID
-    let itemsByBusiness = _.mapValues(_.groupBy(cartItems, 'businessId'), clist => clist.map(item => _.omit(item, 'businessId')));
-
-    let vendorCarts = [];
-
-    for (const [businessId, vendorItems] of Object.entries(itemsByBusiness)) {
-      vendorCarts.push({
-        "businessId": businessId,
-        "vendorItems": vendorItems
-      })
-    }
-
-    let cartToSubmit = {
-      consumerID: getState().authData.user.username,
-      vendorCarts: vendorCarts
-    }
-
-    // submit cart to checkout API, get stripe session ID back and redirect to Stripe Checkout
+    // submit formatted cart to checkout API, get stripe session ID back and redirect to Stripe Checkout
     API
-      .post(`/checkout/`, cartToSubmit)
+      .post(`/checkout/`, cartItems)
       .then(response => {
         let sessionId = response.data.sessionId;
         stripe.redirectToCheckout({
