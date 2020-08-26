@@ -20,6 +20,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 // business pages
 const Business = lazy(() => import("./pages/business/Business"));
 const BusinessList = lazy(() => import("./pages/business/BusinessList"));
+const BusinessListByArea = lazy(() => import("./pages/business/BusinessListByArea"));
 
 // product pages
 const Product = lazy(() => import("./pages/product/Product"));
@@ -106,7 +107,7 @@ const App = ({ isAuthenticated, dispatch }) => {
 
                 <Route
                   exact path={process.env.PUBLIC_URL + "/shop/:area"}
-                  component={BusinessList}
+                  component={BusinessListByArea}
                 />
 
                 {/* Product pages */}
