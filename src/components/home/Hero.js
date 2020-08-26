@@ -3,6 +3,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { HashLink as Link } from 'react-router-hash-link';
 import { capitalize, truncate } from "../../helpers/strings";
 import areaProfiles from '../../data/areas/area-hero-slides.json';
+import allAreas from '../../data/areas/areas.json';
 
 const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => {
 
@@ -61,11 +62,18 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                         <br />
                         <div className="d-none d-sm-block">
                             <p className="lead">Choose your area to start shopping!</p>
-                            <Link to="/shop/cottenham"><button style={{ display: 'inline' }} className="button-small-light mr-1">Cottenham</button></Link>
-                            <Link to="/shop/histon-and-impington"><button style={{ display: 'inline' }} className="button-small-light">Histon &amp; Impington</button></Link>
+                            {allAreas.sort((a, b) => {
+                                // sort areas alphabetically
+                                if(a.name < b.name) return -1;
+                                if(a.name > b.name) return 1;
+                                return 0;
+                            }).map((area) => {
+                                // create a button for each area
+                                return <Link to={`/shop/${area.id}`}><button style={{ display: 'inline' }} className="button-small-light mr-1">{area.name}</button></Link>
+                            })}
                             <hr />
-                            <p>Not in your area yet? <a href="#newsletter" scroll={el => scrollWithOffset(el)} style={{ textDecoration: 'underline'}}>Let us alert you when we are.</a></p>
-                            
+                            <p>Not in your area yet? <a href="#newsletter" scroll={el => scrollWithOffset(el)} style={{ textDecoration: 'underline' }}>Let us alert you when we are.</a></p>
+
                             {/* POSTCODE ENTRY FORM - Currently disabled
                             {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">

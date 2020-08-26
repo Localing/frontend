@@ -1,14 +1,14 @@
 [
     {
-        "id": "cottenham",
-        "name": "Cottenham",
-        "heroVideo": "https://www.youtube.com/embed/1f-o1yiCgXI?autoplay=1",
-        "heroQuote": "This is a quote about Cottenham"
-    },
-    {
         "id": "histon-and-impington",
         "name": "Histon & Impington",
         "heroVideo": "https://www.youtube.com/embed/1f-o1yiCgXI?autoplay=1",
         "heroQuote": "This is a quote about Histon & Impington"
+    },
+    {
+        "id": "cottenham",
+        "name": "Cottenham",
+        "heroVideo": "https://www.youtube.com/embed/1f-o1yiCgXI?autoplay=1",
+        "heroQuote": "This is a quote about Cottenham"
     }
 ]
