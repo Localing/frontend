@@ -20,6 +20,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 // business pages
 const Business = lazy(() => import("./pages/business/Business"));
 const BusinessList = lazy(() => import("./pages/business/BusinessList"));
+const BusinessListByArea = lazy(() => import("./pages/business/BusinessListByArea"));
 
 // product pages
 const Product = lazy(() => import("./pages/product/Product"));
@@ -37,6 +38,7 @@ const Compare = lazy(() => import("./pages/cart/Compare"));
 const MyAccount = lazy(() => import("./pages/account/MyAccount"));
 const Login = lazy(() => import("./pages/account/Login"));
 const ResetPassword = lazy(() => import("./pages/account/ResetPassword"));
+const VerifyEmail = lazy(() => import("./pages/account/VerifyEmail"));
 
 // other pages
 const About = lazy(() => import("./pages/other/About"));
@@ -100,8 +102,13 @@ const App = ({ isAuthenticated, dispatch }) => {
                 />
 
                 <Route
-                  path={process.env.PUBLIC_URL + "/shop"}
+                  exact path={process.env.PUBLIC_URL + "/shop"}
                   component={BusinessList}
+                />
+
+                <Route
+                  exact path={process.env.PUBLIC_URL + "/shop/:area"}
+                  component={BusinessListByArea}
                 />
 
                 {/* Product pages */}
@@ -158,6 +165,11 @@ const App = ({ isAuthenticated, dispatch }) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/reset-password"}
                   component={ResetPassword}
+                />
+
+                <Route
+                  path={process.env.PUBLIC_URL + "/verify-email"}
+                  component={VerifyEmail}
                 />
 
                 <Route
