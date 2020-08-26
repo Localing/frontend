@@ -1,8 +1,12 @@
 import axios from "axios";
 import { Auth } from "aws-amplify";
 
+const prod_api = "https://api-dev.localing.uk/api/v1";
+const stage_api = "https://api-dev.localing.uk/api/v1";
+const dev_api = "http://localhost:8081/api/v1";
+
 const axiosInstance = axios.create({
-    baseURL: "https://api-dev.localing.uk/api/v1",
+    baseURL: (process.env.REACT_APP_BuildENV) ? ((process.env.REACT_APP_BuildENV === "prod") ? prod_api : stage_api) : dev_api,
     responseType: "json"
 });
 
