@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import { Link, Redirect } from "react-router-dom";
 import Tab from "react-bootstrap/Tab";
@@ -29,6 +29,12 @@ const Login = ({
   let { from } = location.state || { from: { pathname: "/" } };
 
   const [activePage, setActivePage] = useState(startPage);
+
+  // clear any errors on load
+  useEffect(() => {
+    clearLoginError();
+    clearSignUpError();
+  }, []);
 
   // Login form fields
   const [loginEmail, setLoginEmail] = useState("");

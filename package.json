@@ -5,9 +5,9 @@
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.9",
     "@stripe/stripe-js": "^1.9.0",
-    "animate.css": "^4.1.0",
-    "aws-amplify": "^3.0.18",
-    "aws-sdk": "^2.739.0",
+    "animate.css": "^4.1.1",
+    "aws-amplify": "^3.1.1",
+    "aws-sdk": "^2.748.0",
     "axios": "^0.20.0",
     "bootstrap": "4.5.2",
     "geolib": "^3.3.1",
