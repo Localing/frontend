@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Auth } from "aws-amplify";
 
-const prod_api = "https://api-dev.localing.uk/api/v1";
-const stage_api = "https://api-dev.localing.uk/api/v1";
+const prod_api = "https://api-prod.localing.uk/api/v1";
+const stage_api = "https://api-stage.localing.uk/api/v1";
 const dev_api = "http://localhost:8081/api/v1";
 
 const axiosInstance = axios.create({
