@@ -42,7 +42,7 @@ const ProductGridListSingle = ({
             <Link to={process.env.PUBLIC_URL + "/product/" + businessId + "/" + product.productId}>
               <img
                 className="default-img"
-                src={process.env.PUBLIC_URL + product.images[0]}
+                src={product.images[0] ? process.env.PUBLIC_URL + product.images[0] : process.env.PUBLIC_URL + '/assets/img/product-img-placeholder.png'}
                 alt=""
               />
               {product.images.length > 1 ? (
