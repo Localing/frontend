@@ -28,7 +28,7 @@ export const getProducts = (products, category, type, limit) => {
 
 // get product discount price
 export const getDiscountPrice = (price, discount) => {
-  return discount && discount > 0 ? price - price * (discount / 100) : null;
+  return discount && discount > 0 ? Math.round(price - price * (discount / 100)) : null;
 };
 
 // get product cart quantity
