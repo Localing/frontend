@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.9",
-    "@stripe/stripe-js": "^1.10.0",
+    "@stripe/stripe-js": "^1.11.0",
     "animate.css": "^4.1.1",
     "aws-amplify": "^3.3.5",
     "aws-sdk": "^2.780.0",
