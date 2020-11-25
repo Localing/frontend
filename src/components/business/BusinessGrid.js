@@ -8,7 +8,7 @@ import Paginator from "react-hooks-paginator";
 const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationError }) => {
 
   const [businessesToDisplay, setBusinessesToDisplay] = useState([...businesses]);
-  // const [filterRadius, setFilterRadius] = useState(0);
+  const [filterRadius, setFilterRadius] = useState(0);
   const [filterCategory, setFilterCategory] = useState("all");
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +16,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
   const [currentPage, setCurrentPage] = useState(1);
   const [numberOfBusinesses, setNumberOfBusinesses] = useState(0);
   const pageLimit = 6; // businesses per page
-  
+
 
   useEffect(() => {
     // sort and filter businesses whenever options change
@@ -32,9 +32,9 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
         sortedBusinesses = sortedBusinesses.filter((business) => (business.name.toLowerCase().includes(searchTerm.toLowerCase())));
       }
 
-      // if (filterRadius > 0) {
-      //   sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
-      // }
+      if (filterRadius > 0) {
+        sortedBusinesses = sortedBusinesses.filter((business) => (business.distance < filterRadius));
+      }
 
       if (filterCategory !== "all") {
         sortedBusinesses = sortedBusinesses.filter((business) => (business.categories.includes(filterCategory)));
@@ -49,14 +49,14 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     }
 
     sortBusinesses();
-  }, [locationData, filterCategory, searchTerm, businesses, offset])
+  }, [locationData, filterCategory, filterRadius, searchTerm, businesses, offset])
 
   useEffect(() => {
     // update categories if businesses change
     const getCategories = () => {
       let categories = [];
       businesses.forEach((business) => {
-        if(business.categories) categories = categories.concat(business.categories);
+        if (business.categories) categories = categories.concat(business.categories);
       })
       setCategories(categories);
     }
@@ -64,11 +64,11 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
     getCategories();
   }, [businesses])
 
-  // // filter by radius
-  // const handleRadiusChange = (e) => {
-  //   e.preventDefault();
-  //   setFilterRadius(e.target.value);
-  // }
+  // filter by radius
+  const handleRadiusChange = (e) => {
+    e.preventDefault();
+    setFilterRadius(e.target.value);
+  }
 
 
   // filter by category
@@ -140,7 +140,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
               return <option value={category}>{category}</option>
             })}
           </select>
-          {/* <label>within</label>
+          <label>within</label>
           <select className="custom-select ml-1 mr-1" onChange={handleRadiusChange} style={{ borderRadius: '0' }}>
             <option value="0" selected>any distance</option>
             <option value="0.5">half a mile</option>
@@ -148,7 +148,7 @@ const BusinessGrid = ({ businesses, locationData, setLocation, clearLocationErro
             <option value="5">5 miles</option>
             <option value="10">10 miles</option>
             <option value="20">20 miles</option>
-          </select> */}
+          </select>
           <label className="ml-1 mr-1">near</label>
           <OverlayTrigger
             trigger="click"
