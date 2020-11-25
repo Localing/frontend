@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from 'react';
-//import { Alert, Spinner, Button } from 'react-bootstrap';
+import { Alert, Spinner, Button } from 'react-bootstrap';
 import { HashLink as Link } from 'react-router-hash-link';
 import { capitalize, truncate } from "../../helpers/strings";
 import areaProfiles from '../../data/areas/area-hero-slides.json';
@@ -59,23 +59,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-title">
                         <div className="maroon-header-text">Keep the heart of your local high street beating!</div>
                         <p className="hero-paragraph">Pre-order from local businesses and <strong>get exclusive promotions and discounts</strong> for being loyal to your community.</p>
-                        <br />
-                        <div className="d-none d-sm-block">
-                            <p className="lead">Choose your area to start shopping!</p>
-                            {allAreas.sort((a, b) => {
-                                // sort areas alphabetically
-                                if(a.name < b.name) return -1;
-                                if(a.name > b.name) return 1;
-                                return 0;
-                            }).map((area) => {
-                                // create a button for each area
-                                return <Link to={`/shop/${area.id}`}><button style={{ display: 'inline' }} className="button-small-light mr-1">{area.name}</button></Link>
-                            })}
-                            <hr />
-                            <p>Not in your area yet? <a href="#newsletter" scroll={el => scrollWithOffset(el)} style={{ textDecoration: 'underline' }}>Let us alert you when we are.</a></p>
-
-                            {/* POSTCODE ENTRY FORM - Currently disabled
-                            {showPostcodeForm ?
+                        {showPostcodeForm ?
                             <form onSubmit={handlePostcodeSubmit} className="mt-4">
                                 {locationData.locationError &&
                                     <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
@@ -107,7 +91,20 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                     <Link to="/shop" scroll={el => scrollWithOffset(el)}><button className="button-small">Shop Now</button></Link>
                                 </div>
                             </div>
-                        } */}
+                        }
+                        <div className="d-none d-sm-block">
+                            <p className="pt-3">or choose an area below to start shopping!</p>
+                            {allAreas.sort((a, b) => {
+                                // sort areas alphabetically
+                                if(a.name < b.name) return -1;
+                                if(a.name > b.name) return 1;
+                                return 0;
+                            }).map((area) => {
+                                // create a button for each area
+                                return <Link to={`/shop/${area.id}`}><button style={{ display: 'inline' }} className="button-small-light mr-1">{area.name}</button></Link>
+                            })}
+                            <hr />
+                            <p>Not in your area yet? <a href="#newsletter" scroll={el => scrollWithOffset(el)} style={{ textDecoration: 'underline' }}>Let us alert you when we are.</a></p>
                         </div>
                     </div>
                     <Link to={`/shop/${areas.id}`}>
