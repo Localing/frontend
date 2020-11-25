@@ -59,8 +59,10 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                     <div className="hero2-title">
                         <div className="maroon-header-text">Keep the heart of your local high street beating!</div>
                         <p className="hero-paragraph">Pre-order from local businesses and <strong>get exclusive promotions and discounts</strong> for being loyal to your community.</p>
+                        <hr />
+                        <p className="mt-1">Find shops near you by postcode</p>
                         {showPostcodeForm ?
-                            <form onSubmit={handlePostcodeSubmit} className="mt-4">
+                            <form onSubmit={handlePostcodeSubmit}>
                                 {locationData.locationError &&
                                     <Alert variant="danger" onClose={() => clearLocationError()} dismissible className="postcode-error">
                                         <p>There was something wrong with the postcode you entered, please try again!</p>
@@ -80,7 +82,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                                 </div>
                             </form>
                             :
-                            <div className="location-display mt-4">
+                            <div className="location-display">
                                 <div className="location-name mr-1" onClick={() => setShowPostcodeForm(true)}>
                                     <i className="fa fa-map-marker mr-1 ml-1" />{locationData.location}
                                 </div>
@@ -93,7 +95,7 @@ const Hero = ({ locationData, setLocation, clearLocationError, businesses }) => 
                             </div>
                         }
                         <div className="d-none d-sm-block">
-                            <p className="pt-3">or choose an area below to start shopping!</p>
+                            <p className="pt-3">or select a high street below to start shopping!</p>
                             {allAreas.sort((a, b) => {
                                 // sort areas alphabetically
                                 if(a.name < b.name) return -1;
