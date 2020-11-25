@@ -1,6 +1,6 @@
 # Localing
 
-Hyperlocal marketplace application in React - *University of Cambridge #CAMvsCOVID Hackathon First Place Winner*
+Hyperlocal marketplace application in React · *University of Cambridge #CAMvsCOVID Hackathon First Place Winner*
 
 <img src="https://user-images.githubusercontent.com/1212163/100269402-77319b80-2f24-11eb-8d97-4011b5c5da33.JPG">
 
@@ -12,7 +12,7 @@ Localing connects customers with local businesses once more. Our platform gives 
 This repository contains the frontend application, built with React, Redux and Bootstrap 4.
 
 ## Try it out
-Demo version can be seen at https://stage.localing.co.uk/
+A demo can be seen at https://stage.localing.co.uk/
 
 ## Built with
 - React
