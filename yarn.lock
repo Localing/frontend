@@ -11099,12 +11099,10 @@ react-mailchimp-subscribe@^2.1.0:
     prop-types "^15.5.10"
     to-querystring "^1.0.4"
 
-react-meta-tags@^0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-0.7.4.tgz#c506b453e7f89e006d8053afcf47a1f747240e43"
-  integrity sha512-ZSnZeEx+OVE5x6EK9oX6Qg3yGCCcxbnscQGu6S+ewglIi38KqEspcAgShggFSOZd5+5jgQB91OiRA+GX7zbrOA==
-  dependencies:
-    prop-types "^15.6.0"
+react-meta-tags@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-meta-tags/-/react-meta-tags-1.0.0.tgz#0779943da09af4a445bbc9ee582620b04a36f292"
+  integrity sha512-0eQr/eBhv05wgFLmkvvdrsVClSgw902PhZauERtBgtIZW8cIC0yQ4DVIDl/l5vgP9djanZLl2MAaVw8BWAXzog==
 
 react-native-get-random-values@^1.4.0:
   version "1.5.0"
