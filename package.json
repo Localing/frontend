@@ -6,7 +6,7 @@
     "@aws-amplify/ui-react": "^0.2.9",
     "@stripe/stripe-js": "^1.11.0",
     "animate.css": "^4.1.1",
-    "aws-amplify": "^3.3.10",
+    "aws-amplify": "^3.3.12",
     "aws-sdk": "^2.804.0",
     "axios": "^0.21.0",
     "bootstrap": "4.5.3",
